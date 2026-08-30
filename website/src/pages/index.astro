@@ -10,16 +10,13 @@
 
   <body>
     <main class="hero">
-  <div class="overlay"></div>
+      <div class="overlay"></div>
 
-  <div class="hero-content">
-    <h1>Who you are matters.</h1>
-    <p>
-      Slow down. Listen to the land.
-      Make space for yourself.
-    </p>
-  </div>
-</main>
+      <div class="hero-content">
+        <h1>Who you are matters.</h1>
+        <p>Slow down. Listen to the land. Make space for yourself.</p>
+      </div>
+    </main>
   </body>
 </html>
 
@@ -34,54 +31,75 @@
   .hero {
     position: relative;
     min-height: 100svh;
-    display: flex;
-    align-items: flex-end;
-    padding: 2rem;
-    background:
-      url('/hero-river.JPG')
-      center / cover
-      no-repeat;
+    background: url('/hero-river.JPG') center / cover no-repeat;
   }
 
   .overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(
-      to top,
-      rgba(15, 25, 17, 0.72),
-      rgba(15, 25, 17, 0.05) 65%
-    );
+    background:
+      linear-gradient(
+        90deg,
+        rgba(8, 20, 12, 0.58) 0%,
+        rgba(8, 20, 12, 0.22) 42%,
+        rgba(8, 20, 12, 0.02) 68%
+      );
+    pointer-events: none;
   }
 
   .hero-content {
-    position: relative;
+    position: absolute;
+    top: 18%;
+    left: 4%;
     z-index: 1;
-    max-width: 42rem;
-    padding-bottom: 2rem;
+    max-width: 92vw;
   }
 
   h1 {
-  font-size: clamp(2.8rem, 7vw, 7rem);
-  line-height: 0.95;
-  margin: 0 0 1.5rem;
-  white-space: nowrap;
-}
-@media (max-width: 700px) {
-  h1 {
-    white-space: normal;
+    margin: 0 0 1rem;
+    font-size: clamp(3rem, 6vw, 6.5rem);
+    line-height: 0.95;
+    white-space: nowrap;
   }
-}
 
   p {
-    max-width: 34rem;
-    font-size: clamp(1.1rem, 3vw, 1.5rem);
-    line-height: 1.5;
     margin: 0;
+    font-size: clamp(1.05rem, 2vw, 1.4rem);
+    line-height: 1.4;
+    white-space: nowrap;
   }
 
-  @media (min-width: 768px) {
+  @media (max-width: 700px) {
     .hero {
-      padding: 4rem;
+      background-position: 62% center;
+    }
+
+    .overlay {
+      background:
+        linear-gradient(
+          to bottom,
+          rgba(8, 20, 12, 0.52) 0%,
+          rgba(8, 20, 12, 0.16) 48%,
+          rgba(8, 20, 12, 0.04) 72%
+        );
+    }
+
+    .hero-content {
+      top: 10%;
+      left: 1.25rem;
+      right: 1.25rem;
+      max-width: none;
+    }
+
+    h1 {
+      font-size: clamp(2.65rem, 13vw, 4.5rem);
+      white-space: normal;
+    }
+
+    p {
+      max-width: 28rem;
+      font-size: 1.05rem;
+      white-space: normal;
     }
   }
 </style>
