@@ -32,12 +32,14 @@
       </section>
 
       <section class="founder-story" id="zi-hui">
-        <div class="portrait-wrap">
-          <img src="/zi-hui.JPG" alt="Zi Hui walking through a village in Sikkim" />
+        <div class="portrait-column">
+          <div class="portrait-wrap">
+            <img src="/zi-hui.JPG" alt="Zi Hui walking through a village in Sikkim" />
+          </div>
+          <p class="founder-name">Zi Hui</p>
         </div>
 
         <article>
-          <p class="founder-name">Zi Hui</p>
           <blockquote>“A tree helped me forgive myself.”</blockquote>
 
           <div class="body-copy">
@@ -48,7 +50,6 @@
             <p>Today, we are going through unprecedented times. With the relentless pursuit of capitalist growth and unchecked consumerism, our planet suffers and we suffer too. We are becoming lonelier as a species because we forgot how to connect with one another.</p>
 
             <aside class="question" aria-label="Reflection question">
-              <span class="question-mark" aria-hidden="true">“</span>
               <p>How might we stay true to who we are and co-create an interdependently thriving world?</p>
             </aside>
 
@@ -147,11 +148,11 @@
   }
 
   .story-intro h1 {
-    max-width: 20ch;
     margin: 1.1rem auto 0;
     font-size: clamp(1.35rem, 2.4vw, 2.15rem);
     font-weight: 400;
     line-height: 1.25;
+    white-space: nowrap;
   }
 
   .founder-story {
@@ -164,9 +165,12 @@
     align-items: start;
   }
 
-  .portrait-wrap {
+  .portrait-column {
     position: sticky;
     top: 2rem;
+  }
+
+  .portrait-wrap {
     overflow: hidden;
     border-radius: 0.25rem;
     aspect-ratio: 2 / 3;
@@ -182,17 +186,18 @@
   }
 
   .founder-name {
-    margin: 0 0 1rem;
+    margin: 1.1rem 0 0;
     font-size: clamp(2.8rem, 5vw, 5rem);
     line-height: 1;
   }
 
   blockquote {
-    max-width: 18ch;
+    max-width: none;
     margin: 0 0 3rem;
-    font-size: clamp(1.5rem, 2.6vw, 2.4rem);
+    font-size: clamp(1.5rem, 2.25vw, 2.25rem);
     line-height: 1.18;
     font-weight: 400;
+    white-space: nowrap;
   }
 
   .body-copy {
@@ -206,29 +211,19 @@
   }
 
   .question {
-    position: relative;
     margin: 3rem 0;
-    padding: 1.4rem 1.5rem 1.4rem 2rem;
-    border-left: 2px solid rgba(24, 48, 31, 0.55);
-    background: rgba(255, 250, 241, 0.58);
+    padding: 1.35rem 1.5rem;
+    background: rgba(255, 250, 241, 0.72);
+    border: 1px solid rgba(24, 48, 31, 0.16);
+    border-radius: 0.35rem;
   }
 
   .question p {
     margin: 0;
     max-width: 34rem;
-    font-family: Georgia, serif;
-    font-size: clamp(1.15rem, 1.8vw, 1.5rem);
-    line-height: 1.45;
-  }
-
-  .question-mark {
-    position: absolute;
-    top: 0.6rem;
-    left: 0.65rem;
-    font-family: Georgia, serif;
-    font-size: 2rem;
-    line-height: 1;
-    opacity: 0.38;
+    font-size: clamp(1.05rem, 1.5vw, 1.3rem);
+    line-height: 1.5;
+    font-weight: 600;
   }
 
   @media (max-width: 760px) {
@@ -253,14 +248,22 @@
 
     .story-intro { padding-top: 4rem; }
 
+    .story-intro h1,
+    blockquote {
+      white-space: normal;
+    }
+
     .founder-story {
       grid-template-columns: 1fr;
       gap: 2.5rem;
       padding-bottom: 5rem;
     }
 
-    .portrait-wrap {
+    .portrait-column {
       position: static;
+    }
+
+    .portrait-wrap {
       aspect-ratio: 4 / 5;
     }
   }
