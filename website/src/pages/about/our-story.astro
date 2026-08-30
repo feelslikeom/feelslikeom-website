@@ -1,0 +1,242 @@
+---
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Our Story | Feels Like Om</title>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="/">Feels Like Om</a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <details open>
+          <summary>ABOUT</summary>
+          <div class="submenu">
+            <a href="/about/our-story" aria-current="page">Our story</a>
+            <a href="/about/getting-to-sikkim">Getting to Sikkim</a>
+            <a href="/about/visa-and-permits">Visa and permits</a>
+          </div>
+        </details>
+        <a href="/journeys">JOURNEYS</a>
+        <a href="/reflections">REFLECTIONS</a>
+        <a href="/contact">CONTACT</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="story-intro">
+        <p class="eyebrow">OUR STORY</p>
+        <h1>The people behind Feels Like Om.</h1>
+      </section>
+
+      <section class="founder-story" id="zi-hui">
+        <div class="portrait-wrap">
+          <img src="/zi-hui.JPG" alt="Zi Hui walking through a village in Sikkim" />
+        </div>
+
+        <article>
+          <p class="founder-name">Zi Hui</p>
+          <blockquote>“A tree helped me forgive myself.”</blockquote>
+
+          <div class="body-copy">
+            <p>The name <em>Feels Like Om</em> is inspired by the feeling of home that Sikkim extends to all who come and how spiritual the land inspires one to be.</p>
+
+            <p>I went to Sikkim for the first time because of a Service-Learning project, but it turned out to be an unintentional discovery of who I am and what matters to me. The land and the Sikkimese people gifted me a new pair of lens to see the world with.</p>
+
+            <p>Today, we are going through unprecedented times. With the relentless pursuit of capitalist growth and unchecked consumerism, our planet suffers and we suffer too. We are becoming lonelier as a species because we forgot how to connect with one another.</p>
+
+            <p class="question">How might we stay true to who we are and co-create an interdependently thriving world?</p>
+
+            <p>I serve you as a bridge between you and the indigenous communities, so that you may learn from them and reconnect with yourself.</p>
+          </div>
+        </article>
+      </section>
+    </main>
+  </body>
+</html>
+
+<style>
+  :global(*) { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: #f4efe5;
+    color: #18301f;
+    font-family: Georgia, serif;
+  }
+
+  .site-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    padding: 1.5rem 4%;
+    border-bottom: 1px solid rgba(24, 48, 31, 0.15);
+  }
+
+  .brand {
+    color: inherit;
+    text-decoration: none;
+    font-size: 1.3rem;
+    white-space: nowrap;
+  }
+
+  .main-nav {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    font-family: Arial, sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+  }
+
+  .main-nav > a,
+  summary {
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  details { position: relative; }
+  summary { list-style: none; }
+  summary::-webkit-details-marker { display: none; }
+
+  .submenu {
+    position: absolute;
+    top: 1.7rem;
+    right: 0;
+    width: max-content;
+    min-width: 12rem;
+    padding: 0.7rem;
+    background: #fffaf1;
+    border-radius: 0.4rem;
+    box-shadow: 0 12px 30px rgba(8, 20, 12, 0.13);
+    z-index: 5;
+  }
+
+  .submenu a {
+    display: block;
+    padding: 0.65rem 0.75rem;
+    color: #18301f;
+    text-decoration: none;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
+  .story-intro {
+    width: min(1180px, calc(100% - 8%));
+    margin: 0 auto;
+    padding: clamp(5rem, 10vw, 9rem) 0 clamp(3.5rem, 8vw, 7rem);
+  }
+
+  .eyebrow,
+  .founder-name {
+    font-family: Arial, sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+  }
+
+  .story-intro h1 {
+    max-width: 10ch;
+    margin: 0.8rem 0 0;
+    font-size: clamp(3rem, 7vw, 6.5rem);
+    font-weight: 400;
+    line-height: 0.98;
+  }
+
+  .founder-story {
+    width: min(1180px, calc(100% - 8%));
+    margin: 0 auto;
+    padding-bottom: 8rem;
+    display: grid;
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+    gap: clamp(3rem, 8vw, 8rem);
+    align-items: start;
+  }
+
+  .portrait-wrap {
+    position: sticky;
+    top: 2rem;
+    overflow: hidden;
+    border-radius: 0.25rem;
+    aspect-ratio: 2 / 3;
+    background: #d8d1c3;
+  }
+
+  .portrait-wrap img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 42%;
+  }
+
+  .founder-name {
+    margin: 0 0 1.25rem;
+    text-transform: uppercase;
+  }
+
+  blockquote {
+    max-width: 11ch;
+    margin: 0 0 3rem;
+    font-size: clamp(2.4rem, 5vw, 5rem);
+    line-height: 1.02;
+  }
+
+  .body-copy {
+    max-width: 42rem;
+    font-size: clamp(1.1rem, 1.8vw, 1.35rem);
+    line-height: 1.65;
+  }
+
+  .body-copy p {
+    margin: 0 0 1.6rem;
+  }
+
+  .question {
+    margin: 3rem 0 !important;
+    font-size: clamp(1.6rem, 3vw, 2.5rem);
+    line-height: 1.25;
+  }
+
+  @media (max-width: 760px) {
+    .site-header {
+      align-items: flex-start;
+      padding: 1.15rem 1.25rem;
+    }
+
+    .main-nav {
+      gap: 0.75rem;
+      font-size: 0.65rem;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .submenu {
+      right: auto;
+      left: 0;
+    }
+
+    .story-intro,
+    .founder-story {
+      width: calc(100% - 2.5rem);
+    }
+
+    .story-intro {
+      padding-top: 4rem;
+    }
+
+    .founder-story {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      padding-bottom: 5rem;
+    }
+
+    .portrait-wrap {
+      position: static;
+      aspect-ratio: 4 / 5;
+    }
+  }
+</style>
