@@ -95,6 +95,44 @@
           </div>
         </div>
       </section>
+
+      <section class="looks-like" aria-labelledby="looks-like-heading">
+        <div class="looks-like-inner">
+          <h2 id="looks-like-heading" class="reveal">What this looks like</h2>
+
+          <div class="looks-like-grid">
+            <article class="look-item reveal">
+              <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M10 30 32 12l22 18v24H10Z"/><path d="M24 54V37h16v17M17 27v-9h8v3"/></svg>
+              <p>Stay with<br />local families</p>
+            </article>
+
+            <article class="look-item reveal">
+              <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M12 34c0 12 8 20 20 20s20-8 20-20Z"/><path d="M32 34V13M32 20c-7 0-11-5-12-10 7 0 11 4 12 10ZM32 25c7 0 11-5 12-10-7 0-11 4-12 10Z"/></svg>
+              <p>Eat what’s<br />grown here</p>
+            </article>
+
+            <article class="look-item reveal">
+              <svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="17" r="6"/><circle cx="16" cy="26" r="5"/><circle cx="48" cy="26" r="5"/><path d="M22 48c2-9 7-14 10-14s8 5 10 14M7 47c1-8 5-12 9-12 3 0 6 2 8 6M57 47c-1-8-5-12-9-12-3 0-6 2-8 6"/></svg>
+              <p>Gather and<br />share stories</p>
+            </article>
+
+            <article class="look-item reveal">
+              <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M9 17c8 4 15 4 23 0 8 4 15 4 23 0v30c-8 4-15 4-23 0-8 4-15 4-23 0Z"/><path d="M32 17v30M17 25h8M39 25h8M17 33h8M39 33h8"/></svg>
+              <p>Learn ancient<br />wisdom</p>
+            </article>
+
+            <article class="look-item reveal">
+              <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M10 53c9-13 14-16 20-18 8-3 10-8 24-24"/><path d="M13 38h12l-6-10ZM42 24h12l-6-10Z"/></svg>
+              <p>Walk slowly</p>
+            </article>
+
+            <article class="look-item reveal">
+              <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M10 15c8-3 15-2 22 3v34c-7-5-14-6-22-3ZM54 15c-8-3-15-2-22 3v34c7-5 14-6 22-3Z"/><path d="m45 12 7-7 5 5-7 7-8 3Z"/></svg>
+              <p>Make time for<br />reflection</p>
+            </article>
+          </div>
+        </div>
+      </section>
     </main>
 
     <script>
@@ -447,6 +485,58 @@
     line-height: 1.7;
   }
 
+  .looks-like {
+    background: #f4efe5;
+    padding: clamp(4.5rem, 9vw, 7.5rem) 4% clamp(5rem, 9vw, 8rem);
+  }
+
+  .looks-like-inner {
+    width: min(1380px, 100%);
+    margin: 0 auto;
+  }
+
+  .looks-like h2 {
+    margin: 0 0 clamp(3rem, 5vw, 4.5rem);
+    text-align: center;
+    font-size: clamp(2.5rem, 4vw, 4rem);
+    font-weight: 400;
+  }
+
+  .looks-like-grid {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    border-top: 1px solid rgba(24, 48, 31, 0.18);
+    border-bottom: 1px solid rgba(24, 48, 31, 0.18);
+  }
+
+  .look-item {
+    min-width: 0;
+    padding: clamp(1.75rem, 3vw, 2.75rem) clamp(0.75rem, 1.6vw, 1.5rem);
+    text-align: center;
+  }
+
+  .look-item + .look-item {
+    border-left: 1px solid rgba(24, 48, 31, 0.18);
+  }
+
+  .look-item svg {
+    width: clamp(3rem, 5vw, 4.5rem);
+    height: clamp(3rem, 5vw, 4.5rem);
+    margin-bottom: 1.25rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .look-item p {
+    margin: 0;
+    font-family: Georgia, serif;
+    font-size: clamp(1rem, 1.35vw, 1.3rem);
+    line-height: 1.25;
+  }
+
   .reveal {
     opacity: 0;
     transform: translateY(18px);
@@ -480,6 +570,22 @@
   @keyframes menuReveal {
     from { opacity: 0; transform: translateY(-4px) scale(0.98); }
     to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  @media (max-width: 900px) {
+    .looks-like-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .look-item:nth-child(4) {
+      border-left: 0;
+      border-top: 1px solid rgba(24, 48, 31, 0.18);
+    }
+
+    .look-item:nth-child(5),
+    .look-item:nth-child(6) {
+      border-top: 1px solid rgba(24, 48, 31, 0.18);
+    }
   }
 
   @media (max-width: 760px) {
@@ -554,6 +660,31 @@
     .way + .way {
       border-left: 0;
       border-top: 1px solid rgba(244, 239, 229, 0.25);
+    }
+
+    .looks-like {
+      padding: 4.25rem 1.25rem 5rem;
+    }
+
+    .looks-like h2 {
+      font-size: clamp(2.2rem, 10vw, 3.4rem);
+      margin-bottom: 2.5rem;
+    }
+
+    .looks-like-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .look-item {
+      padding: 1.75rem 0.8rem;
+    }
+
+    .look-item:nth-child(odd) {
+      border-left: 0;
+    }
+
+    .look-item:nth-child(n+3) {
+      border-top: 1px solid rgba(24, 48, 31, 0.18);
     }
   }
 
