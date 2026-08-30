@@ -69,6 +69,32 @@
           </div>
         </div>
       </section>
+
+      <section class="ways" aria-labelledby="ways-heading">
+        <div class="ways-inner">
+          <h2 id="ways-heading" class="reveal">Inviting you to experience three ways of living and being</h2>
+
+          <div class="ways-grid">
+            <article class="way reveal">
+              <p class="way-number">01</p>
+              <h3>Nature-centric way of life</h3>
+              <p>Here, land isn’t seen as a backdrop or resource. Land is family, elder, and teacher. They don’t ask “What can the land give me?”, they ask “How can the land and I take care of each other?”</p>
+            </article>
+
+            <article class="way reveal">
+              <p class="way-number">02</p>
+              <h3>Everything is connected</h3>
+              <p>Life here is built on relationships. Relationships with family, neighbours, with rivers, forests, mountains. The whole is greater than the sum of the parts, 1+1=3.</p>
+            </article>
+
+            <article class="way reveal">
+              <p class="way-number">03</p>
+              <h3>Finding meaning, living purposefully</h3>
+              <p>We will intentionally slow down to silence the noise within and around us, so that what really matters to us can be heard.</p>
+            </article>
+          </div>
+        </div>
+      </section>
     </main>
 
     <script>
@@ -104,7 +130,7 @@
     color: #18301f;
   }
 
-  h1, h2, blockquote, .brand, .person-name {
+  h1, h2, h3, blockquote, .brand, .person-name {
     font-family: Georgia, serif;
   }
 
@@ -362,6 +388,61 @@
     opacity: 0.62;
   }
 
+  .ways {
+    background: #18301f;
+    color: #f4efe5;
+    padding: clamp(5rem, 10vw, 9rem) 4%;
+  }
+
+  .ways-inner {
+    width: min(1280px, 100%);
+    margin: 0 auto;
+  }
+
+  .ways h2 {
+    max-width: 20ch;
+    margin: 0 auto clamp(3.5rem, 6vw, 5rem);
+    text-align: center;
+    font-size: clamp(2.4rem, 4.6vw, 4.8rem);
+    font-weight: 400;
+    line-height: 1.04;
+  }
+
+  .ways-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    border-top: 1px solid rgba(244, 239, 229, 0.25);
+    border-bottom: 1px solid rgba(244, 239, 229, 0.25);
+  }
+
+  .way {
+    padding: clamp(2rem, 4vw, 3.5rem);
+  }
+
+  .way + .way {
+    border-left: 1px solid rgba(244, 239, 229, 0.25);
+  }
+
+  .way-number {
+    margin: 0 0 2rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.14em;
+    opacity: 0.65;
+  }
+
+  .way h3 {
+    margin: 0 0 1.25rem;
+    font-size: clamp(1.7rem, 2.5vw, 2.6rem);
+    line-height: 1.1;
+    font-weight: 400;
+  }
+
+  .way > p:last-child {
+    margin: 0;
+    font-size: clamp(1rem, 1.25vw, 1.12rem);
+    line-height: 1.7;
+  }
+
   .reveal {
     opacity: 0;
     transform: translateY(18px);
@@ -436,10 +517,7 @@
       font-size: 1.05rem;
     }
 
-    .scroll-cue {
-      bottom: 1rem;
-    }
-
+    .scroll-cue { bottom: 1rem; }
     .people { padding: 4.5rem 1.25rem 5rem; }
 
     .people h2 {
@@ -450,6 +528,28 @@
     .founders-grid {
       grid-template-columns: 1fr;
       gap: 4rem;
+    }
+
+    .ways {
+      padding: 4.5rem 1.25rem 5rem;
+    }
+
+    .ways h2 {
+      font-size: clamp(2.2rem, 9vw, 3.4rem);
+      margin-bottom: 2.75rem;
+    }
+
+    .ways-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .way {
+      padding: 2rem 0;
+    }
+
+    .way + .way {
+      border-left: 0;
+      border-top: 1px solid rgba(244, 239, 229, 0.25);
     }
   }
 
