@@ -126,6 +126,10 @@
               <p>Make time for<br />reflection</p>
             </article>
           </div>
+
+          <div class="journeys-link reveal">
+            <a href="/journeys">Explore the journeys <span aria-hidden="true">→</span></a>
+          </div>
         </div>
       </section>
 
@@ -280,6 +284,10 @@
   .look-item + .look-item { border-left: 1px solid rgba(24,48,31,.18); }
   .look-item svg { width: clamp(3rem, 5vw, 4.5rem); height: clamp(3rem, 5vw, 4.5rem); margin-bottom: 1.25rem; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
   .look-item p { margin: 0; font-family: Georgia, serif; font-size: clamp(1rem, 1.35vw, 1.3rem); line-height: 1.25; }
+  .journeys-link { margin-top: clamp(2rem, 4vw, 3.5rem); text-align: center; }
+  .journeys-link a { display: inline-flex; align-items: center; gap: .65rem; color: inherit; font-family: Georgia, serif; font-size: clamp(1rem, 1.35vw, 1.3rem); text-underline-offset: .35rem; }
+  .journeys-link a span { font-size: 1.4rem; transition: transform 220ms ease; }
+  .journeys-link a:hover span { transform: translateX(5px); }
 
   .reflections {
     position: relative;
