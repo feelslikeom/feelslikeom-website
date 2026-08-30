@@ -47,7 +47,10 @@
 
             <p>Today, we are going through unprecedented times. With the relentless pursuit of capitalist growth and unchecked consumerism, our planet suffers and we suffer too. We are becoming lonelier as a species because we forgot how to connect with one another.</p>
 
-            <p class="question">How might we stay true to who we are and co-create an interdependently thriving world?</p>
+            <aside class="question" aria-label="Reflection question">
+              <span class="question-mark" aria-hidden="true">“</span>
+              <p>How might we stay true to who we are and co-create an interdependently thriving world?</p>
+            </aside>
 
             <p>I serve you as a bridge between you and the indigenous communities, so that you may learn from them and reconnect with yourself.</p>
           </div>
@@ -64,6 +67,10 @@
     margin: 0;
     background: #f4efe5;
     color: #18301f;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+
+  h1, blockquote, .brand, .founder-name, .eyebrow {
     font-family: Georgia, serif;
   }
 
@@ -87,7 +94,6 @@
     display: flex;
     align-items: center;
     gap: 1.5rem;
-    font-family: Arial, sans-serif;
     font-size: 0.8rem;
     letter-spacing: 0.08em;
   }
@@ -131,19 +137,20 @@
     padding: clamp(5rem, 10vw, 9rem) 0 clamp(3.5rem, 8vw, 7rem);
   }
 
-  .eyebrow,
-  .founder-name {
-    font-family: Arial, sans-serif;
-    font-size: 0.72rem;
-    letter-spacing: 0.14em;
+  .eyebrow {
+    margin: 0;
+    font-size: clamp(2.5rem, 5vw, 4.8rem);
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: -0.02em;
   }
 
   .story-intro h1 {
-    max-width: 10ch;
-    margin: 0.8rem 0 0;
-    font-size: clamp(3rem, 7vw, 6.5rem);
+    max-width: 20ch;
+    margin: 1.1rem 0 0;
+    font-size: clamp(1.35rem, 2.4vw, 2.15rem);
     font-weight: 400;
-    line-height: 0.98;
+    line-height: 1.25;
   }
 
   .founder-story {
@@ -174,31 +181,53 @@
   }
 
   .founder-name {
-    margin: 0 0 1.25rem;
-    text-transform: uppercase;
+    margin: 0 0 1rem;
+    font-size: clamp(2.8rem, 5vw, 5rem);
+    line-height: 1;
   }
 
   blockquote {
-    max-width: 11ch;
+    max-width: 18ch;
     margin: 0 0 3rem;
-    font-size: clamp(2.4rem, 5vw, 5rem);
-    line-height: 1.02;
+    font-size: clamp(1.5rem, 2.6vw, 2.4rem);
+    line-height: 1.18;
+    font-weight: 400;
   }
 
   .body-copy {
     max-width: 42rem;
-    font-size: clamp(1.1rem, 1.8vw, 1.35rem);
-    line-height: 1.65;
+    font-size: clamp(1.05rem, 1.45vw, 1.22rem);
+    line-height: 1.75;
   }
 
-  .body-copy p {
+  .body-copy > p {
     margin: 0 0 1.6rem;
   }
 
   .question {
-    margin: 3rem 0 !important;
-    font-size: clamp(1.6rem, 3vw, 2.5rem);
-    line-height: 1.25;
+    position: relative;
+    margin: 3rem 0;
+    padding: 1.4rem 1.5rem 1.4rem 2rem;
+    border-left: 2px solid rgba(24, 48, 31, 0.55);
+    background: rgba(255, 250, 241, 0.58);
+  }
+
+  .question p {
+    margin: 0;
+    max-width: 34rem;
+    font-family: Georgia, serif;
+    font-size: clamp(1.15rem, 1.8vw, 1.5rem);
+    line-height: 1.45;
+  }
+
+  .question-mark {
+    position: absolute;
+    top: 0.6rem;
+    left: 0.65rem;
+    font-family: Georgia, serif;
+    font-size: 2rem;
+    line-height: 1;
+    opacity: 0.38;
   }
 
   @media (max-width: 760px) {
@@ -214,19 +243,14 @@
       justify-content: flex-end;
     }
 
-    .submenu {
-      right: auto;
-      left: 0;
-    }
+    .submenu { right: auto; left: 0; }
 
     .story-intro,
     .founder-story {
       width: calc(100% - 2.5rem);
     }
 
-    .story-intro {
-      padding-top: 4rem;
-    }
+    .story-intro { padding-top: 4rem; }
 
     .founder-story {
       grid-template-columns: 1fr;
