@@ -9,45 +9,154 @@
   </head>
 
   <body>
-    <main class="hero">
-      <div class="overlay"></div>
+    <header class="site-header">
+      <a class="brand" href="/">Feels Like Om</a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <details>
+          <summary>ABOUT</summary>
+          <div class="submenu">
+            <a href="/about/our-story">Our story</a>
+            <a href="/about/getting-to-sikkim">Getting to Sikkim</a>
+            <a href="/about/visa-and-permits">Visa and permits</a>
+          </div>
+        </details>
+        <a href="/journeys">JOURNEYS</a>
+        <a href="/reflections">REFLECTIONS</a>
+        <a href="/contact">CONTACT</a>
+      </nav>
+    </header>
 
-      <div class="hero-content">
-        <h1>Who you are matters.</h1>
-        <p>
-          Slow down.<br />
-          Make space for yourself.<br />
-          Learn from the land and its people.
-        </p>
-      </div>
+    <main>
+      <section class="hero">
+        <div class="overlay"></div>
+        <div class="hero-content">
+          <h1>Who you are matters.</h1>
+          <p>
+            Slow down.<br />
+            Make space for yourself.<br />
+            Learn from the land and its people.
+          </p>
+        </div>
+      </section>
+
+      <section class="people" aria-labelledby="people-heading">
+        <div class="people-inner">
+          <p class="eyebrow">THE PEOPLE BEHIND FEELS LIKE OM</p>
+          <h2 id="people-heading">Hi, we’re Zi Hui and Elan.</h2>
+
+          <article class="person zi-hui">
+            <div class="portrait-wrap">
+              <img src="/zi-hui.JPG" alt="Zi Hui walking through a village in Sikkim" />
+            </div>
+            <div class="person-copy">
+              <p class="person-name">Zi Hui</p>
+              <blockquote>“A tree helped me forgive myself.”</blockquote>
+              <a class="story-link" href="/about/our-story#zi-hui">Read Zi Hui’s story <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+        </div>
+      </section>
     </main>
   </body>
 </html>
 
 <style>
+  :global(*) {
+    box-sizing: border-box;
+  }
+
+  :global(html) {
+    scroll-behavior: smooth;
+  }
+
   body {
     margin: 0;
     font-family: Georgia, serif;
     background: #f4efe5;
+    color: #18301f;
+  }
+
+  .site-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    padding: 1.5rem 4%;
     color: white;
+  }
+
+  .brand {
+    color: inherit;
+    text-decoration: none;
+    font-size: 1.3rem;
+    white-space: nowrap;
+  }
+
+  .main-nav {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    font-family: Arial, sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+  }
+
+  .main-nav > a,
+  summary {
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  details {
+    position: relative;
+  }
+
+  summary {
+    list-style: none;
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .submenu {
+    position: absolute;
+    top: 1.7rem;
+    right: 0;
+    width: max-content;
+    min-width: 12rem;
+    padding: 0.7rem;
+    background: rgba(244, 239, 229, 0.96);
+    border-radius: 0.4rem;
+    box-shadow: 0 12px 30px rgba(8, 20, 12, 0.18);
+  }
+
+  .submenu a {
+    display: block;
+    padding: 0.65rem 0.75rem;
+    color: #18301f;
+    text-decoration: none;
+    letter-spacing: 0;
+    text-transform: none;
   }
 
   .hero {
     position: relative;
     min-height: 100svh;
     background: url('/hero-river.JPG') center / cover no-repeat;
+    color: white;
   }
 
   .overlay {
     position: absolute;
     inset: 0;
-    background:
-      linear-gradient(
-        90deg,
-        rgba(8, 20, 12, 0.58) 0%,
-        rgba(8, 20, 12, 0.22) 42%,
-        rgba(8, 20, 12, 0.02) 68%
-      );
+    background: linear-gradient(90deg, rgba(8, 20, 12, 0.58) 0%, rgba(8, 20, 12, 0.22) 42%, rgba(8, 20, 12, 0.02) 68%);
     pointer-events: none;
   }
 
@@ -59,49 +168,154 @@
     max-width: 92vw;
   }
 
-  h1 {
+  .hero h1 {
     margin: 0 0 1rem;
     font-size: clamp(3rem, 6vw, 6.5rem);
     line-height: 0.95;
     white-space: nowrap;
   }
 
-  p {
+  .hero p {
     margin: 0;
     font-size: clamp(1.05rem, 2vw, 1.4rem);
     line-height: 1.5;
   }
 
-  @media (max-width: 700px) {
+  .people {
+    background: #f4efe5;
+    padding: clamp(4.5rem, 10vw, 9rem) 4%;
+  }
+
+  .people-inner {
+    width: min(1180px, 100%);
+    margin: 0 auto;
+  }
+
+  .eyebrow {
+    margin: 0 0 0.75rem;
+    font-family: Arial, sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+  }
+
+  .people h2 {
+    max-width: 12ch;
+    margin: 0 0 clamp(3rem, 7vw, 6rem);
+    font-size: clamp(2.5rem, 6vw, 5.5rem);
+    font-weight: 400;
+    line-height: 0.98;
+  }
+
+  .person {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    align-items: center;
+    gap: clamp(2.5rem, 8vw, 8rem);
+  }
+
+  .portrait-wrap {
+    overflow: hidden;
+    border-radius: 0.25rem;
+    background: #d8d1c3;
+    aspect-ratio: 2 / 3;
+  }
+
+  .portrait-wrap img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: 50% 42%;
+  }
+
+  .person-name {
+    margin: 0 0 1.25rem;
+    font-family: Arial, sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  blockquote {
+    margin: 0 0 2.2rem;
+    max-width: 13ch;
+    font-size: clamp(2.2rem, 5vw, 5rem);
+    font-weight: 400;
+    line-height: 1.02;
+  }
+
+  .story-link {
+    display: inline-flex;
+    gap: 0.5rem;
+    align-items: center;
+    color: inherit;
+    text-underline-offset: 0.35rem;
+    font-family: Arial, sans-serif;
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 760px) {
+    .site-header {
+      align-items: flex-start;
+      padding: 1.15rem 1.25rem;
+    }
+
+    .main-nav {
+      gap: 0.75rem;
+      font-size: 0.65rem;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .submenu {
+      right: auto;
+      left: 0;
+    }
+
     .hero {
       background-position: 62% center;
     }
 
     .overlay {
-      background:
-        linear-gradient(
-          to bottom,
-          rgba(8, 20, 12, 0.52) 0%,
-          rgba(8, 20, 12, 0.16) 48%,
-          rgba(8, 20, 12, 0.04) 72%
-        );
+      background: linear-gradient(to bottom, rgba(8, 20, 12, 0.52) 0%, rgba(8, 20, 12, 0.16) 48%, rgba(8, 20, 12, 0.04) 72%);
     }
 
     .hero-content {
-      top: 10%;
+      top: 14%;
       left: 1.25rem;
       right: 1.25rem;
       max-width: none;
     }
 
-    h1 {
+    .hero h1 {
       font-size: clamp(2.65rem, 13vw, 4.5rem);
       white-space: normal;
     }
 
-    p {
+    .hero p {
       max-width: 28rem;
       font-size: 1.05rem;
+    }
+
+    .people {
+      padding: 4.5rem 1.25rem 5rem;
+    }
+
+    .people h2 {
+      margin-bottom: 2.75rem;
+    }
+
+    .person {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .portrait-wrap {
+      aspect-ratio: 4 / 5;
+    }
+
+    blockquote {
+      max-width: 10ch;
     }
   }
 </style>
