@@ -61,19 +61,18 @@
 </html>
 
 <style>
-  :global(*) {
-    box-sizing: border-box;
-  }
-
-  :global(html) {
-    scroll-behavior: smooth;
-  }
+  :global(*) { box-sizing: border-box; }
+  :global(html) { scroll-behavior: smooth; }
 
   body {
     margin: 0;
-    font-family: Georgia, serif;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     background: #f4efe5;
     color: #18301f;
+  }
+
+  h1, h2, blockquote, .brand, .person-name {
+    font-family: Georgia, serif;
   }
 
   .site-header {
@@ -101,7 +100,6 @@
     display: flex;
     align-items: center;
     gap: 1.5rem;
-    font-family: Arial, sans-serif;
     font-size: 0.8rem;
     letter-spacing: 0.08em;
   }
@@ -113,17 +111,9 @@
     cursor: pointer;
   }
 
-  details {
-    position: relative;
-  }
-
-  summary {
-    list-style: none;
-  }
-
-  summary::-webkit-details-marker {
-    display: none;
-  }
+  details { position: relative; }
+  summary { list-style: none; }
+  summary::-webkit-details-marker { display: none; }
 
   .submenu {
     position: absolute;
@@ -178,7 +168,8 @@
   .hero p {
     margin: 0;
     font-size: clamp(1.05rem, 2vw, 1.4rem);
-    line-height: 1.5;
+    line-height: 1.55;
+    font-weight: 400;
   }
 
   .people {
@@ -192,18 +183,17 @@
   }
 
   .eyebrow {
-    margin: 0 0 0.75rem;
-    font-family: Arial, sans-serif;
-    font-size: 0.72rem;
-    letter-spacing: 0.14em;
+    margin: 0 0 0.85rem;
+    font-size: 0.68rem;
+    letter-spacing: 0.16em;
   }
 
   .people h2 {
     max-width: 12ch;
     margin: 0 0 clamp(3rem, 7vw, 6rem);
-    font-size: clamp(2.5rem, 6vw, 5.5rem);
+    font-size: clamp(2.25rem, 4.6vw, 4.5rem);
     font-weight: 400;
-    line-height: 0.98;
+    line-height: 1.02;
   }
 
   .person {
@@ -229,19 +219,17 @@
   }
 
   .person-name {
-    margin: 0 0 1.25rem;
-    font-family: Arial, sans-serif;
-    font-size: 0.8rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
+    margin: 0 0 1rem;
+    font-size: clamp(2.4rem, 4vw, 4.2rem);
+    line-height: 1;
   }
 
   blockquote {
-    margin: 0 0 2.2rem;
-    max-width: 13ch;
-    font-size: clamp(2.2rem, 5vw, 5rem);
+    margin: 0 0 2rem;
+    max-width: 18ch;
+    font-size: clamp(1.5rem, 2.7vw, 2.5rem);
     font-weight: 400;
-    line-height: 1.02;
+    line-height: 1.18;
   }
 
   .story-link {
@@ -250,8 +238,7 @@
     align-items: center;
     color: inherit;
     text-underline-offset: 0.35rem;
-    font-family: Arial, sans-serif;
-    font-size: 0.9rem;
+    font-size: 0.92rem;
   }
 
   @media (max-width: 760px) {
@@ -267,18 +254,9 @@
       justify-content: flex-end;
     }
 
-    .submenu {
-      right: auto;
-      left: 0;
-    }
-
-    .hero {
-      background-position: 62% center;
-    }
-
-    .overlay {
-      background: linear-gradient(to bottom, rgba(8, 20, 12, 0.52) 0%, rgba(8, 20, 12, 0.16) 48%, rgba(8, 20, 12, 0.04) 72%);
-    }
+    .submenu { right: auto; left: 0; }
+    .hero { background-position: 62% center; }
+    .overlay { background: linear-gradient(to bottom, rgba(8, 20, 12, 0.52) 0%, rgba(8, 20, 12, 0.16) 48%, rgba(8, 20, 12, 0.04) 72%); }
 
     .hero-content {
       top: 14%;
@@ -297,25 +275,10 @@
       font-size: 1.05rem;
     }
 
-    .people {
-      padding: 4.5rem 1.25rem 5rem;
-    }
-
-    .people h2 {
-      margin-bottom: 2.75rem;
-    }
-
-    .person {
-      grid-template-columns: 1fr;
-      gap: 2rem;
-    }
-
-    .portrait-wrap {
-      aspect-ratio: 4 / 5;
-    }
-
-    blockquote {
-      max-width: 10ch;
-    }
+    .people { padding: 4.5rem 1.25rem 5rem; }
+    .people h2 { margin-bottom: 2.75rem; }
+    .person { grid-template-columns: 1fr; gap: 2rem; }
+    .portrait-wrap { aspect-ratio: 4 / 5; }
+    blockquote { max-width: 14ch; }
   }
 </style>
