@@ -127,36 +127,101 @@
         </div>
       </section>
 
-      <section class="mountain-chapter">
-        <div class="mountain-hero image-placeholder dark-placeholder"><span>Mountain trek photograph</span></div>
-        <div class="section mountain-copy">
-          <div class="narrow">
-            <h2>Into the mountains</h2>
-            <p>This is not a crowded trek, and we hope to keep it this way.</p>
-            <p class="pull light-pull">You’ll see more mountains than people.</p>
-            <p>The trails are well-marked and regularly maintained by villagers who use them when they bring their <em>dzos</em> into the forest to graze. <em>Dzos are hybrids of cows and yaks.</em></p>
-            <p>For first-timers to mountainous areas, it is normal to get breathless more quickly than usual when walking uphill or climbing stairs. The few days we spend in Yuksom before the trek should give your body time to gradually adjust before we start the trek.</p>
-          </div>
-        </div>
+      <section class="section trek-overview" aria-labelledby="trek-overview-title">
+        <div class="wide trek-overview-inner">
+          <h2 id="trek-overview-title">Into the mountains</h2>
 
-        <div class="section trek-practical">
-          <div class="wide practical-grid">
-            <article>
-              <h3>Your trekking team</h3>
-              <p>One guide leads from the front and an assistant guide walks at the back as sweeper.</p>
-              <p>Behind the scenes, a full team of guides, cooks, dzos and their handlers keeps the trek moving.</p>
-              <p>You only need to carry a light daypack with your water bottle, snacks, and an extra layer. The dzos carry the rest, which is why we ask you to pack only what you genuinely need.</p>
+          <div class="trek-stats" aria-label="Trek overview statistics">
+            <article class="trek-stat">
+              <h3>Distance</h3>
+              <p>~6 km one way</p>
             </article>
-            <article>
-              <h3>How comfortable is camping?</h3>
-              <p>Your well-being is very important to us.</p>
-              <p>A-frame tents, four-inch mattresses, down sleeping bags, camping pillows, fleece blankets, hot water bags, a dining tent with tables and chairs, a toilet tent with a commode, and multi-course meals three times a day.</p>
-              <p class="pull small-pull">Everything else, the mountains shall provide.</p>
+            <article class="trek-stat">
+              <h3>Elevation gain</h3>
+              <p>~1,300 m over two days</p>
             </article>
-            <article>
-              <h3>Do I need to be an experienced trekker?</h3>
-              <p>Prior hiking experience will help, but it isn’t strictly necessary. We take short breaks and move at a pace the group can sustain. A reasonable level of fitness and stamina is required. Technical climbing skills are not required, but good balance — especially while descending rocky terrain — is helpful.</p>
+            <article class="trek-stat">
+              <h3>Highest point</h3>
+              <p>3,340 m</p>
             </article>
+          </div>
+
+          <figure class="trek-chart" aria-label="Elevation profile from approximately 2,100 metres at the start to 3,340 metres at 6 kilometres">
+            <svg viewBox="0 0 1100 580" role="img" aria-labelledby="trek-chart-title trek-chart-desc">
+              <title id="trek-chart-title">Trek elevation profile</title>
+              <desc id="trek-chart-desc">The trail climbs from about 2,100 metres at zero kilometres to 2,620 metres at two kilometres, 3,120 metres at four kilometres, and 3,340 metres at six kilometres. The first two sections are steeper than the final section.</desc>
+              <g class="chart-grid">
+                <line x1="90" y1="470" x2="1040" y2="470" />
+                <line x1="90" y1="390" x2="1040" y2="390" />
+                <line x1="90" y1="310" x2="1040" y2="310" />
+                <line x1="90" y1="230" x2="1040" y2="230" />
+                <line x1="90" y1="150" x2="1040" y2="150" />
+                <line x1="90" y1="70" x2="1040" y2="70" />
+                <line x1="90" y1="70" x2="90" y2="470" />
+                <line x1="407" y1="70" x2="407" y2="470" />
+                <line x1="723" y1="70" x2="723" y2="470" />
+                <line x1="1040" y1="70" x2="1040" y2="470" />
+              </g>
+
+              <g class="chart-axes">
+                <line x1="90" y1="470" x2="1040" y2="470" />
+                <line x1="90" y1="70" x2="90" y2="470" />
+              </g>
+
+              <path class="chart-area" d="M90 447 L407 308 L723 175 L1040 116 L1040 470 L90 470 Z" />
+              <polyline class="chart-line" points="90,447 407,308 723,175 1040,116" />
+
+              <g class="chart-points">
+                <circle cx="90" cy="447" r="7" />
+                <circle cx="407" cy="308" r="7" />
+                <circle cx="723" cy="175" r="7" />
+                <circle cx="1040" cy="116" r="7" />
+              </g>
+
+              <g class="chart-labels">
+                <text x="90" y="505" text-anchor="middle">0</text>
+                <text x="407" y="505" text-anchor="middle">2</text>
+                <text x="723" y="505" text-anchor="middle">4</text>
+                <text x="1040" y="505" text-anchor="middle">6</text>
+
+                <text x="72" y="474" text-anchor="end">2000</text>
+                <text x="72" y="394" text-anchor="end">2400</text>
+                <text x="72" y="314" text-anchor="end">2800</text>
+                <text x="72" y="234" text-anchor="end">3200</text>
+                <text x="72" y="154" text-anchor="end">3400</text>
+                <text x="72" y="74" text-anchor="end">3600</text>
+
+                <text x="565" y="552" text-anchor="middle" class="axis-title">Distance (km)</text>
+                <text x="24" y="270" text-anchor="middle" transform="rotate(-90 24 270)" class="axis-title">Elevation (m)</text>
+
+                <text x="170" y="440">2,100 m</text>
+                <text x="390" y="285">2,620 m</text>
+                <text x="705" y="152">3,120 m</text>
+                <text x="1022" y="93" text-anchor="end">3,340 m</text>
+
+                <text x="245" y="452" text-anchor="middle" class="section-label">SECTION 1</text>
+                <text x="565" y="452" text-anchor="middle" class="section-label">SECTION 2</text>
+                <text x="882" y="452" text-anchor="middle" class="section-label">SECTION 3</text>
+              </g>
+            </svg>
+          </figure>
+
+          <div class="trek-copy">
+            <p class="trek-lead">This is a quiet trail, and we intend to keep it that way.</p>
+
+            <p>A two-day climb, moving slowly through forest, bamboo and rhododendron before reaching the higher, more open landscape.</p>
+
+            <p>The trek covers approximately <strong>6 km one way</strong>, with around <strong>1,300 m of elevation gain spread across two days</strong>. The first two sections are steeper, while the final stretch eases slightly as you approach the top.</p>
+
+            <p>This is not a technical trek, but it is physically demanding. Expect <strong>several hours of uphill walking each day</strong>, uneven forest trails, roots, mud and occasional rocky sections. Conditions can become slippery after rain. Generally, most people consider this a moderate to challenging trek.</p>
+
+            <p><strong>The terrain consists of</strong> forested mountain trail, with earth, roots, bamboo, rhododendron and steeper uphill sections. The trail becomes more open as you gain elevation.</p>
+
+            <h3 class="trek-subheading">This trek may be for you if</h3>
+
+            <p>You are comfortable walking uphill for several hours, enjoy being outdoors in changing weather, and do not mind uneven or muddy trails. You do not need technical climbing experience, but a reasonable level of fitness and willingness to move slowly and steadily are important.</p>
+
+            <p>The pace is intentionally unhurried. There will be space to stop, rest and take in the landscape rather than treating the trail as something to conquer.</p>
           </div>
         </div>
       </section>
@@ -294,13 +359,27 @@
   .days-grid h3 { margin:.5rem 0 0; }
   .image-stack { display:grid; gap:1rem; }
   .food-grid { padding-top:0; }
-  .mountain-chapter { background:#18301f; color:#f4efe5; }
-  .mountain-hero { min-height:70svh; border:0; }
-  .mountain-copy { padding-bottom:4rem; }
-  .light-pull { color:#f4efe5; }
+  .trek-overview { background:#f4efe5; color:#18301f; padding-top:clamp(6rem,10vw,9rem); padding-bottom:clamp(7rem,12vw,10rem); }
+  .trek-overview-inner { width:min(1240px,100%); }
+  .trek-overview h2 { margin-bottom:clamp(3.5rem,6vw,5rem); }
+  .trek-stats { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:clamp(2rem,5vw,5rem); margin-bottom:clamp(3rem,6vw,5.5rem); }
+  .trek-stat h3 { margin:0 0 1rem; font-family:var(--font-body); font-size:clamp(1.05rem,1.4vw,1.3rem); font-weight:600; line-height:1.2; }
+  .trek-stat p { margin:0; font-size:clamp(1.3rem,2vw,1.85rem); line-height:1.35; }
+  .trek-chart { margin:0 0 clamp(4rem,7vw,6.5rem); width:100%; overflow-x:auto; }
+  .trek-chart svg { display:block; width:100%; min-width:760px; height:auto; }
+  .chart-grid line { stroke:rgba(24,48,31,.12); stroke-width:1; stroke-dasharray:4 5; }
+  .chart-axes line { stroke:#18301f; stroke-width:1.5; }
+  .chart-area { fill:rgba(24,48,31,.07); }
+  .chart-line { fill:none; stroke:#18301f; stroke-width:3.5; stroke-linejoin:round; stroke-linecap:round; }
+  .chart-points circle { fill:#18301f; stroke:#f4efe5; stroke-width:3; }
+  .chart-labels text { fill:#18301f; font-family:var(--font-body); font-size:15px; }
+  .chart-labels .axis-title { font-size:17px; }
+  .chart-labels .section-label { font-size:13px; letter-spacing:.08em; font-weight:600; }
+  .trek-copy { width:min(900px,100%); }
+  .trek-copy p { margin:0 0 1.65rem; line-height:1.8; }
+  .trek-lead { font-family:var(--font-display) !important; font-size:var(--type-subheading) !important; line-height:1.22 !important; margin-bottom:2.2rem !important; }
+  .trek-subheading { margin:clamp(3rem,5vw,4.5rem) 0 1.35rem; font-size:var(--type-subheading) !important; }
   .center { text-align:center; }
-  .practical-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(2rem,4vw,4rem); }
-  .practical-grid article { border-top:1px solid rgba(244,239,229,.28); padding-top:1.5rem; }
   .reflections { background:#c88974; }
   .reflection-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin:2rem 0; }
   .square { aspect-ratio:1; min-height:0; }
@@ -320,13 +399,14 @@
   .enquire { padding-top:8rem; padding-bottom:8rem; }
   .enquire .button { margin-top:1.5rem; }
   @media (max-width:900px) {
-    .story-section,.editorial-grid,.food-grid,.practical-grid { grid-template-columns:1fr; }
+    .story-section,.editorial-grid,.food-grid { grid-template-columns:1fr; }
     .story-section-reflection .story-media { order:2; }
     .food-grid .image-stack { order:2; }
     .program-images { grid-template-columns:1fr .55fr; }
     .days-grid { grid-template-columns:repeat(2,1fr); }
     .days-grid article:nth-child(n) { padding:1.7rem 1rem 2rem 0; border-left:0; }
     .days-grid article:nth-child(even) { padding-left:1rem; border-left:1px solid rgba(244,239,229,.25); }
+    .trek-stats { grid-template-columns:1fr; gap:1.8rem; }
   }
   @media (max-width:700px) {
     .site-header { align-items:flex-start; flex-direction:column; gap:1rem; }
@@ -351,6 +431,10 @@
     .rhythm { padding-top:3rem; }
     .days-grid,.reflection-grid { grid-template-columns:1fr; }
     .days-grid article:nth-child(n) { padding:1.4rem 0; border-left:0; }
+    .trek-overview { padding-left:1.25rem; padding-right:1.25rem; }
+    .trek-overview h2 { margin-bottom:2.8rem; }
+    .trek-chart { margin-left:-1.25rem; margin-right:-1.25rem; width:calc(100% + 2.5rem); padding:0 1.25rem; }
+    .trek-copy { width:100%; }
     .faq summary { padding:1.3rem 2.5rem 1.3rem 0; }
   }
 </style>
