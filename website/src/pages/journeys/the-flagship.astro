@@ -28,16 +28,11 @@
         <div class="hero-copy">
           <p class="eyebrow">West Sikkim | Field Immersion | 4D3N Trek</p>
           <h1>The Flagship</h1>
-        </div>
-      </section>
-
-      <section class="journey-details" aria-label="Upcoming Flagship dates">
-        <div class="journey-details-inner">
-          <div class="dates-list">
-            <p><strong>Nov 22 - Dec 2, 2026</strong></p>
-            <p><strong>Dec 22 - Jan 1, 2027</strong></p>
+          <div class="hero-dates" aria-label="Upcoming Flagship dates">
+            <p>Nov 22 - Dec 2, 2026</p>
+            <p>Dec 22 - Jan 1, 2027</p>
           </div>
-          <a class="button gentle-cta" href="#enquire">Enquire about The Flagship</a>
+          <a class="button hero-cta" href="#enquire">Enquire about The Flagship</a>
         </div>
       </section>
 
@@ -54,6 +49,21 @@
           <p class="program-row program-row-left">Equal parts community immersion and time in the mountains. It was designed by looking at what tourists usually do in Sikkim and inviting people into life beyond the overcrowded tourist circuit.</p>
           <p class="program-row program-row-right">Ease yourself into how life is lived in Yuksom. The days are unhurried, but your hands are busy and your heart is full. Churn butter, forage in the forest, learn the art of bamboo weaving.</p>
           <p class="program-row program-row-center">Let your curiosities guide the way you interact with the land, the people, and yourself.</p>
+        </div>
+      </section>
+
+      <section class="fit-section" aria-label="Who this journey is for">
+        <div class="fit-inner">
+          <div class="fit-images">
+            <div class="image-placeholder fit-image fit-image-large"><span>Participant / community photograph</span></div>
+            <div class="image-placeholder fit-image fit-image-small"><span>Journey moment photograph</span></div>
+          </div>
+          <div class="fit-copy">
+            <p>You are curious about the world</p>
+            <p>You want to do more than sightseeing</p>
+            <p>You learn by doing, experiencing, and reflecting</p>
+            <p>You want to experience culture as a participant rather than a spectator</p>
+          </div>
         </div>
       </section>
 
@@ -101,7 +111,7 @@
       <section class="section editorial-grid">
         <div class="copy-block">
           <h2>Where you will stay</h2>
-          <p>Ejam Residency is a three-storey home in Yuksom. The Ejam family who built it lives on the second floor.</p>
+          <p>Ejam Residency is a three-storey home in Yuksom. The Ejam family lives on the second floor.</p>
           <p>You’ll know why I insist on putting Feels Like Om guests here.</p>
           <p>There are private bathrooms, hot showers, laundry (and WIFI) — but past guests speak much more fondly of conversations shared with the family in the kitchen, mornings on the lawn, afternoons in the library.</p>
           <p>One guest’s favourite morning ritual: taking huge mouthfuls of fresh air from the balcony.</p>
@@ -169,21 +179,6 @@
         </div>
       </section>
 
-      <section class="section fit-section">
-        <div class="narrow">
-          <h2>Who this journey is for</h2>
-          <ul>
-            <li>You would rather stay somewhere longer than hop around places</li>
-            <li>You are curious about how other people live</li>
-            <li>You like the outdoors</li>
-            <li>You want to experience culture as a participant rather than a spectator</li>
-            <li>You are willing to let go of a little control</li>
-            <li>You are willing to bring your own questions and curiosities</li>
-            <li>You want space to think and reflect</li>
-          </ul>
-        </div>
-      </section>
-
       <section class="section reflections">
         <div class="wide">
           <h2>Reflections from past participants</h2>
@@ -199,7 +194,6 @@
       <section class="section faq" aria-labelledby="faq-title">
         <div class="narrow">
           <h2 id="faq-title">Frequently asked questions</h2>
-
           <div class="faq-list">
             <details>
               <summary>Do I need to be an experienced trekker?</summary>
@@ -208,28 +202,24 @@
                 <p>A reasonable level of fitness and stamina is required. Technical climbing skills are not required, but good balance — especially while descending rocky terrain — is helpful.</p>
               </div>
             </details>
-
             <details>
               <summary>How comfortable is camping?</summary>
               <div class="faq-answer">
                 <p>Your well-being is very important to us. We provide A-frame tents, four-inch mattresses, down sleeping bags, camping pillows, fleece blankets, hot water bags, a dining tent with tables and chairs, a toilet tent with a commode, and multi-course meals three times a day.</p>
               </div>
             </details>
-
             <details>
               <summary>What do I need to carry during the trek?</summary>
               <div class="faq-answer">
                 <p>You only need to carry a light daypack with your water bottle, an extra layer and whatever you need for the day. The dzos carry the rest, which is why we ask you to pack only what you genuinely need.</p>
               </div>
             </details>
-
             <details>
               <summary>How does altitude acclimatisation work?</summary>
               <div class="faq-answer">
                 <p>The few days we spend in Yuksom before the trek give your body time to gradually adjust before we head higher. For first-timers to mountainous areas, it is normal to get breathless more quickly than usual when walking uphill or climbing stairs.</p>
               </div>
             </details>
-
             <details>
               <summary>How big is the group?</summary>
               <div class="faq-answer">
@@ -255,50 +245,55 @@
 <style>
   :global(*) { box-sizing: border-box; }
   :global(html) { scroll-behavior: smooth; }
-  body { margin:0; font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; background:#f4efe5; color:#18301f; }
-  h1,h2,h3,blockquote,.brand,.pull { font-family:Georgia,serif; }
-  p { line-height:1.7; font-size:clamp(1rem,1.25vw,1.12rem); }
+  body { margin:0; font-family:var(--font-body); background:#f4efe5; color:#18301f; }
+  h1,h2,h3,blockquote,.brand,.pull { font-family:var(--font-display); }
+  p { line-height:1.7; }
   .site-header { position:absolute; top:0; left:0; right:0; z-index:5; display:flex; justify-content:space-between; align-items:center; gap:2rem; padding:1.5rem 4%; color:white; }
-  .brand { color:inherit; text-decoration:none; font-size:1.3rem; white-space:nowrap; }
-  .main-nav { display:flex; align-items:center; gap:1.5rem; font-size:.8rem; letter-spacing:.08em; }
+  .brand { color:inherit; text-decoration:none; white-space:nowrap; }
+  .main-nav { display:flex; align-items:center; gap:1.5rem; letter-spacing:.08em; }
   .main-nav a { color:inherit; text-decoration:none; }
   .main-nav .active { border-bottom:1px solid currentColor; }
-  .hero { position:relative; width:100%; min-height:82svh; margin:0; display:flex; align-items:flex-end; color:white; overflow:hidden; }
+  .hero { position:relative; width:100%; min-height:96svh; margin:0; display:flex; align-items:flex-end; color:white; overflow:hidden; }
   .hero-image { position:absolute; inset:-1%; border:0; background-image:url('/flagship-hero.jpg'); background-size:cover; background-position:center center; background-repeat:no-repeat; transform:scale(1.01); }
-  .hero-overlay { position:absolute; inset:0; background:linear-gradient(0deg,rgba(7,18,11,.44),rgba(7,18,11,.04) 64%); }
-  .hero-copy { position:relative; z-index:2; width:100%; padding:0 4% clamp(2.8rem,5vw,4.5rem); text-align:right; }
-  .eyebrow { margin:0 0 .65rem; font-size:.72rem; letter-spacing:.12em; text-transform:uppercase; }
-  .hero h1 { margin:0; font-size:clamp(3rem,6vw,6.5rem); line-height:.95; font-weight:400; }
-  .journey-details { width:min(1180px,92%); margin:0 auto; }
-  .journey-details-inner { padding:clamp(2.7rem,5vw,4.3rem) clamp(.2rem,2vw,1.5rem); display:flex; align-items:center; justify-content:space-between; gap:3rem; }
-  .dates-list { display:flex; flex-direction:column; gap:.45rem; }
-  .dates-list p { margin:0; line-height:1.35; }
-  .dates-list strong { font-family:Georgia,serif; font-size:clamp(1.35rem,2.1vw,2rem); font-weight:400; }
-  .button { display:inline-block; padding:.9rem 1.2rem; border:1px solid currentColor; color:inherit; text-decoration:none; font-family:Georgia,serif; }
-  .gentle-cta { flex:0 0 auto; padding:1rem 1.35rem; font-size:1rem; transition:background .2s ease,color .2s ease; }
-  .gentle-cta:hover { background:#18301f; color:#f4efe5; }
+  .hero-overlay { position:absolute; inset:0; background:linear-gradient(0deg,rgba(7,18,11,.62),rgba(7,18,11,.04) 62%); }
+  .hero-copy { position:relative; z-index:2; width:100%; padding:0 4% clamp(3.2rem,6vw,5.6rem); text-align:right; }
+  .eyebrow { margin:0 0 .65rem; letter-spacing:.12em; text-transform:uppercase; }
+  .hero h1 { margin:0; line-height:.95; font-weight:400; }
+  .hero-dates { margin:1.5rem 0 0 auto; display:grid; gap:.25rem; width:max-content; max-width:100%; }
+  .hero-dates p { margin:0; font-family:var(--font-display); font-size:clamp(1.15rem,1.8vw,1.6rem); line-height:1.35; }
+  .button { display:inline-block; padding:.9rem 1.2rem; border:1px solid currentColor; color:inherit; text-decoration:none; font-family:var(--font-display); }
+  .hero-cta { margin-top:1.35rem; background:rgba(244,239,229,.06); backdrop-filter:blur(2px); }
+  .hero-cta:hover { background:#f4efe5; color:#18301f; }
   .opening-quote { width:100%; margin:0; padding:clamp(4rem,8vw,7rem) 4%; text-align:center; }
-  .opening-quote blockquote { width:min(850px,90%); margin:0 auto; font-size:clamp(1.35rem,2.1vw,2rem); line-height:1.25; font-weight:400; }
+  .opening-quote blockquote { width:min(850px,90%); margin:0 auto; line-height:1.25; font-weight:400; }
   .opening-quote blockquote span { display:block; }
-  .opening-quote cite { display:block; margin-top:1.3rem; font-family:Georgia,serif; font-size:.72em; font-style:normal; text-align:right; }
+  .opening-quote cite { display:block; margin-top:1.3rem; font-family:var(--font-display); font-size:.72em; font-style:normal; text-align:right; }
   .program-intro { width:100%; background:#18301f; color:#f4efe5; padding:clamp(5rem,10vw,9rem) 4%; }
   .program-intro-inner { width:min(1200px,100%); margin:0 auto; display:grid; gap:clamp(4rem,8vw,7rem); }
-  .program-row { margin:0; max-width:760px; font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:clamp(1rem,1.25vw,1.12rem); line-height:1.7; }
+  .program-row { margin:0; max-width:760px; font-family:var(--font-body); line-height:1.7; }
   .program-row-left { justify-self:start; text-align:left; }
   .program-row-right { justify-self:end; text-align:right; }
   .program-row-center { justify-self:center; text-align:center; max-width:900px; }
+  .fit-section { background:#18301f; color:#f4efe5; padding:clamp(1rem,2vw,2rem) 4% clamp(6rem,11vw,10rem); }
+  .fit-inner { width:min(1200px,100%); margin:0 auto; }
+  .fit-images { display:grid; grid-template-columns:minmax(0,1.45fr) minmax(220px,.55fr); align-items:end; gap:clamp(1.25rem,3vw,2.5rem); margin-bottom:clamp(4rem,8vw,7rem); }
+  .fit-image { border-color:rgba(244,239,229,.18); color:rgba(244,239,229,.62); background:rgba(244,239,229,.07); }
+  .fit-image-large { min-height:clamp(360px,48vw,620px); }
+  .fit-image-small { min-height:clamp(240px,30vw,390px); margin-bottom:-2.5rem; }
+  .fit-copy { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:0 clamp(4rem,10vw,10rem); }
+  .fit-copy p { margin:0; padding:1.1rem 0; border-bottom:1px solid rgba(244,239,229,.22); font-family:var(--font-display); font-size:clamp(1.4rem,2.1vw,2rem); line-height:1.25; }
   .community-quote { padding:clamp(5rem,9vw,8rem) 4%; text-align:center; background:#f4efe5; }
-  .community-quote blockquote { width:min(900px,100%); margin:0 auto; font-size:clamp(2.4rem,4.2vw,4.5rem); line-height:1.08; font-weight:400; }
+  .community-quote blockquote { width:min(900px,100%); margin:0 auto; line-height:1.08; font-weight:400; }
   .story-section { width:min(1200px,92%); margin:0 auto; padding:clamp(5rem,10vw,9rem) 0; display:grid; grid-template-columns:1fr 1fr; gap:clamp(2.5rem,7vw,7rem); align-items:center; }
-  .story-copy h2 { margin:0 0 1.6rem; font-size:clamp(2.4rem,4.2vw,4.5rem); line-height:1.04; font-weight:400; }
+  .story-copy h2 { margin:0 0 1.6rem; line-height:1.04; font-weight:400; }
   .story-copy p { margin:0 0 1.2rem; }
   .story-copy p:last-child { margin-bottom:0; }
   .section { padding:clamp(5rem,10vw,9rem) 4%; }
   .narrow { width:min(780px,100%); margin:0 auto; }
   .wide { width:min(1200px,100%); margin:0 auto; }
-  .section h2 { margin:0 0 1.6rem; font-size:clamp(2.4rem,4.2vw,4.5rem); line-height:1.04; font-weight:400; }
-  .section h3 { font-size:clamp(1.7rem,2.5vw,2.6rem); font-weight:400; line-height:1.1; }
-  .pull { font-size:clamp(1.35rem,2.1vw,2rem); line-height:1.25; }
+  .section h2 { margin:0 0 1.6rem; line-height:1.04; font-weight:400; }
+  .section h3 { font-weight:400; line-height:1.1; }
+  .pull { line-height:1.25; }
   .editorial-grid,.food-grid { width:min(1200px,92%); margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:clamp(2.5rem,7vw,7rem); align-items:center; }
   .image-placeholder { display:flex; align-items:center; justify-content:center; min-height:260px; background:linear-gradient(145deg,rgba(24,48,31,.18),rgba(24,48,31,.05)); border:1px solid rgba(24,48,31,.14); color:rgba(24,48,31,.62); text-align:center; padding:1rem; }
   .dark-placeholder { background:linear-gradient(145deg,#56695a,#263c2c); color:rgba(255,255,255,.68); }
@@ -308,7 +303,7 @@
   .days-grid article { padding:2rem 1.3rem 2.4rem 0; border-bottom:1px solid rgba(244,239,229,.25); }
   .days-grid article:nth-child(3n+2),.days-grid article:nth-child(3n+3) { padding-left:1.3rem; border-left:1px solid rgba(244,239,229,.25); }
   .days-grid span { font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; opacity:.72; }
-  .days-grid h3 { margin:.5rem 0 0; font-size:clamp(1.7rem,2.5vw,2.6rem); }
+  .days-grid h3 { margin:.5rem 0 0; }
   .image-stack { display:grid; gap:1rem; }
   .food-grid { padding-top:0; }
   .mountain-chapter { background:#18301f; color:#f4efe5; }
@@ -318,18 +313,15 @@
   .center { text-align:center; }
   .practical-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(2rem,4vw,4rem); }
   .practical-grid article { border-top:1px solid rgba(244,239,229,.28); padding-top:1.5rem; }
-  .small-pull { font-size:clamp(1.35rem,2.1vw,2rem); }
-  .fit-section ul { list-style:none; padding:0; margin:2.2rem 0 0; }
-  .fit-section li { padding:1rem 0; border-bottom:1px solid rgba(24,48,31,.15); font-family:Georgia,serif; font-size:clamp(1.35rem,2.1vw,2rem); }
   .reflections { background:#c88974; }
   .reflection-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin:2rem 0; }
   .square { aspect-ratio:1; min-height:0; }
-  .text-link { color:inherit; text-decoration:none; font-family:Georgia,serif; font-size:clamp(1rem,1.35vw,1.3rem); }
+  .text-link { color:inherit; text-decoration:none; font-family:var(--font-display); }
   .faq { background:#eee7da; }
   .faq h2 { margin-bottom:clamp(2rem,4vw,3.5rem); }
   .faq-list { border-top:1px solid rgba(24,48,31,.22); }
   .faq details { border-bottom:1px solid rgba(24,48,31,.22); }
-  .faq summary { list-style:none; cursor:pointer; position:relative; padding:1.5rem 3rem 1.5rem 0; font-family:Georgia,serif; font-size:clamp(1.25rem,1.8vw,1.65rem); line-height:1.25; }
+  .faq summary { list-style:none; cursor:pointer; position:relative; padding:1.5rem 3rem 1.5rem 0; font-family:var(--font-display); font-size:clamp(1.25rem,1.8vw,1.65rem); line-height:1.25; }
   .faq summary::-webkit-details-marker { display:none; }
   .faq summary::after { content:'+'; position:absolute; right:.25rem; top:50%; transform:translateY(-50%); font-family:var(--font-body); font-size:1.5rem; font-weight:300; }
   .faq details[open] summary::after { content:'−'; }
@@ -341,6 +333,7 @@
     .story-section,.editorial-grid,.food-grid,.practical-grid { grid-template-columns:1fr; }
     .story-section-reflection .story-media { order:2; }
     .food-grid .image-stack { order:2; }
+    .fit-images { grid-template-columns:1fr .55fr; }
     .days-grid { grid-template-columns:repeat(2,1fr); }
     .days-grid article:nth-child(n) { padding:1.7rem 1rem 2rem 0; border-left:0; }
     .days-grid article:nth-child(even) { padding-left:1rem; border-left:1px solid rgba(244,239,229,.25); }
@@ -348,21 +341,25 @@
   @media (max-width:700px) {
     .site-header { align-items:flex-start; flex-direction:column; gap:1rem; }
     .main-nav { width:100%; overflow-x:auto; gap:1rem; }
-    .hero { min-height:76svh; }
+    .hero { min-height:92svh; }
     .hero-image { background-position:38% center; }
-    .hero-copy { padding:0 4% 2.5rem; }
-    .journey-details-inner { align-items:flex-start; flex-direction:column; gap:1.8rem; padding:2.2rem .2rem 3.4rem; }
-    .gentle-cta { width:100%; text-align:center; }
+    .hero-copy { padding:0 5% 3rem; }
+    .hero-dates { margin-top:1.25rem; }
+    .hero-cta { width:100%; max-width:320px; text-align:center; }
     .opening-quote { padding:4rem 1.25rem; }
     .opening-quote blockquote { width:100%; }
     .opening-quote cite { text-align:center; }
     .program-intro { padding:4rem 1.25rem; }
     .program-intro-inner { gap:3.5rem; }
     .program-row { max-width:100%; }
+    .fit-section { padding:1rem 1.25rem 4.5rem; }
+    .fit-images { grid-template-columns:1fr; gap:1rem; margin-bottom:3.2rem; }
+    .fit-image-large { min-height:380px; }
+    .fit-image-small { min-height:220px; width:72%; margin:-4rem 0 0 auto; }
+    .fit-copy { grid-template-columns:1fr; gap:0; }
+    .fit-copy p { font-size:clamp(1.3rem,6vw,1.8rem); }
     .community-quote { padding:4.5rem 1.25rem; }
-    .community-quote blockquote { font-size:clamp(2.2rem,10vw,3.4rem); }
     .story-section { width:auto; margin:0; padding:4.5rem 1.25rem; gap:2.5rem; }
-    .story-copy h2 { font-size:clamp(2.2rem,10vw,3.4rem); }
     .tall { min-height:420px; }
     .rhythm { padding-top:3rem; }
     .days-grid,.reflection-grid { grid-template-columns:1fr; }
