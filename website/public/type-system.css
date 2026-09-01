@@ -1,0 +1,102 @@
+:root {
+  --font-display: Georgia, "Times New Roman", serif;
+  --font-body: "Avenir Next", Avenir, "Segoe UI", Arial, sans-serif;
+
+  --type-display: clamp(3rem, 6vw, 6.5rem);
+  --type-section: clamp(2.4rem, 4.2vw, 4.5rem);
+  --type-subheading: clamp(1.7rem, 2.5vw, 2.6rem);
+  --type-quote: clamp(1.35rem, 2.1vw, 2rem);
+  --type-body: clamp(1rem, 1.25vw, 1.12rem);
+  --type-lead: clamp(1.05rem, 2vw, 1.4rem);
+  --type-cta: clamp(1rem, 1.15vw, 1.15rem);
+  --type-small: 0.8rem;
+  --type-brand: 1.3rem;
+}
+
+body {
+  font-family: var(--font-body) !important;
+  font-size: var(--type-body) !important;
+}
+
+h1,
+.type-display {
+  font-family: var(--font-display) !important;
+  font-size: var(--type-display) !important;
+  font-weight: 400 !important;
+}
+
+h2,
+.type-section {
+  font-family: var(--font-display) !important;
+  font-size: var(--type-section) !important;
+  font-weight: 400 !important;
+}
+
+h3,
+.type-subheading {
+  font-family: var(--font-display) !important;
+  font-size: var(--type-subheading) !important;
+  font-weight: 400 !important;
+}
+
+blockquote,
+.type-quote {
+  font-family: var(--font-display) !important;
+  font-size: var(--type-quote) !important;
+  font-weight: 400 !important;
+}
+
+p,
+li,
+.body-copy,
+.type-body {
+  font-family: var(--font-body) !important;
+  font-size: var(--type-body) !important;
+}
+
+.intro,
+.hero-content > p,
+.type-lead {
+  font-family: var(--font-body) !important;
+  font-size: var(--type-lead) !important;
+}
+
+.button,
+.gentle-cta,
+.text-link,
+.story-link,
+.journey-tab,
+.journeys-link a,
+.more-reflections a,
+.type-cta {
+  font-family: var(--font-display) !important;
+  font-size: var(--type-cta) !important;
+}
+
+.main-nav,
+.eyebrow,
+.meta,
+.way-number,
+.scroll-label,
+.type-small {
+  font-family: var(--font-body) !important;
+  font-size: var(--type-small) !important;
+}
+
+.brand,
+.type-brand {
+  font-family: var(--font-display) !important;
+  font-size: var(--type-brand) !important;
+}
+
+@media (max-width: 760px) {
+  :root {
+    --type-display: clamp(2.65rem, 13vw, 4.5rem);
+    --type-section: clamp(2.2rem, 10vw, 3.4rem);
+    --type-subheading: clamp(1.6rem, 7vw, 2.3rem);
+    --type-quote: clamp(1.3rem, 5vw, 1.85rem);
+    --type-body: 1rem;
+    --type-lead: 1.05rem;
+    --type-small: 0.7rem;
+  }
+}
