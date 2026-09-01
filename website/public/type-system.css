@@ -33,6 +33,8 @@ h2,
 }
 
 h3,
+.person-name,
+.founder-name,
 .type-subheading {
   font-family: var(--font-display) !important;
   font-size: var(--type-subheading) !important;
@@ -40,6 +42,8 @@ h3,
 }
 
 blockquote,
+.dates-list strong,
+.glance-grid strong,
 .type-quote {
   font-family: var(--font-display) !important;
   font-size: var(--type-quote) !important;
