@@ -33,11 +33,25 @@
       <section class="journey-details" aria-label="Upcoming Flagship dates">
         <div class="journey-details-inner">
           <div class="dates-list">
-            <p><strong>Nov 22 - Dec 2</strong> <span>(Still available)</span></p>
-            <p><strong>Dec 22 - Jan 1</strong> <span>(Filling fast)</span></p>
+            <p><strong>Nov 22 - Dec 2, 2026</strong></p>
+            <p><strong>Dec 22 - Jan 1, 2027</strong></p>
           </div>
           <a class="button gentle-cta" href="#enquire">Enquire about The Flagship</a>
         </div>
+      </section>
+
+      <section class="opening-quote" aria-label="Opening reflection">
+        <svg class="wave-divider" viewBox="0 0 1200 34" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M0 17 C110 0 180 0 285 17 S465 34 585 17 S790 0 900 17 S1090 34 1200 17" />
+        </svg>
+        <blockquote>
+          <span>&ldquo;We don&rsquo;t see things as they are;</span>
+          <span>we see them as we are.&rdquo;</span>
+          <cite>— Anaïs Nin</cite>
+        </blockquote>
+        <svg class="wave-divider" viewBox="0 0 1200 34" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M0 17 C110 0 180 0 285 17 S465 34 585 17 S790 0 900 17 S1090 34 1200 17" />
+        </svg>
       </section>
 
       <section class="section narrative">
@@ -265,26 +279,31 @@
   body { margin:0; font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; background:#f4efe5; color:#18301f; }
   h1,h2,h3,blockquote,.brand,.pull { font-family:Georgia,serif; }
   p { line-height:1.72; }
-  .site-header { display:flex; justify-content:space-between; align-items:center; gap:2rem; padding:1.4rem 4%; background:#f4efe5; border-bottom:1px solid rgba(24,48,31,.1); }
-  .brand { color:inherit; text-decoration:none; font-size:1.3rem; }
-  .main-nav { display:flex; gap:1.5rem; font-size:.8rem; letter-spacing:.08em; }
+  .site-header { width:min(1180px,92%); margin:0 auto; display:flex; justify-content:space-between; align-items:center; gap:2rem; padding:1.7rem 0 1.45rem; background:#f4efe5; }
+  .brand { color:inherit; text-decoration:none; font-size:1.35rem; }
+  .main-nav { display:flex; gap:1.7rem; font-size:.8rem; letter-spacing:.08em; }
   .main-nav a { color:inherit; text-decoration:none; }
   .main-nav .active { border-bottom:1px solid currentColor; }
-  .hero { position:relative; min-height:82svh; display:flex; align-items:flex-end; color:white; overflow:hidden; }
+  .hero { position:relative; width:min(1180px,92%); min-height:66svh; margin:0 auto; display:flex; align-items:flex-end; color:white; overflow:hidden; }
   .hero-image { position:absolute; inset:0; border:0; background-image:url('/flagship-hero.jpg'); background-size:cover; background-position:center center; background-repeat:no-repeat; transform:scale(1.01); }
-  .hero-overlay { position:absolute; inset:0; background:linear-gradient(0deg,rgba(7,18,11,.58),rgba(7,18,11,.06) 68%); }
-  .hero-copy { position:relative; z-index:2; width:min(1180px,92%); margin:0 auto; padding:0 0 clamp(4rem,8vw,7rem); text-align:right; }
-  .eyebrow { font-size:.74rem; letter-spacing:.12em; text-transform:uppercase; }
-  .hero h1 { margin:.5rem 0 0; font-size:clamp(4rem,9vw,9rem); line-height:.9; font-weight:400; }
-  .journey-details { background:#eee7da; border-bottom:1px solid rgba(24,48,31,.12); }
-  .journey-details-inner { width:min(1180px,92%); margin:0 auto; padding:2rem 0; display:flex; align-items:center; justify-content:space-between; gap:2rem; }
-  .dates-list { display:flex; flex-wrap:wrap; gap:.8rem 2.5rem; }
-  .dates-list p { margin:0; font-size:1rem; }
-  .dates-list strong { font-family:Georgia,serif; font-size:1.18rem; font-weight:400; }
-  .dates-list span { margin-left:.35rem; font-size:.88rem; opacity:.72; }
+  .hero-overlay { position:absolute; inset:0; background:linear-gradient(0deg,rgba(7,18,11,.44),rgba(7,18,11,.02) 65%); }
+  .hero-copy { position:relative; z-index:2; width:100%; padding:0 clamp(1.5rem,4vw,4rem) clamp(2.8rem,5vw,4.5rem); text-align:right; }
+  .eyebrow { margin:0 0 .65rem; font-size:.72rem; letter-spacing:.12em; text-transform:uppercase; }
+  .hero h1 { margin:0; font-size:clamp(4rem,8.5vw,8rem); line-height:.9; font-weight:400; }
+  .journey-details { width:min(1180px,92%); margin:0 auto; }
+  .journey-details-inner { padding:clamp(2.7rem,5vw,4.3rem) clamp(.2rem,2vw,1.5rem); display:flex; align-items:center; justify-content:space-between; gap:3rem; }
+  .dates-list { display:flex; flex-direction:column; gap:.45rem; }
+  .dates-list p { margin:0; line-height:1.35; }
+  .dates-list strong { font-family:Georgia,serif; font-size:clamp(1.25rem,2vw,1.7rem); font-weight:400; }
   .button { display:inline-block; padding:.9rem 1.2rem; border:1px solid currentColor; color:inherit; text-decoration:none; font-family:Georgia,serif; }
-  .gentle-cta { flex:0 0 auto; padding:.82rem 1.15rem; font-size:1rem; transition:background .2s ease,color .2s ease; }
+  .gentle-cta { flex:0 0 auto; padding:1rem 1.35rem; font-size:1rem; transition:background .2s ease,color .2s ease; }
   .gentle-cta:hover { background:#18301f; color:#f4efe5; }
+  .opening-quote { width:min(1180px,92%); margin:0 auto; padding:1.2rem 0 clamp(4rem,8vw,7rem); text-align:center; }
+  .wave-divider { display:block; width:100%; height:34px; overflow:visible; }
+  .wave-divider path { fill:none; stroke:rgba(24,48,31,.62); stroke-width:1.5; vector-effect:non-scaling-stroke; }
+  .opening-quote blockquote { width:min(850px,90%); margin:clamp(2.8rem,6vw,5rem) auto; font-size:clamp(2rem,4vw,4.1rem); line-height:1.16; font-weight:400; }
+  .opening-quote blockquote span { display:block; }
+  .opening-quote cite { display:block; margin-top:1.3rem; font-family:Georgia,serif; font-size:.58em; font-style:normal; text-align:right; }
   .section { padding:clamp(5rem,10vw,9rem) 4%; }
   .narrow { width:min(780px,100%); margin:0 auto; }
   .wide { width:min(1200px,100%); margin:0 auto; }
@@ -340,13 +359,16 @@
     .glance-grid { grid-template-columns:repeat(2,1fr); }
   }
   @media (max-width:700px) {
-    .site-header { align-items:flex-start; flex-direction:column; }
+    .site-header { align-items:flex-start; flex-direction:column; gap:1rem; }
     .main-nav { width:100%; overflow-x:auto; gap:1rem; }
-    .hero { min-height:76svh; }
+    .hero { min-height:64svh; }
     .hero-image { background-position:38% center; }
-    .journey-details-inner { align-items:flex-start; flex-direction:column; gap:1.4rem; padding:1.6rem 0; }
-    .dates-list { flex-direction:column; gap:.45rem; }
+    .hero-copy { padding:0 1.25rem 2.5rem; }
+    .journey-details-inner { align-items:flex-start; flex-direction:column; gap:1.8rem; padding:2.2rem .2rem 3.4rem; }
     .gentle-cta { width:100%; text-align:center; }
+    .opening-quote { padding-bottom:4rem; }
+    .opening-quote blockquote { width:92%; margin:2.4rem auto; font-size:clamp(1.9rem,9vw,3rem); }
+    .opening-quote cite { text-align:center; }
     .tall { min-height:420px; }
     .days-grid,.glance-grid,.reflection-grid { grid-template-columns:1fr; }
     .days-grid article:nth-child(n) { padding:1.4rem 0; border-left:0; }
