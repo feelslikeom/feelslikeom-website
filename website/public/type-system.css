@@ -93,18 +93,118 @@ li,
   font-size: var(--type-brand) !important;
 }
 
-/* Flagship opening quote: intentionally oversized editorial treatment. */
-.opening-quote blockquote {
-  width: min(1200px, 94%) !important;
-  font-size: clamp(5.4rem, 8.4vw, 8rem) !important;
-  line-height: 1.06 !important;
+/* Flagship quote: match the large editorial statement below it. */
+.opening-quote blockquote,
+.community-quote blockquote {
+  font-size: var(--type-section) !important;
+  line-height: 1.08 !important;
 }
 
-/* Flagship program intro: keep the left/right statements deliberately narrow. */
+.opening-quote blockquote {
+  width: min(1100px, 92%) !important;
+}
+
+/* Flagship program intro: deliberately narrow and spacious on laptop screens. */
+.program-intro-inner {
+  gap: clamp(6rem, 12vw, 11rem) !important;
+}
+
 .program-row-left,
 .program-row-right {
   max-width: 456px !important;
 }
+
+/* Visually use the revised bamboo-weaving line without the word “dying”. */
+.program-row-right {
+  font-size: 0 !important;
+}
+
+.program-row-right::before {
+  content: "Ease yourself into how life is lived in Yuksom. The days are unhurried, but your hands are busy and your heart is full. Churn butter, forage in the forest, learn the art of bamboo weaving.";
+  display: block;
+  font-family: var(--font-body);
+  font-size: var(--type-body);
+  line-height: 1.7;
+}
+
+/* Flagship itinerary — roomy two-column editorial schedule. */
+.rhythm {
+  background: #f4efe5 !important;
+  color: #18301f !important;
+  padding-top: clamp(7rem, 12vw, 11rem) !important;
+  padding-bottom: clamp(8rem, 14vw, 13rem) !important;
+}
+
+.rhythm .wide {
+  width: min(1180px, 100%) !important;
+}
+
+.rhythm h2 {
+  margin-bottom: clamp(4rem, 8vw, 7rem) !important;
+}
+
+.days-grid {
+  display: block !important;
+  border: 0 !important;
+}
+
+.days-grid article {
+  display: grid !important;
+  grid-template-columns: minmax(230px, 36%) minmax(0, 64%) !important;
+  column-gap: clamp(2.5rem, 6vw, 6rem) !important;
+  align-items: start !important;
+  padding: clamp(2.4rem, 4vw, 4rem) 0 !important;
+  border: 0 !important;
+}
+
+.days-grid article:nth-child(n) {
+  padding-left: 0 !important;
+  border-left: 0 !important;
+}
+
+.days-grid article > span {
+  grid-column: 1 !important;
+  display: block;
+  margin: 0 0 .75rem;
+  font-family: var(--font-body) !important;
+  font-size: var(--type-small) !important;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  opacity: .68;
+}
+
+.days-grid article > h3 {
+  grid-column: 1 !important;
+  margin: 0 !important;
+  max-width: 290px;
+  font-size: var(--type-subheading) !important;
+  line-height: 1.12 !important;
+}
+
+.days-grid article::after {
+  grid-column: 2 !important;
+  grid-row: 1 / span 2 !important;
+  align-self: stretch;
+  display: block;
+  padding-left: clamp(2rem, 4vw, 4rem);
+  border-left: 1px solid rgba(24,48,31,.42);
+  font-family: var(--font-body);
+  font-size: var(--type-body);
+  line-height: 1.8;
+  white-space: pre-line;
+}
+
+.days-grid article:nth-child(1)::after { content: "• Arrive at Bagdogra Airport\A• Private transportation to accommodation\A• Welcome dinner & trip orientation"; }
+.days-grid article:nth-child(2)::after { content: "• Setting intentions at Kathok Lake\A• Village orientation, historical & cultural storytelling\A• Lunch in the market"; }
+.days-grid article:nth-child(3)::after { content: "• Meet Phurki (Elan’s cow) at Ejam homestay\A• Churn butter from Phurki’s milk\A• Make cottage cheese\A• Farm-to-table lunch preparation over firewood"; }
+.days-grid article:nth-child(4)::after { content: "• Foraging hike in the nearby forest with village women\A• Forest-to-plate lunch at a scenic viewpoint"; }
+.days-grid article:nth-child(5)::after { content: "• Embrace what life brings :-)"; }
+.days-grid article:nth-child(6)::after { content: "• 1–2h drive to starting point of the trek\A• Ascend ~40%\A• Trek about 3–4 hours"; }
+.days-grid article:nth-child(7)::after { content: "• Complete the remaining 60%\A• Summit is at 3,340m\A• Trek about 5–6 hours"; }
+.days-grid article:nth-child(8)::after { content: "• Make time+space for yourself\A• Learn firewood gathering (optional)\A• BYOM — bring your own marshmallows\A• Campfire conversations"; }
+.days-grid article:nth-child(9)::after { content: "• Break camp after breakfast\A• Return to Yuksom"; }
+.days-grid article:nth-child(10)::after { content: "• Day trip to a hot spring, known to have healing properties\A• Lunch along the way"; }
+.days-grid article:nth-child(11)::after { content: "The equivalent of ‘goodbye’ in Nepali is pheri bhetum — may we meet again."; }
 
 @media (max-width: 760px) {
   :root {
@@ -119,11 +219,33 @@ li,
 
   .opening-quote blockquote {
     width: 100% !important;
-    font-size: clamp(3.2rem, 13vw, 4.8rem) !important;
+  }
+
+  .program-intro-inner {
+    gap: 3.5rem !important;
   }
 
   .program-row-left,
   .program-row-right {
     max-width: 100% !important;
+  }
+
+  .days-grid article {
+    grid-template-columns: 1fr !important;
+    gap: 1.25rem !important;
+    padding: 2rem 0 2.5rem !important;
+  }
+
+  .days-grid article > span,
+  .days-grid article > h3,
+  .days-grid article::after {
+    grid-column: 1 !important;
+  }
+
+  .days-grid article::after {
+    grid-row: auto !important;
+    padding: 1.25rem 0 0 !important;
+    border-left: 0 !important;
+    border-top: 1px solid rgba(24,48,31,.28);
   }
 }
