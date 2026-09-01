@@ -21,6 +21,16 @@
       </nav>
     </header>
 
+    <nav class="section-nav" aria-label="The Flagship page sections">
+      <a href="#intentions"><span class="section-nav-dot" aria-hidden="true"></span><span class="section-nav-label">Intentions</span></a>
+      <a href="#itinerary"><span class="section-nav-dot" aria-hidden="true"></span><span class="section-nav-label">Itinerary</span></a>
+      <a href="#accommodation"><span class="section-nav-dot" aria-hidden="true"></span><span class="section-nav-label">Accommodation</span></a>
+      <a href="#food"><span class="section-nav-dot" aria-hidden="true"></span><span class="section-nav-label">Food</span></a>
+      <a href="#trek"><span class="section-nav-dot" aria-hidden="true"></span><span class="section-nav-label">Trek</span></a>
+      <a href="#reflections"><span class="section-nav-dot" aria-hidden="true"></span><span class="section-nav-label">Reflections</span></a>
+      <a href="#faq"><span class="section-nav-dot" aria-hidden="true"></span><span class="section-nav-label">FAQ</span></a>
+    </nav>
+
     <main>
       <section class="hero">
         <div class="hero-image" role="img" aria-label="A person looking across the mountains of West Sikkim beneath a dramatic sky"></div>
@@ -44,7 +54,7 @@
         </blockquote>
       </section>
 
-      <section class="program-intro" aria-label="About the program">
+      <section id="intentions" class="program-intro" aria-label="About the program">
         <div class="program-intro-inner">
           <div class="program-images" aria-label="Journey image placeholders">
             <div class="image-placeholder program-image program-image-large"><span>Community / place photograph</span></div>
@@ -79,7 +89,7 @@
         <div class="story-media image-placeholder tall"><span>Reflection / quiet moment photograph</span></div>
       </section>
 
-      <section class="section rhythm" aria-label="The Flagship itinerary">
+      <section id="itinerary" class="section rhythm" aria-label="The Flagship itinerary">
         <div class="wide">
           <div class="days-grid">
             <article><span>Day 1</span><h3>Arrival & Welcome</h3></article>
@@ -97,7 +107,7 @@
         </div>
       </section>
 
-      <section class="section editorial-grid">
+      <section id="accommodation" class="section editorial-grid">
         <div class="copy-block">
           <h2>Where you will stay</h2>
           <p>Ejam Residency is a three-storey home in Yuksom. The Ejam family lives on the second floor.</p>
@@ -111,7 +121,7 @@
         </div>
       </section>
 
-      <section class="section food-grid">
+      <section id="food" class="section food-grid">
         <div class="image-stack">
           <div class="image-placeholder"><span>Breakfast photograph</span></div>
           <div class="image-placeholder"><span>Dinner / local food photograph</span></div>
@@ -127,7 +137,7 @@
         </div>
       </section>
 
-      <section class="section trek-overview" aria-labelledby="trek-overview-title">
+      <section id="trek" class="section trek-overview" aria-labelledby="trek-overview-title">
         <div class="wide trek-overview-inner">
           <h2 id="trek-overview-title">Into the mountains</h2>
 
@@ -175,7 +185,7 @@
         </div>
       </section>
 
-      <section class="section reflections">
+      <section id="reflections" class="section reflections">
         <div class="wide">
           <h2>Reflections from past participants</h2>
           <div class="reflection-grid">
@@ -187,7 +197,7 @@
         </div>
       </section>
 
-      <section class="section faq" aria-labelledby="faq-title">
+      <section id="faq" class="section faq" aria-labelledby="faq-title">
         <div class="narrow">
           <h2 id="faq-title">Frequently asked questions</h2>
           <div class="faq-list">
@@ -250,7 +260,7 @@
 
 <style>
   :global(*) { box-sizing: border-box; }
-  :global(html) { scroll-behavior: smooth; }
+  :global(html) { scroll-behavior: smooth; scroll-padding-top:2rem; }
   body { margin:0; font-family:var(--font-body); background:#f4efe5; color:#18301f; }
   h1,h2,h3,blockquote,.brand,.pull { font-family:var(--font-display); }
   p { line-height:1.7; }
@@ -259,6 +269,16 @@
   .main-nav { display:flex; align-items:center; gap:1.5rem; letter-spacing:.08em; }
   .main-nav a { color:inherit; text-decoration:none; }
   .main-nav .active { border-bottom:1px solid currentColor; }
+
+  .section-nav { position:fixed; top:50%; right:1.15rem; z-index:20; width:46px; padding:.55rem; display:grid; gap:.2rem; background:rgba(244,239,229,.93); border:1px solid rgba(24,48,31,.13); box-shadow:0 10px 28px rgba(8,20,12,.13); backdrop-filter:blur(8px); transform:translateY(-50%); overflow:hidden; transition:width 240ms ease, box-shadow 240ms ease; }
+  .section-nav:hover,.section-nav:focus-within { width:180px; box-shadow:0 14px 36px rgba(8,20,12,.18); }
+  .section-nav a { min-height:38px; display:flex; align-items:center; gap:.8rem; color:#18301f; text-decoration:none; white-space:nowrap; padding:.4rem .35rem; }
+  .section-nav-dot { flex:0 0 auto; width:10px; height:10px; border:1px solid #18301f; border-radius:50%; transition:background 180ms ease, transform 180ms ease; }
+  .section-nav-label { opacity:0; transform:translateX(6px); font-family:var(--font-body); font-size:.78rem; letter-spacing:.02em; transition:opacity 180ms ease, transform 180ms ease; }
+  .section-nav:hover .section-nav-label,.section-nav:focus-within .section-nav-label { opacity:1; transform:translateX(0); }
+  .section-nav a:hover .section-nav-dot,.section-nav a:focus-visible .section-nav-dot { background:#18301f; transform:scale(1.12); }
+  .section-nav a:focus-visible { outline:1px solid #18301f; outline-offset:2px; }
+
   .hero { position:relative; width:100%; min-height:96svh; margin:0; display:flex; align-items:flex-end; color:white; overflow:hidden; }
   .hero-image { position:absolute; inset:-1%; border:0; background-image:url('/flagship-hero.jpg'); background-size:cover; background-position:center center; background-repeat:no-repeat; transform:scale(1.01); }
   .hero-overlay { position:absolute; inset:0; background:linear-gradient(0deg,rgba(7,18,11,.62),rgba(7,18,11,.04) 62%); }
@@ -348,6 +368,7 @@
   .enquire { padding-top:8rem; padding-bottom:8rem; }
   .enquire .button { margin-top:1.5rem; }
   @media (max-width:900px) {
+    .section-nav { display:none; }
     .story-section,.editorial-grid,.food-grid { grid-template-columns:1fr; }
     .story-section-reflection .story-media { order:2; }
     .food-grid .image-stack { order:2; }
