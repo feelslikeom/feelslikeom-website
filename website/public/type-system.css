@@ -93,7 +93,6 @@ li,
   font-size: var(--type-brand) !important;
 }
 
-/* Site-wide brand mark: keep the text in the link for accessibility, but show the uploaded logo visually. */
 .brand {
   display: inline-block !important;
   width: clamp(165px, 16vw, 220px) !important;
@@ -107,7 +106,6 @@ li,
   flex: 0 0 auto !important;
 }
 
-/* Flagship quote: match the large editorial statement below it. */
 .opening-quote blockquote,
 .community-quote blockquote {
   font-size: var(--type-section) !important;
@@ -118,12 +116,10 @@ li,
   width: min(1100px, 92%) !important;
 }
 
-/* Flagship program intro: deliberately narrow and spacious on laptop screens. */
 .program-intro-inner {
   gap: clamp(6rem, 12vw, 11rem) !important;
 }
 
-/* Use the uploaded photographs in the green editorial image pair. */
 .program-image {
   background-size: cover !important;
   background-repeat: no-repeat !important;
@@ -149,7 +145,6 @@ li,
   max-width: 456px !important;
 }
 
-/* Visually use the revised bamboo-weaving line without the word “dying”. */
 .program-row-right {
   font-size: 0 !important;
 }
@@ -162,7 +157,6 @@ li,
   line-height: 1.7;
 }
 
-/* Flagship itinerary — roomy two-column editorial schedule. */
 .rhythm {
   background: #f4efe5 !important;
   color: #18301f !important;
@@ -216,11 +210,13 @@ li,
   line-height: 1.12 !important;
 }
 
-.days-grid article::after {
+.days-grid article::after,
+.days-grid article > .day-detail {
   grid-column: 2 !important;
   grid-row: 1 / span 2 !important;
   align-self: stretch;
   display: block;
+  margin: 0;
   padding-left: clamp(2rem, 4vw, 4rem);
   border-left: 1px solid rgba(24,48,31,.42);
   font-family: var(--font-body);
@@ -239,7 +235,7 @@ li,
 .days-grid article:nth-child(8)::after { content: "• Make time+space for yourself\A• Learn firewood gathering (optional)\A• BYOM — bring your own marshmallows\A• Campfire conversations"; }
 .days-grid article:nth-child(9)::after { content: "• Break camp after breakfast\A• Return to Yuksom"; }
 .days-grid article:nth-child(10)::after { content: "• Day trip to a hot spring, known to have healing properties\A• Lunch along the way"; }
-.days-grid article:nth-child(11)::after { content: "The equivalent of ‘goodbye’ in Nepali is pheri bhetum — may we meet again."; }
+.days-grid article:nth-child(11)::after { display: none; content: none; }
 
 @media (max-width: 760px) {
   :root {
@@ -278,11 +274,13 @@ li,
 
   .days-grid article > span,
   .days-grid article > h3,
-  .days-grid article::after {
+  .days-grid article::after,
+  .days-grid article > .day-detail {
     grid-column: 1 !important;
   }
 
-  .days-grid article::after {
+  .days-grid article::after,
+  .days-grid article > .day-detail {
     grid-row: auto !important;
     padding: 1.25rem 0 0 !important;
     border-left: 0 !important;
