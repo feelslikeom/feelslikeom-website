@@ -26,7 +26,7 @@
 
     <main>
       <section class="hero">
-        <div class="hero-image image-placeholder"><span>Hero photograph</span></div>
+        <div class="hero-image" role="img" aria-label="A person looking across the mountains of West Sikkim beneath a dramatic sky"></div>
         <div class="hero-overlay"></div>
         <div class="hero-copy">
           <p class="eyebrow">West Sikkim | Field Immersion | 4D3N Trek</p>
@@ -274,7 +274,7 @@
   .journey-tabs a { color:inherit; text-decoration:none; font-family:Georgia,serif; }
   .active-tab { border-bottom:1px solid currentColor; }
   .hero { position:relative; min-height:82svh; display:flex; align-items:flex-end; color:white; overflow:hidden; }
-  .hero-image { position:absolute; inset:0; border:0; }
+  .hero-image { position:absolute; inset:0; border:0; background-image:url('/flagship-hero.jpg'); background-size:cover; background-position:center center; background-repeat:no-repeat; transform:scale(1.01); }
   .hero-overlay { position:absolute; inset:0; background:linear-gradient(0deg,rgba(7,18,11,.72),rgba(7,18,11,.1) 65%); }
   .hero-copy { position:relative; z-index:2; width:min(1180px,92%); margin:0 auto; padding:0 0 clamp(4rem,8vw,7rem); }
   .eyebrow { font-size:.74rem; letter-spacing:.12em; text-transform:uppercase; }
@@ -291,7 +291,7 @@
   .place-grid,.editorial-grid,.food-grid { width:min(1200px,92%); margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:clamp(2.5rem,7vw,7rem); align-items:center; }
   .place-grid { padding:clamp(5rem,10vw,9rem) 0; }
   .image-placeholder { display:flex; align-items:center; justify-content:center; min-height:260px; background:linear-gradient(145deg,rgba(24,48,31,.18),rgba(24,48,31,.05)); border:1px solid rgba(24,48,31,.14); color:rgba(24,48,31,.62); text-align:center; padding:1rem; }
-  .hero .image-placeholder,.dark-placeholder { background:linear-gradient(145deg,#56695a,#263c2c); color:rgba(255,255,255,.68); }
+  .dark-placeholder { background:linear-gradient(145deg,#56695a,#263c2c); color:rgba(255,255,255,.68); }
   .tall { min-height:680px; }
   .reflection { background:#d5a18d; }
   .question-set { margin-top:3.5rem; }
@@ -340,6 +340,7 @@
     .site-header { align-items:flex-start; flex-direction:column; }
     .main-nav { width:100%; overflow-x:auto; gap:1rem; }
     .hero { min-height:76svh; }
+    .hero-image { background-position:38% center; }
     .hero-meta { flex-direction:column; }
     .tall { min-height:420px; }
     .days-grid,.glance-grid,.reflection-grid { grid-template-columns:1fr; }
