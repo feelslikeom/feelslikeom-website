@@ -5,7 +5,7 @@
   --type-display: clamp(3rem, 6vw, 6.5rem);
   --type-section: clamp(2.4rem, 4.2vw, 4.5rem);
   --type-subheading: clamp(1.7rem, 2.5vw, 2.6rem);
-  --type-quote: clamp(1.35rem, 2.1vw, 2rem);
+  --type-quote: clamp(2.7rem, 4.2vw, 4rem);
   --type-body: clamp(1rem, 1.25vw, 1.12rem);
   --type-lead: clamp(1.05rem, 2vw, 1.4rem);
   --type-cta: clamp(1rem, 1.15vw, 1.15rem);
@@ -93,14 +93,25 @@ li,
   font-size: var(--type-brand) !important;
 }
 
+/* Flagship program intro: keep the left/right statements deliberately narrow. */
+.program-row-left,
+.program-row-right {
+  max-width: 456px !important;
+}
+
 @media (max-width: 760px) {
   :root {
     --type-display: clamp(2.65rem, 13vw, 4.5rem);
     --type-section: clamp(2.2rem, 10vw, 3.4rem);
     --type-subheading: clamp(1.6rem, 7vw, 2.3rem);
-    --type-quote: clamp(1.3rem, 5vw, 1.85rem);
+    --type-quote: clamp(2.6rem, 10vw, 3.7rem);
     --type-body: 1rem;
     --type-lead: 1.05rem;
     --type-small: 0.7rem;
+  }
+
+  .program-row-left,
+  .program-row-right {
+    max-width: 100% !important;
   }
 }
