@@ -42,7 +42,6 @@
             <p>Nov 22 - Dec 2, 2026</p>
             <p>Dec 22 - Jan 1, 2027</p>
           </div>
-          <a class="button hero-cta" href="#enquire">Enquire about The Flagship</a>
         </div>
       </section>
 
@@ -165,7 +164,13 @@
           </div>
 
           <div class="trek-copy">
-            <p class="trek-lead">This is a quiet trail, and we intend to keep it that way.</p>
+            <p class="trek-lead">This is a quiet trail, and we hope to keep it this way.</p>
+
+            <div class="trek-photo-row" aria-label="Trek photograph placeholders">
+              <div class="trek-photo-placeholder"><span>Trek photograph</span></div>
+              <div class="trek-photo-placeholder"><span>Trek photograph</span></div>
+              <div class="trek-photo-placeholder"><span>Trek photograph</span></div>
+            </div>
 
             <p>A two-day climb, moving slowly through forest, bamboo and rhododendron before reaching the higher, more open landscape.</p>
 
@@ -183,6 +188,12 @@
             <p>This is not a technical trek, but it is physically demanding. Expect <strong>several hours of uphill walking each day</strong>, uneven forest trails, roots, mud and occasional rocky sections. Conditions can become slippery after rain. Generally, most people consider this a moderate to challenging trek.</p>
 
             <p>The terrain consists of forested mountain trail, with earth, roots, bamboo, rhododendron and steeper uphill sections. The trail becomes more open as you gain elevation.</p>
+
+            <div class="trek-photo-row" aria-label="More trek photograph placeholders">
+              <div class="trek-photo-placeholder"><span>Trek photograph</span></div>
+              <div class="trek-photo-placeholder"><span>Trek photograph</span></div>
+              <div class="trek-photo-placeholder"><span>Trek photograph</span></div>
+            </div>
 
             <h3 class="trek-subheading">This trek may be for you if</h3>
 
@@ -254,13 +265,13 @@
         </div>
       </section>
 
+      <div class="faq-cta">
+        <a class="button" href="/contact">Enquire about The Flagship →</a>
+      </div>
+
       <section id="enquire" class="section enquire">
         <div class="narrow center">
-          <h2>Curious about The Flagship?</h2>
-          <p>If you want to understand the journey in more detail, tell us you’re interested.</p>
-          <p>We’ll send you the full Flagship brochure with the detailed itinerary, trek information, inclusions, preparation notes and everything else you need to decide whether this journey is for you.</p>
-          <p>The equivalent of ‘goodbye’ in Nepali is <em>pheri bhetum</em> — may we meet again.</p>
-          <a class="button" href="/contact">Enquire about The Flagship →</a>
+          <h2>Other journeys</h2>
         </div>
       </section>
     </main>
@@ -313,8 +324,6 @@
   .hero-dates { margin:1.5rem 0 0 auto; display:grid; gap:.25rem; width:max-content; max-width:100%; }
   .hero-dates p { margin:0; font-family:var(--font-display); font-size:clamp(1.15rem,1.8vw,1.6rem); line-height:1.35; }
   .button { display:inline-block; padding:.9rem 1.2rem; border:1px solid currentColor; color:inherit; text-decoration:none; font-family:var(--font-display); }
-  .hero-cta { margin-top:1.35rem; background:rgba(244,239,229,.06); backdrop-filter:blur(2px); }
-  .hero-cta:hover { background:#f4efe5; color:#18301f; }
   .opening-quote { width:100%; margin:0; padding:clamp(4rem,8vw,7rem) 4%; text-align:center; }
   .opening-quote blockquote { width:min(850px,90%); margin:0 auto; line-height:1.25; font-weight:400; }
   .opening-quote blockquote span { display:block; }
@@ -374,6 +383,9 @@
   .trek-copy p { margin:0 0 1.65rem; line-height:1.8; }
   .trek-copy strong { color:inherit; }
   .trek-lead { font-family:var(--font-display) !important; font-size:var(--type-subheading) !important; line-height:1.22 !important; margin-bottom:2.2rem !important; }
+  .trek-photo-row { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:clamp(.75rem,1.6vw,1.25rem); margin:clamp(2rem,4vw,3.5rem) 0 clamp(2.5rem,5vw,4rem); }
+  .trek-photo-placeholder { aspect-ratio:4/3; display:flex; align-items:center; justify-content:center; padding:1rem; border:1px solid rgba(244,239,229,.28); background:rgba(244,239,229,.08); color:rgba(244,239,229,.58); text-align:center; }
+  .trek-photo-placeholder span { font-size:var(--type-small); letter-spacing:.04em; }
   .trek-subheading { margin:clamp(3rem,5vw,4.5rem) 0 1.35rem; font-size:var(--type-subheading) !important; }
   .center { text-align:center; }
 
@@ -393,8 +405,9 @@
   .faq-answer p { margin:.6rem 0 0; }
   .faq-answer ul { margin:.4rem 0 0; padding-left:1.2rem; }
   .faq-answer li { margin:.5rem 0; }
-  .enquire { padding-top:8rem; padding-bottom:8rem; }
-  .enquire .button { margin-top:1.5rem; }
+  .faq-cta { background:#eee7da; padding:0 4% clamp(5rem,9vw,7rem); text-align:center; }
+  .faq-cta .button { color:#18301f; }
+  .enquire { padding-top:clamp(5rem,9vw,8rem); padding-bottom:clamp(5rem,9vw,8rem); }
   @media (max-width:900px) {
     .section-nav { display:none; }
     .story-section,.editorial-grid,.food-grid { grid-template-columns:1fr; }
@@ -413,7 +426,6 @@
     .hero-image { background-position:38% center; }
     .hero-copy { padding:0 5% 3rem; }
     .hero-dates { margin-top:1.25rem; }
-    .hero-cta { width:100%; max-width:320px; text-align:center; }
     .opening-quote { padding:4rem 1.25rem; }
     .opening-quote blockquote { width:100%; }
     .opening-quote cite { text-align:center; }
@@ -435,6 +447,8 @@
     .trek-stats { grid-template-columns:1fr; gap:1.8rem; }
     .trek-chart { margin:2.5rem -1.25rem 4rem; width:calc(100% + 2.5rem); padding:0 1.25rem; overflow-x:auto; }
     .trek-chart-image-wrap { min-width:720px; }
+    .trek-photo-row { grid-template-columns:1fr; gap:1rem; }
+    .trek-photo-placeholder { aspect-ratio:16/10; }
     .trek-copy { width:100%; }
     .faq summary { padding:1.3rem 2.5rem 1.3rem 0; }
   }
