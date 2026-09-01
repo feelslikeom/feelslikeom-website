@@ -21,7 +21,11 @@
 
     <main>
       <section class="hero" aria-labelledby="flagship-title">
-        <div class="hero-image" aria-hidden="true"></div>
+        <img
+          class="hero-image"
+          src="/flagship-hero.jpg?v=3"
+          alt="A person looking across layered mountain ridges in West Sikkim beneath a bright, clouded sky"
+        />
         <div class="hero-overlay" aria-hidden="true"></div>
         <div class="hero-copy">
           <h1 id="flagship-title">The Flagship</h1>
@@ -31,9 +35,18 @@
 
       <section class="journey-details" aria-label="Journey details">
         <div class="details-inner">
-          <div class="detail"><span>Group size</span><strong>2–6</strong></div>
-          <div class="detail"><span>Nov 22 – Dec 2</span><strong>Still available</strong></div>
-          <div class="detail"><span>Dec 22 – Jan 1</span><strong>Filling fast</strong></div>
+          <div class="detail">
+            <strong class="detail-heading">Group size</strong>
+            <span class="detail-value">2–6</span>
+          </div>
+          <div class="detail">
+            <strong class="detail-heading">Nov 22 - Dec 2</strong>
+            <span class="status status-available">Still available</span>
+          </div>
+          <div class="detail">
+            <strong class="detail-heading">Dec 22 - Jan 1</strong>
+            <span class="status status-filling">Filling fast</span>
+          </div>
           <a class="button" href="#">Enquire about The Flagship →</a>
         </div>
       </section>
@@ -67,14 +80,16 @@
     align-items:center;
     justify-content:center;
     color:#f4efe5;
+    background:#18301f;
   }
   .hero-image {
     position:absolute;
     inset:0;
-    background-image:url('/flagship-hero.jpg');
-    background-size:cover;
-    background-position:center center;
-    background-repeat:no-repeat;
+    width:100%;
+    height:100%;
+    display:block;
+    object-fit:cover;
+    object-position:center center;
   }
   .hero-overlay {
     position:absolute;
@@ -115,9 +130,21 @@
     align-items:center;
     gap:2rem;
   }
-  .detail { display:flex; flex-direction:column; gap:.35rem; }
-  .detail span { font-size:.75rem; letter-spacing:.09em; text-transform:uppercase; opacity:.72; }
-  .detail strong { font-family:Georgia,serif; font-size:1.25rem; font-weight:400; }
+  .detail { display:flex; flex-direction:column; gap:.45rem; }
+  .detail-heading {
+    font-family:Georgia,serif;
+    font-size:1.25rem;
+    font-weight:700;
+    line-height:1.2;
+  }
+  .detail-value,
+  .status {
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size:.9rem;
+    line-height:1.4;
+  }
+  .status-available { color:#4f6f52; font-weight:600; }
+  .status-filling { color:#a45146; font-weight:600; }
   .button {
     justify-self:end;
     display:inline-block;
@@ -135,7 +162,7 @@
   @media (max-width:800px) {
     .site-header { align-items:flex-start; flex-direction:column; }
     .main-nav { width:100%; overflow-x:auto; gap:1rem; }
-    .hero-image { background-position:35% center; }
+    .hero-image { object-position:35% center; }
     .hero-overlay { background:linear-gradient(0deg,rgba(7,18,11,.24),rgba(7,18,11,.03) 65%); }
     .hero-copy {
       width:min(92%,620px);
