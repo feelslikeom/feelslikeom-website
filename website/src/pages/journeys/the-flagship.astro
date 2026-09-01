@@ -41,17 +41,11 @@
       </section>
 
       <section class="opening-quote" aria-label="Opening reflection">
-        <svg class="wave-divider" viewBox="0 0 1200 34" preserveAspectRatio="none" aria-hidden="true">
-          <path d="M0 17 C110 0 180 0 285 17 S465 34 585 17 S790 0 900 17 S1090 34 1200 17" />
-        </svg>
         <blockquote>
           <span>&ldquo;We don&rsquo;t see things as they are;</span>
           <span>we see them as we are.&rdquo;</span>
           <cite>— Anaïs Nin</cite>
         </blockquote>
-        <svg class="wave-divider" viewBox="0 0 1200 34" preserveAspectRatio="none" aria-hidden="true">
-          <path d="M0 17 C110 0 180 0 285 17 S465 34 585 17 S790 0 900 17 S1090 34 1200 17" />
-        </svg>
       </section>
 
       <section class="program-intro" aria-label="About the program">
@@ -62,38 +56,27 @@
         </div>
       </section>
 
-      <section class="section place-grid">
-        <div class="image-placeholder tall"><span>Yuksom / landscape photograph</span></div>
-        <div class="copy-block">
-          <h2>Yuksom, West Sikkim</h2>
-          <p>Gateway to the Khangchendzonga mountain range. Home to a community whose values have been shaped by the mountains they call home. The same community who fought against commercial companies who wanted to exploit the land.</p>
-          <p>Here, food comes from gardens you can walk to, or from your neighbours’ backyard. Knowledge is passed through families, through work, and through years of paying attention to the land.</p>
-          <h3>The land is our elder, and the people are our teachers.</h3>
-          <p>Their time, energy, and wisdom are part of what makes this journey possible.</p>
-          <p>They are farmers, craftspeople, neighbours, aunties and uncles who have invited us into parts of their everyday lives.</p>
-          <p>Some things will be taught deliberately, whereas some you might pick up while walking through the village, sharing a meal, listening to someone tell a story, or noticing something you would normally walk past.</p>
+      <section class="community-quote" aria-label="Community introduction">
+        <blockquote>Meet the community who fought against a commercial company from exploiting the land.</blockquote>
+      </section>
+
+      <section class="story-section story-section-place">
+        <div class="story-media image-placeholder tall"><span>Yuksom / community photograph</span></div>
+        <div class="story-copy">
+          <h2>Where you’ll be</h2>
+          <p>Yuksom, West Sikkim. Gateway to the Khangchendzonga mountain range. Home to a community whose values have been shaped by the mountains they call home.</p>
+          <p>Learn from the farmers, craftspeople, neighbours, aunties and uncles you will meet during the journey.</p>
         </div>
       </section>
 
-      <section class="section reflection">
-        <div class="narrow">
-          <h2>Making space for yourself</h2>
-          <p>Reflection is an ongoing part of your journey. We’re not going to rush from one activity to the next and call that an experience.</p>
-          <p>There will be intentional time+space for you to notice what is happening around you and what is happening within you.</p>
-          <p>Sometimes we will reflect together, share what we noticed, and make sense of the experience collectively.</p>
-          <p>At other times, the time+space is yours to journal, read, paint, meditate, take a walk, or daydream ;-)</p>
-
-          <div class="question-set">
-            <p>The lenses and curiosity you bring will shape what you learn in your journey. These questions might help make sense of what you’ve experienced:</p>
-            <blockquote>What did you observe, hear, think, feel or sense?</blockquote>
-            <blockquote>What surprised you?</blockquote>
-            <blockquote>What did you realise about yourself?</blockquote>
-            <p>But we also hope that you might leave with more questions than answers. Questions like:</p>
-            <blockquote>What does it mean to live in a nature-centric way?</blockquote>
-            <blockquote>What changes when relationships matter more than transactions?</blockquote>
-            <blockquote>How much do we actually need? What does a good life look like?</blockquote>
-          </div>
+      <section class="story-section story-section-reflection">
+        <div class="story-copy">
+          <h2>Hold space for yourself</h2>
+          <p>Reflection sharpens your awareness of your inner world. Don’t underestimate the power of collective energy that comes from being in a supportive environment (even just for 11 days).</p>
+          <p>Allow yourself to be seen. Be heard.</p>
+          <p>Reflection will be an ongoing part of your journey. There will be intentional time+space for you to notice what is happening around you and what is happening within you.</p>
         </div>
+        <div class="story-media image-placeholder tall"><span>Reflection / quiet moment photograph</span></div>
       </section>
 
       <section class="section rhythm">
@@ -274,7 +257,7 @@
   :global(html) { scroll-behavior: smooth; }
   body { margin:0; font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; background:#f4efe5; color:#18301f; }
   h1,h2,h3,blockquote,.brand,.pull { font-family:Georgia,serif; }
-  p { line-height:1.72; }
+  p { line-height:1.7; font-size:clamp(1rem,1.25vw,1.12rem); }
   .site-header { position:absolute; top:0; left:0; right:0; z-index:5; display:flex; justify-content:space-between; align-items:center; gap:2rem; padding:1.5rem 4%; color:white; }
   .brand { color:inherit; text-decoration:none; font-size:1.3rem; white-space:nowrap; }
   .main-nav { display:flex; align-items:center; gap:1.5rem; font-size:.8rem; letter-spacing:.08em; }
@@ -285,47 +268,47 @@
   .hero-overlay { position:absolute; inset:0; background:linear-gradient(0deg,rgba(7,18,11,.44),rgba(7,18,11,.04) 64%); }
   .hero-copy { position:relative; z-index:2; width:100%; padding:0 4% clamp(2.8rem,5vw,4.5rem); text-align:right; }
   .eyebrow { margin:0 0 .65rem; font-size:.72rem; letter-spacing:.12em; text-transform:uppercase; }
-  .hero h1 { margin:0; font-size:clamp(4rem,8.5vw,8rem); line-height:.9; font-weight:400; }
+  .hero h1 { margin:0; font-size:clamp(3rem,6vw,6.5rem); line-height:.95; font-weight:400; }
   .journey-details { width:min(1180px,92%); margin:0 auto; }
   .journey-details-inner { padding:clamp(2.7rem,5vw,4.3rem) clamp(.2rem,2vw,1.5rem); display:flex; align-items:center; justify-content:space-between; gap:3rem; }
   .dates-list { display:flex; flex-direction:column; gap:.45rem; }
   .dates-list p { margin:0; line-height:1.35; }
-  .dates-list strong { font-family:Georgia,serif; font-size:clamp(1.25rem,2vw,1.7rem); font-weight:400; }
+  .dates-list strong { font-family:Georgia,serif; font-size:clamp(1.35rem,2.1vw,2rem); font-weight:400; }
   .button { display:inline-block; padding:.9rem 1.2rem; border:1px solid currentColor; color:inherit; text-decoration:none; font-family:Georgia,serif; }
   .gentle-cta { flex:0 0 auto; padding:1rem 1.35rem; font-size:1rem; transition:background .2s ease,color .2s ease; }
   .gentle-cta:hover { background:#18301f; color:#f4efe5; }
-  .opening-quote { width:100%; margin:0; padding:1.2rem 0 0; text-align:center; }
-  .wave-divider { display:block; width:100%; height:34px; overflow:visible; }
-  .wave-divider path { fill:none; stroke:rgba(24,48,31,.62); stroke-width:1.5; vector-effect:non-scaling-stroke; }
-  .opening-quote blockquote { width:min(850px,90%); margin:clamp(2.8rem,6vw,5rem) auto; font-size:clamp(2rem,4vw,4.1rem); line-height:1.16; font-weight:400; }
+  .opening-quote { width:100%; margin:0; padding:clamp(4rem,8vw,7rem) 4%; text-align:center; }
+  .opening-quote blockquote { width:min(850px,90%); margin:0 auto; font-size:clamp(1.35rem,2.1vw,2rem); line-height:1.25; font-weight:400; }
   .opening-quote blockquote span { display:block; }
-  .opening-quote cite { display:block; margin-top:1.3rem; font-family:Georgia,serif; font-size:.58em; font-style:normal; text-align:right; }
+  .opening-quote cite { display:block; margin-top:1.3rem; font-family:Georgia,serif; font-size:.72em; font-style:normal; text-align:right; }
   .program-intro { width:100%; background:#18301f; color:#f4efe5; padding:clamp(5rem,10vw,9rem) 4%; }
   .program-intro-inner { width:min(1200px,100%); margin:0 auto; display:grid; gap:clamp(4rem,8vw,7rem); }
-  .program-row { margin:0; max-width:760px; font-family:Georgia,serif; font-size:clamp(1.8rem,3.2vw,3.3rem); line-height:1.22; }
+  .program-row { margin:0; max-width:760px; font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:clamp(1rem,1.25vw,1.12rem); line-height:1.7; }
   .program-row-left { justify-self:start; text-align:left; }
   .program-row-right { justify-self:end; text-align:right; }
   .program-row-center { justify-self:center; text-align:center; max-width:900px; }
+  .community-quote { padding:clamp(5rem,9vw,8rem) 4%; text-align:center; background:#f4efe5; }
+  .community-quote blockquote { width:min(900px,100%); margin:0 auto; font-size:clamp(2.4rem,4.2vw,4.5rem); line-height:1.08; font-weight:400; }
+  .story-section { width:min(1200px,92%); margin:0 auto; padding:clamp(5rem,10vw,9rem) 0; display:grid; grid-template-columns:1fr 1fr; gap:clamp(2.5rem,7vw,7rem); align-items:center; }
+  .story-copy h2 { margin:0 0 1.6rem; font-size:clamp(2.4rem,4.2vw,4.5rem); line-height:1.04; font-weight:400; }
+  .story-copy p { margin:0 0 1.2rem; }
+  .story-copy p:last-child { margin-bottom:0; }
   .section { padding:clamp(5rem,10vw,9rem) 4%; }
   .narrow { width:min(780px,100%); margin:0 auto; }
   .wide { width:min(1200px,100%); margin:0 auto; }
-  .section h2 { margin:0 0 1.6rem; font-size:clamp(2.6rem,5vw,5rem); line-height:1; font-weight:400; }
-  .section h3 { font-size:clamp(1.4rem,2.4vw,2.2rem); font-weight:400; line-height:1.2; }
-  .pull { font-size:clamp(1.7rem,3vw,3rem); line-height:1.25; }
-  .place-grid,.editorial-grid,.food-grid { width:min(1200px,92%); margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:clamp(2.5rem,7vw,7rem); align-items:center; }
-  .place-grid { padding:clamp(5rem,10vw,9rem) 0; }
+  .section h2 { margin:0 0 1.6rem; font-size:clamp(2.4rem,4.2vw,4.5rem); line-height:1.04; font-weight:400; }
+  .section h3 { font-size:clamp(1.7rem,2.5vw,2.6rem); font-weight:400; line-height:1.1; }
+  .pull { font-size:clamp(1.35rem,2.1vw,2rem); line-height:1.25; }
+  .editorial-grid,.food-grid { width:min(1200px,92%); margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:clamp(2.5rem,7vw,7rem); align-items:center; }
   .image-placeholder { display:flex; align-items:center; justify-content:center; min-height:260px; background:linear-gradient(145deg,rgba(24,48,31,.18),rgba(24,48,31,.05)); border:1px solid rgba(24,48,31,.14); color:rgba(24,48,31,.62); text-align:center; padding:1rem; }
   .dark-placeholder { background:linear-gradient(145deg,#56695a,#263c2c); color:rgba(255,255,255,.68); }
-  .tall { min-height:680px; }
-  .reflection { background:#d5a18d; }
-  .question-set { margin-top:3.5rem; }
-  blockquote { margin:1.5rem 0; font-size:clamp(1.5rem,3vw,2.7rem); line-height:1.2; }
+  .tall { min-height:620px; }
   .rhythm { background:#18301f; color:#f4efe5; }
   .days-grid { display:grid; grid-template-columns:repeat(3,1fr); border-top:1px solid rgba(244,239,229,.25); }
   .days-grid article { padding:2rem 1.3rem 2.4rem 0; border-bottom:1px solid rgba(244,239,229,.25); }
   .days-grid article:nth-child(3n+2),.days-grid article:nth-child(3n+3) { padding-left:1.3rem; border-left:1px solid rgba(244,239,229,.25); }
   .days-grid span { font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; opacity:.72; }
-  .days-grid h3 { margin:.5rem 0 0; font-size:clamp(1.35rem,2.2vw,2rem); }
+  .days-grid h3 { margin:.5rem 0 0; font-size:clamp(1.7rem,2.5vw,2.6rem); }
   .image-stack { display:grid; gap:1rem; }
   .food-grid { padding-top:0; }
   .mountain-chapter { background:#18301f; color:#f4efe5; }
@@ -336,24 +319,25 @@
   .center { text-align:center; }
   .practical-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(2rem,4vw,4rem); }
   .practical-grid article { border-top:1px solid rgba(244,239,229,.28); padding-top:1.5rem; }
-  .small-pull { font-size:1.55rem; }
+  .small-pull { font-size:clamp(1.35rem,2.1vw,2rem); }
   .fit-section ul { list-style:none; padding:0; margin:2.2rem 0 0; }
-  .fit-section li { padding:1rem 0; border-bottom:1px solid rgba(24,48,31,.15); font-family:Georgia,serif; font-size:clamp(1.25rem,2vw,1.8rem); }
+  .fit-section li { padding:1rem 0; border-bottom:1px solid rgba(24,48,31,.15); font-family:Georgia,serif; font-size:clamp(1.35rem,2.1vw,2rem); }
   .difference { background:#eee7da; }
   .two-col { display:grid; grid-template-columns:1fr 1fr; gap:clamp(3rem,8vw,8rem); }
-  .two-col h2 { font-size:clamp(2.2rem,4vw,4rem); }
+  .two-col h2 { font-size:clamp(2.4rem,4.2vw,4.5rem); }
   .glance-grid { display:grid; grid-template-columns:repeat(3,1fr); border-top:1px solid rgba(24,48,31,.2); border-left:1px solid rgba(24,48,31,.2); }
   .glance-grid div { min-height:150px; padding:1.4rem; display:flex; flex-direction:column; justify-content:space-between; border-right:1px solid rgba(24,48,31,.2); border-bottom:1px solid rgba(24,48,31,.2); }
   .glance-grid span { font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; }
-  .glance-grid strong { font-family:Georgia,serif; font-size:1.4rem; font-weight:400; }
+  .glance-grid strong { font-family:Georgia,serif; font-size:clamp(1.35rem,2.1vw,2rem); font-weight:400; }
   .reflections { background:#c88974; }
   .reflection-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin:2rem 0; }
   .square { aspect-ratio:1; min-height:0; }
-  .text-link { color:inherit; text-decoration:none; font-family:Georgia,serif; font-size:1.15rem; }
+  .text-link { color:inherit; text-decoration:none; font-family:Georgia,serif; font-size:clamp(1rem,1.35vw,1.3rem); }
   .enquire { padding-top:8rem; padding-bottom:8rem; }
   .enquire .button { margin-top:1.5rem; }
   @media (max-width:900px) {
-    .place-grid,.editorial-grid,.food-grid,.two-col,.practical-grid { grid-template-columns:1fr; }
+    .story-section,.editorial-grid,.food-grid,.two-col,.practical-grid { grid-template-columns:1fr; }
+    .story-section-reflection .story-media { order:2; }
     .food-grid .image-stack { order:2; }
     .days-grid { grid-template-columns:repeat(2,1fr); }
     .days-grid article:nth-child(n) { padding:1.7rem 1rem 2rem 0; border-left:0; }
@@ -368,12 +352,16 @@
     .hero-copy { padding:0 4% 2.5rem; }
     .journey-details-inner { align-items:flex-start; flex-direction:column; gap:1.8rem; padding:2.2rem .2rem 3.4rem; }
     .gentle-cta { width:100%; text-align:center; }
-    .opening-quote { padding-bottom:0; }
-    .opening-quote blockquote { width:92%; margin:2.4rem auto; font-size:clamp(1.9rem,9vw,3rem); }
+    .opening-quote { padding:4rem 1.25rem; }
+    .opening-quote blockquote { width:100%; }
     .opening-quote cite { text-align:center; }
-    .program-intro { padding:4rem 4%; }
+    .program-intro { padding:4rem 1.25rem; }
     .program-intro-inner { gap:3.5rem; }
-    .program-row { max-width:100%; font-size:clamp(1.7rem,7vw,2.5rem); }
+    .program-row { max-width:100%; }
+    .community-quote { padding:4.5rem 1.25rem; }
+    .community-quote blockquote { font-size:clamp(2.2rem,10vw,3.4rem); }
+    .story-section { width:auto; margin:0; padding:4.5rem 1.25rem; gap:2.5rem; }
+    .story-copy h2 { font-size:clamp(2.2rem,10vw,3.4rem); }
     .tall { min-height:420px; }
     .days-grid,.glance-grid,.reflection-grid { grid-template-columns:1fr; }
     .days-grid article:nth-child(n) { padding:1.4rem 0; border-left:0; }
