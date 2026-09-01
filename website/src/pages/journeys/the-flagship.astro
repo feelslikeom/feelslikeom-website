@@ -147,63 +147,12 @@
           </div>
 
           <figure class="trek-chart" aria-label="Elevation profile from approximately 2,100 metres at the start to 3,340 metres at 6 kilometres">
-            <svg viewBox="0 0 1100 580" role="img" aria-labelledby="trek-chart-title trek-chart-desc">
-              <title id="trek-chart-title">Trek elevation profile</title>
-              <desc id="trek-chart-desc">The trail climbs from about 2,100 metres at zero kilometres to 2,620 metres at two kilometres, 3,120 metres at four kilometres, and 3,340 metres at six kilometres. The first two sections are steeper than the final section.</desc>
-              <g class="chart-grid">
-                <line x1="90" y1="470" x2="1040" y2="470" />
-                <line x1="90" y1="390" x2="1040" y2="390" />
-                <line x1="90" y1="310" x2="1040" y2="310" />
-                <line x1="90" y1="230" x2="1040" y2="230" />
-                <line x1="90" y1="150" x2="1040" y2="150" />
-                <line x1="90" y1="70" x2="1040" y2="70" />
-                <line x1="90" y1="70" x2="90" y2="470" />
-                <line x1="407" y1="70" x2="407" y2="470" />
-                <line x1="723" y1="70" x2="723" y2="470" />
-                <line x1="1040" y1="70" x2="1040" y2="470" />
-              </g>
-
-              <g class="chart-axes">
-                <line x1="90" y1="470" x2="1040" y2="470" />
-                <line x1="90" y1="70" x2="90" y2="470" />
-              </g>
-
-              <path class="chart-area" d="M90 447 L407 308 L723 175 L1040 116 L1040 470 L90 470 Z" />
-              <polyline class="chart-line" points="90,447 407,308 723,175 1040,116" />
-
-              <g class="chart-points">
-                <circle cx="90" cy="447" r="7" />
-                <circle cx="407" cy="308" r="7" />
-                <circle cx="723" cy="175" r="7" />
-                <circle cx="1040" cy="116" r="7" />
-              </g>
-
-              <g class="chart-labels">
-                <text x="90" y="505" text-anchor="middle">0</text>
-                <text x="407" y="505" text-anchor="middle">2</text>
-                <text x="723" y="505" text-anchor="middle">4</text>
-                <text x="1040" y="505" text-anchor="middle">6</text>
-
-                <text x="72" y="474" text-anchor="end">2000</text>
-                <text x="72" y="394" text-anchor="end">2400</text>
-                <text x="72" y="314" text-anchor="end">2800</text>
-                <text x="72" y="234" text-anchor="end">3200</text>
-                <text x="72" y="154" text-anchor="end">3400</text>
-                <text x="72" y="74" text-anchor="end">3600</text>
-
-                <text x="565" y="552" text-anchor="middle" class="axis-title">Distance (km)</text>
-                <text x="24" y="270" text-anchor="middle" transform="rotate(-90 24 270)" class="axis-title">Elevation (m)</text>
-
-                <text x="170" y="440">2,100 m</text>
-                <text x="390" y="285">2,620 m</text>
-                <text x="705" y="152">3,120 m</text>
-                <text x="1022" y="93" text-anchor="end">3,340 m</text>
-
-                <text x="245" y="452" text-anchor="middle" class="section-label">SECTION 1</text>
-                <text x="565" y="452" text-anchor="middle" class="section-label">SECTION 2</text>
-                <text x="882" y="452" text-anchor="middle" class="section-label">SECTION 3</text>
-              </g>
-            </svg>
+            <div class="trek-chart-image-wrap">
+              <img src="/trek-graph.png" alt="Elevation profile for the 6 kilometre one-way trek, climbing from approximately 2,100 metres to 3,340 metres." />
+              <div class="trek-chart-day-cover" aria-hidden="true"></div>
+              <span class="trek-chart-day trek-chart-day-one" aria-hidden="true">DAY 1</span>
+              <span class="trek-chart-day trek-chart-day-two" aria-hidden="true">DAY 2</span>
+            </div>
           </figure>
 
           <div class="trek-copy">
@@ -359,28 +308,28 @@
   .days-grid h3 { margin:.5rem 0 0; }
   .image-stack { display:grid; gap:1rem; }
   .food-grid { padding-top:0; }
-  .trek-overview { background:#f4efe5; color:#18301f; padding-top:clamp(6rem,10vw,9rem); padding-bottom:clamp(7rem,12vw,10rem); }
+
+  .trek-overview { background:#18301f; color:#f4efe5; padding-top:clamp(6rem,10vw,9rem); padding-bottom:clamp(7rem,12vw,10rem); }
   .trek-overview-inner { width:min(1240px,100%); }
   .trek-overview h2 { margin-bottom:clamp(3.5rem,6vw,5rem); }
   .trek-stats { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:clamp(2rem,5vw,5rem); margin-bottom:clamp(3rem,6vw,5.5rem); }
   .trek-stat h3 { margin:0 0 1rem; font-family:var(--font-body); font-size:clamp(1.05rem,1.4vw,1.3rem); font-weight:600; line-height:1.2; }
   .trek-stat p { margin:0; font-size:clamp(1.3rem,2vw,1.85rem); line-height:1.35; }
-  .trek-chart { margin:0 0 clamp(4rem,7vw,6.5rem); width:100%; overflow-x:auto; }
-  .trek-chart svg { display:block; width:100%; min-width:760px; height:auto; }
-  .chart-grid line { stroke:rgba(24,48,31,.12); stroke-width:1; stroke-dasharray:4 5; }
-  .chart-axes line { stroke:#18301f; stroke-width:1.5; }
-  .chart-area { fill:rgba(24,48,31,.07); }
-  .chart-line { fill:none; stroke:#18301f; stroke-width:3.5; stroke-linejoin:round; stroke-linecap:round; }
-  .chart-points circle { fill:#18301f; stroke:#f4efe5; stroke-width:3; }
-  .chart-labels text { fill:#18301f; font-family:var(--font-body); font-size:15px; }
-  .chart-labels .axis-title { font-size:17px; }
-  .chart-labels .section-label { font-size:13px; letter-spacing:.08em; font-weight:600; }
+  .trek-chart { margin:0 0 clamp(4rem,7vw,6.5rem); width:100%; }
+  .trek-chart-image-wrap { position:relative; width:100%; overflow:hidden; background:#fff; }
+  .trek-chart-image-wrap img { display:block; width:100%; height:auto; }
+  .trek-chart-day-cover { position:absolute; left:22%; right:8%; bottom:7.3%; height:6%; background:#fff; }
+  .trek-chart-day { position:absolute; bottom:8.8%; z-index:2; color:#18301f; font-family:var(--font-body); font-size:clamp(.62rem,1.05vw,.9rem); font-weight:600; letter-spacing:.08em; }
+  .trek-chart-day-one { left:33.5%; transform:translateX(-50%); }
+  .trek-chart-day-two { left:67%; transform:translateX(-50%); }
   .trek-copy { width:min(900px,100%); }
   .trek-copy p { margin:0 0 1.65rem; line-height:1.8; }
+  .trek-copy strong { color:inherit; }
   .trek-lead { font-family:var(--font-display) !important; font-size:var(--type-subheading) !important; line-height:1.22 !important; margin-bottom:2.2rem !important; }
   .trek-subheading { margin:clamp(3rem,5vw,4.5rem) 0 1.35rem; font-size:var(--type-subheading) !important; }
   .center { text-align:center; }
-  .reflections { background:#c88974; }
+
+  .reflections { background:#f4efe5; color:#18301f; }
   .reflection-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin:2rem 0; }
   .square { aspect-ratio:1; min-height:0; }
   .text-link { color:inherit; text-decoration:none; font-family:var(--font-display); }
@@ -433,7 +382,8 @@
     .days-grid article:nth-child(n) { padding:1.4rem 0; border-left:0; }
     .trek-overview { padding-left:1.25rem; padding-right:1.25rem; }
     .trek-overview h2 { margin-bottom:2.8rem; }
-    .trek-chart { margin-left:-1.25rem; margin-right:-1.25rem; width:calc(100% + 2.5rem); padding:0 1.25rem; }
+    .trek-chart { margin-left:-1.25rem; margin-right:-1.25rem; width:calc(100% + 2.5rem); padding:0 1.25rem; overflow-x:auto; }
+    .trek-chart-image-wrap { min-width:720px; }
     .trek-copy { width:100%; }
     .faq summary { padding:1.3rem 2.5rem 1.3rem 0; }
   }
