@@ -109,6 +109,27 @@ li,
   gap: clamp(6rem, 12vw, 11rem) !important;
 }
 
+/* Use the uploaded photographs in the green editorial image pair. */
+.program-image {
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  border: 0 !important;
+}
+
+.program-image span {
+  display: none !important;
+}
+
+.program-image-large {
+  background-image: url('/flagship-about-1.jpg') !important;
+  background-position: center center !important;
+}
+
+.program-image-small {
+  background-image: url('/flagship-about-2.jpg') !important;
+  background-position: center center !important;
+}
+
 .program-row-left,
 .program-row-right {
   max-width: 456px !important;
