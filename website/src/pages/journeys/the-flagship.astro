@@ -82,7 +82,7 @@
       <section class="story-section story-section-reflection">
         <div class="story-copy">
           <h2>Hold space for yourself</h2>
-          <p>Reflection sharpens your awareness of your inner world. Don’t underestimate the power of collective energy that comes from being in a supportive environment (even just for 11 days).</p>
+          <p>Reflection sharpens your awareness of your inner world. Don’t underestimate the power of collective energy that comes from being in a supportive environment (even for just 11 days).</p>
           <p>Allow yourself to be seen. Be heard.</p>
           <p>Reflection will be an ongoing part of your journey. There will be intentional time+space for you to notice what is happening around you and what is happening within you.</p>
         </div>
@@ -137,6 +137,10 @@
         </div>
       </section>
 
+      <figure class="trek-wide-image" aria-label="Mountain landscape at Bajre Dara">
+        <img src="/bajre-top.jpg" alt="Open mountain landscape at Bajre Dara" />
+      </figure>
+
       <section id="trek" class="section trek-overview" aria-labelledby="trek-overview-title">
         <div class="wide trek-overview-inner">
           <h2 id="trek-overview-title">Into the mountains</h2>
@@ -174,7 +178,7 @@
 
             <p>This is not a technical trek, but it is physically demanding. Expect <strong>several hours of uphill walking each day</strong>, uneven forest trails, roots, mud and occasional rocky sections. Conditions can become slippery after rain. Generally, most people consider this a moderate to challenging trek.</p>
 
-            <p><strong>The terrain consists of</strong> forested mountain trail, with earth, roots, bamboo, rhododendron and steeper uphill sections. The trail becomes more open as you gain elevation.</p>
+            <p>The terrain consists of forested mountain trail, with earth, roots, bamboo, rhododendron and steeper uphill sections. The trail becomes more open as you gain elevation.</p>
 
             <h3 class="trek-subheading">This trek may be for you if</h3>
 
@@ -233,7 +237,7 @@
             <details>
               <summary>How does altitude acclimatisation work?</summary>
               <div class="faq-answer">
-                <p>For first-timers to mountainous areas, it is normal to get breathless more quickly than usual when walking uphill or climbing stairs. The few days we spend in Yuksom before the trek should give your body time to gradually adjust before we start the trek.</p>
+                <p>For first-timers to mountainous areas, it is normal to get breathless more quickly than usual when walking uphill or climbing stairs. The few days we spend in Yuksom before the trek should give your body enough time to gradually adjust before we start the trek.</p>
               </div>
             </details>
             <details>
@@ -251,10 +255,26 @@
           <h2>Curious about The Flagship?</h2>
           <p>If you want to understand the journey in more detail, tell us you’re interested.</p>
           <p>We’ll send you the full Flagship brochure with the detailed itinerary, trek information, inclusions, preparation notes and everything else you need to decide whether this journey is for you.</p>
+          <p>The equivalent of ‘goodbye’ in Nepali is <em>pheri bhetum</em> — may we meet again.</p>
           <a class="button" href="/contact">Enquire about The Flagship →</a>
         </div>
       </section>
     </main>
+
+    <script>
+      const sectionNav = document.querySelector('.section-nav');
+      const hero = document.querySelector('.hero');
+
+      const updateSectionNav = () => {
+        if (!sectionNav || !hero) return;
+        const heroBottom = hero.getBoundingClientRect().bottom;
+        sectionNav.classList.toggle('is-visible', heroBottom <= 0);
+      };
+
+      updateSectionNav();
+      window.addEventListener('scroll', updateSectionNav, { passive: true });
+      window.addEventListener('resize', updateSectionNav);
+    </script>
   </body>
 </html>
 
@@ -270,10 +290,11 @@
   .main-nav a { color:inherit; text-decoration:none; }
   .main-nav .active { border-bottom:1px solid currentColor; }
 
-  .section-nav { position:fixed; top:50%; right:1.15rem; z-index:20; width:42px; padding:.4rem .25rem; display:grid; gap:.1rem; background:transparent; border:0; box-shadow:none; backdrop-filter:none; transform:translateY(-50%); overflow:hidden; transition:width 240ms ease; }
+  .section-nav { position:fixed; top:50%; right:1.15rem; z-index:20; width:42px; padding:.4rem .25rem; display:grid; gap:.1rem; background:transparent; border:0; box-shadow:none; backdrop-filter:none; transform:translateY(-50%); overflow:hidden; opacity:0; visibility:hidden; pointer-events:none; transition:width 240ms ease, opacity 220ms ease, visibility 220ms ease; }
+  .section-nav.is-visible { opacity:1; visibility:visible; pointer-events:auto; }
   .section-nav:hover,.section-nav:focus-within { width:190px; box-shadow:none; }
   .section-nav a { min-height:38px; display:flex; align-items:center; justify-content:flex-end; gap:.75rem; color:#18301f; text-decoration:none; white-space:nowrap; padding:.35rem .3rem; border:0; background:transparent; text-shadow:0 1px 10px rgba(244,239,229,.7); }
-  .section-nav-dot { order:2; flex:0 0 auto; width:8px; height:8px; border:0; border-radius:50%; background:#18301f; opacity:.62; box-shadow:0 0 0 2px rgba(244,239,229,.4); transition:opacity 180ms ease, transform 180ms ease; }
+  .section-nav-dot { order:2; flex:0 0 auto; width:8px; height:8px; border:0; border-radius:50%; background:#18301f; opacity:.78; box-shadow:0 0 0 2px rgba(244,239,229,.5); transition:opacity 180ms ease, transform 180ms ease; }
   .section-nav-label { order:1; flex:1 1 auto; opacity:0; transform:translateX(6px); text-align:right; font-family:var(--font-body); font-size:.78rem; letter-spacing:.02em; transition:opacity 180ms ease, transform 180ms ease; }
   .section-nav:hover .section-nav-label,.section-nav:focus-within .section-nav-label { opacity:1; transform:translateX(0); }
   .section-nav a:hover .section-nav-dot,.section-nav a:focus-visible .section-nav-dot { opacity:1; transform:scale(1.18); }
@@ -329,6 +350,8 @@
   .image-stack { display:grid; gap:1rem; }
   .food-grid { padding-top:0; }
 
+  .trek-wide-image { width:100%; margin:0; background:#18301f; overflow:hidden; }
+  .trek-wide-image img { display:block; width:100%; height:clamp(360px,62vw,860px); object-fit:cover; object-position:center; }
   .trek-overview { background:#18301f; color:#f4efe5; padding-top:clamp(6rem,10vw,9rem); padding-bottom:clamp(7rem,12vw,10rem); }
   .trek-overview-inner { width:min(1240px,100%); }
   .trek-overview h2 { margin-bottom:clamp(3.5rem,6vw,5rem); }
@@ -401,6 +424,7 @@
     .rhythm { padding-top:3rem; }
     .days-grid,.reflection-grid { grid-template-columns:1fr; }
     .days-grid article:nth-child(n) { padding:1.4rem 0; border-left:0; }
+    .trek-wide-image img { height:62vw; min-height:280px; }
     .trek-overview { padding-left:1.25rem; padding-right:1.25rem; }
     .trek-overview h2 { margin-bottom:2.8rem; }
     .trek-chart { margin-left:-1.25rem; margin-right:-1.25rem; width:calc(100% + 2.5rem); padding:0 1.25rem; overflow-x:auto; }
