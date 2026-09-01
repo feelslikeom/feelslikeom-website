@@ -93,6 +93,13 @@ li,
   font-size: var(--type-brand) !important;
 }
 
+/* Flagship opening quote: intentionally oversized editorial treatment. */
+.opening-quote blockquote {
+  width: min(1200px, 94%) !important;
+  font-size: clamp(5.4rem, 8.4vw, 8rem) !important;
+  line-height: 1.06 !important;
+}
+
 /* Flagship program intro: keep the left/right statements deliberately narrow. */
 .program-row-left,
 .program-row-right {
@@ -108,6 +115,11 @@ li,
     --type-body: 1rem;
     --type-lead: 1.05rem;
     --type-small: 0.7rem;
+  }
+
+  .opening-quote blockquote {
+    width: 100% !important;
+    font-size: clamp(3.2rem, 13vw, 4.8rem) !important;
   }
 
   .program-row-left,
