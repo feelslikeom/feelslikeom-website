@@ -93,6 +93,20 @@ li,
   font-size: var(--type-brand) !important;
 }
 
+/* Site-wide brand mark: keep the text in the link for accessibility, but show the uploaded logo visually. */
+.brand {
+  display: inline-block !important;
+  width: clamp(165px, 16vw, 220px) !important;
+  height: clamp(36px, 4vw, 50px) !important;
+  font-size: 0 !important;
+  line-height: 0 !important;
+  background-image: url('/Feels-Like-Om-Logo-Line.png') !important;
+  background-repeat: no-repeat !important;
+  background-position: left center !important;
+  background-size: contain !important;
+  flex: 0 0 auto !important;
+}
+
 /* Flagship quote: match the large editorial statement below it. */
 .opening-quote blockquote,
 .community-quote blockquote {
@@ -236,6 +250,11 @@ li,
     --type-body: 1rem;
     --type-lead: 1.05rem;
     --type-small: 0.7rem;
+  }
+
+  .brand {
+    width: 165px !important;
+    height: 38px !important;
   }
 
   .opening-quote blockquote {
