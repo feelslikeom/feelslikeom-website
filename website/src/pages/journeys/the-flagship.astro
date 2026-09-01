@@ -102,7 +102,7 @@
             <article><span>Day 8</span><h3>Rest day</h3></article>
             <article><span>Day 9</span><h3>Descend day</h3></article>
             <article><span>Day 10</span><h3>Nature therapy</h3></article>
-            <article><span>Day 11</span><h3>Not Goodbye</h3></article>
+            <article class="day-eleven"><span>Day 11</span><h3>Not Goodbye</h3><p class="day-detail">The equivalent of ‘goodbye’ in Nepali is <em>pheri bhetum</em> — may we meet again.</p></article>
           </div>
         </div>
       </section>
@@ -147,6 +147,10 @@
 
           <div class="trek-stats" aria-label="Trek overview statistics">
             <article class="trek-stat">
+              <h3>Duration</h3>
+              <p>4 days trek<br />3 nights camping</p>
+            </article>
+            <article class="trek-stat">
               <h3>Distance</h3>
               <p>~6 km one way</p>
             </article>
@@ -160,21 +164,21 @@
             </article>
           </div>
 
-          <figure class="trek-chart" aria-label="Elevation profile from approximately 2,100 metres at the start to 3,340 metres at 6 kilometres">
-            <div class="trek-chart-image-wrap">
-              <img src="/trek-graph.png" alt="Elevation profile for the 6 kilometre one-way trek, climbing from approximately 2,100 metres to 3,340 metres." />
-              <div class="trek-chart-day-cover" aria-hidden="true"></div>
-              <span class="trek-chart-day trek-chart-day-one" aria-hidden="true">DAY 1</span>
-              <span class="trek-chart-day trek-chart-day-two" aria-hidden="true">DAY 2</span>
-            </div>
-          </figure>
-
           <div class="trek-copy">
             <p class="trek-lead">This is a quiet trail, and we intend to keep it that way.</p>
 
             <p>A two-day climb, moving slowly through forest, bamboo and rhododendron before reaching the higher, more open landscape.</p>
 
             <p>The trek covers approximately <strong>6 km one way</strong>, with around <strong>1,300 m of elevation gain spread across two days</strong>. The first two sections are steeper, while the final stretch eases slightly as you approach the top.</p>
+
+            <figure class="trek-chart" aria-label="Elevation profile from approximately 2,100 metres at the start to 3,340 metres at 6 kilometres">
+              <div class="trek-chart-image-wrap">
+                <img src="/trek-graph.png" alt="Elevation profile for the 6 kilometre one-way trek, climbing from approximately 2,100 metres to 3,340 metres." />
+                <div class="trek-chart-day-cover" aria-hidden="true"></div>
+                <span class="trek-chart-day trek-chart-day-one" aria-hidden="true">DAY 1</span>
+                <span class="trek-chart-day trek-chart-day-two" aria-hidden="true">DAY 2</span>
+              </div>
+            </figure>
 
             <p>This is not a technical trek, but it is physically demanding. Expect <strong>several hours of uphill walking each day</strong>, uneven forest trails, roots, mud and occasional rocky sections. Conditions can become slippery after rain. Generally, most people consider this a moderate to challenging trek.</p>
 
@@ -347,6 +351,7 @@
   .days-grid article:nth-child(3n+2),.days-grid article:nth-child(3n+3) { padding-left:1.3rem; border-left:1px solid rgba(244,239,229,.25); }
   .days-grid span { font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; opacity:.72; }
   .days-grid h3 { margin:.5rem 0 0; }
+  .day-detail { margin:0; }
   .image-stack { display:grid; gap:1rem; }
   .food-grid { padding-top:0; }
 
@@ -355,10 +360,10 @@
   .trek-overview { background:#18301f; color:#f4efe5; padding-top:clamp(6rem,10vw,9rem); padding-bottom:clamp(7rem,12vw,10rem); }
   .trek-overview-inner { width:min(1240px,100%); }
   .trek-overview h2 { margin-bottom:clamp(3.5rem,6vw,5rem); }
-  .trek-stats { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:clamp(2rem,5vw,5rem); margin-bottom:clamp(3rem,6vw,5.5rem); }
+  .trek-stats { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:clamp(1.5rem,4vw,4rem); margin-bottom:clamp(3rem,6vw,5.5rem); }
   .trek-stat h3 { margin:0 0 1rem; font-family:var(--font-body); font-size:clamp(1.05rem,1.4vw,1.3rem); font-weight:600; line-height:1.2; }
   .trek-stat p { margin:0; font-size:clamp(1.3rem,2vw,1.85rem); line-height:1.35; }
-  .trek-chart { margin:0 0 clamp(4rem,7vw,6.5rem); width:100%; }
+  .trek-chart { margin:clamp(2.5rem,5vw,4rem) 0 clamp(4rem,7vw,6.5rem); width:75%; }
   .trek-chart-image-wrap { position:relative; width:100%; overflow:hidden; background:#fff; }
   .trek-chart-image-wrap img { display:block; width:100%; height:auto; }
   .trek-chart-day-cover { position:absolute; left:22%; right:8%; bottom:7.3%; height:6%; background:#fff; }
@@ -399,7 +404,7 @@
     .days-grid { grid-template-columns:repeat(2,1fr); }
     .days-grid article:nth-child(n) { padding:1.7rem 1rem 2rem 0; border-left:0; }
     .days-grid article:nth-child(even) { padding-left:1rem; border-left:1px solid rgba(244,239,229,.25); }
-    .trek-stats { grid-template-columns:1fr; gap:1.8rem; }
+    .trek-stats { grid-template-columns:repeat(2,minmax(0,1fr)); gap:2rem; }
   }
   @media (max-width:700px) {
     .site-header { align-items:flex-start; flex-direction:column; gap:1rem; }
@@ -427,7 +432,8 @@
     .trek-wide-image img { height:62vw; min-height:280px; }
     .trek-overview { padding-left:1.25rem; padding-right:1.25rem; }
     .trek-overview h2 { margin-bottom:2.8rem; }
-    .trek-chart { margin-left:-1.25rem; margin-right:-1.25rem; width:calc(100% + 2.5rem); padding:0 1.25rem; overflow-x:auto; }
+    .trek-stats { grid-template-columns:1fr; gap:1.8rem; }
+    .trek-chart { margin:2.5rem -1.25rem 4rem; width:calc(100% + 2.5rem); padding:0 1.25rem; overflow-x:auto; }
     .trek-chart-image-wrap { min-width:720px; }
     .trek-copy { width:100%; }
     .faq summary { padding:1.3rem 2.5rem 1.3rem 0; }
