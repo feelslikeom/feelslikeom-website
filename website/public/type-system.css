@@ -237,6 +237,26 @@ li,
 .days-grid article:nth-child(10)::after { content: "• Day trip to a hot spring, known to have healing properties\A• Lunch along the way"; }
 .days-grid article:nth-child(11)::after { display: none; content: none; }
 
+/* Flagship FAQ call-to-action: mirror the hero button colour inversion on hover. */
+.faq-cta .button {
+  background: transparent !important;
+  color: #18301f !important;
+  border-color: #18301f !important;
+  transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease !important;
+}
+
+.faq-cta .button:hover,
+.faq-cta .button:focus-visible {
+  background: #18301f !important;
+  color: #f4efe5 !important;
+  border-color: #18301f !important;
+}
+
+/* Remove the standalone terrain paragraph from the Flagship trek copy. */
+.trek-copy > p:nth-of-type(5) {
+  display: none !important;
+}
+
 @media (hover: hover) and (pointer: fine) {
   .main-nav .nav-dropdown .submenu {
     opacity: 0 !important;
