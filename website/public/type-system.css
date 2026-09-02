@@ -237,6 +237,22 @@ li,
 .days-grid article:nth-child(10)::after { content: "• Day trip to a hot spring, known to have healing properties\A• Lunch along the way"; }
 .days-grid article:nth-child(11)::after { display: none; content: none; }
 
+@media (hover: hover) and (pointer: fine) {
+  .main-nav .nav-dropdown .submenu {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transform: translateY(-4px) !important;
+    pointer-events: none !important;
+  }
+
+  .main-nav .nav-dropdown:hover .submenu {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateY(0) !important;
+    pointer-events: auto !important;
+  }
+}
+
 @media (max-width: 760px) {
   :root {
     --type-display: clamp(2.65rem, 13vw, 4.5rem);
