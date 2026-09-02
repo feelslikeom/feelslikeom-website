@@ -136,31 +136,58 @@
             </article>
           </div>
 
-          <div class="journeys-link reveal">
-            <a href="/journeys">Explore the journeys <span aria-hidden="true">→</span></a>
-          </div>
-        </div>
-      </section>
-
-      <section class="home-journeys" aria-labelledby="home-journeys-heading">
-        <div class="home-journeys-inner">
-          <h2 id="home-journeys-heading" class="reveal">Journeys</h2>
-
-          <article class="journey-card reveal">
-            <div class="journey-gallery" aria-label="The Flagship image gallery">
-              <a class="journey-image journey-image-main" href="/journeys/the-flagship" aria-label="Explore The Flagship"><span>Flagship photograph</span></a>
-              <a class="journey-image" href="/journeys/the-flagship" aria-label="Explore The Flagship"><span>Community photograph</span></a>
-              <a class="journey-image" href="/journeys/the-flagship" aria-label="Explore The Flagship"><span>Mountain photograph</span></a>
-            </div>
-            <div class="journey-card-copy">
-              <div>
+          <div class="home-journeys-grid">
+            <article class="journey-tile reveal">
+              <a class="journey-tile-image" href="/journeys/the-flagship" aria-label="Explore The Flagship">
+                <span>Flagship photograph</span>
+                <span class="journey-dots" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+              </a>
+              <div class="journey-tile-copy">
                 <h3>The Flagship</h3>
                 <p>Nov 22 - Dec 2 2026</p>
                 <p>Dec 22 - Jan 1 2027</p>
+                <a href="/journeys/the-flagship">See more</a>
               </div>
-              <a class="journey-more" href="/journeys/the-flagship">See more <span aria-hidden="true">→</span></a>
-            </div>
-          </article>
+            </article>
+
+            <article class="journey-tile reveal">
+              <a class="journey-tile-image" href="/journeys#how-to-embrace-suffering" aria-label="Explore How to Embrace Suffering">
+                <span>Journey photograph</span>
+                <span class="journey-dots" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+              </a>
+              <div class="journey-tile-copy">
+                <h3>How to Embrace Suffering</h3>
+                <p>Nov 5 - 12 2026</p>
+                <a href="/journeys#how-to-embrace-suffering">See more</a>
+              </div>
+            </article>
+
+            <article class="journey-tile reveal">
+              <a class="journey-tile-image" href="/journeys#feels-like-home" aria-label="Explore Feels Like Home">
+                <span>Journey photograph</span>
+                <span class="journey-dots" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+              </a>
+              <div class="journey-tile-copy">
+                <h3>Feels Like Home</h3>
+                <p>Dec 2 - 9 2026</p>
+                <p class="journey-note">Fully booked</p>
+                <a href="/journeys#feels-like-home">See more</a>
+              </div>
+            </article>
+
+            <article class="journey-tile reveal">
+              <a class="journey-tile-image" href="/journeys#way-of-the-yaks" aria-label="Explore Way of the Yaks">
+                <span>Journey photograph</span>
+                <span class="journey-dots" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+              </a>
+              <div class="journey-tile-copy">
+                <h3>Way of the Yaks</h3>
+                <p>Nov 16 - 21 2026</p>
+                <p class="journey-note">Recce trip</p>
+                <a href="/journeys#way-of-the-yaks">See more</a>
+              </div>
+            </article>
+          </div>
         </div>
       </section>
 
@@ -315,7 +342,7 @@
   .way h3 { margin: 0 0 1.25rem; font-size: clamp(1.7rem, 2.5vw, 2.6rem); line-height: 1.1; font-weight: 400; }
   .way > p:last-child { margin: 0; font-size: clamp(1rem, 1.25vw, 1.12rem); line-height: 1.7; }
 
-  .looks-like { background: #f4efe5; padding: clamp(4.5rem, 9vw, 7.5rem) 4% clamp(5rem, 9vw, 8rem); }
+  .looks-like { background: #f4efe5; padding: clamp(4.5rem, 9vw, 7.5rem) 4% clamp(6rem, 11vw, 10rem); }
   .looks-like-inner { width: min(1380px, 100%); margin: 0 auto; }
   .looks-like h2 { margin: 0 0 clamp(3rem, 5vw, 4.5rem); text-align: center; font-size: clamp(2.5rem, 4vw, 4rem); font-weight: 400; }
   .looks-like-grid { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); border-top: 1px solid rgba(24,48,31,.18); border-bottom: 1px solid rgba(24,48,31,.18); }
@@ -323,26 +350,19 @@
   .look-item + .look-item { border-left: 1px solid rgba(24,48,31,.18); }
   .look-item svg { width: clamp(3rem, 5vw, 4.5rem); height: clamp(3rem, 5vw, 4.5rem); margin-bottom: 1.25rem; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
   .look-item p { margin: 0; font-family: Georgia, serif; font-size: clamp(1rem, 1.35vw, 1.3rem); line-height: 1.25; }
-  .journeys-link { margin-top: clamp(2rem, 4vw, 3.5rem); text-align: center; }
-  .journeys-link a { display: inline-flex; align-items: center; gap: .65rem; color: inherit; font-family: Georgia, serif; font-size: clamp(1rem, 1.35vw, 1.3rem); text-underline-offset: .35rem; }
-  .journeys-link a span { font-size: 1.4rem; transition: transform 220ms ease; text-decoration: none; }
-  .journeys-link a:hover span { transform: translateX(5px); }
 
-  .home-journeys { background:#f4efe5; padding:clamp(5rem,9vw,8rem) 4% clamp(6rem,10vw,9rem); border-top:1px solid rgba(24,48,31,.12); }
-  .home-journeys-inner { width:min(1280px,100%); margin:0 auto; }
-  .home-journeys h2 { margin:0 0 clamp(3rem,5vw,4.5rem); font-weight:400; text-align:center; }
-  .journey-card { max-width:1120px; margin:0 auto; }
-  .journey-gallery { display:grid; grid-template-columns:2fr 1fr; grid-template-rows:1fr 1fr; gap:.55rem; min-height:520px; }
-  .journey-image { display:flex; align-items:center; justify-content:center; overflow:hidden; color:rgba(24,48,31,.55); text-decoration:none; background:linear-gradient(145deg,rgba(24,48,31,.14),rgba(24,48,31,.035)); border:1px solid rgba(24,48,31,.1); }
-  .journey-image-main { grid-row:1 / span 2; border-radius:1.4rem 0 0 1.4rem; }
-  .journey-image:nth-child(2) { border-radius:0 1.4rem 0 0; }
-  .journey-image:nth-child(3) { border-radius:0 0 1.4rem 0; }
-  .journey-image span { font-family:var(--font-body); font-size:.8rem; letter-spacing:.04em; }
-  .journey-card-copy { display:flex; justify-content:space-between; align-items:flex-end; gap:2rem; padding:1.4rem .25rem 0; }
-  .journey-card-copy h3 { margin:0 0 .7rem; font-size:var(--type-subheading); font-weight:400; }
-  .journey-card-copy p { margin:.15rem 0; line-height:1.45; }
-  .journey-more { display:inline-flex; align-items:center; gap:.6rem; color:inherit; font-family:var(--font-display); text-underline-offset:.35rem; white-space:nowrap; }
-  .journey-more span { text-decoration:none; font-size:1.35rem; }
+  .home-journeys-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:clamp(4rem,7vw,7rem) clamp(2rem,5vw,4rem); width:min(1180px,100%); margin:clamp(5rem,9vw,8rem) auto 0; }
+  .journey-tile { min-width:0; }
+  .journey-tile-image { position:relative; display:flex; align-items:center; justify-content:center; width:100%; aspect-ratio:1 / 1; overflow:hidden; border-radius:1.35rem; color:rgba(24,48,31,.5); text-decoration:none; background:linear-gradient(145deg,rgba(24,48,31,.13),rgba(24,48,31,.035)); border:1px solid rgba(24,48,31,.1); }
+  .journey-tile-image > span:first-child { font-family:var(--font-body); font-size:.8rem; letter-spacing:.04em; }
+  .journey-dots { position:absolute; left:50%; bottom:1.25rem; transform:translateX(-50%); display:flex; gap:.45rem; align-items:center; }
+  .journey-dots i { display:block; width:7px; height:7px; border-radius:50%; border:1px solid rgba(24,48,31,.72); background:transparent; }
+  .journey-dots i:first-child { background:#18301f; }
+  .journey-tile-copy { padding:1.15rem .35rem 0; }
+  .journey-tile-copy h3 { margin:0 0 .45rem; font-size:clamp(1.65rem,2.3vw,2.35rem); font-weight:400; line-height:1.08; }
+  .journey-tile-copy p { margin:.1rem 0; line-height:1.45; }
+  .journey-note { font-style:italic; opacity:.72; }
+  .journey-tile-copy > a { display:inline-block; margin-top:.75rem; color:inherit; font-family:var(--font-display); font-size:var(--type-cta); text-underline-offset:.3rem; }
 
   .reflections {
     position: relative;
@@ -395,7 +415,6 @@
     .looks-like-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     .look-item:nth-child(4) { border-left: 0; border-top: 1px solid rgba(24,48,31,.18); }
     .look-item:nth-child(5), .look-item:nth-child(6) { border-top: 1px solid rgba(24,48,31,.18); }
-    .journey-gallery { min-height:430px; }
   }
 
   @media (max-width: 760px) {
@@ -419,19 +438,15 @@
     .ways-grid { grid-template-columns: 1fr; }
     .way { padding: 2rem 0; }
     .way + .way { border-left: 0; border-top: 1px solid rgba(244,239,229,.25); }
-    .looks-like { padding: 4.25rem 1.25rem 5rem; }
-    .looks-like h2, .reflections h2, .home-journeys h2 { font-size: clamp(2.2rem, 10vw, 3.4rem); margin-bottom: 2.5rem; }
+    .looks-like { padding: 4.25rem 1.25rem 5.5rem; }
+    .looks-like h2, .reflections h2 { font-size: clamp(2.2rem, 10vw, 3.4rem); margin-bottom: 2.5rem; }
     .looks-like-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .look-item { padding: 1.75rem .8rem; }
     .look-item:nth-child(odd) { border-left: 0; }
     .look-item:nth-child(n+3) { border-top: 1px solid rgba(24,48,31,.18); }
-    .home-journeys { padding:4.25rem 1.25rem 5rem; }
-    .journey-gallery { display:grid; grid-template-columns:1fr 1fr; grid-template-rows:auto auto; min-height:0; gap:.45rem; }
-    .journey-image { min-height:170px; }
-    .journey-image-main { grid-column:1 / -1; grid-row:auto; min-height:300px; border-radius:1.2rem 1.2rem 0 0; }
-    .journey-image:nth-child(2) { border-radius:0 0 0 1.2rem; }
-    .journey-image:nth-child(3) { border-radius:0 0 1.2rem 0; }
-    .journey-card-copy { align-items:flex-start; flex-direction:column; gap:1rem; }
+    .home-journeys-grid { grid-template-columns:1fr; gap:3.75rem; margin-top:4.5rem; }
+    .journey-tile-image { border-radius:1.15rem; }
+    .journey-tile-copy { padding-top:1rem; }
     .reflections { padding: 4.25rem 1.25rem 5rem; }
     .reflections-grid { grid-template-columns: 1fr; gap: 1.25rem; }
   }
