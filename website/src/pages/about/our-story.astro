@@ -12,15 +12,23 @@
     <header class="site-header">
       <a class="brand" href="/">Feels Like Om</a>
       <nav class="main-nav" aria-label="Main navigation">
-        <details open>
-          <summary>ABOUT</summary>
+        <details class="nav-dropdown">
+          <summary class="active">ABOUT</summary>
           <div class="submenu">
             <a href="/about/our-story" aria-current="page">Our story</a>
             <a href="/about/getting-to-sikkim">Getting to Sikkim</a>
             <a href="/about/visa-and-permits">Visa and permits</a>
           </div>
         </details>
-        <a href="/journeys">JOURNEYS</a>
+        <details class="nav-dropdown">
+          <summary>JOURNEYS</summary>
+          <div class="submenu">
+            <a href="/journeys/the-flagship">The Flagship</a>
+            <a href="/journeys#how-to-embrace-suffering">How to Embrace Suffering</a>
+            <a href="/journeys#feels-like-home">Feels Like Home</a>
+            <a href="/journeys#way-of-the-yaks">Way of the Yaks</a>
+          </div>
+        </details>
         <a href="/reflections">REFLECTIONS</a>
         <a href="/contact">CONTACT</a>
       </nav>
@@ -100,21 +108,33 @@
     cursor: pointer;
   }
 
-  details { position: relative; }
+  .main-nav .active { border-bottom: 1px solid currentColor; }
+  .nav-dropdown { position: relative; }
   summary { list-style: none; }
   summary::-webkit-details-marker { display: none; }
 
   .submenu {
     position: absolute;
-    top: 1.7rem;
+    top: calc(100% + .65rem);
     right: 0;
     width: max-content;
-    min-width: 12rem;
+    min-width: 13rem;
     padding: 0.7rem;
     background: #fffaf1;
     border-radius: 0.4rem;
     box-shadow: 0 12px 30px rgba(8, 20, 12, 0.13);
     z-index: 5;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-4px);
+    transition: opacity 160ms ease, visibility 160ms ease, transform 160ms ease;
+  }
+
+  .submenu::before { content: ""; position: absolute; top: -.75rem; left: 0; right: 0; height: .75rem; }
+
+  @media (hover:hover) {
+    .nav-dropdown:hover .submenu { opacity: 1; visibility: visible; transform: translateY(0); }
+    .nav-dropdown:not(:hover) .submenu { opacity: 0; visibility: hidden; transform: translateY(-4px); }
   }
 
   .submenu a {
@@ -125,6 +145,8 @@
     letter-spacing: 0;
     text-transform: none;
   }
+
+  .submenu a:hover { background: rgba(24,48,31,.06); }
 
   .story-intro {
     width: min(1180px, calc(100% - 8%));
@@ -227,6 +249,7 @@
     }
 
     .submenu { right: auto; left: 0; }
+    .nav-dropdown[open] .submenu { opacity: 1; visibility: visible; transform: translateY(0); }
 
     .story-intro,
     .founder-story {
