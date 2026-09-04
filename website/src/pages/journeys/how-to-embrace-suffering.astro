@@ -69,10 +69,10 @@
       </section>
 
       <section id="intentions" class="program-intro" aria-label="Retreat intentions">
-        <div class="program-intro-inner">
-          <div class="program-images" aria-label="Retreat image placeholders">
-            <div class="image-placeholder program-image program-image-large"><span>Meditation / monastery photograph</span></div>
-            <div class="image-placeholder program-image program-image-small"><span>West Sikkim photograph</span></div>
+        <div class="retreat-intro-inner">
+          <div class="retreat-images" aria-label="Retreat image placeholders">
+            <div class="image-placeholder retreat-image-large"><span>Meditation / monastery photograph</span></div>
+            <div class="image-placeholder retreat-image-small"><span>West Sikkim photograph</span></div>
           </div>
 
           <div class="intent-copy intent-left">
@@ -115,29 +115,35 @@
             <article>
               <span>01</span>
               <h3>Curious, but apprehensive</h3>
-              <p>You’ve been curious about meditation, but the 10-day long silent retreats feel like a huge commitment.</p>
-              <p>Ten days of no talking, no phone, just meditation. It can feel intimidating, especially for first timers.</p>
-              <p>Part of you wants to try, but you might also be thinking “I’m not sure I can do that.”</p>
-              <p>This retreat could be a stepping stone for you.</p>
+              <div class="audience-copy">
+                <p>You’ve been curious about meditation, but the 10-day long silent retreats feel like a huge commitment.</p>
+                <p>Ten days of no talking, no phone, just meditation. It can feel intimidating, especially for first timers.</p>
+                <p>Part of you wants to try, but you might also be thinking “I’m not sure I can do that.”</p>
+                <p>This retreat could be a stepping stone for you.</p>
+              </div>
             </article>
 
             <article>
               <span>02</span>
               <h3>In a liminal period</h3>
-              <p>The word “liminal” comes from the Latin word <em>limen</em>, which means threshold. To be in a liminal space means to be on the precipice of something new but not quite there yet. <a href="https://www.verywellmind.com/the-impact-of-liminal-space-on-your-mental-health-5204371">Read more about liminal space.</a></p>
-              <p>Maybe you feel stuck, experienced deep loss that made you confront impermanence, or consistently feel the ache of restlessness.</p>
-              <p>Give yourself permission to step out of the container that can no longer contain who you might be becoming.</p>
-              <p>Step into a space to slow down, explore who you are, and what you really want.</p>
+              <div class="audience-copy">
+                <p>The word “liminal” comes from the Latin word <em>limen</em>, which means threshold. To be in a liminal space means to be on the precipice of something new but not quite there yet. <a href="https://www.verywellmind.com/the-impact-of-liminal-space-on-your-mental-health-5204371">Read more about liminal space.</a></p>
+                <p>Maybe you feel stuck, experienced deep loss that made you confront impermanence, or consistently feel the ache of restlessness.</p>
+                <p>Give yourself permission to step out of the container that can no longer contain who you might be becoming.</p>
+                <p>Step into a space to slow down, explore who you are, and what you really want.</p>
+              </div>
             </article>
 
             <article>
               <span>03</span>
               <h3>Feeling called to meditate with Sikkim’s living energy</h3>
-              <p>Perhaps you already have a meditation practice, and you’ve felt that where we practise matters.</p>
-              <p>Every place has its own energy. People who have come here before say they felt a different kind of energy in Sikkim.</p>
-              <p>According to Tibetan Buddhist tradition, Sikkim is considered a hidden land, a <em>beyul</em>, chosen and blessed by Guru Padmasambhava. It’s believed that meditating here multiplies the merit, <em>for you and all beings.</em></p>
-              <p>Walk among the trees. Talk to the river. Meditate with the mountains.</p>
-              <p>Come and experience it for yourself, and decide what you feel.</p>
+              <div class="audience-copy">
+                <p>Perhaps you already have a meditation practice, and you’ve felt that where we practise matters.</p>
+                <p>Every place has its own energy. People who have come here before say they felt a different kind of energy in Sikkim.</p>
+                <p>According to Tibetan Buddhist tradition, Sikkim is considered a hidden land, a <em>beyul</em>, chosen and blessed by Guru Padmasambhava. It’s believed that meditating here multiplies the merit, <em>for you and all beings.</em></p>
+                <p>Walk among the trees. Talk to the river. Meditate with the mountains.</p>
+                <p>Come and experience it for yourself, and decide what you feel.</p>
+              </div>
             </article>
           </div>
         </div>
@@ -158,7 +164,7 @@
         </div>
       </section>
 
-      <section id="journey" class="section rhythm" aria-labelledby="journey-title">
+      <section id="journey" class="section retreat-rhythm" aria-labelledby="journey-title">
         <div class="wide">
           <div class="journey-intro">
             <h2 id="journey-title">The seven-day journey</h2>
@@ -174,7 +180,7 @@
             <p>Because the group is limited to six meditators, there is more time for personal guidance, questions and 1-1 conversations.</p>
           </div>
 
-          <div class="days-grid retreat-days">
+          <div class="retreat-days">
             <article>
               <span>Day 1</span>
               <h3>Arrival and welcome</h3>
@@ -327,10 +333,10 @@
 
 <style>
   :global(*) { box-sizing: border-box; }
-  :global(html) { scroll-behavior: smooth; scroll-padding-top: 2rem; }
-  body { margin: 0; font-family: var(--font-body); background: #f4efe5; color: #18301f; }
-  p { line-height: 1.75; }
-  a { color: inherit; }
+  :global(html) { scroll-behavior: smooth; scroll-padding-top:2rem; }
+  body { margin:0; font-family:var(--font-body); background:#f4efe5; color:#18301f; }
+  p { line-height:1.75; }
+  a { color:inherit; }
 
   .site-header { position:absolute; top:0; left:0; right:0; z-index:50; display:flex; justify-content:space-between; align-items:center; gap:2rem; padding:1.5rem 4%; color:#f4efe5; }
   .brand { color:inherit; text-decoration:none; }
@@ -370,7 +376,6 @@
   .hero-meta p { margin:0; }
   .hero-cta { margin-top:1.35rem; background:rgba(244,239,229,.05); }
   .hero-cta:hover { background:#f4efe5; color:#18301f; }
-
   .button { display:inline-block; padding:.9rem 1.2rem; border:1px solid currentColor; color:inherit; text-decoration:none; font-family:var(--font-display); transition:background 180ms ease,color 180ms ease; }
 
   .opening-quote { width:100%; padding:clamp(5rem,9vw,8rem) 4%; text-align:center; }
@@ -378,10 +383,10 @@
   .opening-quote cite { display:block; margin-top:1.5rem; font-family:var(--font-display); font-size:.72em; font-style:normal; text-align:right; }
 
   .program-intro { background:#18301f; color:#f4efe5; padding:clamp(5rem,10vw,9rem) 4%; }
-  .program-intro-inner { width:min(1200px,100%); margin:0 auto; display:grid; gap:clamp(5rem,10vw,9rem); }
-  .program-images { display:grid; grid-template-columns:minmax(0,1.4fr) minmax(230px,.6fr); gap:clamp(1rem,3vw,2.25rem); align-items:end; }
-  .program-image-large { min-height:clamp(360px,46vw,600px); }
-  .program-image-small { min-height:clamp(240px,28vw,370px); margin-bottom:-2rem; }
+  .retreat-intro-inner { width:min(1200px,100%); margin:0 auto; display:grid; gap:clamp(5rem,10vw,9rem); }
+  .retreat-images { display:grid; grid-template-columns:minmax(0,1.4fr) minmax(230px,.6fr); gap:clamp(1rem,3vw,2.25rem); align-items:end; }
+  .retreat-image-large { min-height:clamp(360px,46vw,600px); }
+  .retreat-image-small { min-height:clamp(240px,28vw,370px); margin-bottom:-2rem; }
   .intent-copy { max-width:620px; }
   .intent-copy p { margin:.35rem 0; }
   .intent-left { justify-self:start; text-align:left; }
@@ -402,7 +407,8 @@
   .audience-grid article { display:grid; grid-template-columns:minmax(180px,30%) minmax(0,70%); column-gap:clamp(2rem,5vw,5rem); }
   .audience-grid article > span { grid-column:1; font-size:var(--type-small); letter-spacing:.12em; opacity:.6; }
   .audience-grid article > h3 { grid-column:1; margin:.8rem 0 0; max-width:300px; }
-  .audience-grid article > p { grid-column:2; margin:0 0 1rem; }
+  .audience-copy { grid-column:2; grid-row:1 / span 2; padding-left:clamp(2rem,4vw,4rem); border-left:1px solid rgba(24,48,31,.32); }
+  .audience-copy p { margin:0 0 1rem; }
 
   .teacher-section { width:min(1200px,92%); margin:0 auto; padding:clamp(6rem,11vw,10rem) 0; display:grid; grid-template-columns:.9fr 1.1fr; gap:clamp(3rem,7vw,7rem); align-items:center; }
   .teacher-copy h2 { margin:.7rem 0 2rem; line-height:1.03; }
@@ -415,10 +421,10 @@
   .program-intro .image-placeholder { background:rgba(244,239,229,.08); border-color:rgba(244,239,229,.22); color:rgba(244,239,229,.55); }
   .tall { min-height:660px; }
 
-  .rhythm { background:#f4efe5; color:#18301f; }
+  .retreat-rhythm { background:#f4efe5; color:#18301f; }
   .journey-intro { width:min(850px,100%); margin:0 0 clamp(5rem,9vw,8rem); }
   .journey-intro ul { line-height:1.8; }
-  .days-grid { display:block; }
+  .retreat-days { display:block; }
   .retreat-days article { display:grid; grid-template-columns:minmax(230px,36%) minmax(0,64%); column-gap:clamp(2.5rem,6vw,6rem); padding:clamp(2.8rem,5vw,4.5rem) 0; }
   .retreat-days article > span { grid-column:1; margin:0 0 .75rem; font-size:var(--type-small); letter-spacing:.1em; text-transform:uppercase; opacity:.68; }
   .retreat-days article > h3 { grid-column:1; margin:0; max-width:320px; }
@@ -450,8 +456,9 @@
     .teacher-section,.split-section { grid-template-columns:1fr; }
     .who-summary { grid-template-columns:1fr; }
     .audience-grid article { grid-template-columns:1fr; gap:.7rem; }
-    .audience-grid article > span,.audience-grid article > h3,.audience-grid article > p { grid-column:1; }
+    .audience-grid article > span,.audience-grid article > h3,.audience-copy { grid-column:1; }
     .audience-grid article > h3 { margin:.4rem 0 1rem; }
+    .audience-copy { grid-row:auto; padding:1.25rem 0 0; border-left:0; border-top:1px solid rgba(24,48,31,.25); }
     .details-grid { grid-template-columns:1fr; }
   }
 
@@ -469,10 +476,10 @@
     .opening-quote blockquote { width:100%; }
     .opening-quote cite { text-align:center; }
     .program-intro { padding:4.5rem 1.25rem; }
-    .program-intro-inner { gap:4rem; }
-    .program-images { grid-template-columns:1fr; gap:1rem; }
-    .program-image-large { min-height:360px; }
-    .program-image-small { min-height:210px; width:72%; margin:-3rem 0 0 auto; }
+    .retreat-intro-inner { gap:4rem; }
+    .retreat-images { grid-template-columns:1fr; gap:1rem; }
+    .retreat-image-large { min-height:360px; }
+    .retreat-image-small { min-height:210px; width:72%; margin:-3rem 0 0 auto; }
     .intent-copy { max-width:100%; }
     .intent-right { text-align:left; justify-self:start; }
     .section { padding:4.5rem 1.25rem; }
