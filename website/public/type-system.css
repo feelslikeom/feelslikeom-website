@@ -236,3 +236,31 @@ p,li,.body-copy,.type-body { font-family:var(--font-body)!important; font-size:v
     aspect-ratio:16/10!important;
   }
 }
+
+/* Homepage Flagship carousel: Airbnb-style dot controls. */
+.flagship-home-tile .flagship-carousel-dots {
+  bottom:1.1rem!important;
+  gap:.42rem!important;
+  padding:.35rem .55rem!important;
+  border-radius:999px!important;
+  background:rgba(0,0,0,.12)!important;
+  backdrop-filter:blur(3px)!important;
+}
+.flagship-home-tile .flagship-carousel-dots button {
+  width:8px!important;
+  height:8px!important;
+  min-width:8px!important;
+  min-height:8px!important;
+  padding:0!important;
+  border:0!important;
+  border-radius:50%!important;
+  background:#f4efe5!important;
+  opacity:.68!important;
+  box-shadow:0 1px 3px rgba(0,0,0,.22)!important;
+  transition:opacity 160ms ease,transform 160ms ease!important;
+}
+.flagship-home-tile .flagship-carousel-dots button.is-active {
+  opacity:1!important;
+  transform:scale(1.16)!important;
+  background:#f4efe5!important;
+}
