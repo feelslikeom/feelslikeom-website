@@ -64,6 +64,14 @@
 
             <p>I serve you as a bridge between you and the indigenous communities, so that you may learn from them and reconnect with yourself.</p>
           </div>
+
+          <div class="imagined-future">
+            <p class="imagined-future-intro">Building this world for the next seven generations</p>
+            <div class="imagined-future-images">
+              <img src="/imagined-future-1.jpg" alt="Imagined future photograph 1" />
+              <img src="/imagined-future-2.jpg" alt="Imagined future photograph 2" />
+            </div>
+          </div>
         </article>
       </section>
     </main>
@@ -236,6 +244,32 @@
     font-weight: 600;
   }
 
+  .imagined-future {
+    margin-top: clamp(4rem, 7vw, 6rem);
+    max-width: 42rem;
+  }
+
+  .imagined-future-intro {
+    margin: 0 0 1.8rem;
+    font-family: Georgia, serif !important;
+    font-size: clamp(1.7rem, 2.5vw, 2.6rem) !important;
+    line-height: 1.15;
+  }
+
+  .imagined-future-images {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .imagined-future-images img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    border-radius: 0.25rem;
+  }
+
   @media (max-width: 760px) {
     .site-header {
       align-items: flex-start;
@@ -275,6 +309,10 @@
 
     .portrait-wrap {
       aspect-ratio: 4 / 5;
+    }
+
+    .imagined-future-images {
+      grid-template-columns: 1fr;
     }
   }
 </style>
