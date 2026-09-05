@@ -182,3 +182,57 @@ p,li,.body-copy,.type-body { font-family:var(--font-body)!important; font-size:v
     background:url('/flagship-about-5.jpg') center/cover no-repeat;
   }
 }
+
+/* Requested refinements: tidy trek grid, swap About 1/5, and homepage dots. */
+#trek .trek-gallery-secondary {
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  gap:clamp(1.25rem,2.4vw,2rem)!important;
+  width:min(1100px,calc(100vw - 8vw))!important;
+}
+#trek .trek-gallery-secondary .trek-photo-placeholder:nth-child(n) {
+  grid-column:auto!important;
+  grid-row:auto!important;
+  aspect-ratio:16/10!important;
+  margin:0!important;
+  background-size:contain!important;
+  background-position:center!important;
+  background-repeat:no-repeat!important;
+}
+
+.program-images .program-image-large {
+  background-image:url('/flagship-about-5.jpg')!important;
+  aspect-ratio:4/5!important;
+}
+.program-images::after {
+  background-image:url('/flagship-about-4.jpg'),url('/flagship-about-1.jpg')!important;
+  background-repeat:no-repeat,no-repeat!important;
+  background-position:left center,right center!important;
+  background-size:48% auto,48% auto!important;
+}
+
+.flagship-carousel-dots button {
+  background:#f4efe5!important;
+  border:1px solid #111!important;
+}
+.flagship-carousel-dots button.is-active {
+  background:#18301f!important;
+  border-color:#111!important;
+}
+
+@media (max-width:700px) {
+  #trek .trek-gallery-secondary {
+    grid-template-columns:1fr!important;
+    gap:1rem!important;
+  }
+  #trek .trek-gallery-secondary .trek-photo-placeholder:nth-child(n) {
+    aspect-ratio:16/10!important;
+  }
+  .program-images .program-image-large {
+    background-image:url('/flagship-about-5.jpg')!important;
+    aspect-ratio:4/5!important;
+  }
+  .program-intro-inner::after {
+    background:url('/flagship-about-1.jpg') center/contain no-repeat!important;
+    aspect-ratio:16/10!important;
+  }
+}
