@@ -58,15 +58,14 @@
 
             <p>Today, we are going through unprecedented times. With the relentless pursuit of capitalist growth and unchecked consumerism, our planet suffers and we suffer too. We are becoming lonelier as a species because we forgot how to connect with one another.</p>
 
-            <aside class="question" aria-label="Reflection question">
-              <p>How might we stay true to who we are and co-create an interdependently thriving world?</p>
-            </aside>
-
             <p>I serve you as a bridge between you and the indigenous communities, so that you may learn from them and reconnect with yourself.</p>
+
+            <aside class="question" aria-label="Reflection question">
+              <p>How might we stay true to who we are and co-create an interdependently thriving world? An interdependently thriving world that looks like what Norma Wong imagined in her book, <em>When No Thing Works</em>.</p>
+            </aside>
           </div>
 
           <div class="imagined-future">
-            <p class="imagined-future-intro">Building this world for the next seven generations</p>
             <div class="imagined-future-images">
               <img src="/imagined-future-1.jpg" alt="Imagined future photograph 1" />
               <img src="/imagined-future-2.jpg" alt="Imagined future photograph 2" />
@@ -85,6 +84,7 @@
     margin: 0;
     background: #f4efe5;
     color: #18301f;
+    overflow-x: hidden;
   }
 
   .site-header {
@@ -186,6 +186,8 @@
     align-items: start;
   }
 
+  .founder-story article { min-width: 0; }
+
   .portrait-column {
     position: sticky;
     top: 2rem;
@@ -214,10 +216,12 @@
   }
 
   blockquote {
-    max-width: none;
+    max-width: 100%;
     margin: 0 0 3rem;
+    font-size: clamp(1.8rem, 3vw, 3rem) !important;
     line-height: 1.18;
-    white-space: nowrap;
+    white-space: normal;
+    overflow-wrap: anywhere;
   }
 
   .body-copy {
@@ -245,28 +249,22 @@
   }
 
   .imagined-future {
-    margin-top: clamp(4rem, 7vw, 6rem);
+    margin-top: clamp(2.5rem, 5vw, 4rem);
     max-width: 42rem;
-  }
-
-  .imagined-future-intro {
-    margin: 0 0 1.8rem;
-    font-family: Georgia, serif !important;
-    font-size: clamp(1.7rem, 2.5vw, 2.6rem) !important;
-    line-height: 1.15;
   }
 
   .imagined-future-images {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 1rem;
+    align-items: start;
   }
 
   .imagined-future-images img {
     display: block;
     width: 100%;
-    aspect-ratio: 4 / 5;
-    object-fit: cover;
+    height: auto;
+    object-fit: contain;
     border-radius: 0.25rem;
   }
 
