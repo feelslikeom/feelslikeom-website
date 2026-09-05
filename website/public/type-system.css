@@ -106,6 +106,17 @@ li,
   flex: 0 0 auto !important;
 }
 
+/* Site-wide navigation label. Keep the existing /about/our-story route. */
+.main-nav .submenu a[href="/about/our-story"] {
+  font-size: 0 !important;
+}
+
+.main-nav .submenu a[href="/about/our-story"]::after {
+  content: "Our stories";
+  font-family: var(--font-body);
+  font-size: var(--type-small);
+}
+
 .opening-quote blockquote,
 .community-quote blockquote {
   font-size: var(--type-section) !important;
