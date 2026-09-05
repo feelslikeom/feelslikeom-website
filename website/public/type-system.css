@@ -401,3 +401,56 @@ li,
     padding: 1rem;
   }
 }
+
+/* The Flagship food section: use the three uploaded food photographs. */
+#food .image-stack {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem !important;
+}
+
+#food .image-stack > .image-placeholder,
+#food .image-stack::after {
+  min-height: 0 !important;
+  aspect-ratio: 4 / 3;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  border: 0 !important;
+}
+
+#food .image-stack > .image-placeholder:first-child {
+  grid-column: 1 / -1;
+  aspect-ratio: 16 / 10;
+  background-image: url('/flagship-food-breakfast-1.jpg') !important;
+}
+
+#food .image-stack > .image-placeholder:nth-child(2) {
+  background-image: url('/flagship-food-breakfast-2.jpg') !important;
+}
+
+#food .image-stack::after {
+  content: "";
+  display: block;
+  background-image: url('/flagship-food-dinner.jpg');
+}
+
+#food .image-stack > .image-placeholder span {
+  display: none !important;
+}
+
+@media (max-width: 700px) {
+  #food .image-stack {
+    grid-template-columns: 1fr;
+  }
+
+  #food .image-stack > .image-placeholder:first-child {
+    grid-column: auto;
+    aspect-ratio: 4 / 3;
+  }
+
+  #food .image-stack > .image-placeholder,
+  #food .image-stack::after {
+    aspect-ratio: 16 / 10;
+  }
+}
