@@ -402,7 +402,7 @@ li,
   }
 }
 
-/* The Flagship food section: three uncropped landscape photos in a single column. */
+/* Legacy Flagship food rules retained for compatibility; overridden below. */
 #food .image-stack {
   display: grid !important;
   grid-template-columns: 1fr !important;
@@ -490,10 +490,9 @@ li,
   background-image: url('/flagship-reflection-3.jpg') !important;
 }
 
-/* The Flagship: newly uploaded place, reflection and trek photographs. */
+/* The Flagship: place + reflection photographs. */
 .story-section-place .story-media,
-.story-section-reflection .story-media,
-.trek-photo-placeholder {
+.story-section-reflection .story-media {
   background-size: cover !important;
   background-position: center center !important;
   background-repeat: no-repeat !important;
@@ -501,8 +500,7 @@ li,
 }
 
 .story-section-place .story-media span,
-.story-section-reflection .story-media span,
-.trek-photo-placeholder span {
+.story-section-reflection .story-media span {
   display: none !important;
 }
 
@@ -514,45 +512,240 @@ li,
   background-image: url('/flagship-reflection.jpg') !important;
 }
 
-.trek-photo-row[aria-label="Trek photograph placeholders"] .trek-photo-placeholder:nth-child(1) {
-  background-image: url('/flagship-trek-1.jpg') !important;
+/* Flagship food: use the two new Ejam food photos beside the copy. */
+#food .image-stack {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: clamp(.8rem, 1.5vw, 1.2rem) !important;
+  align-self: stretch !important;
 }
 
-.trek-photo-row[aria-label="Trek photograph placeholders"] .trek-photo-placeholder:nth-child(2) {
-  background-image: url('/flagship-trek-2.jpg') !important;
-}
-
-.trek-photo-row[aria-label="Trek photograph placeholders"] .trek-photo-placeholder:nth-child(3) {
-  background-image: url('/flagship-trek-3.jpg') !important;
-}
-
-.trek-photo-row[aria-label="More trek photograph placeholders"] .trek-photo-placeholder:nth-child(1) {
-  background-image: url('/flagship-trek-4.jpg') !important;
-}
-
-.trek-photo-row[aria-label="More trek photograph placeholders"] .trek-photo-placeholder:nth-child(2) {
-  background-image: url('/flagship-trek-5.jpg') !important;
-}
-
-.trek-photo-row[aria-label="More trek photograph placeholders"] .trek-photo-placeholder:nth-child(3) {
-  background-image: url('/flagship-trek-6.jpg') !important;
-}
-
-/* Rotate breakfast 1 and dinner 90 degrees counter-clockwise while keeping landscape slots. */
-#food .image-stack > .image-placeholder:first-child,
 #food .image-stack::after {
-  width: 66.6667% !important;
-  aspect-ratio: 2 / 3 !important;
-  justify-self: center !important;
-  margin-block: -16.6667% !important;
-  transform: rotate(-90deg);
-  transform-origin: center center;
-  background-size: contain !important;
+  content: none !important;
+  display: none !important;
+}
+
+#food .image-stack > .image-placeholder {
+  width: 100% !important;
+  min-height: clamp(220px, 26vw, 350px) !important;
+  aspect-ratio: 4 / 3 !important;
+  background-size: cover !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  transform: none !important;
+  margin: 0 !important;
+  border: 0 !important;
+}
+
+#food .image-stack > .image-placeholder:first-child {
+  background-image: url('/ejam-food-1.jpg') !important;
 }
 
 #food .image-stack > .image-placeholder:nth-child(2) {
-  width: 100% !important;
+  background-image: url('/ejam-food-2.jpg') !important;
+}
+
+#food .image-stack > .image-placeholder span {
+  display: none !important;
+}
+
+/* Flagship trek: nine-photo editorial collage. */
+#trek .trek-photo-placeholder {
+  min-height: 0 !important;
+  background-size: cover !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  border: 0 !important;
+  padding: 0 !important;
+}
+
+#trek .trek-photo-placeholder span {
+  display: none !important;
+}
+
+#trek .trek-gallery-primary,
+#trek .trek-gallery-secondary {
+  width: min(1100px, calc(100vw - 8vw)) !important;
+  display: grid !important;
+  grid-template-columns: repeat(12, minmax(0, 1fr)) !important;
+  gap: clamp(.7rem, 1.4vw, 1.1rem) !important;
+  align-items: stretch !important;
+}
+
+#trek .trek-gallery-primary {
+  margin: clamp(2.5rem, 5vw, 4.5rem) 0 clamp(4rem, 7vw, 6rem) !important;
+}
+
+#trek .trek-gallery-primary .trek-photo-placeholder:nth-child(1) {
+  grid-column: 1 / span 7;
+  grid-row: 1 / span 2;
+  aspect-ratio: 4 / 5 !important;
+  background-image: url('/flagship-trek-1.jpg') !important;
+}
+
+#trek .trek-gallery-primary .trek-photo-placeholder:nth-child(2) {
+  grid-column: 8 / span 5;
+  aspect-ratio: 4 / 3 !important;
+  background-image: url('/flagship-trek-2.jpg') !important;
+}
+
+#trek .trek-gallery-primary .trek-photo-placeholder:nth-child(3) {
+  grid-column: 8 / span 5;
   aspect-ratio: 3 / 2 !important;
-  transform: none !important;
-  margin: 0 !important;
+  background-image: url('/flagship-trek-3.jpg') !important;
+}
+
+#trek .trek-gallery-primary .trek-photo-placeholder:nth-child(4) {
+  grid-column: 2 / span 4;
+  aspect-ratio: 3 / 4 !important;
+  margin-top: clamp(1rem, 3vw, 2.5rem) !important;
+  background-image: url('/flagship-trek-4.jpg') !important;
+}
+
+#trek .trek-gallery-primary .trek-photo-placeholder:nth-child(5) {
+  grid-column: 6 / span 7;
+  aspect-ratio: 16 / 10 !important;
+  margin-top: clamp(1rem, 3vw, 2.5rem) !important;
+  background-image: url('/flagship-trek-5.jpg') !important;
+}
+
+#trek .trek-gallery-secondary {
+  margin: clamp(3.5rem, 6vw, 5.5rem) 0 clamp(4rem, 7vw, 6rem) !important;
+}
+
+#trek .trek-gallery-secondary .trek-photo-placeholder:nth-child(1) {
+  grid-column: 1 / span 5;
+  aspect-ratio: 4 / 5 !important;
+  background-image: url('/flagship-trek-6.jpg') !important;
+}
+
+#trek .trek-gallery-secondary .trek-photo-placeholder:nth-child(2) {
+  grid-column: 6 / span 7;
+  aspect-ratio: 16 / 10 !important;
+  align-self: end !important;
+  background-image: url('/flagship-trek-7.jpg') !important;
+}
+
+#trek .trek-gallery-secondary .trek-photo-placeholder:nth-child(3) {
+  grid-column: 2 / span 7;
+  aspect-ratio: 16 / 9 !important;
+  margin-top: clamp(1rem, 2.5vw, 2rem) !important;
+  background-image: url('/flagship-trek-8.jpg') !important;
+}
+
+#trek .trek-gallery-secondary .trek-photo-placeholder:nth-child(4) {
+  grid-column: 9 / span 4;
+  aspect-ratio: 3 / 4 !important;
+  margin-top: clamp(-2rem, -2vw, -1rem) !important;
+  background-image: url('/flagship-trek-9.jpg') !important;
+}
+
+/* Reflection cards: click to open a readable peek window. */
+#reflections .reflection-card {
+  appearance: none;
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: zoom-in;
+  overflow: hidden;
+}
+
+#reflections .reflection-card img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 180ms ease;
+}
+
+#reflections .reflection-card:hover img,
+#reflections .reflection-card:focus-visible img {
+  transform: scale(1.02);
+}
+
+#reflections .reflection-card:focus-visible {
+  outline: 2px solid #18301f;
+  outline-offset: 4px;
+}
+
+.reflection-lightbox {
+  width: min(92vw, 980px);
+  max-width: 980px;
+  max-height: 92vh;
+  padding: clamp(1rem, 2vw, 1.5rem);
+  border: 0;
+  background: #f4efe5;
+  box-shadow: 0 24px 70px rgba(7, 18, 11, .32);
+  overflow: auto;
+}
+
+.reflection-lightbox::backdrop {
+  background: rgba(7, 18, 11, .78);
+  backdrop-filter: blur(4px);
+}
+
+.reflection-lightbox img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: calc(92vh - 3rem);
+  object-fit: contain;
+}
+
+.reflection-lightbox-close {
+  position: sticky;
+  top: 0;
+  float: right;
+  z-index: 2;
+  width: 2.5rem;
+  height: 2.5rem;
+  margin: 0 0 -2.5rem auto;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(244, 239, 229, .94);
+  color: #18301f;
+  font-family: var(--font-body);
+  font-size: 1.8rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+@media (max-width: 700px) {
+  #food .image-stack {
+    order: 1 !important;
+  }
+
+  #food .copy-block {
+    order: 2 !important;
+  }
+
+  #trek .trek-gallery-primary,
+  #trek .trek-gallery-secondary {
+    width: 100% !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: .8rem !important;
+  }
+
+  #trek .trek-gallery-primary .trek-photo-placeholder:nth-child(n),
+  #trek .trek-gallery-secondary .trek-photo-placeholder:nth-child(n) {
+    grid-column: auto !important;
+    grid-row: auto !important;
+    margin: 0 !important;
+    aspect-ratio: 4 / 3 !important;
+  }
+
+  #trek .trek-gallery-primary .trek-photo-placeholder:first-child,
+  #trek .trek-gallery-secondary .trek-photo-placeholder:nth-child(2) {
+    grid-column: 1 / -1 !important;
+    aspect-ratio: 16 / 10 !important;
+  }
+
+  .reflection-lightbox {
+    width: 96vw;
+    max-height: 94vh;
+    padding: .75rem;
+  }
 }
