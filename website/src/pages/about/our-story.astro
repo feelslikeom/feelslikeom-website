@@ -61,15 +61,14 @@
             <p>I serve you as a bridge between you and the indigenous communities, so that you may learn from them and reconnect with yourself.</p>
 
             <aside class="question" aria-label="Reflection question">
-              <p>How might we stay true to who we are and co-create an interdependently thriving world? An interdependently thriving world that looks like what Norma Wong imagined in her book, <em>When No Thing Works</em>.</p>
+              <p>How might we stay true to who we are and co-create an interdependently thriving world?</p>
             </aside>
-          </div>
 
-          <div class="imagined-future">
-            <div class="imagined-future-images">
-              <img src="/imagined-future-1.jpg" alt="Imagined future photograph 1" />
-              <img src="/imagined-future-2.jpg" alt="Imagined future photograph 2" />
-            </div>
+            <section class="future-world" aria-labelledby="future-world-title">
+              <h2 id="future-world-title">A world that looks like</h2>
+              <p>Multigenerational continuity of values and responsibility... Worldwide relationships based on deep work and community... Indigenous peoples who have thrived and work beyond their ancestral birthplaces, which are recognised by traditional place names once thought erased... A strong purpose of world peace that must be worked for and is the responsibility of the spiritual and common folk... Governance beyond the institutions of government... Reclaimed land and elements of the land, especially in water, in mutual relationship... Stewardship... Looking and planning forward, w-a-y forward... Beyond food security, food abundance and sharing and remembrance... more!</p>
+              <p class="future-world-quote">“If a horizon story -- near or far -- has resonance beyond its principal storyteller, it is because it has strong under pinnings in which many stories may be told, many peoples find themselves in, innumerable scenes of work in progress.”</p>
+            </section>
           </div>
         </article>
       </section>
@@ -186,7 +185,7 @@
     align-items: start;
   }
 
-  .founder-story article { min-width: 0; }
+  .founder-story article { min-width: 0; width: 100%; }
 
   .portrait-column {
     position: sticky;
@@ -213,6 +212,7 @@
     font-family: Georgia, serif;
     font-size: clamp(2.8rem, 5vw, 5rem);
     line-height: 1;
+    text-align: center;
   }
 
   blockquote {
@@ -225,7 +225,8 @@
   }
 
   .body-copy {
-    max-width: 42rem;
+    width: 100%;
+    max-width: none;
     line-height: 1.75;
   }
 
@@ -243,29 +244,33 @@
 
   .question p {
     margin: 0;
-    max-width: 34rem;
+    max-width: none;
     line-height: 1.5;
     font-weight: 600;
   }
 
-  .imagined-future {
-    margin-top: clamp(2.5rem, 5vw, 4rem);
-    max-width: 42rem;
+  .future-world {
+    margin-top: clamp(4rem, 7vw, 6rem);
   }
 
-  .imagined-future-images {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1rem;
-    align-items: start;
+  .future-world h2 {
+    margin: 0 0 1.5rem;
+    font-family: Georgia, serif;
+    font-size: clamp(2rem, 3.2vw, 3.4rem) !important;
+    line-height: 1.08;
+    font-weight: 400;
   }
 
-  .imagined-future-images img {
-    display: block;
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-    border-radius: 0.25rem;
+  .future-world p {
+    margin: 0 0 1.8rem;
+    line-height: 1.8;
+  }
+
+  .future-world-quote {
+    margin-top: clamp(2.5rem, 5vw, 4rem) !important;
+    font-family: Georgia, serif !important;
+    font-size: clamp(1.45rem, 2vw, 2rem) !important;
+    line-height: 1.45 !important;
   }
 
   @media (max-width: 760px) {
@@ -307,10 +312,6 @@
 
     .portrait-wrap {
       aspect-ratio: 4 / 5;
-    }
-
-    .imagined-future-images {
-      grid-template-columns: 1fr;
     }
   }
 </style>
