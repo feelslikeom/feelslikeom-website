@@ -147,6 +147,8 @@
                   <img src="/flagship-about-4.jpg" alt="The Flagship journey photograph 4" />
                   <img src="/flagship-about-5.jpg" alt="The Flagship journey photograph 5" />
                 </div>
+                <button class="flagship-carousel-arrow flagship-carousel-prev" type="button" aria-label="Previous Flagship image">‹</button>
+                <button class="flagship-carousel-arrow flagship-carousel-next" type="button" aria-label="Next Flagship image">›</button>
                 <div class="journey-dots flagship-carousel-dots" aria-label="Choose Flagship preview image">
                   <button class="is-active" type="button" aria-label="Show Flagship image 1" data-slide="0"></button>
                   <button type="button" aria-label="Show Flagship image 2" data-slide="1"></button>
@@ -251,15 +253,22 @@
       const flagshipCarousel = document.querySelector('.flagship-carousel');
       const flagshipSlides = Array.from(flagshipCarousel?.querySelectorAll('.flagship-carousel-images img') ?? []);
       const flagshipDots = Array.from(flagshipCarousel?.querySelectorAll('.flagship-carousel-dots button') ?? []);
+      const flagshipPrev = flagshipCarousel?.querySelector('.flagship-carousel-prev');
+      const flagshipNext = flagshipCarousel?.querySelector('.flagship-carousel-next');
+      let currentFlagshipSlide = 0;
 
       const showFlagshipSlide = (index) => {
-        flagshipSlides.forEach((slide, slideIndex) => slide.classList.toggle('is-active', slideIndex === index));
-        flagshipDots.forEach((dot, dotIndex) => dot.classList.toggle('is-active', dotIndex === index));
+        if (!flagshipSlides.length) return;
+        currentFlagshipSlide = (index + flagshipSlides.length) % flagshipSlides.length;
+        flagshipSlides.forEach((slide, slideIndex) => slide.classList.toggle('is-active', slideIndex === currentFlagshipSlide));
+        flagshipDots.forEach((dot, dotIndex) => dot.classList.toggle('is-active', dotIndex === currentFlagshipSlide));
       };
 
       flagshipDots.forEach((dot, index) => {
         dot.addEventListener('click', () => showFlagshipSlide(index));
       });
+      flagshipPrev?.addEventListener('click', () => showFlagshipSlide(currentFlagshipSlide - 1));
+      flagshipNext?.addEventListener('click', () => showFlagshipSlide(currentFlagshipSlide + 1));
     </script>
   </body>
 </html>
@@ -386,6 +395,11 @@
   .flagship-carousel-images { position:absolute; inset:0; }
   .flagship-carousel-images img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity 320ms ease; }
   .flagship-carousel-images img.is-active { opacity:1; }
+  .flagship-carousel-arrow { position:absolute; top:50%; z-index:4; width:3rem; height:3rem; border:0; border-radius:50%; background:rgba(244,239,229,.96); color:#18301f; font-family:Georgia,serif; font-size:2rem; line-height:1; box-shadow:0 3px 12px rgba(0,0,0,.2); cursor:pointer; transform:translateY(-50%); display:flex; align-items:center; justify-content:center; }
+  .flagship-carousel-prev { left:1rem; }
+  .flagship-carousel-next { right:1rem; }
+  .flagship-carousel-arrow:hover { background:#fff; }
+  .flagship-carousel-arrow:focus-visible { outline:2px solid #18301f; outline-offset:3px; }
   .journey-dots { position:absolute; left:50%; bottom:1.25rem; transform:translateX(-50%); display:flex; gap:.45rem; align-items:center; z-index:3; }
   .journey-dots i,
   .flagship-carousel-dots button { display:block; width:7px; height:7px; padding:0; border-radius:50%; border:1px solid rgba(24,48,31,.72); background:transparent; }
@@ -482,6 +496,9 @@
     .home-journeys-grid { grid-template-columns:1fr; gap:3.75rem; margin-top:4.5rem; }
     .journey-tile-image { border-radius:1.15rem; }
     .journey-tile-copy { padding-top:1rem; }
+    .flagship-carousel-arrow { width:2.65rem; height:2.65rem; font-size:1.7rem; }
+    .flagship-carousel-prev { left:.75rem; }
+    .flagship-carousel-next { right:.75rem; }
     .reflections { padding: 4.25rem 1.25rem 5rem; }
     .reflections-grid { grid-template-columns: 1fr; gap: 1.25rem; }
   }
