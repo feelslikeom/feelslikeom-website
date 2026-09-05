@@ -83,11 +83,12 @@
 
           <div class="intent-copy intent-right">
             <p>You’re not a self-improvement project.</p>
-            <p>We’re not measuring “progress”.</p>
-            <p>We’re creating a supportive space for you to</p>
-            <p>slow down</p>
-            <p>notice what’s going on within and around you</p>
-            <p>then you decide what to let go of</p>
+            <p>No “progress” to be measured</p>
+            <p>Just slow down</p>
+            <p>notice what’s going on</p>
+            <p>within and around you</p>
+            <p>then you decide</p>
+            <p>what to let go of</p>
             <p>and how to go forward.</p>
           </div>
 
@@ -106,9 +107,28 @@
         <div class="wide">
           <h2 id="who-title">Who is this for?</h2>
           <div class="who-summary">
-            <p>Curious, but apprehensive</p>
-            <p>In a liminal period</p>
-            <p>Feeling called to meditate with Sikkim’s living energy</p>
+            <div class="who-summary-item">
+              <svg class="who-icon" viewBox="0 0 64 64" aria-hidden="true">
+                <path d="M8 32c6.8-10.4 14.8-15.6 24-15.6S49.2 21.6 56 32c-6.8 10.4-14.8 15.6-24 15.6S14.8 42.4 8 32Z" />
+                <circle cx="32" cy="32" r="7.5" />
+              </svg>
+              <p>Curious, but apprehensive</p>
+            </div>
+            <div class="who-summary-item">
+              <svg class="who-icon" viewBox="0 0 64 64" aria-hidden="true">
+                <path d="M16 54V10h32v44" />
+                <path d="M24 54V20h16v34" />
+                <path d="M32 20v34" />
+              </svg>
+              <p>In a liminal period</p>
+            </div>
+            <div class="who-summary-item">
+              <svg class="who-icon" viewBox="0 0 64 64" aria-hidden="true">
+                <circle cx="45" cy="17" r="7" />
+                <path d="M7 50 24 27l10 12 7-8 16 19" />
+              </svg>
+              <p>Feeling called to meditate with Sikkim’s living energy</p>
+            </div>
           </div>
 
           <div class="audience-grid">
@@ -127,7 +147,7 @@
               <span>02</span>
               <h3>In a liminal period</h3>
               <div class="audience-copy">
-                <p>The word “liminal” comes from the Latin word <em>limen</em>, which means threshold. To be in a liminal space means to be on the precipice of something new but not quite there yet. <a href="https://www.verywellmind.com/the-impact-of-liminal-space-on-your-mental-health-5204371">Read more about liminal space.</a></p>
+                <p>“The word “liminal” comes from the Latin word <em>limen</em>, which means threshold. To be in a liminal space means to be on the precipice of something new but not quite there yet.” <a href="https://www.verywellmind.com/the-impact-of-liminal-space-on-your-mental-health-5204371">Read more about liminal space.</a></p>
                 <p>Maybe you feel stuck, experienced deep loss that made you confront impermanence, or consistently feel the ache of restlessness.</p>
                 <p>Give yourself permission to step out of the container that can no longer contain who you might be becoming.</p>
                 <p>Step into a space to slow down, explore who you are, and what you really want.</p>
@@ -440,14 +460,17 @@
   .section h2 { margin:0 0 clamp(2.5rem,5vw,4rem); line-height:1.03; }
 
   .who-section { background:#f4efe5; }
-  .who-summary { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin:0 0 clamp(5rem,8vw,7rem); padding:2rem 0; border-top:1px solid rgba(24,48,31,.2); border-bottom:1px solid rgba(24,48,31,.2); }
+  .who-summary { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:clamp(2rem,5vw,5rem); margin:0 0 clamp(5rem,8vw,7rem); padding:clamp(2.5rem,4vw,3.5rem) 0; border-top:1px solid rgba(24,48,31,.2); border-bottom:1px solid rgba(24,48,31,.2); align-items:start; }
+  .who-summary-item { min-width:0; display:flex; flex-direction:column; align-items:flex-start; }
+  .who-icon { width:clamp(2.8rem,4vw,4rem); height:clamp(2.8rem,4vw,4rem); margin-bottom:1.5rem; fill:none; stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
   .who-summary p { margin:0; font-family:var(--font-display)!important; font-size:clamp(1.3rem,2vw,1.8rem)!important; line-height:1.25; }
   .audience-grid { display:grid; gap:clamp(4rem,7vw,6rem); }
   .audience-grid article { display:grid; grid-template-columns:minmax(180px,30%) minmax(0,70%); column-gap:clamp(2rem,5vw,5rem); }
   .audience-grid article > span { grid-column:1; font-size:var(--type-small); letter-spacing:.12em; opacity:.6; }
   .audience-grid article > h3 { grid-column:1; margin:.8rem 0 0; max-width:300px; }
   .audience-copy { grid-column:2; grid-row:1 / span 2; padding-left:clamp(2rem,4vw,4rem); border-left:1px solid rgba(24,48,31,.32); }
-  .audience-copy p { margin:0 0 1rem; }
+  .audience-copy p { margin:0 0 2rem; }
+  .audience-copy p:last-child { margin-bottom:0; }
 
   .teacher-section { width:min(1200px,92%); margin:0 auto; padding:clamp(6rem,11vw,10rem) 0; display:grid; grid-template-columns:.9fr 1.1fr; gap:clamp(3rem,7vw,7rem); align-items:center; }
   .teacher-copy h2 { margin:.7rem 0 2rem; line-height:1.03; }
@@ -503,7 +526,8 @@
   @media (max-width:900px) {
     .section-nav { display:none; }
     .teacher-section,.split-section { grid-template-columns:1fr; }
-    .who-summary { grid-template-columns:1fr; }
+    .who-summary { grid-template-columns:1fr; gap:2.75rem; }
+    .who-summary-item { width:100%; }
     .audience-grid article { grid-template-columns:1fr; gap:.7rem; }
     .audience-grid article > span,.audience-grid article > h3,.audience-copy { grid-column:1; }
     .audience-grid article > h3 { margin:.4rem 0 1rem; }
