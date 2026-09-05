@@ -454,3 +454,51 @@ li,
     aspect-ratio: 16 / 10;
   }
 }
+
+/* The Flagship accommodation and reflection images uploaded in Codespaces. */
+#accommodation .accommodation-portrait,
+.accommodation-gallery .accommodation-landscape,
+#reflections .reflection-grid .square {
+  background-size: cover !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  border: 0 !important;
+}
+
+#accommodation .accommodation-portrait span,
+.accommodation-gallery .accommodation-landscape span,
+#reflections .reflection-grid .square span {
+  display: none !important;
+}
+
+#accommodation .accommodation-portrait {
+  background-image: url('/flagship-accommodation-portrait.jpg') !important;
+}
+
+.accommodation-gallery .accommodation-landscape:nth-child(1) {
+  background-image: url('/flagship-accommodation-1.jpg') !important;
+}
+
+.accommodation-gallery .accommodation-landscape:nth-child(2) {
+  background-image: url('/flagship-accommodation-2.jpg') !important;
+}
+
+.accommodation-gallery .accommodation-landscape:nth-child(3) {
+  background-image: url('/flagship-accommodation-3.jpg') !important;
+}
+
+.accommodation-gallery .accommodation-landscape:nth-child(4) {
+  background-image: url('/flagship-accommodation-4.jpg') !important;
+}
+
+#reflections .reflection-grid .square:nth-child(1) {
+  background-image: url('/flagship-reflection-1.jpg') !important;
+}
+
+#reflections .reflection-grid .square:nth-child(2) {
+  background-image: url('/flagship-reflection-2.jpg') !important;
+}
+
+#reflections .reflection-grid .square:nth-child(3) {
+  background-image: url('/flagship-reflection-3.jpg') !important;
+}
