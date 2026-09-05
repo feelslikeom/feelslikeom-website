@@ -489,3 +489,70 @@ li,
 #reflections .reflection-grid .square:nth-child(3) {
   background-image: url('/flagship-reflection-3.jpg') !important;
 }
+
+/* The Flagship: newly uploaded place, reflection and trek photographs. */
+.story-section-place .story-media,
+.story-section-reflection .story-media,
+.trek-photo-placeholder {
+  background-size: cover !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  border: 0 !important;
+}
+
+.story-section-place .story-media span,
+.story-section-reflection .story-media span,
+.trek-photo-placeholder span {
+  display: none !important;
+}
+
+.story-section-place .story-media {
+  background-image: url('/flagship-yuksom.jpg') !important;
+}
+
+.story-section-reflection .story-media {
+  background-image: url('/flagship-reflection.jpg') !important;
+}
+
+.trek-photo-row[aria-label="Trek photograph placeholders"] .trek-photo-placeholder:nth-child(1) {
+  background-image: url('/flagship-trek-1.jpg') !important;
+}
+
+.trek-photo-row[aria-label="Trek photograph placeholders"] .trek-photo-placeholder:nth-child(2) {
+  background-image: url('/flagship-trek-2.jpg') !important;
+}
+
+.trek-photo-row[aria-label="Trek photograph placeholders"] .trek-photo-placeholder:nth-child(3) {
+  background-image: url('/flagship-trek-3.jpg') !important;
+}
+
+.trek-photo-row[aria-label="More trek photograph placeholders"] .trek-photo-placeholder:nth-child(1) {
+  background-image: url('/flagship-trek-4.jpg') !important;
+}
+
+.trek-photo-row[aria-label="More trek photograph placeholders"] .trek-photo-placeholder:nth-child(2) {
+  background-image: url('/flagship-trek-5.jpg') !important;
+}
+
+.trek-photo-row[aria-label="More trek photograph placeholders"] .trek-photo-placeholder:nth-child(3) {
+  background-image: url('/flagship-trek-6.jpg') !important;
+}
+
+/* Rotate breakfast 1 and dinner 90 degrees counter-clockwise while keeping landscape slots. */
+#food .image-stack > .image-placeholder:first-child,
+#food .image-stack::after {
+  width: 66.6667% !important;
+  aspect-ratio: 2 / 3 !important;
+  justify-self: center !important;
+  margin-block: -16.6667% !important;
+  transform: rotate(-90deg);
+  transform-origin: center center;
+  background-size: contain !important;
+}
+
+#food .image-stack > .image-placeholder:nth-child(2) {
+  width: 100% !important;
+  aspect-ratio: 3 / 2 !important;
+  transform: none !important;
+  margin: 0 !important;
+}
