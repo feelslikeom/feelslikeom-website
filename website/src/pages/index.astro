@@ -215,10 +215,11 @@
   .portrait-wrap { overflow:hidden; border-radius:.25rem; background:#d8d1c3; aspect-ratio:4/5; }
   .portrait-wrap img { width:100%; height:100%; display:block; object-fit:cover; object-position:50% 42%; transition:transform 900ms cubic-bezier(.22,.61,.36,1); }
   .founder-card:hover .portrait-wrap img { transform:scale(1.025); }
-  .portrait-wrap--placeholder { background:linear-gradient(145deg,rgba(24,48,31,.12),rgba(24,48,31,.025)); border:1px solid rgba(24,48,31,.12); }
+  .portrait-wrap--placeholder { background:url('/elan-portrait.jpg') center/cover no-repeat; border:0; }
   .founder-copy { padding-top:1.5rem; }
   .person-name { margin:0 0 .8rem; font-size:clamp(2.2rem,3.6vw,3.8rem); line-height:1; }
   blockquote { margin:0 0 1.5rem; font-size:clamp(1.35rem,2.1vw,2rem); line-height:1.25; }
+  .founder-copy blockquote { font-size:var(--type-subheading)!important; }
   .story-link { display:inline-flex; gap:.65rem; align-items:center; color:inherit; text-underline-offset:.35rem; font-size:.92rem; }
   .story-link span { font-size:1.45rem; transition:transform 220ms ease; text-decoration:none; }
   .story-link:hover span { transform:translateX(5px); }
