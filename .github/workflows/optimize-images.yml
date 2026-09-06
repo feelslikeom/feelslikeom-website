@@ -8,6 +8,9 @@ on:
       - 'website/public/**/*.jpeg'
       - 'website/public/**/*.JPG'
       - 'website/public/**/*.JPEG'
+      - 'website/public/**/*.png'
+      - 'website/public/**/*.PNG'
+      - 'website/scripts/optimize-images.mjs'
       - '.github/workflows/optimize-images.yml'
 
 permissions:
@@ -32,7 +35,7 @@ jobs:
         working-directory: website
         run: npm install sharp@0.34.3 --no-save --package-lock=false
 
-      - name: Optimize JPEGs
+      - name: Optimize images
         working-directory: website
         run: node scripts/optimize-images.mjs
 
