@@ -696,3 +696,40 @@ dialog[open] { animation:flo-dialog-in 260ms var(--motion-ease) both; }
   .teacher-section + .full-bleed-image-placeholder,
   .retreat-rhythm + .full-bleed-image-placeholder { animation:none!important; }
 }
+
+/* Reflections page lightbox: quote and name only, with previous/next controls retained. */
+.reflection-lightbox .lightbox-image { display:none!important; }
+.reflection-lightbox:has(.lightbox-copy) {
+  min-height:min(70vh,620px)!important;
+  padding:clamp(2.5rem,6vw,5rem)!important;
+  overflow:hidden!important;
+}
+.reflection-lightbox:has(.lightbox-copy)[open] {
+  display:flex!important;
+  flex-direction:column!important;
+  justify-content:center!important;
+  align-items:center!important;
+}
+.reflection-lightbox:has(.lightbox-copy) .lightbox-copy {
+  width:min(760px,82%)!important;
+  margin:auto!important;
+  text-align:center!important;
+}
+.reflection-lightbox:has(.lightbox-copy) .lightbox-quote {
+  margin:0 0 1rem!important;
+  font-size:clamp(2rem,4vw,3.8rem)!important;
+  line-height:1.08!important;
+}
+.reflection-lightbox:has(.lightbox-copy) .lightbox-name {
+  margin:0!important;
+}
+@media (max-width:760px) {
+  .reflection-lightbox:has(.lightbox-copy) {
+    min-height:62vh!important;
+    padding:3.5rem 3.25rem!important;
+  }
+  .reflection-lightbox:has(.lightbox-copy) .lightbox-copy { width:100%!important; }
+  .reflection-lightbox:has(.lightbox-copy) .lightbox-quote {
+    font-size:clamp(1.6rem,8vw,2.6rem)!important;
+  }
+}
