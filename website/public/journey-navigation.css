@@ -13,6 +13,13 @@
   backdrop-filter:none!important;
   transform:translateY(-50%)!important;
   overflow:visible!important;
+  opacity:0!important;
+  visibility:hidden!important;
+  pointer-events:none!important;
+  transition:opacity 220ms ease,visibility 220ms ease!important;
+}
+
+.section-nav.has-entered-intentions {
   opacity:1!important;
   visibility:visible!important;
   pointer-events:auto!important;
@@ -217,7 +224,7 @@ body.flagship-page .accommodation-gallery-section.is-in-view .accommodation-land
 }
 
 @media (prefers-reduced-motion:reduce) {
-  .back-to-top,.section-nav a,.section-nav .section-nav-dot,.section-nav .section-nav-label { transition:none!important; }
+  .back-to-top,.section-nav,.section-nav a,.section-nav .section-nav-dot,.section-nav .section-nav-label { transition:none!important; }
   body.flagship-page .accommodation-section .accommodation-heading,
   body.flagship-page .accommodation-section .accommodation-body,
   body.flagship-page .accommodation-section .accommodation-portrait,
