@@ -1,8 +1,54 @@
 ---
-const reflections = Array.from({ length: 18 }, () => ({
-  quote: "Reflection coming soon.",
-  name: "Past participant",
-}));
+const reflections = [
+  {
+    quote: "Sikkim has shown me how community and relationships are indeed the greatest currency in life.",
+    name: "Amos",
+    image: "/amos.jpg",
+    focus: "50% 34%",
+  },
+  {
+    quote: "Community. Realising that choosing to love with a genuine heart is something that no riches can buy.",
+    name: "Bing Ming",
+    image: "/bingming.jpg",
+    focus: "50% 28%",
+  },
+  {
+    quote: "A simple life being contented and intentional, focused lesser on what we do, but who we are and the good impact we leave on this world.",
+    name: "Heather",
+    image: "/heather.jpg",
+    focus: "50% 30%",
+  },
+  {
+    quote: "Reflection coming soon.",
+    name: "Kwan Wei",
+    image: "/kwanwei.jpg",
+    focus: "50% 26%",
+  },
+  {
+    quote: "Reflection coming soon.",
+    name: "Li Yan",
+    image: "/liyan.jpg",
+    focus: "50% 28%",
+  },
+  {
+    quote: "Reflection coming soon.",
+    name: "Mirza",
+    image: "/mirza.jpg",
+    focus: "50% 30%",
+  },
+  {
+    quote: "You’re honouring the reciprocal relationship between nature and humans. The way everyone lives has such intentionality, in spirit, emotion, body and mind.",
+    name: "Tangen",
+    image: "/tangen.jpg",
+    focus: "50% 28%",
+  },
+  ...Array.from({ length: 11 }, () => ({
+    quote: "Reflection coming soon.",
+    name: "Past participant",
+    image: "",
+    focus: "50% 35%",
+  })),
+];
 
 const baseWidth = 1180;
 const baseHeight = 900;
@@ -126,13 +172,15 @@ rings.forEach((ringNodes, ringIndex) => {
 
             {reflectionNodes.map((reflection, index) => (
               <button
-                class="reflection-node"
+                class={`reflection-node${reflection.image ? " has-image" : ""}`}
                 type="button"
-                style={`--x:${reflection.x}px;--y:${reflection.y}px;--node-size:${reflection.size}px;`}
+                style={`--x:${reflection.x}px;--y:${reflection.y}px;--node-size:${reflection.size}px;--image:${reflection.image ? `url('${reflection.image}')` : "none"};--focus:${reflection.focus};`}
                 data-index={index}
                 data-quote={reflection.quote}
                 data-name={reflection.name}
-                aria-label={`Open reflection ${index + 1}`}
+                data-image={reflection.image}
+                data-focus={reflection.focus}
+                aria-label={`Open reflection from ${reflection.name}`}
               >
                 <span aria-hidden="true"></span>
               </button>
@@ -150,8 +198,9 @@ rings.forEach((ringNodes, ringIndex) => {
         <blockquote class="lightbox-quote">“Reflection coming soon.”</blockquote>
         <p class="lightbox-name">— Past participant</p>
       </div>
-      <div class="lightbox-image" role="img" aria-label="Participant reflection image placeholder">
-        <span>Reflection image</span>
+      <div class="lightbox-image" aria-label="Participant reflection image">
+        <img class="lightbox-photo" alt="" />
+        <span class="lightbox-placeholder">Reflection image</span>
       </div>
     </dialog>
 
@@ -160,6 +209,8 @@ rings.forEach((ringNodes, ringIndex) => {
       const dialog = document.querySelector('.reflection-lightbox');
       const quote = dialog?.querySelector('.lightbox-quote');
       const name = dialog?.querySelector('.lightbox-name');
+      const photo = dialog?.querySelector('.lightbox-photo');
+      const placeholder = dialog?.querySelector('.lightbox-placeholder');
       const close = dialog?.querySelector('.lightbox-close');
       const prev = dialog?.querySelector('.lightbox-prev');
       const next = dialog?.querySelector('.lightbox-next');
@@ -169,8 +220,21 @@ rings.forEach((ringNodes, ringIndex) => {
         if (!nodes.length || !dialog) return;
         current = (index + nodes.length) % nodes.length;
         const node = nodes[current];
+        const image = node.dataset.image ?? '';
         if (quote) quote.textContent = `“${node.dataset.quote ?? ''}”`;
         if (name) name.textContent = `— ${node.dataset.name ?? ''}`;
+        if (photo) {
+          if (image) {
+            photo.src = image;
+            photo.alt = `${node.dataset.name ?? 'Participant'} reflection photograph`;
+            photo.style.objectPosition = node.dataset.focus ?? '50% 35%';
+            photo.hidden = false;
+          } else {
+            photo.removeAttribute('src');
+            photo.hidden = true;
+          }
+        }
+        if (placeholder) placeholder.hidden = Boolean(image);
         if (!dialog.open) dialog.showModal();
       };
 
@@ -223,8 +287,9 @@ rings.forEach((ringNodes, ringIndex) => {
   .flo-center { position:absolute; left:50%; top:50%; width:clamp(120px,17vw,210px); aspect-ratio:1; transform:translate(-50%,-50%); border-radius:50%; overflow:hidden; background:transparent; border:0; box-shadow:none; z-index:3; }
   .flo-center img { display:block; width:100%; height:100%; object-fit:contain; border-radius:50%; }
 
-  .reflection-node { position:absolute; left:var(--x); top:var(--y); width:var(--node-size); aspect-ratio:1; transform:translate(-50%,-50%); border-radius:50%; border:2px solid #18301f; padding:0; cursor:zoom-in; background:#f4efe5; z-index:4; transition:transform 180ms ease,box-shadow 180ms ease; }
+  .reflection-node { position:absolute; left:var(--x); top:var(--y); width:var(--node-size); aspect-ratio:1; transform:translate(-50%,-50%); border-radius:50%; border:2px solid #18301f; padding:0; cursor:zoom-in; background:#f4efe5; z-index:4; overflow:hidden; transition:transform 180ms ease,box-shadow 180ms ease; }
   .reflection-node span { display:block; width:100%; height:100%; border-radius:50%; background:linear-gradient(145deg,rgba(24,48,31,.24),rgba(24,48,31,.06)); }
+  .reflection-node.has-image span { background-image:var(--image); background-size:cover; background-position:var(--focus); background-repeat:no-repeat; }
   .reflection-node:hover,.reflection-node:focus-visible { transform:translate(-50%,-50%) scale(1.12); box-shadow:0 10px 25px rgba(24,48,31,.16); outline:none; }
 
   .reflection-lightbox { width:min(92vw,940px); max-width:940px; max-height:92vh; padding:clamp(1.5rem,3vw,2.5rem); border:0; background:#f4efe5; color:#18301f; box-shadow:0 24px 70px rgba(7,18,11,.34); overflow:auto; }
@@ -232,7 +297,9 @@ rings.forEach((ringNodes, ringIndex) => {
   .lightbox-copy { text-align:center; margin:0 auto clamp(1.5rem,3vw,2.5rem); max-width:780px; }
   .lightbox-quote { margin:0 0 .65rem; font-size:clamp(1.71rem,3.04vw,3.04rem)!important; line-height:1.08; }
   .lightbox-name { margin:0; opacity:.72; }
-  .lightbox-image { width:min(720px,100%); min-height:0; height:min(58vh,620px); margin:0 auto; display:flex; align-items:center; justify-content:center; background:linear-gradient(145deg,rgba(24,48,31,.16),rgba(24,48,31,.035)); border:1px solid rgba(24,48,31,.14); color:rgba(24,48,31,.5); }
+  .lightbox-image { width:min(720px,100%); min-height:0; height:min(58vh,620px); margin:0 auto; display:flex; align-items:center; justify-content:center; overflow:hidden; background:linear-gradient(145deg,rgba(24,48,31,.16),rgba(24,48,31,.035)); border:1px solid rgba(24,48,31,.14); color:rgba(24,48,31,.5); }
+  .lightbox-photo { display:block; width:100%; height:100%; object-fit:contain; background:#f4efe5; }
+  .lightbox-photo[hidden],.lightbox-placeholder[hidden] { display:none; }
   .lightbox-close { position:sticky; top:0; float:right; width:2.7rem; height:2.7rem; margin:0 0 -2.7rem auto; border:0; border-radius:50%; background:rgba(255,250,241,.96); color:#18301f; font-size:1.8rem; cursor:pointer; z-index:6; }
   .lightbox-nav { position:fixed; top:50%; width:3.2rem; height:3.2rem; transform:translateY(-50%); border:1px solid rgba(24,48,31,.18); border-radius:50%; background:rgba(244,239,229,.96); color:#18301f; font-family:Georgia,serif; font-size:2.1rem; cursor:pointer; z-index:6; box-shadow:0 8px 24px rgba(7,18,11,.16); }
   .lightbox-prev { left:max(1rem,calc(50vw - 540px)); }
