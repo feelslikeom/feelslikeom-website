@@ -3,7 +3,11 @@
   const intentions = document.querySelector('#intentions');
   if (!sectionNav || !intentions) return;
 
-  if (window.location.pathname.includes('/journeys/the-flagship')) {
+  const isFlagship = window.location.pathname.includes('/journeys/the-flagship');
+
+  if (isFlagship) {
+    document.body.classList.add('flagship-page');
+
     const flagshipLabels = {
       '#intentions': 'Intentions',
       '#itinerary': 'Itinerary',
@@ -19,6 +23,41 @@
       const href = link.getAttribute('href');
       if (label && href && flagshipLabels[href]) label.textContent = flagshipLabels[href];
     });
+
+    const accommodationSection = document.querySelector('.accommodation-section');
+    const accommodationGallerySection = document.querySelector('.accommodation-gallery-section');
+    const accommodationPortrait = document.querySelector('.accommodation-portrait');
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-in-view');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.16, rootMargin: '0px 0px -8% 0px' });
+
+    if (accommodationSection) revealObserver.observe(accommodationSection);
+    if (accommodationGallerySection) revealObserver.observe(accommodationGallerySection);
+
+    const updateAccommodationDrift = () => {
+      if (!accommodationSection || !accommodationPortrait || reducedMotion.matches || window.innerWidth <= 900) {
+        accommodationPortrait?.style.setProperty('--accommodation-drift', '0px');
+        return;
+      }
+
+      const rect = accommodationSection.getBoundingClientRect();
+      const viewport = window.innerHeight || 1;
+      const progress = Math.max(0, Math.min(1, (viewport - rect.top) / (viewport + rect.height)));
+      const drift = (0.5 - progress) * 28;
+      accommodationPortrait.style.setProperty('--accommodation-drift', `${drift.toFixed(1)}px`);
+    };
+
+    updateAccommodationDrift();
+    window.addEventListener('scroll', updateAccommodationDrift, { passive: true });
+    window.addEventListener('resize', updateAccommodationDrift);
+    reducedMotion.addEventListener?.('change', updateAccommodationDrift);
   }
 
   const backToTop = document.createElement('button');
