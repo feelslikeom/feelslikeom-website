@@ -1,4 +1,24 @@
 ---
+const reflections = [
+  { quote: "Reflection coming soon.", name: "Past participant", x: 13, y: 23, s: 7 },
+  { quote: "Reflection coming soon.", name: "Past participant", x: 27, y: 13, s: 6 },
+  { quote: "Reflection coming soon.", name: "Past participant", x: 43, y: 21, s: 8 },
+  { quote: "Reflection coming soon.", name: "Past participant", x: 62, y: 12, s: 6 },
+  { quote: "Reflection coming soon.", name: "Past participant", x: 79, y: 20, s: 8 },
+  { quote: "Reflection coming soon.", name: "Past participant", x: 90, y: 31, s: 6 },
+  { quote: "Reflection coming soon.", name: "Past participant", x: 10, y: 46, s: 6 },
+  { quote: "Reflection coming soon.", name: "Past participant", x: 26, y: 38, s: 8 },
+  { quote: "Reflection coming soon.", name: "Past participant", x: 72, y: 39, s: 7 },
+  { quote: "Reflection coming soon.", name: "Past participant", x: 91, y: 52, s: 7 },
+  { quote: "Reflection coming soon.", name: "Past participant", x: 13, y: 68, s: 7 },
+  { quote: "Reflection coming soon.", name: "Past participant", x: 27, y: 59, s: 6 },
+  { quote: "Reflection coming soon.", name: "Past participant", x: 75, y: 61, s: 8 },
+  { quote: "Reflection coming soon.", name: "Past participant", x: 89, y: 73, s: 6 },
+  { quote: "Reflection coming soon.", name: "Past participant", x: 24, y: 80, s: 8 },
+  { quote: "Reflection coming soon.", name: "Past participant", x: 41, y: 76, s: 6 },
+  { quote: "Reflection coming soon.", name: "Past participant", x: 59, y: 82, s: 8 },
+  { quote: "Reflection coming soon.", name: "Past participant", x: 75, y: 84, s: 6 },
+];
 ---
 
 <html lang="en">
@@ -35,78 +55,151 @@
     </header>
 
     <main>
-      <section>
+      <section class="reflection-intro">
         <p class="eyebrow">REFLECTIONS</p>
-        <h1>Stories from past participants</h1>
-        <p class="intro">This page will hold the post-program reflections shared by people who have journeyed with us.</p>
+        <h1>We are all connected.</h1>
+        <p class="intro">Each circle holds one person’s reflection. Follow the threads, click into a story, and move from one reflection to the next.</p>
+      </section>
 
-        <div class="reflection-list">
-          <article id="participant-1"><h2>Participant reflection</h2><p>Reflection coming soon.</p></article>
-          <article id="participant-2"><h2>Participant reflection</h2><p>Reflection coming soon.</p></article>
-          <article id="participant-3"><h2>Participant reflection</h2><p>Reflection coming soon.</p></article>
+      <section class="reflection-web-section" aria-label="Interconnected participant reflections">
+        <div class="reflection-web">
+          <svg class="web-lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+            <g class="web-ring">
+              <path d="M13 23 L27 13 L43 21 L62 12 L79 20 L90 31 L91 52 L89 73 L75 84 L59 82 L41 76 L24 80 L13 68 L10 46 Z" />
+              <path d="M27 13 L26 38 L10 46 M43 21 L26 38 L50 50 M62 12 L72 39 L50 50 M79 20 L72 39 L90 31 M26 38 L27 59 L13 68 M72 39 L75 61 L91 52 M27 59 L41 76 L50 50 M75 61 L59 82 L50 50 M41 76 L59 82" />
+              <path d="M13 23 L43 21 M27 13 L50 50 M62 12 L50 50 M79 20 L50 50 M90 31 L72 39 M91 52 L75 61 M89 73 L75 61 M75 84 L59 82 M24 80 L41 76 M13 68 L27 59 M10 46 L26 38" />
+            </g>
+          </svg>
+
+          <div class="flo-center" aria-label="Feels Like Om">
+            <img src="/Flo-logo-Circle.jpg" alt="Feels Like Om circular logo" />
+          </div>
+
+          {reflections.map((reflection, index) => (
+            <button
+              class="reflection-node"
+              type="button"
+              style={`--x:${reflection.x}%;--y:${reflection.y}%;--s:${reflection.s}vw;`}
+              data-index={index}
+              data-quote={reflection.quote}
+              data-name={reflection.name}
+              aria-label={`Open reflection ${index + 1}`}
+            >
+              <span aria-hidden="true"></span>
+            </button>
+          ))}
         </div>
       </section>
     </main>
+
+    <dialog class="reflection-lightbox" aria-label="Participant reflection">
+      <button class="lightbox-close" type="button" aria-label="Close reflection">×</button>
+      <button class="lightbox-nav lightbox-prev" type="button" aria-label="Previous reflection">‹</button>
+      <button class="lightbox-nav lightbox-next" type="button" aria-label="Next reflection">›</button>
+      <div class="lightbox-copy">
+        <blockquote class="lightbox-quote">“Reflection coming soon.”</blockquote>
+        <p class="lightbox-name">— Past participant</p>
+      </div>
+      <div class="lightbox-image" role="img" aria-label="Participant reflection image placeholder">
+        <span>Reflection image</span>
+      </div>
+    </dialog>
+
+    <script>
+      const nodes = Array.from(document.querySelectorAll('.reflection-node'));
+      const dialog = document.querySelector('.reflection-lightbox');
+      const quote = dialog?.querySelector('.lightbox-quote');
+      const name = dialog?.querySelector('.lightbox-name');
+      const close = dialog?.querySelector('.lightbox-close');
+      const prev = dialog?.querySelector('.lightbox-prev');
+      const next = dialog?.querySelector('.lightbox-next');
+      let current = 0;
+
+      const showReflection = (index) => {
+        if (!nodes.length || !dialog) return;
+        current = (index + nodes.length) % nodes.length;
+        const node = nodes[current];
+        if (quote) quote.textContent = `“${node.dataset.quote ?? ''}”`;
+        if (name) name.textContent = `— ${node.dataset.name ?? ''}`;
+        if (!dialog.open) dialog.showModal();
+      };
+
+      nodes.forEach((node, index) => node.addEventListener('click', () => showReflection(index)));
+      close?.addEventListener('click', () => dialog?.close());
+      prev?.addEventListener('click', () => showReflection(current - 1));
+      next?.addEventListener('click', () => showReflection(current + 1));
+      dialog?.addEventListener('click', (event) => {
+        if (event.target === dialog) dialog.close();
+      });
+      document.addEventListener('keydown', (event) => {
+        if (!dialog?.open) return;
+        if (event.key === 'ArrowLeft') showReflection(current - 1);
+        if (event.key === 'ArrowRight') showReflection(current + 1);
+      });
+    </script>
   </body>
 </html>
 
 <style>
-  :global(*) { box-sizing: border-box; }
-  body { margin: 0; background: #f4efe5; color: #18301f; }
+  :global(*) { box-sizing:border-box; }
+  body { margin:0; background:#f4efe5; color:#18301f; overflow-x:hidden; }
 
-  .site-header {
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:2rem;
-    padding:1.5rem 4%;
-    border-bottom:1px solid rgba(24,48,31,.15);
-  }
+  .site-header { display:flex; align-items:center; justify-content:space-between; gap:2rem; padding:1.5rem 4%; border-bottom:1px solid rgba(24,48,31,.15); }
   .brand { color:inherit; text-decoration:none; white-space:nowrap; }
   .main-nav { display:flex; align-items:center; gap:1.5rem; letter-spacing:.08em; }
-  .main-nav > a,
-  .main-nav summary { color:inherit; text-decoration:none; cursor:pointer; }
+  .main-nav>a,.main-nav summary { color:inherit; text-decoration:none; cursor:pointer; }
   .main-nav .active { border-bottom:1px solid currentColor; }
   .nav-dropdown { position:relative; }
   .nav-dropdown summary { list-style:none; }
   .nav-dropdown summary::-webkit-details-marker { display:none; }
-  .submenu {
-    position:absolute;
-    top:calc(100% + .65rem);
-    right:0;
-    width:max-content;
-    min-width:13rem;
-    padding:.7rem;
-    background:#fffaf1;
-    border-radius:.4rem;
-    box-shadow:0 12px 30px rgba(8,20,12,.13);
-    z-index:5;
-    opacity:0;
-    visibility:hidden;
-    transform:translateY(-4px);
-    transition:opacity 160ms ease,visibility 160ms ease,transform 160ms ease;
-  }
+  .submenu { position:absolute; top:calc(100% + .65rem); right:0; width:max-content; min-width:13rem; padding:.7rem; background:#fffaf1; border-radius:.4rem; box-shadow:0 12px 30px rgba(8,20,12,.13); z-index:8; opacity:0; visibility:hidden; transform:translateY(-4px); transition:opacity 160ms ease,visibility 160ms ease,transform 160ms ease; }
   .submenu::before { content:""; position:absolute; top:-.75rem; left:0; right:0; height:.75rem; }
   .submenu a { display:block; padding:.65rem .75rem; color:#18301f; text-decoration:none; letter-spacing:0; }
   .submenu a:hover { background:rgba(24,48,31,.06); }
-  @media (hover:hover) and (pointer:fine) {
-    .nav-dropdown:hover .submenu { opacity:1; visibility:visible; transform:translateY(0); }
-  }
+  @media (hover:hover) and (pointer:fine) { .nav-dropdown:hover .submenu { opacity:1; visibility:visible; transform:translateY(0); } }
 
-  main { width: min(1100px, calc(100% - 2.5rem)); margin: 0 auto; padding: 0 0 7rem; }
-  section { padding-top: clamp(4rem, 10vw, 8rem); }
-  .eyebrow { margin: 0 0 1rem; letter-spacing: 0.14em; }
-  h1 { margin: 0 0 1.5rem; line-height: 0.98; }
-  .intro { max-width: 42rem; margin: 0 0 5rem; line-height: 1.7; }
-  .reflection-list { display: grid; gap: 1px; background: rgba(24,48,31,.18); }
-  article { background: #f4efe5; padding: 2.5rem 0; }
-  article h2 { margin: 0 0 .75rem; }
-  article p { margin: 0; }
+  main { width:100%; }
+  .reflection-intro { width:min(1180px,calc(100% - 8%)); margin:0 auto; padding:clamp(5rem,10vw,8rem) 0 1rem; text-align:center; }
+  .eyebrow { margin:0 0 1.2rem; letter-spacing:.14em; }
+  .reflection-intro h1 { margin:0; font-size:clamp(3rem,6vw,6.5rem)!important; line-height:.98; }
+  .intro { width:min(620px,100%); margin:1.5rem auto 0; line-height:1.7; }
+
+  .reflection-web-section { width:100%; padding:clamp(2rem,5vw,4rem) 0 clamp(5rem,9vw,8rem); overflow:hidden; }
+  .reflection-web { position:relative; width:min(1180px,96vw); height:min(900px,78vw); min-height:650px; margin:0 auto; }
+  .web-lines { position:absolute; inset:0; width:100%; height:100%; overflow:visible; pointer-events:none; }
+  .web-ring { fill:none; stroke:#18301f; stroke-width:.22; vector-effect:non-scaling-stroke; opacity:.42; }
+
+  .flo-center { position:absolute; left:50%; top:50%; width:clamp(120px,17vw,210px); aspect-ratio:1; transform:translate(-50%,-50%); border-radius:50%; overflow:hidden; background:#f4efe5; border:1px solid rgba(24,48,31,.18); box-shadow:0 0 0 12px #f4efe5; z-index:3; }
+  .flo-center img { display:block; width:100%; height:100%; object-fit:cover; border-radius:50%; }
+
+  .reflection-node { position:absolute; left:var(--x); top:var(--y); width:clamp(52px,var(--s),92px); aspect-ratio:1; transform:translate(-50%,-50%); border-radius:50%; border:2px solid #18301f; padding:0; cursor:zoom-in; background:#f4efe5; z-index:4; transition:transform 180ms ease,box-shadow 180ms ease; }
+  .reflection-node span { display:block; width:100%; height:100%; border-radius:50%; background:linear-gradient(145deg,rgba(24,48,31,.24),rgba(24,48,31,.06)); }
+  .reflection-node:hover,.reflection-node:focus-visible { transform:translate(-50%,-50%) scale(1.12); box-shadow:0 10px 25px rgba(24,48,31,.16); outline:none; }
+
+  .reflection-lightbox { width:min(92vw,940px); max-width:940px; padding:clamp(1.5rem,3vw,2.5rem); border:0; background:#f4efe5; color:#18301f; box-shadow:0 24px 70px rgba(7,18,11,.34); overflow:visible; }
+  .reflection-lightbox::backdrop { background:rgba(7,18,11,.78); backdrop-filter:blur(4px); }
+  .lightbox-copy { text-align:center; margin:0 auto clamp(1.5rem,3vw,2.5rem); max-width:780px; }
+  .lightbox-quote { margin:0 0 .65rem; font-size:clamp(1.8rem,3.2vw,3.2rem)!important; line-height:1.08; }
+  .lightbox-name { margin:0; opacity:.72; }
+  .lightbox-image { width:min(720px,100%); aspect-ratio:4/5; margin:0 auto; display:flex; align-items:center; justify-content:center; background:linear-gradient(145deg,rgba(24,48,31,.16),rgba(24,48,31,.035)); border:1px solid rgba(24,48,31,.14); color:rgba(24,48,31,.5); }
+  .lightbox-close { position:absolute; top:1rem; right:1rem; width:2.7rem; height:2.7rem; border:0; border-radius:50%; background:rgba(255,250,241,.96); color:#18301f; font-size:1.8rem; cursor:pointer; z-index:6; }
+  .lightbox-nav { position:fixed; top:50%; width:3.2rem; height:3.2rem; transform:translateY(-50%); border:1px solid rgba(24,48,31,.18); border-radius:50%; background:rgba(244,239,229,.96); color:#18301f; font-family:Georgia,serif; font-size:2.1rem; cursor:pointer; z-index:6; box-shadow:0 8px 24px rgba(7,18,11,.16); }
+  .lightbox-prev { left:max(1rem,calc(50vw - 540px)); }
+  .lightbox-next { right:max(1rem,calc(50vw - 540px)); }
 
   @media (max-width:760px) {
     .site-header { align-items:flex-start; padding:1.15rem 1.25rem; }
     .main-nav { gap:.75rem; flex-wrap:wrap; justify-content:flex-end; }
     .submenu { right:auto; left:0; }
     .nav-dropdown[open] .submenu { opacity:1; visibility:visible; transform:translateY(0); }
+    .reflection-intro { width:calc(100% - 2.5rem); padding-top:4rem; }
+    .reflection-web { width:980px; height:760px; min-height:0; left:50%; margin-left:-490px; transform:scale(.72); transform-origin:50% 0; margin-bottom:-210px; }
+    .reflection-node { width:72px; }
+    .flo-center { width:165px; }
+    .reflection-lightbox { width:96vw; padding:1.25rem .9rem 1rem; }
+    .lightbox-image { width:100%; }
+    .lightbox-nav { width:2.7rem; height:2.7rem; font-size:1.7rem; }
+    .lightbox-prev { left:.5rem; }
+    .lightbox-next { right:.5rem; }
   }
 </style>
