@@ -53,7 +53,7 @@
   top:50%!important;
   transform:translate(6px,-50%)!important;
   width:max-content!important;
-  max-width:230px!important;
+  max-width:260px!important;
   padding:.28rem .45rem!important;
   opacity:0!important;
   visibility:hidden!important;
@@ -91,6 +91,23 @@
 .section-nav.is-dark .section-nav-label {
   background:rgba(24,48,31,.9)!important;
   color:#f4efe5!important;
+}
+
+/* The Flagship labels: use the section names visitors actually see on the page. */
+.section-nav[aria-label="The Flagship page sections"] .section-nav-label {
+  font-size:0!important;
+}
+.section-nav[aria-label="The Flagship page sections"] a:nth-child(1) .section-nav-label::after { content:"Green about section"; }
+.section-nav[aria-label="The Flagship page sections"] a:nth-child(2) .section-nav-label::after { content:"Itinerary"; }
+.section-nav[aria-label="The Flagship page sections"] a:nth-child(3) .section-nav-label::after { content:"Where you will stay"; }
+.section-nav[aria-label="The Flagship page sections"] a:nth-child(4) .section-nav-label::after { content:"Nourish your gut, nourish your soul"; }
+.section-nav[aria-label="The Flagship page sections"] a:nth-child(5) .section-nav-label::after { content:"Into the mountains"; }
+.section-nav[aria-label="The Flagship page sections"] a:nth-child(6) .section-nav-label::after { content:"Reflections"; }
+.section-nav[aria-label="The Flagship page sections"] a:nth-child(7) .section-nav-label::after { content:"FAQ"; }
+.section-nav[aria-label="The Flagship page sections"] .section-nav-label::after {
+  font-family:var(--font-body)!important;
+  font-size:.78rem!important;
+  line-height:1.2!important;
 }
 
 @media (hover:hover) and (pointer:fine) {
