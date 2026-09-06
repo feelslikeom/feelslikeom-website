@@ -3,6 +3,24 @@
   const intentions = document.querySelector('#intentions');
   if (!sectionNav || !intentions) return;
 
+  if (window.location.pathname.includes('/journeys/the-flagship')) {
+    const flagshipLabels = {
+      '#intentions': 'Intentions',
+      '#itinerary': 'Itinerary',
+      '#accommodation': 'Stay',
+      '#food': 'Food',
+      '#trek': 'Trek',
+      '#reflections': 'Reflections',
+      '#faq': 'FAQ',
+    };
+
+    sectionNav.querySelectorAll('a').forEach((link) => {
+      const label = link.querySelector('.section-nav-label');
+      const href = link.getAttribute('href');
+      if (label && href && flagshipLabels[href]) label.textContent = flagshipLabels[href];
+    });
+  }
+
   const backToTop = document.createElement('button');
   backToTop.type = 'button';
   backToTop.className = 'back-to-top';
