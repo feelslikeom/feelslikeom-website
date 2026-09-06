@@ -1,0 +1,164 @@
+---
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Contact | Feels Like Om</title>
+    <link rel="stylesheet" href="/type-system.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="/">Feels Like Om</a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <details class="nav-dropdown">
+          <summary>ABOUT</summary>
+          <div class="submenu">
+            <a href="/about/our-stories">Our stories</a>
+            <a href="/about/getting-to-sikkim">Getting to Sikkim</a>
+            <a href="/about/visa-and-permits">Visa and permits</a>
+          </div>
+        </details>
+        <details class="nav-dropdown">
+          <summary>JOURNEYS</summary>
+          <div class="submenu">
+            <a href="/journeys/the-flagship">The Flagship</a>
+            <a href="/journeys/how-to-embrace-suffering">To Be Free</a>
+            <a href="/journeys#feels-like-home">Feels Like Home</a>
+            <a href="/journeys#way-of-the-yaks">Way of the Yaks</a>
+          </div>
+        </details>
+        <a href="/reflections">REFLECTIONS</a>
+        <a class="active" href="/contact" aria-current="page">CONTACT</a>
+      </nav>
+    </header>
+
+    <main class="contact-page">
+      <section class="contact-inner">
+        <div class="contact-heading">
+          <h1>Let’s connect</h1>
+          <h1>and collaborate.</h1>
+        </div>
+
+        <div class="contact-details">
+          <div class="contact-block">
+            <h2>Email</h2>
+            <a href="mailto:info.feelslikeom@gmail.com">info.feelslikeom@gmail.com</a>
+          </div>
+
+          <div class="contact-block">
+            <h2>Whatsapp/Call</h2>
+            <div class="contact-links">
+              <a href="https://wa.me/6581381356">+65 81381356</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
+
+<style>
+  :global(*) { box-sizing:border-box; }
+  body { margin:0; background:#f4efe5; color:#261d13; }
+
+  .site-header {
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:2rem;
+    padding:1.5rem 4%;
+    border-bottom:1px solid rgba(24,48,31,.12);
+    color:#18301f;
+  }
+  .brand { color:inherit; text-decoration:none; white-space:nowrap; }
+  .main-nav { display:flex; align-items:center; gap:1.5rem; letter-spacing:.08em; }
+  .main-nav>a,.main-nav summary { color:inherit; text-decoration:none; cursor:pointer; }
+  .main-nav .active { border-bottom:1px solid currentColor; }
+  .nav-dropdown { position:relative; }
+  .nav-dropdown summary { list-style:none; }
+  .nav-dropdown summary::-webkit-details-marker { display:none; }
+  .submenu {
+    position:absolute;
+    top:calc(100% + .65rem);
+    right:0;
+    width:max-content;
+    min-width:13rem;
+    padding:.7rem;
+    background:#fffaf1;
+    box-shadow:0 12px 30px rgba(8,20,12,.13);
+    opacity:0;
+    visibility:hidden;
+    transform:translateY(-4px);
+    transition:opacity 160ms ease,visibility 160ms ease,transform 160ms ease;
+    z-index:5;
+  }
+  .submenu::before { content:""; position:absolute; top:-.75rem; left:0; right:0; height:.75rem; }
+  .submenu a { display:block; padding:.65rem .75rem; color:#18301f; text-decoration:none; letter-spacing:0; }
+  .submenu a:hover { background:rgba(24,48,31,.06); }
+  @media (hover:hover) and (pointer:fine) {
+    .nav-dropdown:hover .submenu { opacity:1; visibility:visible; transform:translateY(0); }
+  }
+
+  .contact-page { min-height:calc(100svh - 78px); }
+  .contact-inner {
+    width:min(1500px,calc(100% - 12%));
+    margin:0 auto;
+    padding:clamp(7rem,14vw,12rem) 0 clamp(6rem,10vw,9rem);
+  }
+  .contact-heading { margin-bottom:clamp(7rem,13vw,12rem); }
+  .contact-heading h1 {
+    margin:0;
+    font-family:var(--font-display);
+    font-size:clamp(4.8rem,9vw,9rem)!important;
+    font-weight:400;
+    line-height:.94;
+    letter-spacing:-.045em;
+  }
+
+  .contact-details {
+    display:grid;
+    gap:clamp(5rem,9vw,8rem);
+    max-width:760px;
+  }
+  .contact-block h2 {
+    margin:0 0 .35rem;
+    font-family:var(--font-body)!important;
+    font-size:clamp(1.7rem,2.5vw,2.4rem)!important;
+    font-weight:700!important;
+    line-height:1.1;
+  }
+  .contact-block a {
+    display:inline-block;
+    color:inherit;
+    font-family:var(--font-body);
+    font-size:clamp(1.8rem,3vw,3rem);
+    line-height:1.15;
+    text-decoration-thickness:1px;
+    text-underline-offset:.18em;
+  }
+
+  @media (max-width:760px) {
+    .site-header { align-items:flex-start; padding:1.15rem 1.25rem; }
+    .main-nav { gap:.75rem; flex-wrap:wrap; justify-content:flex-end; }
+    .submenu { right:auto; left:0; }
+    .nav-dropdown[open] .submenu { opacity:1; visibility:visible; transform:translateY(0); }
+
+    .contact-inner {
+      width:calc(100% - 2.5rem);
+      padding:5rem 0 5rem;
+    }
+    .contact-heading { margin-bottom:5rem; }
+    .contact-heading h1 {
+      font-size:clamp(3.3rem,15vw,5.2rem)!important;
+      line-height:.98;
+    }
+    .contact-details { gap:4rem; }
+    .contact-block h2 { font-size:1.45rem!important; }
+    .contact-block a {
+      font-size:clamp(1.4rem,7vw,2rem);
+      overflow-wrap:anywhere;
+    }
+  }
+</style>
