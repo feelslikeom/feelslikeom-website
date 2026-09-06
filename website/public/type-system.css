@@ -436,3 +436,13 @@ p,li,.body-copy,.type-body { font-family:var(--font-body)!important; font-size:v
   .retreat-rhythm + .full-bleed-image-placeholder { min-height:420px!important; }
   #stay-longer::before { content:none!important; display:none!important; }
 }
+
+/* Elan portrait used on both the homepage and Our Stories page. */
+.elan-portrait,
+.founder-card--placeholder .portrait-wrap--placeholder {
+  background-image:url('/elan-portrait.jpg')!important;
+  background-size:cover!important;
+  background-position:center center!important;
+  background-repeat:no-repeat!important;
+  border:0!important;
+}
