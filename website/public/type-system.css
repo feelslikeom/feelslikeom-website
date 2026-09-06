@@ -305,3 +305,134 @@ p,li,.body-copy,.type-body { font-family:var(--font-body)!important; font-size:v
     aspect-ratio:4/3!important;
   }
 }
+
+/* To Be Free image system. */
+.hero:has(.hero-meta) {
+  background-image:linear-gradient(0deg,rgba(7,18,11,.42),rgba(7,18,11,.08)),url('/to-be-free-hero.jpg')!important;
+  background-size:cover!important;
+  background-position:center!important;
+  background-repeat:no-repeat!important;
+}
+.hero:has(.hero-meta)::before { background:none!important; }
+
+/* Replace the original two About placeholders with a four-image editorial composition. */
+.retreat-images {
+  display:grid!important;
+  grid-template-columns:repeat(12,minmax(0,1fr))!important;
+  gap:clamp(1rem,2.5vw,2rem)!important;
+  align-items:start!important;
+}
+.retreat-images .image-placeholder,
+.retreat-images::before,
+.retreat-images::after {
+  min-height:0!important;
+  border:0!important;
+  padding:0!important;
+  color:transparent!important;
+  background-repeat:no-repeat!important;
+  background-position:center!important;
+}
+.retreat-images .image-placeholder span { display:none!important; }
+.retreat-images .retreat-image-large {
+  grid-column:1/span 7!important;
+  aspect-ratio:4/5!important;
+  margin:0!important;
+  background:url('/to-be-free-about-1.jpg') center/cover no-repeat!important;
+}
+.retreat-images .retreat-image-small {
+  grid-column:8/span 5!important;
+  aspect-ratio:4/3!important;
+  width:100%!important;
+  margin:0!important;
+  background:url('/to-be-free-about-2.jpg') center/cover no-repeat!important;
+}
+.retreat-images::before {
+  content:"";
+  display:block;
+  grid-column:8/span 5;
+  aspect-ratio:4/3;
+  margin-top:clamp(.25rem,1.5vw,1rem);
+  background:url('/to-be-free-about-3.jpg') center/cover no-repeat!important;
+}
+.retreat-images::after {
+  content:"";
+  display:block;
+  grid-column:2/span 10;
+  aspect-ratio:16/7;
+  margin-top:clamp(1rem,3vw,2.5rem);
+  background:url('/to-be-free-about-4.jpg') center/cover no-repeat!important;
+}
+
+/* Three full-width landscape photographs, with 50% more height than the original placeholders. */
+.who-section + .full-bleed-image-placeholder,
+.teacher-section + .full-bleed-image-placeholder,
+.retreat-rhythm + .full-bleed-image-placeholder {
+  min-height:clamp(540px,75vw,1140px)!important;
+  border:0!important;
+  padding:0!important;
+  background-size:cover!important;
+  background-position:center!important;
+  background-repeat:no-repeat!important;
+  color:transparent!important;
+}
+.who-section + .full-bleed-image-placeholder { background-image:url('/to-be-free-landscape-1.jpg')!important; }
+.teacher-section + .full-bleed-image-placeholder { background-image:url('/to-be-free-landscape-2.jpg')!important; }
+.retreat-rhythm + .full-bleed-image-placeholder { background-image:url('/to-be-free-landscape-3.jpg')!important; }
+.who-section + .full-bleed-image-placeholder span,
+.teacher-section + .full-bleed-image-placeholder span,
+.retreat-rhythm + .full-bleed-image-placeholder span { display:none!important; }
+
+/* Teacher portrait. */
+.teacher-section .teacher-media {
+  background:url('/tshampo-portrait.jpg') center/cover no-repeat!important;
+  border:0!important;
+  color:transparent!important;
+}
+.teacher-section .teacher-media span { display:none!important; }
+
+/* Reuse The Flagship accommodation set and preserve the existing arrangement. */
+.details-row-accommodation .portrait-placeholder {
+  background:url('/flagship-accommodation-portrait.jpg') center/cover no-repeat!important;
+  border:0!important;
+  color:transparent!important;
+}
+.details-gallery .landscape-placeholder:nth-child(1) { background:url('/flagship-accommodation-1.jpg') center/cover no-repeat!important; }
+.details-gallery .landscape-placeholder:nth-child(2) { background:url('/flagship-accommodation-2.jpg') center/cover no-repeat!important; }
+.details-gallery .landscape-placeholder:nth-child(3) { background:url('/flagship-accommodation-3.jpg') center/cover no-repeat!important; }
+.details-gallery .landscape-placeholder:nth-child(4) { background:url('/flagship-accommodation-4.jpg') center/cover no-repeat!important; }
+.details-row-accommodation .portrait-placeholder span,
+.details-gallery .landscape-placeholder span { display:none!important; }
+.details-gallery .landscape-placeholder { border:0!important; color:transparent!important; background-size:cover!important; background-position:center!important; background-repeat:no-repeat!important; }
+
+/* Stay longer photographs. */
+#stay-longer .image-stack .image-placeholder:nth-child(1) {
+  background:url('/to-be-free-stay-longer-1.jpg') center/cover no-repeat!important;
+  border:0!important;
+  color:transparent!important;
+}
+#stay-longer .image-stack .image-placeholder:nth-child(2) {
+  background:url('/to-be-free-stay-longer-2.jpg') center/cover no-repeat!important;
+  border:0!important;
+  color:transparent!important;
+}
+#stay-longer .image-stack .image-placeholder span { display:none!important; }
+
+@media (max-width:700px) {
+  .retreat-images { grid-template-columns:1fr!important; gap:1rem!important; }
+  .retreat-images .retreat-image-large,
+  .retreat-images .retreat-image-small,
+  .retreat-images::before,
+  .retreat-images::after {
+    grid-column:1!important;
+    width:100%!important;
+    margin:0!important;
+  }
+  .retreat-images .retreat-image-large { aspect-ratio:4/5!important; }
+  .retreat-images .retreat-image-small,
+  .retreat-images::before,
+  .retreat-images::after { aspect-ratio:4/3!important; }
+  .who-section + .full-bleed-image-placeholder,
+  .teacher-section + .full-bleed-image-placeholder,
+  .retreat-rhythm + .full-bleed-image-placeholder { min-height:420px!important; }
+  #stay-longer::before { content:none!important; display:none!important; }
+}
