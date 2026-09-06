@@ -8,6 +8,7 @@
     <title>The Flagship | Feels Like Om</title>
     <meta name="description" content="The Flagship — a small-group field immersion in West Sikkim with community learning, reflection and a 4D3N mountain trek." />
     <link rel="stylesheet" href="/type-system.css" />
+    <link rel="stylesheet" href="/journey-navigation.css" />
   </head>
 
   <body>
@@ -147,6 +148,7 @@
         if (event.key === 'ArrowRight') showReflection(currentReflectionIndex + 1);
       });
     </script>
+    <script src="/journey-navigation.js" defer></script>
   </body>
 </html>
 
@@ -271,11 +273,7 @@
   .faq-cta { background:#eee7da; padding:0 4% clamp(5rem,9vw,7rem); text-align:center; }
   .faq-cta .button { color:#18301f; }
 
-  /* Make the final two About images 20% larger while keeping their existing editorial pairing. */
-  .program-images::after {
-    grid-column:1 / span 12 !important;
-    width:100% !important;
-  }
+  .program-images::after { grid-column:1 / span 12 !important; width:100% !important; }
 
   @media (max-width:900px) { .section-nav { display:none; } .story-section,.food-grid { grid-template-columns:1fr; } .story-section-reflection .story-media { order:2; } .food-grid .image-stack { order:2; } .program-images { grid-template-columns:1fr .55fr; } .days-grid { grid-template-columns:repeat(2,1fr); } .days-grid article:nth-child(n) { padding:1.7rem 1rem 2rem 0; border-left:0; } .days-grid article:nth-child(even) { padding-left:1rem; border-left:1px solid rgba(244,239,229,.25); } .trek-stats { grid-template-columns:repeat(2,minmax(0,1fr)); gap:2rem; } .accommodation-section { grid-template-columns:1fr; grid-template-areas:"heading" "portrait" "body"; row-gap:1.5rem; } .accommodation-portrait { width:min(78%,520px); justify-self:end; min-height:520px; } }
   @media (max-width:700px) {
@@ -320,21 +318,7 @@
     .trek-photo-placeholder { aspect-ratio:16/10; }
     .trek-copy { width:100%; }
     .faq summary { padding:1.3rem 2.5rem 1.3rem 0; }
-
-    /* Mobile About images: keep all five unique and remove the previous repeated synthetic image. */
-    .program-intro-inner::after {
-      content:none !important;
-      display:none !important;
-      background:none !important;
-    }
-    .program-images::after {
-      grid-column:1 !important;
-      width:100% !important;
-      aspect-ratio:2 / 3 !important;
-      background-image:url('/flagship-about-4.jpg'), url('/flagship-about-1.jpg') !important;
-      background-repeat:no-repeat, no-repeat !important;
-      background-position:center top, center bottom !important;
-      background-size:100% auto, 100% auto !important;
-    }
+    .program-intro-inner::after { content:none !important; display:none !important; background:none !important; }
+    .program-images::after { grid-column:1 !important; width:100% !important; aspect-ratio:2 / 3 !important; background-image:url('/flagship-about-4.jpg'), url('/flagship-about-1.jpg') !important; background-repeat:no-repeat, no-repeat !important; background-position:center top, center bottom !important; background-size:100% auto, 100% auto !important; }
   }
 </style>
