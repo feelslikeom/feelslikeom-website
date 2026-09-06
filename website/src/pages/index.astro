@@ -52,16 +52,16 @@
             <article class="founder-card reveal">
               <div class="portrait-wrap"><img src="/zi-hui.JPG" alt="Zi Hui walking through a village in Sikkim" /></div>
               <div class="founder-copy">
-                <p class="person-name">Zi Hui</p>
+                <p class="person-name">Zi Hui, Co-founder</p>
                 <blockquote>“A tree helped me forgive myself.”</blockquote>
                 <a class="story-link" href="/about/our-stories#zi-hui">Read Zi Hui’s story <span aria-hidden="true">→</span></a>
               </div>
             </article>
 
             <article class="founder-card founder-card--placeholder reveal">
-              <div class="portrait-wrap portrait-wrap--placeholder" aria-hidden="true"></div>
+              <div class="portrait-wrap portrait-wrap--placeholder" aria-label="Elan in Sikkim"></div>
               <div class="founder-copy">
-                <p class="person-name">Elan</p>
+                <p class="person-name">Elan, Co-founder</p>
                 <blockquote>“What brings you peace?”</blockquote>
                 <a class="story-link" href="/about/our-stories#elan">Read Elan’s story <span aria-hidden="true">→</span></a>
               </div>
@@ -90,7 +90,7 @@
             <article class="look-item reveal"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="17" r="6"/><circle cx="16" cy="26" r="5"/><circle cx="48" cy="26" r="5"/><path d="M22 48c2-9 7-14 10-14s8 5 10 14M7 47c1-8 5-12 9-12 3 0 6 2 8 6M57 47c-1-8-5-12-9-12-3 0-6 2-8 6"/></svg><p>Gather and<br />share stories</p></article>
             <article class="look-item reveal"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M9 17c8 4 15 4 23 0 8 4 15 4 23 0v30c-8 4-15 4-23 0-8 4-15 4-23 0Z"/><path d="M32 17v30M17 25h8M39 25h8M17 33h8M39 33h8"/></svg><p>Learn ancient<br />wisdom</p></article>
             <article class="look-item reveal"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M10 53c9-13 14-16 20-18 8-3 10-8 24-24"/><path d="M13 38h12l-6-10ZM42 24h12l-6-10Z"/></svg><p>Walk slowly</p></article>
-            <article class="look-item reveal"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M10 15c8-3 15-2 22 3v34c-7-5-14-6-22-3ZM54 15c-8-3-15-2-22 3v34c7-5 14-6 22-3Z"/><path d="m45 12 7-7 5 5-7 7-8 3Z"/></svg><p>Make time for<br />reflection</p></article>
+            <article class="look-item reveal"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M10 15c8-3 15-2 22 3v34c-7-5-14-6-22-3ZM54 15c-8-3-15-2-22 3v34c7 5 14 6 22 3Z"/><path d="m45 12 7-7 5 5-7 7-8 3Z"/></svg><p>Make time for<br />reflection</p></article>
           </div>
 
           <div class="home-journeys-grid">
@@ -215,7 +215,9 @@
   .portrait-wrap { overflow:hidden; border-radius:.25rem; background:#d8d1c3; aspect-ratio:4/5; }
   .portrait-wrap img { width:100%; height:100%; display:block; object-fit:cover; object-position:50% 42%; transition:transform 900ms cubic-bezier(.22,.61,.36,1); }
   .founder-card:hover .portrait-wrap img { transform:scale(1.025); }
-  .portrait-wrap--placeholder { background:url('/elan-portrait.jpg') center/cover no-repeat; border:0; }
+  .portrait-wrap--placeholder { position:relative; background:none; border:0; }
+  .portrait-wrap--placeholder::before { content:""; position:absolute; inset:0; background:url('/elan-portrait.jpg') center/cover no-repeat; transition:transform 900ms cubic-bezier(.22,.61,.36,1); }
+  .founder-card:hover .portrait-wrap--placeholder::before { transform:scale(1.025); }
   .founder-copy { padding-top:1.5rem; }
   .person-name { margin:0 0 .8rem; font-size:clamp(2.2rem,3.6vw,3.8rem); line-height:1; }
   blockquote { margin:0 0 1.5rem; font-size:clamp(1.35rem,2.1vw,2rem); line-height:1.25; }
