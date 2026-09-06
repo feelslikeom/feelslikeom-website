@@ -4,28 +4,37 @@ const reflections = Array.from({ length: 18 }, () => ({
   name: "Past participant",
 }));
 
-const baseSize = 1080;
+const baseWidth = 1180;
+const baseHeight = 900;
 const extraRings = Math.max(0, Math.ceil((reflections.length - 18) / 12));
-const webSize = baseSize + extraRings * 240;
-const centre = webSize / 2;
-const nodeBase = 68;
-const maxRadius = webSize * 0.39;
-const goldenAngle = Math.PI * (3 - Math.sqrt(5));
+const webWidth = baseWidth + extraRings * 260;
+const webHeight = baseHeight + extraRings * 200;
+const centre = { x: webWidth / 2, y: webHeight / 2 };
 
 const reflectionNodes = reflections.map((reflection, index) => {
-  const progress = reflections.length <= 1 ? 0 : index / (reflections.length - 1);
-  const radius = 180 + Math.sqrt(progress) * (maxRadius - 180);
-  const angle = index * goldenAngle - Math.PI / 2;
-  const wobble = ((index % 5) - 2) * 9;
+  const ring = index < 6 ? 0 : 1 + Math.floor((index - 6) / 12);
+  const ringStart = ring === 0 ? 0 : 6 + (ring - 1) * 12;
+  const remaining = reflections.length - ringStart;
+  const ringCount = Math.min(ring === 0 ? 6 : 12, remaining);
+  const position = index - ringStart;
+  const angleOffset = ring % 2 === 0 ? -Math.PI / 2 : -Math.PI / 2 + 0.12;
+  const angle = angleOffset + (position / ringCount) * Math.PI * 2;
+  const radiusX = 250 + ring * 160;
+  const radiusY = 190 + ring * 140;
+  const wobble = ((index % 5) - 2) * 7;
+
   return {
     ...reflection,
-    x: centre + Math.cos(angle) * (radius + wobble),
-    y: centre + Math.sin(angle) * (radius - wobble * 0.55),
-    size: nodeBase + (index % 4) * 7,
+    ring,
+    position,
+    ringCount,
+    x: centre.x + Math.cos(angle) * (radiusX + wobble),
+    y: centre.y + Math.sin(angle) * (radiusY - wobble * 0.45),
+    size: 62 + (index % 4) * 7,
   };
 });
 
-const curvePath = (a, b, bend = 0.12) => {
+const curvePath = (a, b, bend = 0.1) => {
   const mx = (a.x + b.x) / 2;
   const my = (a.y + b.y) / 2;
   const dx = b.x - a.x;
@@ -38,16 +47,27 @@ const curvePath = (a, b, bend = 0.12) => {
 };
 
 const webPaths = [];
-reflectionNodes.forEach((node, index) => {
-  if (reflectionNodes.length > 1) {
-    webPaths.push(curvePath(node, reflectionNodes[(index + 1) % reflectionNodes.length], index % 2 ? 0.08 : -0.08));
-  }
-  if (reflectionNodes.length > 4) {
-    webPaths.push(curvePath(node, reflectionNodes[(index + 4) % reflectionNodes.length], index % 3 === 0 ? 0.13 : -0.1));
-  }
-  if (index % 3 === 0) {
-    webPaths.push(curvePath(node, { x: centre, y: centre }, index % 2 ? 0.09 : -0.09));
-  }
+const rings = Array.from({ length: extraRings + 2 }, (_, ringIndex) => reflectionNodes.filter((node) => node.ring === ringIndex)).filter((ring) => ring.length);
+
+rings.forEach((ringNodes, ringIndex) => {
+  ringNodes.forEach((node, index) => {
+    if (ringNodes.length > 1) {
+      const next = ringNodes[(index + 1) % ringNodes.length];
+      webPaths.push(curvePath(node, next, index % 2 ? 0.07 : -0.07));
+    }
+    if (ringNodes.length > 5) {
+      const skip = ringNodes[(index + 2) % ringNodes.length];
+      webPaths.push(curvePath(node, skip, index % 3 === 0 ? 0.11 : -0.08));
+    }
+    if (ringIndex > 0 && rings[ringIndex - 1]?.length) {
+      const innerRing = rings[ringIndex - 1];
+      const inner = innerRing[Math.round((index / ringNodes.length) * innerRing.length) % innerRing.length];
+      webPaths.push(curvePath(node, inner, index % 2 ? 0.08 : -0.09));
+    }
+    if (index % 4 === 0) {
+      webPaths.push(curvePath(node, centre, index % 2 ? 0.08 : -0.08));
+    }
+  });
 });
 ---
 
@@ -93,15 +113,15 @@ reflectionNodes.forEach((node, index) => {
 
       <section class="reflection-web-section" aria-label="Interconnected participant reflections">
         <div class="reflection-web-scroller">
-          <div class="reflection-web" style={`--web-size:${webSize}px;`}>
-            <svg class="web-lines" viewBox={`0 0 ${webSize} ${webSize}`} aria-hidden="true">
+          <div class="reflection-web" style={`--web-width:${webWidth}px;--web-height:${webHeight}px;`}>
+            <svg class="web-lines" viewBox={`0 0 ${webWidth} ${webHeight}`} aria-hidden="true">
               <g class="web-ring">
                 {webPaths.map((path) => <path d={path} />)}
               </g>
             </svg>
 
             <div class="flo-center" aria-label="Feels Like Om">
-              <img src="/logo-circle.png" alt="Feels Like Om circular logo" />
+              <img src="/Logo-Circle.png" alt="Feels Like Om circular logo" />
             </div>
 
             {reflectionNodes.map((reflection, index) => (
@@ -194,13 +214,13 @@ reflectionNodes.forEach((node, index) => {
   .reflection-intro h1 { margin:0; font-size:clamp(3rem,6vw,6.5rem)!important; line-height:.98; }
   .intro { width:min(620px,100%); margin:1.5rem auto 0; line-height:1.7; }
 
-  .reflection-web-section { width:100%; padding:clamp(2rem,5vw,4rem) 0 clamp(5rem,9vw,8rem); }
-  .reflection-web-scroller { width:100%; overflow-x:auto; overflow-y:hidden; scrollbar-width:thin; scrollbar-color:rgba(24,48,31,.28) transparent; }
-  .reflection-web { position:relative; width:var(--web-size); height:var(--web-size); margin:0 auto; flex:0 0 auto; }
+  .reflection-web-section { width:100%; padding:clamp(2rem,5vw,4rem) 0 clamp(5rem,9vw,8rem); overflow:hidden; }
+  .reflection-web-scroller { width:100%; overflow-x:auto; overflow-y:hidden; scrollbar-width:thin; scrollbar-color:rgba(24,48,31,.24) transparent; }
+  .reflection-web { position:relative; width:var(--web-width); height:var(--web-height); margin:0 auto; }
   .web-lines { position:absolute; inset:0; width:100%; height:100%; overflow:visible; pointer-events:none; }
-  .web-ring { fill:none; stroke:#18301f; stroke-width:1.35; opacity:.34; stroke-linecap:round; stroke-linejoin:round; }
+  .web-ring { fill:none; stroke:#18301f; stroke-width:1.15; opacity:.34; stroke-linecap:round; stroke-linejoin:round; }
 
-  .flo-center { position:absolute; left:50%; top:50%; width:clamp(130px,17vw,210px); aspect-ratio:1; transform:translate(-50%,-50%); border-radius:50%; overflow:hidden; background:transparent; border:0; box-shadow:none; z-index:3; }
+  .flo-center { position:absolute; left:50%; top:50%; width:clamp(120px,17vw,210px); aspect-ratio:1; transform:translate(-50%,-50%); border-radius:50%; overflow:hidden; background:transparent; border:0; box-shadow:none; z-index:3; }
   .flo-center img { display:block; width:100%; height:100%; object-fit:contain; border-radius:50%; }
 
   .reflection-node { position:absolute; left:var(--x); top:var(--y); width:var(--node-size); aspect-ratio:1; transform:translate(-50%,-50%); border-radius:50%; border:2px solid #18301f; padding:0; cursor:zoom-in; background:#f4efe5; z-index:4; transition:transform 180ms ease,box-shadow 180ms ease; }
@@ -226,7 +246,7 @@ reflectionNodes.forEach((node, index) => {
     .reflection-intro { width:calc(100% - 2.5rem); padding-top:4rem; }
     .reflection-web-scroller { padding-bottom:.5rem; }
     .reflection-web { margin-left:0; }
-    .reflection-node { width:max(58px,calc(var(--node-size) * .82)); }
+    .reflection-node { width:max(58px,calc(var(--node-size) * .86)); }
     .flo-center { width:150px; }
     .reflection-lightbox { width:96vw; max-height:94vh; padding:1.25rem .9rem 1rem; }
     .lightbox-image { width:100%; height:min(55vh,520px); }
