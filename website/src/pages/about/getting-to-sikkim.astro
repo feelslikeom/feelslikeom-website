@@ -6,7 +6,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <title>Getting to Sikkim | Feels Like Om</title>
-    <meta name="description" content="How to travel from Bagdogra Airport to Yuksom, West Sikkim, with recommended arrival and departure flight timings and local transport information." />
+    <meta name="description" content="How to travel from Bagdogra Airport into West Sikkim, with recommended arrival and departure flight timings and transfer guidance." />
     <link rel="stylesheet" href="/type-system.css" />
   </head>
   <body>
@@ -16,7 +16,7 @@
         <details class="nav-dropdown">
           <summary class="active">ABOUT</summary>
           <div class="submenu">
-            <a href="/about/our-story">Our story</a>
+            <a href="/about/our-stories">Our stories</a>
             <a href="/about/getting-to-sikkim" aria-current="page">Getting to Sikkim</a>
             <a href="/about/visa-and-permits">Visa and permits</a>
           </div>
@@ -37,35 +37,10 @@
 
     <main>
       <section class="page-hero">
-        <div class="wide">
+        <div class="wide hero-copy">
           <p class="eyebrow">ABOUT</p>
-          <h1>Getting To Sikkim</h1>
-        </div>
-      </section>
-
-      <section class="route-section" aria-labelledby="route-title">
-        <div class="route-wrap">
-          <h2 id="route-title" class="sr-only">Journey from Bagdogra Airport to Yuksom</h2>
-          <div class="route-step"><p>Arrive at Bagdogra Airport</p></div>
-          <span class="route-arrow" aria-hidden="true">▼</span>
-          <div class="route-step"><p>Meet your driver at the airport</p></div>
-          <span class="route-arrow" aria-hidden="true">▼</span>
-          <div class="route-step"><p>Drive through West Bengal,<br />have lunch along the way (~3 hours)</p></div>
-          <span class="route-arrow" aria-hidden="true">▼</span>
-          <div class="route-step"><p>Apply for <a href="/about/visa-and-permits">Sikkim permit at the check post</a> (you’re leaving West Bengal and entering Sikkim)</p></div>
-          <span class="route-arrow" aria-hidden="true">▼</span>
-          <div class="route-step"><p>Continue your journey to<br />Yuksom (~3 hours)</p></div>
-        </div>
-      </section>
-
-      <section class="driver-section">
-        <div class="wide copy-wide">
-          <p>We’re happy to <strong>connect you with reliable local drivers</strong> who will pick you up directly from Bagdogra Airport or your hotel.</p>
-          <p>To help reduce your transport cost, you can <strong>arrive on the same flight</strong>, so you can <strong>share the car ride</strong> with others.</p>
-          <ul>
-            <li>One-way between Bagdogra Airport and Yuksom: <strong>Around 7,000 rupees/six-seater car</strong></li>
-            <li>Payment is made directly to the driver upon arrival at destination</li>
-          </ul>
+          <h1>Getting to Sikkim</h1>
+          <p class="hero-intro">We can help coordinate your transfer so you don’t have to arrange the journey on your own. Before booking your flights, please speak with us, so that your airport transfer and the drive can be planned comfortably.</p>
         </div>
       </section>
 
@@ -99,7 +74,7 @@
             <h2>Our recommendations</h2>
             <div class="option">
               <h3>Cost of round trip flights</h3>
-              <p>Flights typically start from SGD400, depending on which airline you take and how early in advance you book.</p>
+              <p>Flights typically range from SGD 400–800.</p>
             </div>
             <div class="option">
               <h3>Minimum layover duration</h3>
@@ -108,13 +83,28 @@
           </div>
         </div>
       </section>
+
+      <section class="route-section" aria-labelledby="route-title">
+        <div class="route-wrap">
+          <h2 id="route-title" class="sr-only">Journey from Bagdogra Airport into Sikkim</h2>
+          <div class="route-step"><p>Arrive at Bagdogra Airport</p></div>
+          <span class="route-arrow" aria-hidden="true">▼</span>
+          <div class="route-step"><p>Meet your driver at the airport</p></div>
+          <span class="route-arrow" aria-hidden="true">▼</span>
+          <div class="route-step"><p>Drive through West Bengal,<br />have lunch along the way</p></div>
+          <span class="route-arrow" aria-hidden="true">▼</span>
+          <div class="route-step"><p>Apply for <a href="/about/visa-and-permits">Sikkim permit at the check post</a> (you’re leaving West Bengal and entering Sikkim)</p></div>
+          <span class="route-arrow" aria-hidden="true">▼</span>
+          <div class="route-step"><p>Continue your journey to the village</p></div>
+        </div>
+      </section>
     </main>
   </body>
 </html>
 
 <style>
   :global(*) { box-sizing:border-box; }
-  body { margin:0; background:#f4efe5; color:#18301f; overflow-x:hidden; }
+  body { margin:0; background:#f4efe5; color:#18301f; overflow-x:hidden; font-family:var(--font-body); font-size:var(--type-body); }
   a { color:inherit; text-underline-offset:.3rem; }
   .wide { width:min(1180px,92%); margin:0 auto; }
   .site-header { display:flex; align-items:center; justify-content:space-between; gap:2rem; padding:1.5rem 4%; border-bottom:1px solid rgba(24,48,31,.15); }
@@ -130,27 +120,28 @@
   .submenu a { display:block; padding:.65rem .75rem; color:#18301f; text-decoration:none; letter-spacing:0; }
   .submenu a:hover { background:rgba(24,48,31,.06); }
   @media (hover:hover) { .nav-dropdown:hover .submenu { opacity:1; visibility:visible; transform:translateY(0); } .nav-dropdown:not(:hover) .submenu { opacity:0; visibility:hidden; transform:translateY(-4px); } }
-  .page-hero { padding:clamp(5rem,10vw,9rem) 0 clamp(3rem,6vw,5rem); }
+
+  .page-hero { padding:clamp(5rem,10vw,8rem) 0 clamp(3.5rem,7vw,5.5rem); }
   .page-hero .eyebrow { margin:0 0 1rem; }
-  .page-hero h1 { margin:0; line-height:.95; }
-  .route-section { padding:clamp(2rem,5vw,4rem) 4% clamp(6rem,10vw,9rem); }
+  .page-hero h1 { margin:0; font-family:var(--font-display); font-size:var(--type-section)!important; line-height:1.02; font-weight:400; }
+  .hero-copy { max-width:1180px; }
+  .hero-intro { max-width:760px; margin:1.5rem 0 0; line-height:1.7; font-size:var(--type-body)!important; }
+
+  .flight-section { padding:clamp(5rem,9vw,8rem) 4%; background:#aa5128; color:#171d16; }
+  .flight-block { margin-bottom:clamp(4.5rem,8vw,7rem); }
+  .flight-block:last-child { margin-bottom:0; }
+  .flight-block h2 { margin:0 0 clamp(2.25rem,4vw,3.5rem); font-family:var(--font-display); font-size:var(--type-section)!important; line-height:1.04; font-weight:400; }
+  .option { max-width:920px; margin-bottom:2rem; }
+  .option h3 { margin:0 0 .35rem; font-family:var(--font-body)!important; font-size:var(--type-body)!important; font-weight:700!important; line-height:1.45; }
+  .option p { margin:0; font-family:var(--font-body); font-size:var(--type-body)!important; line-height:1.65; }
+
+  .route-section { padding:clamp(5rem,9vw,8rem) 4% clamp(6rem,10vw,9rem); }
   .route-wrap { width:min(720px,100%); margin:0 auto; display:grid; justify-items:center; text-align:center; gap:1.7rem; }
   .route-step { max-width:520px; }
-  .route-step p { margin:0; font-size:clamp(1.2rem,2.2vw,1.7rem)!important; line-height:1.35; }
+  .route-step p { margin:0; font-family:var(--font-body); font-size:var(--type-lead)!important; line-height:1.45; }
   .route-arrow { font-size:2rem; opacity:.75; transform:scaleX(1.2); }
-  .driver-section { padding:clamp(4rem,8vw,7rem) 4%; background:#fffaf1; }
-  .copy-wide { max-width:1100px; }
-  .driver-section p { margin:0 0 1.6rem; font-size:clamp(1.05rem,1.7vw,1.35rem)!important; line-height:1.65; }
-  .driver-section ul { margin:2.2rem 0 0; padding-left:2rem; }
-  .driver-section li { margin:1.2rem 0; font-size:clamp(1.05rem,1.7vw,1.3rem)!important; line-height:1.6; }
-  .flight-section { padding:clamp(5rem,9vw,8rem) 4%; background:#aa5128; color:#171d16; }
-  .flight-block { margin-bottom:clamp(5rem,9vw,8rem); }
-  .flight-block:last-child { margin-bottom:0; }
-  .flight-block h2 { margin:0 0 clamp(2.5rem,5vw,4rem); font-size:clamp(3rem,7vw,6.4rem)!important; line-height:.98; }
-  .option { max-width:920px; margin-bottom:1.8rem; }
-  .option h3 { margin:0 0 .25rem; font-family:var(--font-body)!important; font-size:clamp(1.05rem,1.5vw,1.28rem)!important; font-weight:700!important; line-height:1.4; }
-  .option p { margin:0; line-height:1.5; }
   .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+
   @media (max-width:760px) {
     .site-header { align-items:flex-start; padding:1.15rem 1.25rem; }
     .main-nav { gap:.75rem; flex-wrap:wrap; justify-content:flex-end; }
@@ -158,11 +149,10 @@
     .nav-dropdown[open] .submenu { opacity:1; visibility:visible; transform:translateY(0); }
     .wide { width:calc(100% - 2.5rem); }
     .page-hero { padding-top:4rem; }
-    .route-section { padding-left:1.25rem; padding-right:1.25rem; }
+    .hero-intro { margin-top:1.25rem; }
+    .flight-section,.route-section { padding-left:1.25rem; padding-right:1.25rem; }
+    .flight-block { margin-bottom:4rem; }
     .route-wrap { gap:1.35rem; }
     .route-arrow { font-size:1.6rem; }
-    .driver-section,.flight-section { padding-left:1.25rem; padding-right:1.25rem; }
-    .driver-section ul { padding-left:1.35rem; }
-    .flight-block h2 { font-size:clamp(2.7rem,15vw,4.5rem)!important; }
   }
 </style>
