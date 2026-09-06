@@ -8,7 +8,7 @@ const JPEG_QUALITY = 88;
 
 const entries = await fs.readdir(publicDir, { withFileTypes: true });
 const files = entries
-  .filter((entry) => entry.isFile() && /\.(jpe?g)$/i.test(entry.name))
+  .filter((entry) => entry.isFile() && /\.(jpe?g|png)$/i.test(entry.name))
   .map((entry) => path.join(publicDir, entry.name));
 
 let changed = 0;
@@ -19,12 +19,13 @@ for (const file of files) {
   const original = await fs.readFile(file);
   beforeTotal += original.length;
 
+  const extension = path.extname(file).toLowerCase();
   const image = sharp(original, { failOn: 'none' }).rotate();
   const metadata = await image.metadata();
   const largestSide = Math.max(metadata.width ?? 0, metadata.height ?? 0);
 
   let pipeline = image;
-  if (largestSide > MAX_DIMENSION) {
+  if (largestSide > MAX_DIMENSION && extension !== '.png') {
     pipeline = pipeline.resize({
       width: MAX_DIMENSION,
       height: MAX_DIMENSION,
@@ -33,14 +34,16 @@ for (const file of files) {
     });
   }
 
-  const optimized = await pipeline
-    .jpeg({
-      quality: JPEG_QUALITY,
-      progressive: true,
-      chromaSubsampling: '4:4:4',
-      optimizeCoding: true,
-    })
-    .toBuffer();
+  const optimized = extension === '.png'
+    ? await pipeline.png({ compressionLevel: 9, adaptiveFiltering: true, palette: false }).toBuffer()
+    : await pipeline
+        .jpeg({
+          quality: JPEG_QUALITY,
+          progressive: true,
+          chromaSubsampling: '4:4:4',
+          optimizeCoding: true,
+        })
+        .toBuffer();
 
   // Never replace an image with a larger file.
   if (optimized.length < original.length) {
@@ -54,5 +57,5 @@ for (const file of files) {
   }
 }
 
-console.log(`Optimized ${changed}/${files.length} JPEG images.`);
+console.log(`Optimized ${changed}/${files.length} JPEG/PNG images.`);
 console.log(`Total: ${(beforeTotal / 1048576).toFixed(1)} MB -> ${(afterTotal / 1048576).toFixed(1)} MB`);
