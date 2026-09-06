@@ -446,3 +446,253 @@ p,li,.body-copy,.type-body { font-family:var(--font-body)!important; font-size:v
   background-repeat:no-repeat!important;
   border:0!important;
 }
+
+/* Site-wide motion system: restrained, editorial and consistent. */
+:root {
+  --motion-distance: 16px;
+  --motion-duration: 760ms;
+  --motion-duration-slow: 900ms;
+  --motion-ease: cubic-bezier(.22,.61,.36,1);
+  --motion-hover-scale: 1.025;
+  --motion-hover-lift: -5px;
+}
+
+@keyframes flo-fade-up {
+  from { opacity:0; transform:translateY(var(--motion-distance)); }
+  to { opacity:1; transform:translateY(0); }
+}
+@keyframes flo-fade-left {
+  from { opacity:0; transform:translateX(calc(var(--motion-distance) * -1)); }
+  to { opacity:1; transform:translateX(0); }
+}
+@keyframes flo-fade-right {
+  from { opacity:0; transform:translateX(var(--motion-distance)); }
+  to { opacity:1; transform:translateX(0); }
+}
+@keyframes flo-hero-drift {
+  from { transform:scale(1.015); }
+  to { transform:scale(1.055); }
+}
+@keyframes flo-bg-drift {
+  from { background-size:102% auto; }
+  to { background-size:108% auto; }
+}
+@keyframes flo-line-draw {
+  from { stroke-dashoffset:1; opacity:.08; }
+  to { stroke-dashoffset:0; opacity:.34; }
+}
+@keyframes flo-route-step {
+  from { opacity:0; transform:translateY(10px); }
+  to { opacity:1; transform:translateY(0); }
+}
+@keyframes flo-dialog-in {
+  from { opacity:0; transform:scale(.985) translateY(8px); }
+  to { opacity:1; transform:scale(1) translateY(0); }
+}
+
+/* Progressive enhancement: scroll-linked reveals where supported. */
+@supports (animation-timeline: view()) {
+  main > section:not(.hero):not(.full-bleed-image-placeholder),
+  main > figure,
+  .story-intro,
+  .founder-story,
+  .flight-block,
+  .permit-section .permit-copy,
+  .contact-details,
+  .trek-chart,
+  .reflection-web-section {
+    animation:flo-fade-up var(--motion-duration) var(--motion-ease) both;
+    animation-timeline:view();
+    animation-range:entry 8% cover 28%;
+  }
+
+  .story-section:nth-of-type(odd) .story-copy,
+  .founder-story:nth-of-type(odd) article {
+    animation:flo-fade-left var(--motion-duration-slow) var(--motion-ease) both;
+    animation-timeline:view();
+    animation-range:entry 6% cover 30%;
+  }
+  .story-section:nth-of-type(even) .story-copy,
+  .founder-story:nth-of-type(even) article {
+    animation:flo-fade-right var(--motion-duration-slow) var(--motion-ease) both;
+    animation-timeline:view();
+    animation-range:entry 6% cover 30%;
+  }
+
+  .program-images > *,
+  .retreat-images > *,
+  .accommodation-gallery > *,
+  .details-gallery > *,
+  .trek-photo-placeholder,
+  .reflection-grid > *,
+  .reflections-grid > *,
+  .who-summary-item,
+  .audience-grid > article,
+  .modes-grid > *,
+  .journey-tile {
+    animation:flo-fade-up var(--motion-duration-slow) var(--motion-ease) both;
+    animation-timeline:view();
+    animation-range:entry 5% cover 25%;
+  }
+
+  .route-wrap > * {
+    animation:flo-route-step 650ms var(--motion-ease) both;
+    animation-timeline:view();
+    animation-range:entry 5% cover 22%;
+  }
+  .route-wrap > :nth-child(2), .route-wrap > :nth-child(4), .route-wrap > :nth-child(6), .route-wrap > :nth-child(8) { animation-range:entry 10% cover 26%; }
+
+  .intent-copy p {
+    animation:flo-fade-up 700ms var(--motion-ease) both;
+    animation-timeline:view();
+    animation-range:entry 10% cover 25%;
+  }
+
+  .web-lines path {
+    path-length:1;
+    stroke-dasharray:1;
+    stroke-dashoffset:1;
+    animation:flo-line-draw 1.4s ease-out both;
+    animation-timeline:view();
+    animation-range:entry 0% cover 35%;
+  }
+  .reflection-node {
+    animation:flo-fade-up 700ms var(--motion-ease) both;
+    animation-timeline:view();
+    animation-range:entry 5% cover 25%;
+  }
+
+  .who-section + .full-bleed-image-placeholder,
+  .teacher-section + .full-bleed-image-placeholder,
+  .retreat-rhythm + .full-bleed-image-placeholder {
+    animation:flo-bg-drift linear both;
+    animation-timeline:view();
+    animation-range:entry 0% exit 100%;
+  }
+}
+
+/* Hero motion: cinematic but almost imperceptible. */
+.hero-image { animation:flo-hero-drift 16s ease-in-out infinite alternate; transform-origin:center center; }
+.hero:has(.hero-meta) { animation:flo-bg-drift 18s ease-in-out infinite alternate; }
+
+/* Unified image and card hover language. */
+@media (hover:hover) and (pointer:fine) {
+  .portrait-wrap img,
+  .elan-portrait,
+  .teacher-media,
+  .story-media,
+  .accommodation-portrait,
+  .accommodation-landscape,
+  .details-gallery .landscape-placeholder,
+  .details-row-accommodation .portrait-placeholder,
+  #food .image-placeholder,
+  #trek .trek-photo-placeholder,
+  .reflection-card img,
+  .journey-tile-image,
+  .program-image,
+  .retreat-images .image-placeholder {
+    transition:transform var(--motion-duration-slow) var(--motion-ease), box-shadow 320ms ease, filter 320ms ease;
+    will-change:transform;
+  }
+  .portrait-wrap:hover img,
+  .elan-portrait:hover,
+  .teacher-media:hover,
+  .story-media:hover,
+  .accommodation-portrait:hover,
+  .accommodation-landscape:hover,
+  .details-gallery .landscape-placeholder:hover,
+  .details-row-accommodation .portrait-placeholder:hover,
+  #food .image-placeholder:hover,
+  #trek .trek-photo-placeholder:hover,
+  .reflection-card:hover img,
+  .program-image:hover,
+  .retreat-images .image-placeholder:hover { transform:scale(var(--motion-hover-scale)); }
+
+  .journey-tile { transition:transform 360ms var(--motion-ease), box-shadow 360ms ease; }
+  .journey-tile:hover { transform:translateY(var(--motion-hover-lift)); }
+  .journey-tile:hover .journey-tile-image { box-shadow:0 18px 42px rgba(24,48,31,.12); }
+
+  .flagship-carousel-arrow { opacity:.74; transition:opacity 180ms ease, transform 180ms ease, background-color 180ms ease; }
+  .journey-tile-image:hover .flagship-carousel-arrow { opacity:1; }
+  .flagship-carousel-arrow:hover { transform:translateY(-50%) scale(1.06); }
+
+  .reflection-node:hover { transform:translate(-50%,-50%) scale(1.1); }
+}
+
+/* Links: a restrained editorial underline instead of busy motion. */
+.favourite-books a,
+.route-section a,
+.permit-copy a,
+.story-link,
+.text-link,
+.more-reflections a,
+.journey-tile-copy > a,
+.contact-block a {
+  text-decoration-color:currentColor;
+  text-decoration-thickness:1px;
+  text-underline-offset:.28em;
+  transition:opacity 220ms ease, text-underline-offset 220ms ease, transform 220ms ease;
+}
+@media (hover:hover) and (pointer:fine) {
+  .favourite-books a:hover,
+  .route-section a:hover,
+  .permit-copy a:hover,
+  .story-link:hover,
+  .text-link:hover,
+  .more-reflections a:hover,
+  .journey-tile-copy > a:hover,
+  .contact-block a:hover {
+    opacity:.72;
+    text-underline-offset:.42em;
+  }
+  .contact-block a:hover { transform:translateX(4px); }
+}
+
+/* FAQ affordance. */
+.faq-list summary::after { transition:transform 280ms var(--motion-ease); transform-origin:center; }
+.faq-list details[open] summary::after { transform:rotate(45deg); }
+.faq-list details { transition:background-color 240ms ease; }
+.faq-list details[open] { background-color:rgba(24,48,31,.025); }
+
+/* Lightboxes crossfade into view rather than popping abruptly. */
+dialog[open] { animation:flo-dialog-in 260ms var(--motion-ease) both; }
+.reflection-lightbox img,
+.lightbox-photo { transition:opacity 220ms ease, transform 260ms var(--motion-ease); }
+
+/* Contact entrance: two-line title, then details. */
+.contact-heading h1:first-child { animation:flo-fade-up 700ms var(--motion-ease) 80ms both; }
+.contact-heading h1:nth-child(2) { animation:flo-fade-up 700ms var(--motion-ease) 180ms both; }
+.contact-details { animation:flo-fade-up 760ms var(--motion-ease) 320ms both; }
+
+/* Reflections network: make hovered relationships feel more present without changing layout. */
+.reflection-web { transition:filter 240ms ease; }
+.reflection-web:has(.reflection-node:hover) .web-lines { opacity:.62; transition:opacity 240ms ease; }
+.flo-center { transition:transform 420ms var(--motion-ease); }
+.reflection-web:has(.reflection-node:hover) .flo-center { transform:translate(-50%,-50%) scale(1.015); }
+
+/* Mobile: less movement, no hover dependence, no parallax. */
+@media (max-width:760px) {
+  :root { --motion-distance:10px; --motion-hover-scale:1.012; --motion-hover-lift:0px; }
+  .hero-image { animation-duration:20s; }
+  .hero:has(.hero-meta) { animation:none; background-size:cover!important; }
+  .who-section + .full-bleed-image-placeholder,
+  .teacher-section + .full-bleed-image-placeholder,
+  .retreat-rhythm + .full-bleed-image-placeholder { animation:none!important; background-size:cover!important; }
+  .journey-tile { transform:none!important; }
+  .reflection-web:has(.reflection-node:hover) .flo-center { transform:translate(-50%,-50%); }
+}
+
+/* Accessibility: honour reduced-motion preferences everywhere. */
+@media (prefers-reduced-motion:reduce) {
+  *,*::before,*::after {
+    animation-duration:.01ms!important;
+    animation-iteration-count:1!important;
+    scroll-behavior:auto!important;
+    transition-duration:.01ms!important;
+  }
+  .hero-image,
+  .hero:has(.hero-meta),
+  .who-section + .full-bleed-image-placeholder,
+  .teacher-section + .full-bleed-image-placeholder,
+  .retreat-rhythm + .full-bleed-image-placeholder { animation:none!important; }
+}
