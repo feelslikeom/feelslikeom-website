@@ -4,6 +4,7 @@
   if (!sectionNav || !intentions) return;
 
   const isFlagship = window.location.pathname.includes('/journeys/the-flagship');
+  const isToBeFree = window.location.pathname.includes('/journeys/how-to-embrace-suffering') || window.location.pathname.includes('/journeys/to-be-free');
 
   if (isFlagship) {
     document.body.classList.add('flagship-page');
@@ -60,6 +61,15 @@
     reducedMotion.addEventListener?.('change', updateAccommodationDrift);
   }
 
+  if (isToBeFree) {
+    sectionNav.querySelectorAll('a').forEach((link) => {
+      if (link.getAttribute('href') === '#journey') {
+        const label = link.querySelector('.section-nav-label');
+        if (label) label.textContent = 'Schedule';
+      }
+    });
+  }
+
   const backToTop = document.createElement('button');
   backToTop.type = 'button';
   backToTop.className = 'back-to-top';
@@ -98,12 +108,19 @@
     backToTop.classList.toggle('is-dark', dark);
   };
 
+  const updateSectionNavVisibility = () => {
+    const rect = intentions.getBoundingClientRect();
+    const hasReachedIntentions = rect.top <= window.innerHeight * 0.72;
+    sectionNav.classList.toggle('has-entered-intentions', hasReachedIntentions);
+  };
+
   const updateBackToTop = () => {
     const show = intentions.getBoundingClientRect().bottom <= 0;
     backToTop.classList.toggle('is-visible', show);
   };
 
   const update = () => {
+    updateSectionNavVisibility();
     updateBackToTop();
     updateTheme();
   };
