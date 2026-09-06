@@ -65,9 +65,25 @@ const reflections = [
         <div class="reflection-web">
           <svg class="web-lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
             <g class="web-ring">
-              <path d="M13 23 L27 13 L43 21 L62 12 L79 20 L90 31 L91 52 L89 73 L75 84 L59 82 L41 76 L24 80 L13 68 L10 46 Z" />
-              <path d="M27 13 L26 38 L10 46 M43 21 L26 38 L50 50 M62 12 L72 39 L50 50 M79 20 L72 39 L90 31 M26 38 L27 59 L13 68 M72 39 L75 61 L91 52 M27 59 L41 76 L50 50 M75 61 L59 82 L50 50 M41 76 L59 82" />
-              <path d="M13 23 L43 21 M27 13 L50 50 M62 12 L50 50 M79 20 L50 50 M90 31 L72 39 M91 52 L75 61 M89 73 L75 61 M75 84 L59 82 M24 80 L41 76 M13 68 L27 59 M10 46 L26 38" />
+              <path d="M13 23 C18 16 22 15 27 13 C33 11 37 18 43 21 C49 23 55 14 62 12 C69 10 74 15 79 20 C84 24 88 27 90 31 C93 38 89 45 91 52 C93 59 92 67 89 73 C85 79 81 82 75 84 C68 87 64 82 59 82 C52 82 47 79 41 76 C35 73 29 84 24 80 C18 77 16 72 13 68 C9 61 12 53 10 46 C8 38 10 29 13 23 Z" />
+              <path d="M13 23 C22 25 33 19 43 21 C55 23 65 23 79 20" />
+              <path d="M10 46 C19 44 22 37 26 38 C32 39 38 47 50 50 C61 52 66 41 72 39 C79 36 84 31 90 31" />
+              <path d="M13 68 C18 62 22 60 27 59 C35 57 42 54 50 50 C58 47 68 58 75 61 C82 65 86 67 89 73" />
+              <path d="M24 80 C31 75 35 77 41 76 C48 75 52 80 59 82 C66 83 69 86 75 84" />
+              <path d="M27 13 C29 21 24 29 26 38 C28 46 24 52 27 59 C30 66 37 69 41 76" />
+              <path d="M62 12 C60 20 65 31 72 39 C77 46 71 53 75 61 C79 68 76 76 75 84" />
+              <path d="M43 21 C45 31 48 39 50 50 C51 60 47 68 41 76" />
+              <path d="M79 20 C78 29 74 34 72 39 C69 46 72 55 75 61" />
+              <path d="M13 23 C24 35 35 42 50 50 C63 56 77 65 89 73" />
+              <path d="M90 31 C80 39 67 45 50 50 C35 55 22 62 13 68" />
+              <path d="M27 13 C38 25 42 37 50 50 C57 63 65 74 75 84" />
+              <path d="M62 12 C58 26 55 37 50 50 C46 63 34 72 24 80" />
+              <path d="M10 46 C23 50 36 48 50 50 C64 51 78 50 91 52" />
+              <path d="M26 38 C38 32 53 30 72 39" />
+              <path d="M27 59 C40 66 58 69 75 61" />
+              <path d="M41 76 C49 70 55 69 59 82" />
+              <path d="M13 68 C24 70 31 71 41 76" />
+              <path d="M79 20 C84 31 88 42 91 52" />
             </g>
           </svg>
 
@@ -167,22 +183,22 @@ const reflections = [
   .reflection-web-section { width:100%; padding:clamp(2rem,5vw,4rem) 0 clamp(5rem,9vw,8rem); overflow:hidden; }
   .reflection-web { position:relative; width:min(1180px,96vw); height:min(900px,78vw); min-height:650px; margin:0 auto; }
   .web-lines { position:absolute; inset:0; width:100%; height:100%; overflow:visible; pointer-events:none; }
-  .web-ring { fill:none; stroke:#18301f; stroke-width:.22; vector-effect:non-scaling-stroke; opacity:.42; }
+  .web-ring { fill:none; stroke:#18301f; stroke-width:.2; vector-effect:non-scaling-stroke; opacity:.36; stroke-linecap:round; stroke-linejoin:round; }
 
-  .flo-center { position:absolute; left:50%; top:50%; width:clamp(120px,17vw,210px); aspect-ratio:1; transform:translate(-50%,-50%); border-radius:50%; overflow:hidden; background:#f4efe5; border:1px solid rgba(24,48,31,.18); box-shadow:0 0 0 12px #f4efe5; z-index:3; }
-  .flo-center img { display:block; width:100%; height:100%; object-fit:cover; border-radius:50%; }
+  .flo-center { position:absolute; left:50%; top:50%; width:clamp(120px,17vw,210px); aspect-ratio:1; transform:translate(-50%,-50%); border-radius:50%; overflow:hidden; background:transparent; border:0; box-shadow:none; z-index:3; }
+  .flo-center img { display:block; width:100%; height:100%; object-fit:cover; border-radius:50%; mix-blend-mode:multiply; }
 
   .reflection-node { position:absolute; left:var(--x); top:var(--y); width:clamp(52px,var(--s),92px); aspect-ratio:1; transform:translate(-50%,-50%); border-radius:50%; border:2px solid #18301f; padding:0; cursor:zoom-in; background:#f4efe5; z-index:4; transition:transform 180ms ease,box-shadow 180ms ease; }
   .reflection-node span { display:block; width:100%; height:100%; border-radius:50%; background:linear-gradient(145deg,rgba(24,48,31,.24),rgba(24,48,31,.06)); }
   .reflection-node:hover,.reflection-node:focus-visible { transform:translate(-50%,-50%) scale(1.12); box-shadow:0 10px 25px rgba(24,48,31,.16); outline:none; }
 
-  .reflection-lightbox { width:min(92vw,940px); max-width:940px; padding:clamp(1.5rem,3vw,2.5rem); border:0; background:#f4efe5; color:#18301f; box-shadow:0 24px 70px rgba(7,18,11,.34); overflow:visible; }
+  .reflection-lightbox { width:min(92vw,940px); max-width:940px; max-height:92vh; padding:clamp(1.5rem,3vw,2.5rem); border:0; background:#f4efe5; color:#18301f; box-shadow:0 24px 70px rgba(7,18,11,.34); overflow:auto; }
   .reflection-lightbox::backdrop { background:rgba(7,18,11,.78); backdrop-filter:blur(4px); }
   .lightbox-copy { text-align:center; margin:0 auto clamp(1.5rem,3vw,2.5rem); max-width:780px; }
-  .lightbox-quote { margin:0 0 .65rem; font-size:clamp(1.8rem,3.2vw,3.2rem)!important; line-height:1.08; }
+  .lightbox-quote { margin:0 0 .65rem; font-size:clamp(1.71rem,3.04vw,3.04rem)!important; line-height:1.08; }
   .lightbox-name { margin:0; opacity:.72; }
-  .lightbox-image { width:min(720px,100%); aspect-ratio:4/5; margin:0 auto; display:flex; align-items:center; justify-content:center; background:linear-gradient(145deg,rgba(24,48,31,.16),rgba(24,48,31,.035)); border:1px solid rgba(24,48,31,.14); color:rgba(24,48,31,.5); }
-  .lightbox-close { position:absolute; top:1rem; right:1rem; width:2.7rem; height:2.7rem; border:0; border-radius:50%; background:rgba(255,250,241,.96); color:#18301f; font-size:1.8rem; cursor:pointer; z-index:6; }
+  .lightbox-image { width:min(720px,100%); min-height:0; height:min(58vh,620px); aspect-ratio:auto; margin:0 auto; display:flex; align-items:center; justify-content:center; background:linear-gradient(145deg,rgba(24,48,31,.16),rgba(24,48,31,.035)); border:1px solid rgba(24,48,31,.14); color:rgba(24,48,31,.5); }
+  .lightbox-close { position:sticky; top:0; float:right; width:2.7rem; height:2.7rem; margin:0 0 -2.7rem auto; border:0; border-radius:50%; background:rgba(255,250,241,.96); color:#18301f; font-size:1.8rem; cursor:pointer; z-index:6; }
   .lightbox-nav { position:fixed; top:50%; width:3.2rem; height:3.2rem; transform:translateY(-50%); border:1px solid rgba(24,48,31,.18); border-radius:50%; background:rgba(244,239,229,.96); color:#18301f; font-family:Georgia,serif; font-size:2.1rem; cursor:pointer; z-index:6; box-shadow:0 8px 24px rgba(7,18,11,.16); }
   .lightbox-prev { left:max(1rem,calc(50vw - 540px)); }
   .lightbox-next { right:max(1rem,calc(50vw - 540px)); }
@@ -196,8 +212,8 @@ const reflections = [
     .reflection-web { width:980px; height:760px; min-height:0; left:50%; margin-left:-490px; transform:scale(.72); transform-origin:50% 0; margin-bottom:-210px; }
     .reflection-node { width:72px; }
     .flo-center { width:165px; }
-    .reflection-lightbox { width:96vw; padding:1.25rem .9rem 1rem; }
-    .lightbox-image { width:100%; }
+    .reflection-lightbox { width:96vw; max-height:94vh; padding:1.25rem .9rem 1rem; }
+    .lightbox-image { width:100%; height:min(55vh,520px); }
     .lightbox-nav { width:2.7rem; height:2.7rem; font-size:1.7rem; }
     .lightbox-prev { left:.5rem; }
     .lightbox-next { right:.5rem; }
