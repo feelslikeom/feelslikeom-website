@@ -1,0 +1,49 @@
+name: Optimize website images
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'website/public/**/*.jpg'
+      - 'website/public/**/*.jpeg'
+      - 'website/public/**/*.JPG'
+      - 'website/public/**/*.JPEG'
+      - '.github/workflows/optimize-images.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  optimize:
+    if: ${{ !contains(github.event.head_commit.message || '', '[image-optimize]') }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install image processor
+        working-directory: website
+        run: npm install sharp@0.34.3 --no-save --package-lock=false
+
+      - name: Optimize JPEGs
+        working-directory: website
+        run: node scripts/optimize-images.mjs
+
+      - name: Commit optimized images
+        run: |
+          if git diff --quiet -- website/public; then
+            echo "No image changes needed."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add website/public
+          git commit -m "[image-optimize] Optimize website images"
+          git push
