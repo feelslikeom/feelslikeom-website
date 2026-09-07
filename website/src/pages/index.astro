@@ -27,8 +27,6 @@
           <div class="submenu">
             <a href="/journeys/the-flagship">The Flagship</a>
             <a href="/journeys/how-to-embrace-suffering">To Be Free</a>
-            <a href="/journeys#feels-like-home">Feels Like Home</a>
-            <a href="/journeys#way-of-the-yaks">Way of the Yaks</a>
           </div>
         </details>
         <a href="/reflections">REFLECTIONS</a>
@@ -133,9 +131,9 @@
             </article>
 
             <article class="journey-tile reveal">
-              <a class="journey-tile-image" href="/journeys#feels-like-home" aria-label="Explore Feels Like Home">
+              <div class="journey-tile-image" aria-label="Feels Like Home">
                 <img src="/feels-like-home.jpg" alt="Feels Like Home journey in West Sikkim" />
-              </a>
+              </div>
               <div class="journey-tile-copy">
                 <h3>Feels Like Home</h3>
                 <p>Dec 2 - 9 2026</p>
@@ -145,9 +143,9 @@
             </article>
 
             <article class="journey-tile reveal">
-              <a class="journey-tile-image" href="/journeys#way-of-the-yaks" aria-label="Explore Way of the Yaks">
+              <div class="journey-tile-image" aria-label="Way of the Yaks">
                 <img src="/yak.jpg" alt="Way of the Yaks journey in West Sikkim" />
-              </a>
+              </div>
               <div class="journey-tile-copy">
                 <h3>Way of the Yaks</h3>
                 <p>Sometime in November 2026</p>
@@ -206,8 +204,8 @@
 
 <style>
   :global(*) { box-sizing:border-box; }
-  :global(html) { scroll-behavior:smooth; }
-  body { margin:0; font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; background:#f4efe5; color:#18301f; }
+  :global(html) { scroll-behavior:smooth; overflow-x:hidden; }
+  body { margin:0; font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; background:#f4efe5; color:#18301f; overflow-x:hidden; }
   h1,h2,h3,blockquote,.brand,.person-name { font-family:Georgia,serif; }
   .site-header { position:absolute; top:0; left:0; right:0; z-index:5; display:flex; align-items:center; justify-content:space-between; gap:2rem; padding:1.5rem 4%; color:white; }
   .brand { color:inherit; text-decoration:none; font-size:1.3rem; white-space:nowrap; }
@@ -308,11 +306,21 @@
   @keyframes scrollPulse { 0% { transform:translateY(-22px); opacity:0; } 25%,75% { opacity:1; } 100% { transform:translateY(58px); opacity:0; } }
   @media (max-width:900px) { .looks-like-grid { grid-template-columns:repeat(3,minmax(0,1fr)); } .look-item:nth-child(4) { border-left:0; border-top:1px solid rgba(24,48,31,.18); } .look-item:nth-child(5),.look-item:nth-child(6) { border-top:1px solid rgba(24,48,31,.18); } }
   @media (max-width:760px) {
-    .site-header { align-items:flex-start; padding:1.15rem 1.25rem; }
-    .main-nav { gap:.75rem; font-size:.65rem; flex-wrap:wrap; justify-content:flex-end; }
-    .submenu { right:auto; left:0; }
-    .nav-dropdown:hover .submenu { opacity:0; visibility:hidden; }
-    .nav-dropdown[open] .submenu,.nav-dropdown:focus-within .submenu { opacity:1; visibility:visible; }
+    .site-header { align-items:center; padding:1.15rem 1.25rem; min-height:72px; }
+    .main-nav { position:fixed; top:1rem; right:1rem; width:48px; height:48px; z-index:100; display:block; overflow:visible; font-size:.72rem; }
+    .main-nav > * { display:none; }
+    .main-nav > .nav-dropdown:first-child { display:block; position:static; }
+    .main-nav > .nav-dropdown:first-child > summary { position:absolute; top:0; right:0; display:flex; width:48px; height:48px; align-items:center; justify-content:center; border:1px solid rgba(24,48,31,.16); border-radius:50%; background:rgba(244,239,229,.96); color:#18301f; font-size:0; }
+    .main-nav > .nav-dropdown:first-child > summary::before { content:""; width:22px; height:2px; background:#18301f; box-shadow:0 -7px 0 #18301f,0 7px 0 #18301f; }
+    .main-nav:has(> .nav-dropdown:first-child[open]) { width:min(88vw,360px); height:auto; max-height:calc(100dvh - 2rem); padding:4.4rem 1rem 1rem; overflow-y:auto; background:#f4efe5; color:#18301f; border:1px solid rgba(24,48,31,.12); border-radius:.65rem; box-shadow:0 18px 48px rgba(8,20,12,.22); }
+    .main-nav:has(> .nav-dropdown:first-child[open]) > * { display:block; width:100%; }
+    .main-nav:has(> .nav-dropdown:first-child[open]) > .nav-dropdown:first-child > summary { top:.7rem; right:.7rem; }
+    .main-nav:has(> .nav-dropdown:first-child[open]) > .nav-dropdown:not(:first-child) > summary,
+    .main-nav:has(> .nav-dropdown:first-child[open]) > a { display:block; width:100%; padding:1rem .5rem; border-top:1px solid rgba(24,48,31,.12); color:#18301f; font-size:.78rem!important; letter-spacing:.1em; }
+    .main-nav:has(> .nav-dropdown:first-child[open]) .submenu { position:static; width:100%; min-width:0; padding:.2rem 0 .7rem; background:transparent; box-shadow:none; transform:none; }
+    .main-nav:has(> .nav-dropdown:first-child[open]) .nav-dropdown[open] > .submenu { opacity:1; visibility:visible; display:block; }
+    .main-nav:has(> .nav-dropdown:first-child[open]) .nav-dropdown:not([open]) > .submenu { display:none; }
+    .main-nav:has(> .nav-dropdown:first-child[open]) .submenu a { display:block; padding:.8rem .8rem; color:#18301f; white-space:normal; }
     .hero::before { background-position:62% center; animation:heroZoomMobile 14s ease-in-out infinite alternate; }
     .overlay { background:linear-gradient(to bottom,rgba(8,20,12,.52),rgba(8,20,12,.16) 48%,rgba(8,20,12,.04) 72%); }
     .hero-content { top:14%; left:1.25rem; right:1.25rem; max-width:none; }
