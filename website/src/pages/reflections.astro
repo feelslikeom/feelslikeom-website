@@ -333,7 +333,7 @@ rings.forEach((ringNodes, ringIndex) => {
       <button class="lightbox-nav lightbox-prev" type="button" aria-label="Previous reflection">‹</button>
       <button class="lightbox-nav lightbox-next" type="button" aria-label="Next reflection">›</button>
       <div class="lightbox-copy">
-        <blockquote class="lightbox-quote">“Reflection coming soon.”</blockquote>
+        <blockquote class="lightbox-quote" data-length="short">“Reflection coming soon.”</blockquote>
         <p class="lightbox-name">— Past participant</p>
       </div>
     </dialog>
@@ -352,11 +352,24 @@ rings.forEach((ringNodes, ringIndex) => {
       let savedScrollY = 0;
       let savedWebScrollLeft = 0;
 
+      const quoteLengthTier = (text) => {
+        const length = text.trim().length;
+        if (length <= 90) return 'short';
+        if (length <= 150) return 'medium';
+        if (length <= 220) return 'long';
+        if (length <= 300) return 'very-long';
+        return 'extra-long';
+      };
+
       const showReflection = (index) => {
         if (!nodes.length || !dialog) return;
         current = (index + nodes.length) % nodes.length;
         const node = nodes[current];
-        if (quote) quote.textContent = `“${node.dataset.quote ?? ''}”`;
+        const quoteText = node.dataset.quote ?? '';
+        if (quote) {
+          quote.textContent = `“${quoteText}”`;
+          quote.dataset.length = quoteLengthTier(quoteText);
+        }
         if (name) name.textContent = `— ${node.dataset.name ?? ''}`;
         if (!dialog.open) {
           savedScrollX = window.scrollX;
@@ -364,6 +377,7 @@ rings.forEach((ringNodes, ringIndex) => {
           savedWebScrollLeft = webScroller?.scrollLeft ?? 0;
           dialog.showModal();
         }
+        dialog.scrollTop = 0;
       };
 
       const restoreReflectionPosition = () => {
@@ -431,8 +445,13 @@ rings.forEach((ringNodes, ringIndex) => {
 
   .reflection-lightbox { position:relative; width:min(92vw,940px); max-width:940px; max-height:92vh; padding:clamp(2.5rem,5vw,4rem) clamp(4.5rem,8vw,7rem); border:0; background:#f4efe5; color:#18301f; box-shadow:0 24px 70px rgba(7,18,11,.34); overflow:auto; }
   .reflection-lightbox::backdrop { background:rgba(7,18,11,.78); backdrop-filter:blur(4px); }
-  .lightbox-copy { text-align:center; margin:0 auto; max-width:720px; }
-  .lightbox-quote { margin:0 0 .65rem; font-size:clamp(1.368rem,2.432vw,2.432rem)!important; line-height:1.08; }
+  .lightbox-copy { text-align:center; margin:0 auto; max-width:760px; }
+  .lightbox-quote { margin:0 0 .8rem; font-family:Georgia,'Times New Roman',serif!important; line-height:1.13; text-wrap:balance; overflow-wrap:anywhere; }
+  .lightbox-quote[data-length="short"] { font-size:clamp(2rem,3vw,2.6rem)!important; }
+  .lightbox-quote[data-length="medium"] { font-size:clamp(1.75rem,2.55vw,2.25rem)!important; }
+  .lightbox-quote[data-length="long"] { font-size:clamp(1.5rem,2.2vw,1.95rem)!important; line-height:1.15; }
+  .lightbox-quote[data-length="very-long"] { font-size:clamp(1.3rem,1.85vw,1.65rem)!important; line-height:1.18; }
+  .lightbox-quote[data-length="extra-long"] { font-size:clamp(1.15rem,1.55vw,1.4rem)!important; line-height:1.22; }
   .lightbox-name { margin:0; opacity:.72; }
   .lightbox-close { position:sticky; top:0; float:right; width:2.7rem; height:2.7rem; margin:0 -4rem -2.7rem auto; border:0; border-radius:50%; background:rgba(255,250,241,.96); color:#18301f; font-size:1.8rem; cursor:pointer; z-index:6; }
   .lightbox-nav { position:absolute; top:50%; width:3.2rem; height:3.2rem; transform:translateY(-50%); border:1px solid rgba(24,48,31,.18); border-radius:50%; background:rgba(244,239,229,.96); color:#18301f; font-family:Georgia,serif; font-size:2.1rem; cursor:pointer; z-index:6; box-shadow:0 8px 24px rgba(7,18,11,.16); }
@@ -449,9 +468,13 @@ rings.forEach((ringNodes, ringIndex) => {
     .reflection-web { margin-left:0; }
     .reflection-node { width:max(58px,calc(var(--node-size) * .86)); }
     .flo-center { width:150px; }
-    .reflection-lightbox { width:96vw; max-height:94vh; padding:3.75rem 3.4rem; }
+    .reflection-lightbox { width:96vw; max-height:94vh; padding:3.6rem 3.2rem 3rem; }
     .lightbox-copy { max-width:100%; }
-    .lightbox-quote { font-size:clamp(1.28rem,6.1vw,1.8rem)!important; line-height:1.12; }
+    .lightbox-quote[data-length="short"] { font-size:clamp(1.55rem,6vw,1.9rem)!important; }
+    .lightbox-quote[data-length="medium"] { font-size:clamp(1.4rem,5.3vw,1.68rem)!important; }
+    .lightbox-quote[data-length="long"] { font-size:clamp(1.25rem,4.7vw,1.5rem)!important; }
+    .lightbox-quote[data-length="very-long"] { font-size:clamp(1.1rem,4.15vw,1.3rem)!important; line-height:1.2; }
+    .lightbox-quote[data-length="extra-long"] { font-size:clamp(1rem,3.8vw,1.16rem)!important; line-height:1.24; }
     .lightbox-nav { width:2.7rem; height:2.7rem; font-size:1.7rem; }
     .lightbox-prev { left:.45rem; }
     .lightbox-next { right:.45rem; }
