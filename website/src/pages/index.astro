@@ -131,8 +131,29 @@
               <div class="journey-tile-copy"><h3>To Be Free</h3><p>Nov 5 - 12 2026</p><p class="journey-note">Silent retreat</p><a href="/journeys/how-to-embrace-suffering">See more</a></div>
             </article>
 
-            <article class="journey-tile reveal"><a class="journey-tile-image" href="/journeys#feels-like-home" aria-label="Explore Feels Like Home"><span>Journey photograph</span><span class="journey-dots" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span></a><div class="journey-tile-copy"><h3>Feels Like Home</h3><p>Dec 2 - 9 2026</p><p class="journey-note">Fully booked</p><a href="/journeys#feels-like-home">See more</a></div></article>
-            <article class="journey-tile reveal"><a class="journey-tile-image" href="/journeys#way-of-the-yaks" aria-label="Explore Way of the Yaks"><span>Journey photograph</span><span class="journey-dots" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span></a><div class="journey-tile-copy"><h3>Way of the Yaks</h3><p>Nov 16 - 21 2026</p><p class="journey-note">Recce trip</p><a href="/journeys#way-of-the-yaks">See more</a></div></article>
+            <article class="journey-tile reveal">
+              <a class="journey-tile-image" href="/journeys#feels-like-home" aria-label="Explore Feels Like Home">
+                <img src="/feels-like-home.jpg" alt="Feels Like Home journey in West Sikkim" />
+              </a>
+              <div class="journey-tile-copy">
+                <h3>Feels Like Home</h3>
+                <p>Dec 2 - 9 2026</p>
+                <p class="journey-note">Fully booked, contact us for next season</p>
+                <p class="journey-message">Thank you for your support!</p>
+              </div>
+            </article>
+
+            <article class="journey-tile reveal">
+              <a class="journey-tile-image" href="/journeys#way-of-the-yaks" aria-label="Explore Way of the Yaks">
+                <img src="/yak.jpg" alt="Way of the Yaks journey in West Sikkim" />
+              </a>
+              <div class="journey-tile-copy">
+                <h3>Way of the Yaks</h3>
+                <p>Sometime in November 2026</p>
+                <p class="journey-note">We're going on a recce!</p>
+                <p class="journey-message">Stay tuned for more info!</p>
+              </div>
+            </article>
           </div>
         </div>
       </section>
@@ -247,6 +268,8 @@
   .home-journeys-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:clamp(4rem,7vw,7rem) clamp(2rem,5vw,4rem); width:min(1180px,100%); margin:clamp(5rem,9vw,8rem) auto 0; }
   .journey-tile { min-width:0; }
   .journey-tile-image { position:relative; display:flex; align-items:center; justify-content:center; width:100%; aspect-ratio:1/1; overflow:hidden; border-radius:1.35rem; color:rgba(24,48,31,.5); text-decoration:none; background:linear-gradient(145deg,rgba(24,48,31,.13),rgba(24,48,31,.035)); border:1px solid rgba(24,48,31,.1); }
+  .journey-tile-image>img { width:100%; height:100%; display:block; object-fit:cover; transition:transform 900ms cubic-bezier(.22,.61,.36,1); }
+  .journey-tile:hover .journey-tile-image>img { transform:scale(1.025); }
   .journey-tile-image>span:first-child { font-family:var(--font-body); font-size:.8rem; letter-spacing:.04em; }
   .flagship-carousel-images { position:absolute; inset:0; }
   .flagship-carousel-images img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity 320ms ease; }
@@ -265,6 +288,7 @@
   .journey-tile-copy p { margin:.1rem 0; line-height:1.45; }
   .journey-note { font-style:italic; opacity:.72; }
   .journey-tile-copy>a { display:inline-block; margin-top:.75rem; color:inherit; font-family:var(--font-display); font-size:var(--type-cta); text-underline-offset:.3rem; }
+  .journey-message { margin-top:.75rem!important; font-family:var(--font-display); font-size:var(--type-cta); }
   .reflections { position:relative; isolation:isolate; overflow:hidden; padding:clamp(5rem,9vw,8rem) 4% clamp(5.5rem,10vw,9rem); color:#f4efe5; background:#18301f; }
   .reflections::before { content:""; position:absolute; inset:0; z-index:-2; background:url('/hero-river.JPG') center 58%/cover no-repeat; filter:saturate(.55) contrast(.88); transform:scale(1.03); }
   .reflections::after { content:""; position:absolute; inset:0; z-index:-1; background:rgba(24,48,31,.72); }
