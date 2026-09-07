@@ -19,6 +19,9 @@
   const setup = () => {
     ensureStyles();
 
+    const fieldImmersionLink = document.querySelector('#stay-longer a.text-link');
+    if (fieldImmersionLink) fieldImmersionLink.href = '/journeys/the-flagship#itinerary';
+
     document.querySelectorAll('.site-header').forEach((header) => {
       const button = header.querySelector('.mobile-nav-toggle');
       const nav = header.querySelector('.main-nav');
