@@ -140,7 +140,10 @@
       <section class="reflections" aria-labelledby="reflections-heading">
         <div class="reflections-inner">
           <h2 id="reflections-heading" class="reveal">Reflections</h2>
-          <div class="reflections-grid"><a class="reflection-card reveal" href="/reflections#participant-1" aria-label="Read participant reflection one"><div class="reflection-image reflection-image--placeholder" aria-hidden="true"></div></a><a class="reflection-card reveal" href="/reflections#participant-2" aria-label="Read participant reflection two"><div class="reflection-image reflection-image--placeholder" aria-hidden="true"></div></a><a class="reflection-card reveal" href="/reflections#participant-3" aria-label="Read participant reflection three"><div class="reflection-image reflection-image--placeholder" aria-hidden="true"></div></a></div>
+          <div class="featured-reflection reveal">
+            <blockquote>“This place has taught me so much in such a short period of time. One phrase that stood out to me was 'See the place for what it is'. This place has taught me so much about community, the warmth, the love for one's people and culture, the abundance and the interconnectedness amongst one another.”</blockquote>
+            <p>— Amos</p>
+          </div>
           <div class="more-reflections reveal"><a href="/reflections">See more reflections from past participants <span aria-hidden="true">→</span></a></div>
         </div>
       </section>
@@ -266,12 +269,10 @@
   .reflections::before { content:""; position:absolute; inset:0; z-index:-2; background:url('/hero-river.JPG') center 58%/cover no-repeat; filter:saturate(.55) contrast(.88); transform:scale(1.03); }
   .reflections::after { content:""; position:absolute; inset:0; z-index:-1; background:rgba(24,48,31,.72); }
   .reflections h2 { margin:0 0 clamp(3rem,5vw,4.5rem); text-align:center; font-size:clamp(2.5rem,4vw,4rem); font-weight:400; }
-  .reflections-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:clamp(1rem,2.5vw,2rem); }
-  .reflection-card { display:block; aspect-ratio:1; overflow:hidden; border-radius:.2rem; text-decoration:none; background:rgba(244,239,229,.52); border:1px solid rgba(244,239,229,.56); backdrop-filter:blur(2px); }
-  .reflection-image { width:100%; height:100%; background-position:center; background-size:cover; transition:transform 800ms cubic-bezier(.22,.61,.36,1); }
-  .reflection-image--placeholder { background:linear-gradient(145deg,rgba(24,48,31,.18),rgba(244,239,229,.26)),rgba(244,239,229,.48); }
-  .reflection-card:hover .reflection-image { transform:scale(1.04); }
-  .more-reflections { margin-top:clamp(2rem,4vw,3.5rem); text-align:center; }
+  .featured-reflection { width:min(920px,100%); margin:0 auto; text-align:center; }
+  .featured-reflection blockquote { margin:0; font-size:clamp(1.65rem,2.75vw,2.8rem); line-height:1.24; text-wrap:balance; }
+  .featured-reflection p { margin:1.35rem 0 0; font-size:clamp(.95rem,1.2vw,1.08rem); letter-spacing:.04em; opacity:.8; }
+  .more-reflections { margin-top:clamp(2.5rem,4vw,3.75rem); text-align:center; }
   .more-reflections a { display:inline-flex; align-items:center; gap:.65rem; color:inherit; font-family:Georgia,serif; font-size:clamp(1rem,1.35vw,1.3rem); text-underline-offset:.35rem; }
   .more-reflections a span { font-size:1.4rem; transition:transform 220ms ease; text-decoration:none; }
   .more-reflections a:hover span { transform:translateX(5px); }
@@ -313,7 +314,7 @@
     .flagship-carousel-arrow { width:2.65rem; height:2.65rem; font-size:1.7rem; }
     .flagship-carousel-prev { left:.75rem; } .flagship-carousel-next { right:.75rem; }
     .reflections { padding:4.25rem 1.25rem 5rem; }
-    .reflections-grid { grid-template-columns:1fr; gap:1.25rem; }
+    .featured-reflection blockquote { font-size:clamp(1.4rem,6vw,1.8rem); line-height:1.28; }
   }
   @keyframes heroZoomMobile { from { transform:scale(1.035); } to { transform:scale(1.09); } }
   @media (prefers-reduced-motion:reduce) { :global(html) { scroll-behavior:auto; } *,*::before,*::after { animation-duration:.01ms!important; animation-iteration-count:1!important; transition-duration:.01ms!important; } .reveal { opacity:1; transform:none; } }
