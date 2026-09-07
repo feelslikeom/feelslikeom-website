@@ -198,10 +198,6 @@ rings.forEach((ringNodes, ringIndex) => {
         <blockquote class="lightbox-quote">“Reflection coming soon.”</blockquote>
         <p class="lightbox-name">— Past participant</p>
       </div>
-      <div class="lightbox-image" aria-label="Participant reflection image">
-        <img class="lightbox-photo" alt="" />
-        <span class="lightbox-placeholder">Reflection image</span>
-      </div>
     </dialog>
 
     <script>
@@ -209,33 +205,35 @@ rings.forEach((ringNodes, ringIndex) => {
       const dialog = document.querySelector('.reflection-lightbox');
       const quote = dialog?.querySelector('.lightbox-quote');
       const name = dialog?.querySelector('.lightbox-name');
-      const photo = dialog?.querySelector('.lightbox-photo');
-      const placeholder = dialog?.querySelector('.lightbox-placeholder');
       const close = dialog?.querySelector('.lightbox-close');
       const prev = dialog?.querySelector('.lightbox-prev');
       const next = dialog?.querySelector('.lightbox-next');
+      const webScroller = document.querySelector('.reflection-web-scroller');
       let current = 0;
+      let savedScrollX = 0;
+      let savedScrollY = 0;
+      let savedWebScrollLeft = 0;
 
       const showReflection = (index) => {
         if (!nodes.length || !dialog) return;
         current = (index + nodes.length) % nodes.length;
         const node = nodes[current];
-        const image = node.dataset.image ?? '';
         if (quote) quote.textContent = `“${node.dataset.quote ?? ''}”`;
         if (name) name.textContent = `— ${node.dataset.name ?? ''}`;
-        if (photo) {
-          if (image) {
-            photo.src = image;
-            photo.alt = `${node.dataset.name ?? 'Participant'} reflection photograph`;
-            photo.style.objectPosition = node.dataset.focus ?? '50% 35%';
-            photo.hidden = false;
-          } else {
-            photo.removeAttribute('src');
-            photo.hidden = true;
-          }
+        if (!dialog.open) {
+          savedScrollX = window.scrollX;
+          savedScrollY = window.scrollY;
+          savedWebScrollLeft = webScroller?.scrollLeft ?? 0;
+          dialog.showModal();
         }
-        if (placeholder) placeholder.hidden = Boolean(image);
-        if (!dialog.open) dialog.showModal();
+      };
+
+      const restoreReflectionPosition = () => {
+        requestAnimationFrame(() => {
+          nodes[current]?.focus({ preventScroll: true });
+          window.scrollTo(savedScrollX, savedScrollY);
+          if (webScroller) webScroller.scrollLeft = savedWebScrollLeft;
+        });
       };
 
       nodes.forEach((node, index) => node.addEventListener('click', () => showReflection(index)));
@@ -245,6 +243,7 @@ rings.forEach((ringNodes, ringIndex) => {
       dialog?.addEventListener('click', (event) => {
         if (event.target === dialog) dialog.close();
       });
+      dialog?.addEventListener('close', restoreReflectionPosition);
       document.addEventListener('keydown', (event) => {
         if (!dialog?.open) return;
         if (event.key === 'ArrowLeft') showReflection(current - 1);
@@ -292,17 +291,15 @@ rings.forEach((ringNodes, ringIndex) => {
   .reflection-node.has-image span { background-image:var(--image); background-size:cover; background-position:var(--focus); background-repeat:no-repeat; }
   .reflection-node:hover,.reflection-node:focus-visible { transform:translate(-50%,-50%) scale(1.12); box-shadow:0 10px 25px rgba(24,48,31,.16); outline:none; }
 
-  .reflection-lightbox { position:relative; width:min(92vw,940px); max-width:940px; max-height:92vh; padding:clamp(1.5rem,3vw,2.5rem) clamp(1.5rem,3vw,2.5rem) 6rem; border:0; background:#f4efe5; color:#18301f; box-shadow:0 24px 70px rgba(7,18,11,.34); overflow:auto; }
+  .reflection-lightbox { position:relative; width:min(92vw,940px); max-width:940px; max-height:92vh; padding:clamp(2.5rem,5vw,4rem) clamp(4.5rem,8vw,7rem); border:0; background:#f4efe5; color:#18301f; box-shadow:0 24px 70px rgba(7,18,11,.34); overflow:auto; }
   .reflection-lightbox::backdrop { background:rgba(7,18,11,.78); backdrop-filter:blur(4px); }
-  .lightbox-copy { text-align:center; margin:0 auto; max-width:780px; padding:0 clamp(.5rem,2vw,1.5rem); }
+  .lightbox-copy { text-align:center; margin:0 auto; max-width:720px; }
   .lightbox-quote { margin:0 0 .65rem; font-size:clamp(1.368rem,2.432vw,2.432rem)!important; line-height:1.08; }
   .lightbox-name { margin:0; opacity:.72; }
-  .lightbox-image { display:none!important; }
-  .lightbox-photo,.lightbox-placeholder { display:none!important; }
-  .lightbox-close { position:sticky; top:0; float:right; width:2.7rem; height:2.7rem; margin:0 0 -2.7rem auto; border:0; border-radius:50%; background:rgba(255,250,241,.96); color:#18301f; font-size:1.8rem; cursor:pointer; z-index:6; }
-  .lightbox-nav { position:absolute; top:auto; bottom:1.5rem; width:3.2rem; height:3.2rem; transform:none; border:1px solid rgba(24,48,31,.18); border-radius:50%; background:rgba(244,239,229,.96); color:#18301f; font-family:Georgia,serif; font-size:2.1rem; cursor:pointer; z-index:6; box-shadow:0 8px 24px rgba(7,18,11,.16); }
-  .lightbox-prev { left:1.5rem; }
-  .lightbox-next { right:1.5rem; }
+  .lightbox-close { position:sticky; top:0; float:right; width:2.7rem; height:2.7rem; margin:0 -4rem -2.7rem auto; border:0; border-radius:50%; background:rgba(255,250,241,.96); color:#18301f; font-size:1.8rem; cursor:pointer; z-index:6; }
+  .lightbox-nav { position:absolute; top:50%; width:3.2rem; height:3.2rem; transform:translateY(-50%); border:1px solid rgba(24,48,31,.18); border-radius:50%; background:rgba(244,239,229,.96); color:#18301f; font-family:Georgia,serif; font-size:2.1rem; cursor:pointer; z-index:6; box-shadow:0 8px 24px rgba(7,18,11,.16); }
+  .lightbox-prev { left:1.25rem; }
+  .lightbox-next { right:1.25rem; }
 
   @media (max-width:760px) {
     .site-header { align-items:flex-start; padding:1.15rem 1.25rem; }
@@ -314,10 +311,12 @@ rings.forEach((ringNodes, ringIndex) => {
     .reflection-web { margin-left:0; }
     .reflection-node { width:max(58px,calc(var(--node-size) * .86)); }
     .flo-center { width:150px; }
-    .reflection-lightbox { width:96vw; max-height:94vh; padding:1.25rem .9rem 5rem; }
-    .lightbox-copy { padding:0 .3rem; }
-    .lightbox-nav { width:2.7rem; height:2.7rem; font-size:1.7rem; bottom:1rem; }
-    .lightbox-prev { left:1rem; }
-    .lightbox-next { right:1rem; }
+    .reflection-lightbox { width:96vw; max-height:94vh; padding:3.75rem 3.4rem; }
+    .lightbox-copy { max-width:100%; }
+    .lightbox-quote { font-size:clamp(1.28rem,6.1vw,1.8rem)!important; line-height:1.12; }
+    .lightbox-nav { width:2.7rem; height:2.7rem; font-size:1.7rem; }
+    .lightbox-prev { left:.45rem; }
+    .lightbox-next { right:.45rem; }
+    .lightbox-close { position:absolute; top:.7rem; right:.7rem; margin:0; }
   }
 </style>
