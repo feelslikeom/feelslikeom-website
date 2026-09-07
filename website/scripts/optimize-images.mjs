@@ -5,6 +5,17 @@ import sharp from 'sharp';
 const publicDir = path.resolve('public');
 const MAX_DIMENSION = 2560;
 const JPEG_QUALITY = 88;
+const REFLECTION_THUMB_MAX = 640;
+const REFLECTION_THUMB_QUALITY = 82;
+
+const reflectionImages = [
+  'amos.jpg', 'tangen.jpg', 'heather.jpg', 'kwanwei.jpg', 'liyan.jpg', 'mirza.jpg',
+  'bingming.jpg', 'synthdi.jpg', 'ying.jpg', 'vilma.jpg', 'satya.jpg', 'jx.jpg',
+  'sharon.jpg', 'kellie.jpg', 'lianne.jpg', 'ziqing.jpg', 'samantha.jpg', 'cheryl.jpg',
+  'angela.jpg', 'marilyn.jpg', 'justin.jpg', 'hilda.jpg', 'kaixuan.jpg', 'nitya.jpg',
+  'yongxi.jpg', 'belancia.jpg', 'boju.jpg', 'fabian.jpg', 'jasmine.jpg', 'nicholas.jpg',
+  'shermin.jpg',
+];
 
 const entries = await fs.readdir(publicDir, { withFileTypes: true });
 const files = entries
@@ -57,5 +68,45 @@ for (const file of files) {
   }
 }
 
+// Reflection circles are only about 60–85 px on screen. Generate lightweight WebP
+// derivatives so the page does not download multi-megabyte originals just to show thumbnails.
+const thumbsDir = path.join(publicDir, 'reflection-thumbs');
+await fs.mkdir(thumbsDir, { recursive: true });
+
+let thumbsCreated = 0;
+for (const filename of reflectionImages) {
+  const source = path.join(publicDir, filename);
+  try {
+    await fs.access(source);
+  } catch {
+    console.warn(`Skipping missing reflection image: ${filename}`);
+    continue;
+  }
+
+  const outputName = `${path.parse(filename).name}.webp`;
+  const output = path.join(thumbsDir, outputName);
+  const next = await sharp(source, { failOn: 'none' })
+    .rotate()
+    .resize({
+      width: REFLECTION_THUMB_MAX,
+      height: REFLECTION_THUMB_MAX,
+      fit: 'inside',
+      withoutEnlargement: true,
+    })
+    .webp({ quality: REFLECTION_THUMB_QUALITY, effort: 5 })
+    .toBuffer();
+
+  let current = null;
+  try {
+    current = await fs.readFile(output);
+  } catch {}
+
+  if (!current || !current.equals(next)) {
+    await fs.writeFile(output, next);
+    thumbsCreated += 1;
+  }
+}
+
 console.log(`Optimized ${changed}/${files.length} JPEG/PNG images.`);
 console.log(`Total: ${(beforeTotal / 1048576).toFixed(1)} MB -> ${(afterTotal / 1048576).toFixed(1)} MB`);
+console.log(`Generated/updated ${thumbsCreated} reflection WebP thumbnails at max ${REFLECTION_THUMB_MAX}px.`);
