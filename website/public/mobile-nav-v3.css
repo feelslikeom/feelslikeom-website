@@ -1,0 +1,211 @@
+/* Full-screen mobile navigation inspired by the supplied reference. */
+@media (max-width:760px) {
+  html.nav-locked,
+  html.nav-locked body {
+    overflow:hidden!important;
+    height:100%!important;
+  }
+
+  .site-header {
+    z-index:9998!important;
+  }
+
+  .mobile-nav-toggle {
+    display:flex!important;
+    position:absolute!important;
+    top:1.25rem!important;
+    right:1.25rem!important;
+    z-index:10003!important;
+    width:52px!important;
+    height:52px!important;
+    margin:0!important;
+    padding:0!important;
+    border:0!important;
+    border-radius:0!important;
+    background:transparent!important;
+    color:inherit!important;
+    box-shadow:none!important;
+    align-items:center!important;
+    justify-content:center!important;
+    flex-direction:column!important;
+    gap:6px!important;
+  }
+
+  .mobile-nav-toggle span {
+    display:block!important;
+    width:30px!important;
+    height:1.5px!important;
+    background:currentColor!important;
+    border-radius:999px!important;
+    transition:transform 220ms ease,opacity 180ms ease!important;
+  }
+
+  .site-header.nav-open {
+    position:fixed!important;
+    inset:0!important;
+    width:100vw!important;
+    height:100dvh!important;
+    max-width:none!important;
+    padding:clamp(1.8rem,7vw,3rem) clamp(1.4rem,7vw,3rem)!important;
+    background:#f4efe5!important;
+    color:#2a2119!important;
+    border:0!important;
+    overflow:hidden!important;
+  }
+
+  .site-header.nav-open .brand {
+    position:absolute!important;
+    top:clamp(1.8rem,7vw,3rem)!important;
+    left:clamp(1.4rem,7vw,3rem)!important;
+    z-index:10002!important;
+    display:block!important;
+    width:min(43vw,190px)!important;
+    height:46px!important;
+    background-position:left center!important;
+  }
+
+  .site-header.nav-open .mobile-nav-toggle {
+    position:absolute!important;
+    top:clamp(1.7rem,6vw,2.7rem)!important;
+    right:clamp(1.25rem,6vw,2.5rem)!important;
+    color:#2a2119!important;
+  }
+
+  .site-header.nav-open .mobile-nav-toggle span:nth-child(1) {
+    transform:translateY(7.5px) rotate(45deg)!important;
+  }
+  .site-header.nav-open .mobile-nav-toggle span:nth-child(2) {
+    opacity:0!important;
+  }
+  .site-header.nav-open .mobile-nav-toggle span:nth-child(3) {
+    transform:translateY(-7.5px) rotate(-45deg)!important;
+  }
+
+  .site-header .main-nav {
+    display:none!important;
+  }
+
+  .site-header.nav-open .main-nav {
+    display:flex!important;
+    position:absolute!important;
+    top:50%!important;
+    left:50%!important;
+    right:auto!important;
+    bottom:auto!important;
+    width:min(84vw,560px)!important;
+    max-width:none!important;
+    max-height:68dvh!important;
+    margin:0!important;
+    padding:0!important;
+    overflow-x:hidden!important;
+    overflow-y:auto!important;
+    transform:translate(-50%,-44%)!important;
+    flex-direction:column!important;
+    align-items:stretch!important;
+    justify-content:flex-start!important;
+    gap:.2rem!important;
+    background:transparent!important;
+    color:#2a2119!important;
+    border:0!important;
+    border-radius:0!important;
+    box-shadow:none!important;
+    letter-spacing:0!important;
+    text-align:center!important;
+  }
+
+  .site-header.nav-open .main-nav > .nav-dropdown,
+  .site-header.nav-open .main-nav > a {
+    display:block!important;
+    width:100%!important;
+    margin:0!important;
+    padding:0!important;
+    border:0!important;
+    background:transparent!important;
+  }
+
+  .site-header.nav-open .main-nav > a,
+  .site-header.nav-open .main-nav > .nav-dropdown > summary {
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    width:100%!important;
+    min-height:0!important;
+    padding:.18em .15em!important;
+    color:#2a2119!important;
+    font-family:var(--font-body)!important;
+    font-size:clamp(2rem,8.9vw,3.45rem)!important;
+    font-weight:400!important;
+    line-height:1.12!important;
+    letter-spacing:-.035em!important;
+    text-decoration:none!important;
+    text-transform:uppercase!important;
+    border:0!important;
+    background:transparent!important;
+    cursor:pointer!important;
+  }
+
+  .site-header.nav-open .main-nav > .nav-dropdown > summary::after {
+    content:''!important;
+    display:block!important;
+    width:.48em!important;
+    height:.48em!important;
+    margin-left:.45em!important;
+    border-top:1.4px solid currentColor!important;
+    border-right:1.4px solid currentColor!important;
+    transform:rotate(45deg)!important;
+    transform-origin:center!important;
+    transition:transform 200ms ease!important;
+  }
+
+  .site-header.nav-open .main-nav > .nav-dropdown[open] > summary::after {
+    transform:rotate(135deg)!important;
+  }
+
+  .site-header.nav-open .main-nav .submenu {
+    position:static!important;
+    display:none!important;
+    width:100%!important;
+    min-width:0!important;
+    max-width:none!important;
+    margin:.25rem 0 .85rem!important;
+    padding:0!important;
+    background:transparent!important;
+    border:0!important;
+    border-radius:0!important;
+    box-shadow:none!important;
+    opacity:1!important;
+    visibility:visible!important;
+    transform:none!important;
+    pointer-events:auto!important;
+    text-align:center!important;
+  }
+
+  .site-header.nav-open .main-nav .nav-dropdown[open] > .submenu {
+    display:block!important;
+  }
+
+  .site-header.nav-open .main-nav .submenu::before {
+    display:none!important;
+  }
+
+  .site-header.nav-open .main-nav .submenu a {
+    display:block!important;
+    width:100%!important;
+    padding:.38rem .5rem!important;
+    color:#2a2119!important;
+    font-family:var(--font-body)!important;
+    font-size:clamp(1.05rem,4.4vw,1.38rem)!important;
+    font-weight:400!important;
+    line-height:1.35!important;
+    letter-spacing:0!important;
+    text-transform:none!important;
+    text-decoration:none!important;
+    white-space:normal!important;
+  }
+
+  .site-header.nav-open .main-nav .active,
+  .site-header.nav-open .main-nav [aria-current='page'] {
+    border:0!important;
+    font-weight:400!important;
+  }
+}
