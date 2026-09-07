@@ -5,8 +5,11 @@
   "portsAttributes": {
     "4321": {
       "label": "Feels Like Om website preview",
-      "onAutoForward": "openBrowser"
+      "onAutoForward": "openBrowser",
+      "visibility": "public",
+      "protocol": "http"
     }
   },
-  "postCreateCommand": "cd website && npm install"
+  "postCreateCommand": "cd website && npm install",
+  "postStartCommand": "bash -lc 'cd website; if ! curl -fsS http://localhost:4321 >/dev/null 2>&1; then nohup npm run dev -- --host 0.0.0.0 >/tmp/feelslikeom-astro.log 2>&1 & fi'"
 }
