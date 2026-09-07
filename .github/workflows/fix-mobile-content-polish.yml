@@ -1,0 +1,131 @@
+name: Fix mobile content polish
+
+on:
+  push:
+    paths:
+      - '.github/workflows/fix-mobile-content-polish.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  polish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Apply requested mobile fixes
+        run: |
+          python3 <<'PY'
+          from pathlib import Path
+          import re
+
+          css_path = Path('website/public/type-system.css')
+          css = css_path.read_text()
+          marker = '/* FLO MOBILE CONTENT POLISH 2026 */'
+          if marker not in css:
+              css += r'''
+
+/* FLO MOBILE CONTENT POLISH 2026 */
+@media (max-width:760px) {
+  /* Do not leave mobile sections partially faded by view-timeline animations. */
+  main > section,
+  main > figure,
+  .reflection-web-section,
+  .featured-reflection,
+  .reflections,
+  .faq,
+  .faq-section,
+  #faq {
+    animation:none!important;
+    opacity:1!important;
+    transform:none!important;
+    filter:none!important;
+    backdrop-filter:none!important;
+  }
+
+  /* The Flagship: show all five primary trek images clearly on mobile. */
+  #trek .trek-gallery-primary {
+    display:grid!important;
+    grid-template-columns:1fr!important;
+    width:100%!important;
+    gap:1rem!important;
+    margin:2.5rem 0 4rem!important;
+    opacity:1!important;
+    visibility:visible!important;
+  }
+  #trek .trek-gallery-primary .trek-photo-placeholder:nth-child(n) {
+    display:block!important;
+    grid-column:1!important;
+    grid-row:auto!important;
+    width:100%!important;
+    min-height:0!important;
+    margin:0!important;
+    aspect-ratio:4/3!important;
+    background-size:cover!important;
+    background-position:center!important;
+    background-repeat:no-repeat!important;
+    opacity:1!important;
+    visibility:visible!important;
+  }
+  #trek .trek-gallery-primary .trek-photo-placeholder:nth-child(1) { background-image:url('/flagship-trek-1.jpg')!important; }
+  #trek .trek-gallery-primary .trek-photo-placeholder:nth-child(2) { background-image:url('/flagship-trek-2.jpg')!important; }
+  #trek .trek-gallery-primary .trek-photo-placeholder:nth-child(3) { background-image:url('/flagship-trek-3.jpg')!important; }
+  #trek .trek-gallery-primary .trek-photo-placeholder:nth-child(4) { background-image:url('/flagship-trek-4.jpg')!important; }
+  #trek .trek-gallery-primary .trek-photo-placeholder:nth-child(5) { background-image:url('/flagship-trek-5.jpg')!important; }
+
+  /* The Flagship food section: copy first, photographs second on mobile. */
+  #food.food-grid {
+    display:flex!important;
+    flex-direction:column!important;
+    gap:2.5rem!important;
+  }
+  #food .copy-block { order:1!important; }
+  #food .image-stack { order:2!important; }
+}
+/* END FLO MOBILE CONTENT POLISH 2026 */
+'''
+              css_path.write_text(css)
+
+          # Link To Be Free's field-immersion CTA to The Flagship itinerary.
+          tbf_path = Path('website/src/pages/journeys/to-be-free.astro')
+          text = tbf_path.read_text()
+          target = '/journeys/the-flagship#itinerary'
+
+          # Update an existing anchor containing the requested text.
+          pattern = re.compile(r'<a\b([^>]*)>(\s*See a sample of our field immersion activities[^<]*?)</a>', re.I|re.S)
+          def repl(m):
+              attrs = m.group(1)
+              label = m.group(2)
+              if 'href=' in attrs:
+                  attrs = re.sub(r'href=["\'][^"\']*["\']', f'href="{target}"', attrs, count=1)
+              else:
+                  attrs = f' href="{target}"' + attrs
+              return f'<a{attrs}>{label}</a>'
+          text2, count = pattern.subn(repl, text, count=1)
+
+          # If it is plain text rather than an anchor, wrap it.
+          if count == 0:
+              plain = re.compile(r'(See a sample of our field immersion activities\.?)(?!</a>)', re.I)
+              text2, count = plain.subn(lambda m: f'<a href="{target}">{m.group(1)}</a>', text, count=1)
+
+          if count:
+              tbf_path.write_text(text2)
+              print('Updated To Be Free field immersion link')
+          else:
+              print('Field immersion link text not found; no text change made')
+          PY
+
+      - name: Commit fixes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add website/public/type-system.css website/src/pages/journeys/to-be-free.astro
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Fix mobile trek food and faded sections"
+            git push origin main
+          fi
