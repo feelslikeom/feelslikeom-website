@@ -335,6 +335,13 @@ rings.forEach((ringNodes, ringIndex) => {
       <div class="lightbox-copy">
         <blockquote class="lightbox-quote" data-length="short">“Reflection coming soon.”</blockquote>
         <p class="lightbox-name">— Past participant</p>
+        <a
+          class="lightbox-full-reflection"
+          href="https://softearthdreams.substack.com/p/soul-lessons-from-a-mountain-dog"
+          target="_blank"
+          rel="noreferrer"
+          hidden
+        >Read the full reflection here</a>
       </div>
     </dialog>
 
@@ -343,6 +350,7 @@ rings.forEach((ringNodes, ringIndex) => {
       const dialog = document.querySelector('.reflection-lightbox');
       const quote = dialog?.querySelector('.lightbox-quote');
       const name = dialog?.querySelector('.lightbox-name');
+      const fullReflectionLink = dialog?.querySelector('.lightbox-full-reflection');
       const close = dialog?.querySelector('.lightbox-close');
       const prev = dialog?.querySelector('.lightbox-prev');
       const next = dialog?.querySelector('.lightbox-next');
@@ -371,6 +379,9 @@ rings.forEach((ringNodes, ringIndex) => {
           quote.dataset.length = quoteLengthTier(quoteText);
         }
         if (name) name.textContent = `— ${node.dataset.name ?? ''}`;
+        if (fullReflectionLink) {
+          fullReflectionLink.hidden = node.dataset.name !== 'Ee Ming';
+        }
         if (!dialog.open) {
           savedScrollX = window.scrollX;
           savedScrollY = window.scrollY;
@@ -453,6 +464,15 @@ rings.forEach((ringNodes, ringIndex) => {
   .lightbox-quote[data-length="very-long"] { font-size:clamp(1.3rem,1.85vw,1.65rem)!important; line-height:1.18; }
   .lightbox-quote[data-length="extra-long"] { font-size:clamp(1.15rem,1.55vw,1.4rem)!important; line-height:1.22; }
   .lightbox-name { margin:0; opacity:.72; }
+  .lightbox-full-reflection {
+    display:inline-block;
+    margin-top:1.1rem;
+    color:inherit;
+    font-family:var(--font-body);
+    font-size:.95rem;
+    text-underline-offset:.3rem;
+  }
+  .lightbox-full-reflection[hidden] { display:none; }
   .lightbox-close { position:sticky; top:0; float:right; width:2.7rem; height:2.7rem; margin:0 -4rem -2.7rem auto; border:0; border-radius:50%; background:rgba(255,250,241,.96); color:#18301f; font-size:1.8rem; cursor:pointer; z-index:6; }
   .lightbox-nav { position:absolute; top:50%; width:3.2rem; height:3.2rem; transform:translateY(-50%); border:1px solid rgba(24,48,31,.18); border-radius:50%; background:rgba(244,239,229,.96); color:#18301f; font-family:Georgia,serif; font-size:2.1rem; cursor:pointer; z-index:6; box-shadow:0 8px 24px rgba(7,18,11,.16); }
   .lightbox-prev { left:1.25rem; }
