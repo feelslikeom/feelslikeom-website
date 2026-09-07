@@ -26,3 +26,5 @@ jobs:
             git commit -m "Standardise full mobile navigation on all pages"
             git push origin main
           fi
+
+# rerun after verification fix
