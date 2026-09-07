@@ -1,11 +1,19 @@
 (() => {
   const ensureStyles = () => {
-    if (document.querySelector('link[data-mobile-nav-v3]')) return;
-    const link = document.createElement('link');
-    link.rel = 'stylesheet';
-    link.href = '/mobile-nav-v3.css';
-    link.dataset.mobileNavV3 = 'true';
-    document.head.appendChild(link);
+    if (!document.querySelector('link[data-mobile-nav-v3]')) {
+      const navLink = document.createElement('link');
+      navLink.rel = 'stylesheet';
+      navLink.href = '/mobile-nav-v3.css';
+      navLink.dataset.mobileNavV3 = 'true';
+      document.head.appendChild(navLink);
+    }
+    if (!document.querySelector('link[data-mobile-content-polish]')) {
+      const polishLink = document.createElement('link');
+      polishLink.rel = 'stylesheet';
+      polishLink.href = '/mobile-content-polish.css';
+      polishLink.dataset.mobileContentPolish = 'true';
+      document.head.appendChild(polishLink);
+    }
   };
 
   const setup = () => {
@@ -15,7 +23,6 @@
       const button = header.querySelector('.mobile-nav-toggle');
       const nav = header.querySelector('.main-nav');
       if (!button || !nav || button.dataset.mobileNavReady === 'true') return;
-
       button.dataset.mobileNavReady = 'true';
 
       const closeMenu = () => {
@@ -42,13 +49,9 @@
       });
 
       nav.querySelectorAll('.nav-dropdown > summary').forEach((summary) => {
-        summary.addEventListener('click', (event) => {
-          event.stopPropagation();
-        });
+        summary.addEventListener('click', (event) => event.stopPropagation());
       });
-
       nav.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
-
       document.addEventListener('keydown', (event) => {
         if (event.key === 'Escape' && header.classList.contains('nav-open')) closeMenu();
       });
