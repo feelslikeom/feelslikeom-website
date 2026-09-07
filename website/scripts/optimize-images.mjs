@@ -5,8 +5,8 @@ import sharp from 'sharp';
 const publicDir = path.resolve('public');
 const MAX_DIMENSION = 2560;
 const JPEG_QUALITY = 88;
-const REFLECTION_MAX_DIMENSION = 1600;
-const REFLECTION_JPEG_QUALITY = 86;
+const REFLECTION_MAX_DIMENSION = 800;
+const REFLECTION_JPEG_QUALITY = 84;
 const REFLECTION_THUMB_MAX = 640;
 const REFLECTION_THUMB_QUALITY = 82;
 
