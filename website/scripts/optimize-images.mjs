@@ -5,6 +5,8 @@ import sharp from 'sharp';
 const publicDir = path.resolve('public');
 const MAX_DIMENSION = 2560;
 const JPEG_QUALITY = 88;
+const REFLECTION_MAX_DIMENSION = 1600;
+const REFLECTION_JPEG_QUALITY = 86;
 const REFLECTION_THUMB_MAX = 640;
 const REFLECTION_THUMB_QUALITY = 82;
 
@@ -16,6 +18,7 @@ const reflectionImages = [
   'yongxi.jpg', 'belancia.jpg', 'boju.jpg', 'fabian.jpg', 'jasmine.jpg', 'nicholas.jpg',
   'shermin.jpg',
 ];
+const reflectionImageSet = new Set(reflectionImages.map((name) => name.toLowerCase()));
 
 const entries = await fs.readdir(publicDir, { withFileTypes: true });
 const files = entries
@@ -31,15 +34,20 @@ for (const file of files) {
   beforeTotal += original.length;
 
   const extension = path.extname(file).toLowerCase();
+  const filename = path.basename(file).toLowerCase();
+  const isReflectionImage = reflectionImageSet.has(filename);
+  const targetMaxDimension = isReflectionImage ? REFLECTION_MAX_DIMENSION : MAX_DIMENSION;
+  const targetJpegQuality = isReflectionImage ? REFLECTION_JPEG_QUALITY : JPEG_QUALITY;
+
   const image = sharp(original, { failOn: 'none' }).rotate();
   const metadata = await image.metadata();
   const largestSide = Math.max(metadata.width ?? 0, metadata.height ?? 0);
 
   let pipeline = image;
-  if (largestSide > MAX_DIMENSION && extension !== '.png') {
+  if (largestSide > targetMaxDimension && extension !== '.png') {
     pipeline = pipeline.resize({
-      width: MAX_DIMENSION,
-      height: MAX_DIMENSION,
+      width: targetMaxDimension,
+      height: targetMaxDimension,
       fit: 'inside',
       withoutEnlargement: true,
     });
@@ -49,9 +57,9 @@ for (const file of files) {
     ? await pipeline.png({ compressionLevel: 9, adaptiveFiltering: true, palette: false }).toBuffer()
     : await pipeline
         .jpeg({
-          quality: JPEG_QUALITY,
+          quality: targetJpegQuality,
           progressive: true,
-          chromaSubsampling: '4:4:4',
+          chromaSubsampling: isReflectionImage ? '4:2:0' : '4:4:4',
           optimizeCoding: true,
         })
         .toBuffer();
@@ -69,7 +77,7 @@ for (const file of files) {
 }
 
 // Reflection circles are only about 60–85 px on screen. Generate lightweight WebP
-// derivatives so the page does not download multi-megabyte originals just to show thumbnails.
+// derivatives so the page can use a fast, high-quality thumbnail instead of a full photo.
 const thumbsDir = path.join(publicDir, 'reflection-thumbs');
 await fs.mkdir(thumbsDir, { recursive: true });
 
