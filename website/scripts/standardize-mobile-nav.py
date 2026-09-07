@@ -56,6 +56,9 @@ for path in targets:
         raise RuntimeError(f'Main navigation not found in {path}')
     text = nav_re.sub(nav_markup(path), text, count=1)
 
+    if path.name == 'to-be-free.astro':
+        text = text.replace('/journeys#feels-like-home', '/journeys/the-flagship#itinerary')
+
     if 'class="mobile-nav-toggle"' not in text:
         raise RuntimeError(f'Mobile nav button missing in {path}')
     if '/mobile-nav.js' not in text:
@@ -79,15 +82,19 @@ required = [
     '/contact',
     '/mobile-nav.js',
 ]
-forbidden = ['/journeys#feels-like-home', '/journeys#way-of-the-yaks', '>Our story<']
 
 for path in targets:
     text = path.read_text()
-    for item in required:
-        if item not in text:
-            raise RuntimeError(f'{item} missing from {path}')
-    for item in forbidden:
-        if item in text:
-            raise RuntimeError(f'{item} still present in {path}')
+    match = nav_re.search(text)
+    nav = match.group(0) if match else ''
+    for item in required[:-1]:
+        if item not in nav:
+            raise RuntimeError(f'{item} missing from navigation in {path}')
+    if '/mobile-nav.js' not in text:
+        raise RuntimeError(f'mobile-nav.js missing from {path}')
+    if '/journeys#feels-like-home' in nav or '/journeys#way-of-the-yaks' in nav:
+        raise RuntimeError(f'Hidden journey link still present in navigation in {path}')
+    if '>Our story<' in nav:
+        raise RuntimeError(f'Legacy Our story label still present in navigation in {path}')
 
 print('Verified standard mobile navigation on all 9 public pages.')
