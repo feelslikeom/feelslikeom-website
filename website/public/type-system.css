@@ -22,8 +22,6 @@ p,li,.body-copy,.type-body { font-family:var(--font-body)!important; font-size:v
 .main-nav,.eyebrow,.meta,.way-number,.scroll-label,.type-small { font-family:var(--font-body)!important; font-size:var(--type-small)!important; }
 .brand,.type-brand { font-family:var(--font-display)!important; font-size:var(--type-brand)!important; }
 .brand { display:inline-block!important; width:clamp(165px,16vw,220px)!important; height:clamp(36px,4vw,50px)!important; font-size:0!important; line-height:0!important; background-image:url('/Feels-Like-Om-Logo-Line.png')!important; background-repeat:no-repeat!important; background-position:left center!important; background-size:contain!important; flex:0 0 auto!important; }
-.main-nav .submenu a[href="/about/our-story"] { font-size:0!important; }
-.main-nav .submenu a[href="/about/our-story"]::after { content:"Our stories"; font-family:var(--font-body); font-size:var(--type-small); }
 .opening-quote blockquote,.community-quote blockquote { font-size:var(--type-section)!important; line-height:1.08!important; }
 .opening-quote blockquote { width:min(1100px,92%)!important; }
 .program-intro-inner { gap:clamp(6rem,12vw,11rem)!important; }
