@@ -1,34 +1,60 @@
 (() => {
+  const ensureStyles = () => {
+    if (document.querySelector('link[data-mobile-nav-v3]')) return;
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = '/mobile-nav-v3.css';
+    link.dataset.mobileNavV3 = 'true';
+    document.head.appendChild(link);
+  };
+
   const setup = () => {
+    ensureStyles();
+
     document.querySelectorAll('.site-header').forEach((header) => {
       const button = header.querySelector('.mobile-nav-toggle');
       const nav = header.querySelector('.main-nav');
-      if (!button || !nav) return;
+      if (!button || !nav || button.dataset.mobileNavReady === 'true') return;
+
+      button.dataset.mobileNavReady = 'true';
 
       const closeMenu = () => {
         header.classList.remove('nav-open');
+        document.documentElement.classList.remove('nav-locked');
         button.setAttribute('aria-expanded', 'false');
+        button.setAttribute('aria-label', 'Open navigation');
+        nav.querySelectorAll('details').forEach((item) => item.removeAttribute('open'));
+      };
+
+      const openMenu = () => {
+        header.classList.add('nav-open');
+        document.documentElement.classList.add('nav-locked');
+        button.setAttribute('aria-expanded', 'true');
+        button.setAttribute('aria-label', 'Close navigation');
         nav.querySelectorAll('details').forEach((item) => item.removeAttribute('open'));
       };
 
       button.addEventListener('click', (event) => {
         event.preventDefault();
-        const willOpen = !header.classList.contains('nav-open');
-        if (willOpen) {
-          header.classList.add('nav-open');
-          button.setAttribute('aria-expanded', 'true');
-          nav.querySelectorAll('details').forEach((item) => item.removeAttribute('open'));
-        } else {
-          closeMenu();
-        }
+        event.stopPropagation();
+        if (header.classList.contains('nav-open')) closeMenu();
+        else openMenu();
+      });
+
+      nav.querySelectorAll('.nav-dropdown > summary').forEach((summary) => {
+        summary.addEventListener('click', (event) => {
+          event.stopPropagation();
+        });
       });
 
       nav.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
+
       document.addEventListener('keydown', (event) => {
         if (event.key === 'Escape' && header.classList.contains('nav-open')) closeMenu();
       });
     });
   };
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', setup);
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', setup, { once: true });
   else setup();
 })();
