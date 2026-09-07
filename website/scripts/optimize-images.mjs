@@ -26,6 +26,7 @@ const files = entries
   .map((entry) => path.join(publicDir, entry.name));
 
 let changed = 0;
+let skipped = 0;
 let beforeTotal = 0;
 let afterTotal = 0;
 
@@ -33,46 +34,52 @@ for (const file of files) {
   const original = await fs.readFile(file);
   beforeTotal += original.length;
 
-  const extension = path.extname(file).toLowerCase();
-  const filename = path.basename(file).toLowerCase();
-  const isReflectionImage = reflectionImageSet.has(filename);
-  const targetMaxDimension = isReflectionImage ? REFLECTION_MAX_DIMENSION : MAX_DIMENSION;
-  const targetJpegQuality = isReflectionImage ? REFLECTION_JPEG_QUALITY : JPEG_QUALITY;
+  try {
+    const extension = path.extname(file).toLowerCase();
+    const filename = path.basename(file).toLowerCase();
+    const isReflectionImage = reflectionImageSet.has(filename);
+    const targetMaxDimension = isReflectionImage ? REFLECTION_MAX_DIMENSION : MAX_DIMENSION;
+    const targetJpegQuality = isReflectionImage ? REFLECTION_JPEG_QUALITY : JPEG_QUALITY;
 
-  const image = sharp(original, { failOn: 'none' }).rotate();
-  const metadata = await image.metadata();
-  const largestSide = Math.max(metadata.width ?? 0, metadata.height ?? 0);
+    const image = sharp(original, { failOn: 'none' }).rotate();
+    const metadata = await image.metadata();
+    const largestSide = Math.max(metadata.width ?? 0, metadata.height ?? 0);
 
-  let pipeline = image;
-  if (largestSide > targetMaxDimension && extension !== '.png') {
-    pipeline = pipeline.resize({
-      width: targetMaxDimension,
-      height: targetMaxDimension,
-      fit: 'inside',
-      withoutEnlargement: true,
-    });
-  }
+    let pipeline = image;
+    if (largestSide > targetMaxDimension && extension !== '.png') {
+      pipeline = pipeline.resize({
+        width: targetMaxDimension,
+        height: targetMaxDimension,
+        fit: 'inside',
+        withoutEnlargement: true,
+      });
+    }
 
-  const optimized = extension === '.png'
-    ? await pipeline.png({ compressionLevel: 9, adaptiveFiltering: true, palette: false }).toBuffer()
-    : await pipeline
-        .jpeg({
-          quality: targetJpegQuality,
-          progressive: true,
-          chromaSubsampling: isReflectionImage ? '4:2:0' : '4:4:4',
-          optimizeCoding: true,
-        })
-        .toBuffer();
+    const optimized = extension === '.png'
+      ? await pipeline.png({ compressionLevel: 9, adaptiveFiltering: true, palette: false }).toBuffer()
+      : await pipeline
+          .jpeg({
+            quality: targetJpegQuality,
+            progressive: true,
+            chromaSubsampling: isReflectionImage ? '4:2:0' : '4:4:4',
+            optimizeCoding: true,
+          })
+          .toBuffer();
 
-  // Never replace an image with a larger file.
-  if (optimized.length < original.length) {
-    await fs.writeFile(file, optimized);
-    changed += 1;
-    afterTotal += optimized.length;
-    const saved = ((1 - optimized.length / original.length) * 100).toFixed(1);
-    console.log(`${path.basename(file)}: ${(original.length / 1048576).toFixed(2)} MB -> ${(optimized.length / 1048576).toFixed(2)} MB (${saved}% smaller)`);
-  } else {
+    // Never replace an image with a larger file.
+    if (optimized.length < original.length) {
+      await fs.writeFile(file, optimized);
+      changed += 1;
+      afterTotal += optimized.length;
+      const saved = ((1 - optimized.length / original.length) * 100).toFixed(1);
+      console.log(`${path.basename(file)}: ${(original.length / 1048576).toFixed(2)} MB -> ${(optimized.length / 1048576).toFixed(2)} MB (${saved}% smaller)`);
+    } else {
+      afterTotal += original.length;
+    }
+  } catch (error) {
+    skipped += 1;
     afterTotal += original.length;
+    console.warn(`Skipping unsupported or unreadable image ${path.basename(file)}: ${error.message}`);
   }
 }
 
@@ -86,35 +93,34 @@ for (const filename of reflectionImages) {
   const source = path.join(publicDir, filename);
   try {
     await fs.access(source);
-  } catch {
-    console.warn(`Skipping missing reflection image: ${filename}`);
-    continue;
-  }
 
-  const outputName = `${path.parse(filename).name}.webp`;
-  const output = path.join(thumbsDir, outputName);
-  const next = await sharp(source, { failOn: 'none' })
-    .rotate()
-    .resize({
-      width: REFLECTION_THUMB_MAX,
-      height: REFLECTION_THUMB_MAX,
-      fit: 'inside',
-      withoutEnlargement: true,
-    })
-    .webp({ quality: REFLECTION_THUMB_QUALITY, effort: 5 })
-    .toBuffer();
+    const outputName = `${path.parse(filename).name}.webp`;
+    const output = path.join(thumbsDir, outputName);
+    const next = await sharp(source, { failOn: 'none' })
+      .rotate()
+      .resize({
+        width: REFLECTION_THUMB_MAX,
+        height: REFLECTION_THUMB_MAX,
+        fit: 'inside',
+        withoutEnlargement: true,
+      })
+      .webp({ quality: REFLECTION_THUMB_QUALITY, effort: 5 })
+      .toBuffer();
 
-  let current = null;
-  try {
-    current = await fs.readFile(output);
-  } catch {}
+    let current = null;
+    try {
+      current = await fs.readFile(output);
+    } catch {}
 
-  if (!current || !current.equals(next)) {
-    await fs.writeFile(output, next);
-    thumbsCreated += 1;
+    if (!current || !current.equals(next)) {
+      await fs.writeFile(output, next);
+      thumbsCreated += 1;
+    }
+  } catch (error) {
+    console.warn(`Skipping reflection thumbnail ${filename}: ${error.message}`);
   }
 }
 
-console.log(`Optimized ${changed}/${files.length} JPEG/PNG images.`);
+console.log(`Optimized ${changed}/${files.length} JPEG/PNG images; skipped ${skipped}.`);
 console.log(`Total: ${(beforeTotal / 1048576).toFixed(1)} MB -> ${(afterTotal / 1048576).toFixed(1)} MB`);
 console.log(`Generated/updated ${thumbsCreated} reflection WebP thumbnails at max ${REFLECTION_THUMB_MAX}px.`);
