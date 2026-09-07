@@ -15,8 +15,7 @@ const reflectionImages = [
   'bingming.jpg', 'synthdi.jpg', 'ying.jpg', 'vilma.jpg', 'satya.jpg', 'jx.jpg',
   'sharon.jpg', 'kellie.jpg', 'lianne.jpg', 'ziqing.jpg', 'samantha.jpg', 'cheryl.jpg',
   'angela.jpg', 'marilyn.jpg', 'justin.jpg', 'hilda.jpg', 'kaixuan.jpg', 'nitya.jpg',
-  'yongxi.jpg', 'belancia.jpg', 'boju.jpg', 'fabian.jpg', 'jasmine.jpg', 'nicholas.jpg',
-  'shermin.jpg',
+  'yongxi.jpg', 'belancia.jpg', 'boju.jpg', 'fabian.jpg', 'nicholas.jpg', 'shermin.jpg',
 ];
 const reflectionImageSet = new Set(reflectionImages.map((name) => name.toLowerCase()));
 
