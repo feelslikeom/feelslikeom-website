@@ -1,0 +1,75 @@
+name: Fix navigation once
+
+on:
+  push:
+    paths:
+      - '.github/workflows/fix-navigation-once.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  fix-navigation:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Make navigation consistent across all pages
+        shell: bash
+        run: |
+          python3 <<'PY'
+          from pathlib import Path
+          import re
+
+          pages = Path('website/src/pages')
+          changed = []
+
+          for path in pages.rglob('*.astro'):
+              text = path.read_text()
+              original = text
+
+              # Add Life on Sikkim time under ABOUT wherever it is missing.
+              if 'class="main-nav"' in text and '/about/life-on-sikkim-time' not in text:
+                  text = re.sub(
+                      r'(?m)^(\s*)(<a href="/about/visa-and-permits"[^>]*>Visa and permits</a>)$',
+                      r'\1\2\n\1<a href="/about/life-on-sikkim-time">Life on Sikkim time</a>',
+                      text,
+                      count=1,
+                  )
+
+              # Keep JOURNEYS navigation limited to the two currently public journeys.
+              text = re.sub(
+                  r'(?m)^\s*<a href="/journeys#feels-like-home">Feels Like Home</a>\s*\n?',
+                  '',
+                  text,
+              )
+              text = re.sub(
+                  r'(?m)^\s*<a href="/journeys#way-of-the-yaks">Way of the Yaks</a>\s*\n?',
+                  '',
+                  text,
+              )
+
+              if text != original:
+                  path.write_text(text)
+                  changed.append(str(path))
+
+          print('Updated files:')
+          for path in changed:
+              print(f' - {path}')
+          PY
+
+      - name: Commit navigation fixes
+        shell: bash
+        run: |
+          if git diff --quiet; then
+            echo 'No navigation changes needed.'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add website/src/pages
+          git commit -m 'Make site navigation consistent across all pages'
+          git push origin main
