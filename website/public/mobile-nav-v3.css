@@ -100,6 +100,8 @@
     bottom:auto!important;
     z-index:10001!important;
     width:min(88vw,620px)!important;
+    height:auto!important;
+    min-height:0!important;
     max-width:none!important;
     max-height:66dvh!important;
     margin:0!important;
