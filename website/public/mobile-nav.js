@@ -16,11 +16,24 @@
     }
   };
 
-  const setup = () => {
-    ensureStyles();
-
+  const applyContentUpdates = () => {
     const fieldImmersionLink = document.querySelector('#stay-longer a.text-link');
     if (fieldImmersionLink) fieldImmersionLink.href = '/journeys/the-flagship#itinerary';
+
+    document.querySelectorAll('#enquire.enquire, .other-journeys').forEach((section) => {
+      const heading = section.querySelector('h2');
+      if (heading?.textContent?.trim().toLowerCase() === 'other journeys') section.remove();
+    });
+
+    const reflectionsIntro = document.querySelector('.reflection-intro .intro');
+    if (reflectionsIntro) {
+      reflectionsIntro.textContent = 'Each circle holds one person’s reflection. Follow the threads, click into a story, and move from one reflection to the next. Sikkim voices coming soon.';
+    }
+  };
+
+  const setup = () => {
+    ensureStyles();
+    applyContentUpdates();
 
     document.querySelectorAll('.site-header').forEach((header) => {
       const button = header.querySelector('.mobile-nav-toggle');
