@@ -156,6 +156,16 @@ const reflections = [
     image: "/eeming.jpg",
     focus: "50% 35%",
   },
+  {
+    quote: `Sikkim has held a special place in my heart since my first visit in 2019, so I was thrilled to return in 2026—this time as a solo traveler. People often asked if it was safe to travel to India alone. ABSOLUTELY! Sikkim is peaceful and quiet, and people mind their own business. I walked everywhere and dined alone without any unwanted attention or strange looks.
+
+My host and his family were remarkably kind and hospitable. Though I usually eat only one meal a day, I couldn't resist their delicious daily breakfasts, and I always went back for seconds at dinner. They treated me like family, taking me to a local wedding, letting me tag along when they sent their youngest to a boarding school in another town, and adjusting the itinerary around my wishes.
+
+By the end of my trip, I didn't just love Sikkim—I had fallen deeply in love with its people, who now feel like lifelong friends.`,
+    name: "Rosie",
+    image: "/rosie.jpg",
+    focus: "50% 35%",
+  },
 ];
 
 const baseWidth = 1180;
@@ -439,7 +449,7 @@ rings.forEach((ringNodes, ringIndex) => {
   .reflection-lightbox { position:fixed; inset:0; width:min(92vw,940px); max-width:940px; max-height:92vh; margin:auto; padding:clamp(2.5rem,5vw,4rem) clamp(4.5rem,8vw,7rem); border:0; background:#f4efe5; color:#18301f; box-shadow:0 24px 70px rgba(7,18,11,.34); overflow:auto; overscroll-behavior:contain; }
   .reflection-lightbox::backdrop { background:rgba(7,18,11,.78); backdrop-filter:blur(4px); }
   .lightbox-copy { text-align:center; margin:0 auto; max-width:760px; }
-  .lightbox-quote { margin:0 0 .8rem; font-family:Georgia,'Times New Roman',serif!important; line-height:1.13; text-wrap:balance; overflow-wrap:anywhere; }
+  .lightbox-quote { margin:0 0 .8rem; font-family:Georgia,'Times New Roman',serif!important; line-height:1.13; text-wrap:balance; overflow-wrap:anywhere; white-space:pre-line; }
   .lightbox-quote[data-length="short"] { font-size:clamp(2rem,3vw,2.6rem)!important; }
   .lightbox-quote[data-length="medium"] { font-size:clamp(1.75rem,2.55vw,2.25rem)!important; }
   .lightbox-quote[data-length="long"] { font-size:clamp(1.5rem,2.2vw,1.95rem)!important; line-height:1.15; }
