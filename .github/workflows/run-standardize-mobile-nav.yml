@@ -1,4 +1,4 @@
-name: Run mobile navigation standardisation
+name: Apply Rosie reflection and homepage overlay cleanup
 
 on:
   push:
@@ -9,22 +9,69 @@ permissions:
   contents: write
 
 jobs:
-  standardise:
+  apply:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - run: python3 website/scripts/standardize-mobile-nav.py
-      - run: |
+
+      - name: Apply requested website changes
+        run: |
+          python3 <<'PY'
+          from pathlib import Path
+
+          # Home: restore a restrained translucent green layer for readability,
+          # while keeping the photograph itself clear and unfiltered.
+          home = Path('website/src/pages/index.astro')
+          home_text = home.read_text()
+          old_overlay = '.reflections::after { content:none; display:none; }'
+          new_overlay = '.reflections::after { content:""; position:absolute; inset:0; z-index:-1; background:rgba(24,48,31,.52); }'
+          if old_overlay not in home_text:
+              raise RuntimeError('Expected homepage reflections overlay rule not found')
+          home.write_text(home_text.replace(old_overlay, new_overlay, 1))
+
+          # Reflections: add Rosie as a real entry in the network.
+          reflections = Path('website/src/pages/reflections.astro')
+          text = reflections.read_text()
+          if 'name: "Rosie"' not in text:
+              marker = '\n];\n\nconst baseWidth = 1180;'
+              if marker not in text:
+                  raise RuntimeError('Reflections array end marker not found')
+              rosie = '''
+  {
+    quote: `Sikkim has held a special place in my heart since my first visit in 2019, so I was thrilled to return in 2026—this time as a solo traveler. People often asked if it was safe to travel to India alone. ABSOLUTELY! Sikkim is peaceful and quiet, and people mind their own business. I walked everywhere and dined alone without any unwanted attention or strange looks.
+
+My host and his family were remarkably kind and hospitable. Though I usually eat only one meal a day, I couldn't resist their delicious daily breakfasts, and I always went back for seconds at dinner. They treated me like family, taking me to a local wedding, letting me tag along when they sent their youngest to a boarding school in another town, and adjusting the itinerary around my wishes.
+
+By the end of my trip, I didn't just love Sikkim—I had fallen deeply in love with its people, who now feel like lifelong friends.`,
+    name: "Rosie",
+    image: "/rosie.jpg",
+    focus: "50% 35%",
+  },'''
+              text = text.replace(marker, rosie + marker, 1)
+
+          # Preserve Rosie's paragraph breaks in the lightbox; existing quotes are unaffected.
+          if 'white-space:pre-line;' not in text:
+              text = text.replace(
+                  ".lightbox-quote { margin:0 0 .8rem; font-family:Georgia,'Times New Roman',serif!important; line-height:1.13; text-wrap:balance; overflow-wrap:anywhere; }",
+                  ".lightbox-quote { margin:0 0 .8rem; font-family:Georgia,'Times New Roman',serif!important; line-height:1.13; text-wrap:balance; overflow-wrap:anywhere; white-space:pre-line; }",
+                  1,
+              )
+          reflections.write_text(text)
+          PY
+
+      - name: Remove obsolete one-off navigation workflows
+        run: |
+          git rm -f .github/workflows/fix-mobile-navigation-v2.yml || true
+          git rm -f .github/workflows/fix-navigation-once.yml || true
+          git rm -f .github/workflows/run-standardize-mobile-nav.yml || true
+          git rm -f website/scripts/standardize-mobile-nav.py || true
+
+      - name: Commit changes
+        run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add website/src/pages website/public/type-system.css
-          if git diff --cached --quiet; then
-            echo "No changes needed"
-          else
-            git commit -m "Standardise full mobile navigation on all pages"
-            git push origin main
-          fi
-
-# rerun after verification fix
+          git add website/src/pages/index.astro website/src/pages/reflections.astro
+          git commit -m "Add Rosie reflection and refine homepage reflections overlay"
+          git push origin main
