@@ -52,7 +52,7 @@
     section.setAttribute('aria-labelledby', 'home-instagram-heading');
     section.innerHTML = `
       <div class="home-instagram-inner">
-        <h2 id="home-instagram-heading" class="reveal">From Instagram</h2>
+        <h2 id="home-instagram-heading" class="reveal">Stories Spotlight</h2>
         <div class="home-instagram-grid">
           ${posts.map((url) => `
             <div class="home-instagram-embed reveal">
