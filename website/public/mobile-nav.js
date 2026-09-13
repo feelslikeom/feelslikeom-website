@@ -143,7 +143,11 @@
           googleLink.className = 'google-reviews-inline';
           googleLink.style.margin = '1rem auto 0';
           googleLink.style.width = 'min(620px,100%)';
-          googleLink.innerHTML = '<a href="https://maps.app.goo.gl/tQHmVowypBeZXmkc9" target="_blank" rel="noopener noreferrer">Read Google reviews here.</a>';
+          googleLink.style.font = 'inherit';
+          googleLink.style.fontSize = 'inherit';
+          googleLink.style.lineHeight = 'inherit';
+          googleLink.style.color = 'inherit';
+          googleLink.innerHTML = '<a href="https://maps.app.goo.gl/tQHmVowypBeZXmkc9" target="_blank" rel="noopener noreferrer" style="font:inherit;font-size:inherit;line-height:inherit;color:inherit;">Read Google reviews here.</a>';
           intro.insertAdjacentElement('afterend', googleLink);
         }
       }
