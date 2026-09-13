@@ -1,4 +1,4 @@
-.home-instagram{background:#18301f;color:#f4efe5;padding:clamp(4.5rem,8vw,7rem) 4% clamp(5rem,9vw,8rem)}
+.home-instagram{background:#18301f!important;background-color:#18301f!important;color:#f4efe5;padding:clamp(4.5rem,8vw,7rem) 4% clamp(5rem,9vw,8rem);opacity:1!important;filter:none!important}
 .home-instagram-inner{width:min(1180px,100%);margin:0 auto}
 .home-instagram h2{margin:0 0 clamp(2.25rem,3.5vw,3.25rem);font-size:clamp(2.7rem,5vw,5.2rem);font-weight:400;line-height:.95;text-align:left;color:#f4efe5}
 .home-instagram-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(1rem,1.5vw,1.35rem);align-items:stretch}
