@@ -22,6 +22,11 @@
     return path === '/journeys/to-be-free' || path === '/journeys/how-to-embrace-suffering';
   };
 
+  const isOurStoriesPage = () => {
+    const path = window.location.pathname.replace(/\/+$/, '') || '/';
+    return path === '/about/our-stories';
+  };
+
   const ensureStyles = () => {
     if (!document.querySelector('link[data-mobile-nav-v3]')) {
       const navLink = document.createElement('link');
@@ -50,6 +55,13 @@
       faqLink.href = '/to-be-free-faq.css';
       faqLink.dataset.toBeFreeFaq = 'true';
       document.head.appendChild(faqLink);
+    }
+    if (isOurStoriesPage() && !document.querySelector('link[data-our-stories-header]')) {
+      const storiesLink = document.createElement('link');
+      storiesLink.rel = 'stylesheet';
+      storiesLink.href = '/our-stories-header.css';
+      storiesLink.dataset.ourStoriesHeader = 'true';
+      document.head.appendChild(storiesLink);
     }
     if (isHomepage() && document.querySelector('main .reflections') && !document.querySelector('link[data-home-instagram]')) {
       const instagramLink = document.createElement('link');
@@ -93,9 +105,12 @@
       <div class="home-instagram-inner">
         <h2 id="home-instagram-heading" class="reveal">Stories Spotlight</h2>
         <div class="home-instagram-grid">
-          ${posts.map((url) => `
-            <div class="home-instagram-embed reveal">
-              <blockquote class="instagram-media" data-instgrm-permalink="${url}?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14"></blockquote>
+          ${posts.map((url, index) => `
+            <div class="home-instagram-item reveal">
+              <div class="home-instagram-embed">
+                <blockquote class="instagram-media" data-instgrm-permalink="${url}?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14"></blockquote>
+              </div>
+              ${index === 0 ? '<a class="home-instagram-article-link" href="https://cnalifestyle.channelnewsasia.com/women/female-led-boutique-travel-destinations-467331" target="_blank" rel="noopener noreferrer">Read the full CNA article →</a>' : ''}
             </div>
           `).join('')}
         </div>
