@@ -7,6 +7,13 @@
       navLink.dataset.mobileNavV3 = 'true';
       document.head.appendChild(navLink);
     }
+    if (!document.querySelector('link[data-desktop-nav-dropdown]')) {
+      const desktopNavLink = document.createElement('link');
+      desktopNavLink.rel = 'stylesheet';
+      desktopNavLink.href = '/desktop-nav-dropdown.css';
+      desktopNavLink.dataset.desktopNavDropdown = 'true';
+      document.head.appendChild(desktopNavLink);
+    }
     if (!document.querySelector('link[data-mobile-content-polish]')) {
       const polishLink = document.createElement('link');
       polishLink.rel = 'stylesheet';
