@@ -1,4 +1,17 @@
 (() => {
+  if (!document.querySelector('style[data-nav-marker-guard]')) {
+    const markerGuard = document.createElement('style');
+    markerGuard.dataset.navMarkerGuard = 'true';
+    markerGuard.textContent = `
+      .main-nav .nav-dropdown > summary { list-style: none !important; }
+      .main-nav .nav-dropdown > summary::-webkit-details-marker { display: none !important; }
+      .main-nav .nav-dropdown > summary::marker { content: "" !important; font-size: 0 !important; }
+      .main-nav .nav-dropdown > summary::before,
+      .main-nav .nav-dropdown > summary::after { content: none !important; display: none !important; }
+    `;
+    document.head.appendChild(markerGuard);
+  }
+
   const ensureStyles = () => {
     if (!document.querySelector('link[data-mobile-nav-v3]')) {
       const navLink = document.createElement('link');
