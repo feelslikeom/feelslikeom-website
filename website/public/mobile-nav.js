@@ -17,6 +17,11 @@
     return path === '/' || path === '/index.html';
   };
 
+  const isToBeFreePage = () => {
+    const path = window.location.pathname.replace(/\/+$/, '') || '/';
+    return path === '/journeys/to-be-free' || path === '/journeys/how-to-embrace-suffering';
+  };
+
   const ensureStyles = () => {
     if (!document.querySelector('link[data-mobile-nav-v3]')) {
       const navLink = document.createElement('link');
@@ -38,6 +43,13 @@
       polishLink.href = '/mobile-content-polish.css';
       polishLink.dataset.mobileContentPolish = 'true';
       document.head.appendChild(polishLink);
+    }
+    if (isToBeFreePage() && !document.querySelector('link[data-to-be-free-faq]')) {
+      const faqLink = document.createElement('link');
+      faqLink.rel = 'stylesheet';
+      faqLink.href = '/to-be-free-faq.css';
+      faqLink.dataset.toBeFreeFaq = 'true';
+      document.head.appendChild(faqLink);
     }
     if (isHomepage() && document.querySelector('main .reflections') && !document.querySelector('link[data-home-instagram]')) {
       const instagramLink = document.createElement('link');
