@@ -12,6 +12,11 @@
     document.head.appendChild(markerGuard);
   }
 
+  const isHomepage = () => {
+    const path = window.location.pathname.replace(/\/+$/, '') || '/';
+    return path === '/' || path === '/index.html';
+  };
+
   const ensureStyles = () => {
     if (!document.querySelector('link[data-mobile-nav-v3]')) {
       const navLink = document.createElement('link');
@@ -34,7 +39,7 @@
       polishLink.dataset.mobileContentPolish = 'true';
       document.head.appendChild(polishLink);
     }
-    if (document.querySelector('main .reflections') && !document.querySelector('link[data-home-instagram]')) {
+    if (isHomepage() && document.querySelector('main .reflections') && !document.querySelector('link[data-home-instagram]')) {
       const instagramLink = document.createElement('link');
       instagramLink.rel = 'stylesheet';
       instagramLink.href = '/home-instagram.css';
@@ -58,6 +63,8 @@
   };
 
   const replaceHomepageReflections = () => {
+    if (!isHomepage()) return;
+
     const current = document.querySelector('main .reflections');
     if (!current || document.querySelector('.home-instagram')) return;
 
