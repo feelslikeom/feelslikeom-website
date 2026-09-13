@@ -1,4 +1,6 @@
 ---
+const googleReviewsUrl = 'https://maps.app.goo.gl/6UmDnZoQGBAi7V2S7';
+const reviewSlots = Array.from({ length: 6 });
 ---
 
 <html lang="en">
@@ -22,20 +24,93 @@
     </header>
 
     <main>
-      <section class="page-hero"><div class="wide"><p class="eyebrow">REFLECTIONS</p><h1>Google Reviews</h1><p class="intro">Read what guests have shared publicly about their experience with Feels Like Om.</p></div></section>
-      <section class="reviews-section">
-        <div class="reviews-shell">
-          <div class="map-embed">
-            <iframe title="Feels Like Om on Google Maps" src="https://www.google.com/maps?q=Feels%20Like%20Om&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <section class="page-hero">
+        <div class="wide">
+          <p class="eyebrow">REFLECTIONS</p>
+          <h1>Kind words from our community</h1>
+          <div class="google-summary" aria-label="Google Reviews">
+            <span class="stars" aria-hidden="true">★★★★★</span>
+            <span>Google Reviews</span>
           </div>
-          <a class="reviews-link" href="https://maps.app.goo.gl/6UmDnZoQGBAi7V2S7" target="_blank" rel="noopener noreferrer">Read our reviews on Google <span aria-hidden="true">→</span></a>
+        </div>
+      </section>
+
+      <section class="reviews-section" aria-label="Google review wall">
+        <div class="reviews-shell">
+          <div class="masonry-grid">
+            {reviewSlots.map((_, index) => (
+              <a class:list={['review-card', index % 3 === 1 && 'review-card--tall']} href={googleReviewsUrl} target="_blank" rel="noopener noreferrer" aria-label="Open Feels Like Om reviews on Google">
+                <div class="review-topline">
+                  <span class="review-source">Google review</span>
+                  <span class="google-g" aria-hidden="true">G</span>
+                </div>
+                <div class="review-stars" aria-hidden="true">★★★★★</div>
+                <p class="review-placeholder">Open Google to read this review.</p>
+                <span class="review-cta">Read on Google <span aria-hidden="true">→</span></span>
+              </a>
+            ))}
+          </div>
+
+          <div class="reviews-footer">
+            <a class="reviews-link" href={googleReviewsUrl} target="_blank" rel="noopener noreferrer">Read all reviews on Google <span aria-hidden="true">→</span></a>
+          </div>
         </div>
       </section>
     </main>
+
     <script src="/mobile-nav.js" is:inline></script>
   </body>
 </html>
 
 <style>
-  :global(*){box-sizing:border-box}body{margin:0;background:#f4efe5;color:#18301f;overflow-x:hidden;font-family:var(--font-body)}a{color:inherit;text-underline-offset:.3rem}.wide{width:min(1180px,92%);margin:0 auto}.site-header{display:flex;align-items:center;justify-content:space-between;gap:2rem;padding:1.5rem 4%;border-bottom:1px solid rgba(24,48,31,.15)}.brand{color:inherit;text-decoration:none;white-space:nowrap}.main-nav{display:flex;align-items:center;gap:1.5rem;letter-spacing:.08em}.main-nav>a,.main-nav summary{color:inherit;text-decoration:none;cursor:pointer}.main-nav .active{border-bottom:1px solid currentColor}.nav-dropdown{position:relative}.nav-dropdown summary{list-style:none}.nav-dropdown summary::-webkit-details-marker{display:none}.submenu{position:absolute;top:calc(100% + .65rem);right:0;width:max-content;min-width:13rem;padding:.7rem;background:#fffaf1;box-shadow:0 12px 30px rgba(8,20,12,.13);z-index:10;opacity:0;visibility:hidden;transform:translateY(-4px);transition:.16s}.submenu a{display:block;padding:.65rem .75rem;color:#18301f;text-decoration:none;letter-spacing:0}.submenu a:hover{background:rgba(24,48,31,.06)}@media(hover:hover){.nav-dropdown:hover .submenu{opacity:1;visibility:visible;transform:translateY(0)}}.page-hero{padding:clamp(5rem,10vw,8rem) 0 clamp(3rem,6vw,5rem);text-align:center}.eyebrow{margin:0 0 1.2rem;letter-spacing:.14em}.page-hero h1{margin:0;font-family:var(--font-display);font-size:var(--type-display)!important;line-height:.98;font-weight:400}.intro{width:min(650px,100%);margin:1.4rem auto 0;line-height:1.7}.reviews-section{padding:0 4% clamp(7rem,12vw,10rem)}.reviews-shell{width:min(960px,100%);margin:0 auto;text-align:center}.map-embed{width:100%;aspect-ratio:16/9;overflow:hidden;background:#fffaf1;border:1px solid rgba(24,48,31,.14)}.map-embed iframe{width:100%;height:100%;border:0;display:block}.reviews-link{display:inline-flex;align-items:center;gap:.55rem;margin-top:2rem;font-family:var(--font-display);font-size:var(--type-cta);text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:.12rem}@media(max-width:760px){.site-header{align-items:flex-start;padding:1.15rem 1.25rem}.main-nav{gap:.75rem;flex-wrap:wrap;justify-content:flex-end}.submenu{right:auto;left:0}.nav-dropdown[open] .submenu{opacity:1;visibility:visible;transform:translateY(0)}.wide{width:calc(100% - 2.5rem)}.page-hero{padding-top:4rem}.reviews-section{padding-left:1.25rem;padding-right:1.25rem}.map-embed{aspect-ratio:4/5}}
+  :global(*){box-sizing:border-box}
+  body{margin:0;background:#f4efe5;color:#18301f;overflow-x:hidden;font-family:var(--font-body)}
+  a{color:inherit;text-underline-offset:.3rem}
+  .wide{width:min(1180px,92%);margin:0 auto}
+  .site-header{display:flex;align-items:center;justify-content:space-between;gap:2rem;padding:1.5rem 4%;border-bottom:1px solid rgba(24,48,31,.15)}
+  .brand{color:inherit;text-decoration:none;white-space:nowrap}
+  .main-nav{display:flex;align-items:center;gap:1.5rem;letter-spacing:.08em}
+  .main-nav>a,.main-nav summary{color:inherit;text-decoration:none;cursor:pointer}
+  .main-nav .active{border-bottom:1px solid currentColor}
+  .nav-dropdown{position:relative}
+  .nav-dropdown summary{list-style:none}
+  .nav-dropdown summary::-webkit-details-marker{display:none}
+  .submenu{position:absolute;top:calc(100% + .65rem);right:0;width:max-content;min-width:13rem;padding:.7rem;background:#fffaf1;box-shadow:0 12px 30px rgba(8,20,12,.13);z-index:10;opacity:0;visibility:hidden;transform:translateY(-4px);transition:.16s}
+  .submenu a{display:block;padding:.65rem .75rem;color:#18301f;text-decoration:none;letter-spacing:0}
+  .submenu a:hover{background:rgba(24,48,31,.06)}
+  @media(hover:hover){.nav-dropdown:hover .submenu{opacity:1;visibility:visible;transform:translateY(0)}}
+
+  .page-hero{padding:clamp(6.5rem,12vw,10rem) 0 clamp(3.5rem,7vw,5rem);text-align:center}
+  .eyebrow{margin:0 0 1.2rem;letter-spacing:.14em}
+  .page-hero h1{width:min(900px,100%);margin:0 auto;font-family:var(--font-display);font-size:clamp(3.2rem,6vw,6.4rem)!important;line-height:.98;font-weight:400}
+  .google-summary{display:flex;justify-content:center;align-items:center;gap:.8rem;margin-top:1.6rem;font-size:.95rem}
+  .stars,.review-stars{letter-spacing:.08em;color:#b87900}
+
+  .reviews-section{padding:0 4% clamp(8rem,13vw,11rem)}
+  .reviews-shell{width:min(1180px,100%);margin:0 auto}
+  .masonry-grid{columns:3;column-gap:1.2rem}
+  .review-card{display:block;break-inside:avoid;margin:0 0 1.2rem;padding:1.35rem 1.35rem 1.25rem;background:#fffaf1;border:1px solid rgba(24,48,31,.11);text-decoration:none;box-shadow:0 12px 28px rgba(24,48,31,.035);transition:transform 180ms ease,box-shadow 180ms ease,border-color 180ms ease}
+  .review-card:hover{transform:translateY(-2px);box-shadow:0 16px 34px rgba(24,48,31,.07);border-color:rgba(24,48,31,.2)}
+  .review-card--tall{padding-bottom:2.1rem}
+  .review-topline{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+  .review-source{font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;opacity:.68}
+  .google-g{font-weight:700;font-size:1.05rem;color:#4285f4}
+  .review-stars{margin-top:1rem;font-size:.95rem}
+  .review-placeholder{margin:1rem 0 1.3rem;font-family:var(--font-display);font-size:clamp(1.35rem,2vw,1.8rem);line-height:1.32}
+  .review-cta{display:inline-flex;align-items:center;gap:.45rem;font-size:.86rem;border-bottom:1px solid currentColor;padding-bottom:.1rem}
+  .reviews-footer{display:flex;justify-content:center;padding-top:clamp(2.5rem,5vw,4rem)}
+  .reviews-link{display:inline-flex;align-items:center;gap:.65rem;padding:1rem 1.25rem;background:#18301f;color:#f4efe5;text-decoration:none;font-family:var(--font-display);font-size:var(--type-cta);transition:transform 180ms ease,opacity 180ms ease}
+  .reviews-link:hover{transform:translateY(-1px);opacity:.92}
+
+  @media(max-width:980px){.masonry-grid{columns:2}}
+  @media(max-width:760px){
+    .site-header{align-items:flex-start;padding:1.15rem 1.25rem}.main-nav{gap:.75rem;flex-wrap:wrap;justify-content:flex-end}.submenu{right:auto;left:0}.nav-dropdown[open] .submenu{opacity:1;visibility:visible;transform:translateY(0)}
+    .wide{width:calc(100% - 2.5rem)}
+    .page-hero{padding:5rem 0 3rem}
+    .page-hero h1{font-size:clamp(2.8rem,12vw,4.2rem)!important}
+    .reviews-section{padding-left:1.25rem;padding-right:1.25rem}
+    .masonry-grid{columns:1}
+    .review-card,.review-card--tall{padding:1.2rem}
+    .reviews-link{width:100%;justify-content:center;text-align:center}
+  }
 </style>
