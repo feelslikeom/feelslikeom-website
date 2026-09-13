@@ -1,0 +1,15 @@
+.faq-section{
+  background:#18301f!important;
+  color:#f4efe5!important;
+}
+.faq-section .wide{color:#f4efe5!important;}
+.faq-section h2{color:#f4efe5!important;}
+.faq-section .faq-list{border-top:1px solid rgba(244,239,229,.28)!important;}
+.faq-section .faq-list details{border-bottom:1px solid rgba(244,239,229,.28)!important;}
+.faq-section .faq-list summary{color:#f4efe5!important;}
+.faq-section .faq-list summary::after{color:#f4efe5!important;}
+.faq-section .faq-answer,
+.faq-section .faq-answer p,
+.faq-section .faq-answer li{color:rgba(244,239,229,.9)!important;}
+.faq-section .faq-answer a{color:#f4efe5!important;text-decoration-color:rgba(244,239,229,.72)!important;}
+.faq-section .faq-answer strong{color:#f4efe5!important;}
