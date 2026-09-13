@@ -1,0 +1,24 @@
+.story-intro .eyebrow{
+  margin:0 0 1.2rem!important;
+  font-family:var(--font-body)!important;
+  font-size:inherit!important;
+  font-weight:400!important;
+  line-height:1!important;
+  letter-spacing:.14em!important;
+}
+
+.story-intro h1{
+  width:100%!important;
+  margin:0 auto!important;
+  font-family:var(--font-display)!important;
+  font-size:var(--type-display)!important;
+  line-height:.98!important;
+  font-weight:400!important;
+  letter-spacing:normal!important;
+}
+
+@media(max-width:760px){
+  .story-intro h1{
+    font-size:var(--type-display)!important;
+  }
+}
