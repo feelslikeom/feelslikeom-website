@@ -2,6 +2,9 @@
   .main-nav .nav-dropdown{position:relative!important;}
   .main-nav .nav-dropdown>summary{list-style:none!important;cursor:pointer!important;}
   .main-nav .nav-dropdown>summary::-webkit-details-marker{display:none!important;}
+  .main-nav .nav-dropdown>summary::marker{content:""!important;font-size:0!important;}
+  .main-nav .nav-dropdown>summary::before,
+  .main-nav .nav-dropdown>summary::after{content:none!important;display:none!important;}
 
   .main-nav .nav-dropdown .submenu{
     position:absolute!important;
