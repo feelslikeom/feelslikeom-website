@@ -66,6 +66,39 @@
     loadInstagramEmbedScript();
   };
 
+  const updateNavigation = () => {
+    document.querySelectorAll('.main-nav').forEach((nav) => {
+      const about = Array.from(nav.querySelectorAll('.nav-dropdown')).find((item) => item.querySelector(':scope > summary')?.textContent.trim().toUpperCase() === 'ABOUT');
+      if (about) {
+        const submenu = about.querySelector('.submenu');
+        if (submenu) {
+          submenu.innerHTML = `
+            <a href="/about/our-stories">Our stories</a>
+            <a href="/about/getting-to-sikkim">Getting to Sikkim</a>
+            <a href="/about/visa-and-permits">Visa and permits</a>
+            <a href="/about/media">Media</a>`;
+        }
+      }
+
+      const existingReflectionDropdown = Array.from(nav.querySelectorAll('.nav-dropdown')).find((item) => item.querySelector(':scope > summary')?.textContent.trim().toUpperCase() === 'REFLECTIONS');
+      if (!existingReflectionDropdown) {
+        const reflectionLink = Array.from(nav.children).find((item) => item.tagName === 'A' && item.textContent.trim().toUpperCase() === 'REFLECTIONS');
+        if (reflectionLink) {
+          const details = document.createElement('details');
+          details.className = 'nav-dropdown reflections-dropdown';
+          details.innerHTML = `
+            <summary>REFLECTIONS</summary>
+            <div class="submenu">
+              <a href="/reflections">Guest Book</a>
+              <a href="/reflections/google-reviews">Google Reviews</a>
+              <a href="/reflections/life-on-sikkim-time">Life on Sikkim time</a>
+            </div>`;
+          reflectionLink.replaceWith(details);
+        }
+      }
+    });
+  };
+
   const applyContentUpdates = () => {
     const fieldImmersionLink = document.querySelector('#stay-longer a.text-link');
     if (fieldImmersionLink) fieldImmersionLink.href = '/journeys/the-flagship#itinerary';
@@ -75,11 +108,29 @@
       if (heading?.textContent?.trim().toLowerCase() === 'other journeys') section.remove();
     });
 
-    const reflectionsIntro = document.querySelector('.reflection-intro .intro');
+    const reflectionsIntro = document.querySelector('.reflection-intro');
     if (reflectionsIntro) {
-      reflectionsIntro.textContent = 'Each circle holds one person’s reflection. Follow the threads, click into a story, and move from one reflection to the next. Sikkim voices coming soon.';
+      const eyebrow = reflectionsIntro.querySelector('.eyebrow');
+      const intro = reflectionsIntro.querySelector('.intro');
+      if (eyebrow) eyebrow.textContent = 'GUEST BOOK';
+      if (intro) intro.textContent = 'At the end of every journey, we invite participants to share their reflections in our guest book. Each circle holds one person’s reflection, and is a testament to what happens when we approach life with gratitude, reciprocity and enoughness.';
     }
 
+    const routeSteps = document.querySelectorAll('.route-section .route-step p');
+    routeSteps.forEach((step) => {
+      if (step.textContent.trim() === 'Continue your journey to the village' && !step.querySelector('.route-duration-note')) {
+        const note = document.createElement('span');
+        note.className = 'route-duration-note';
+        note.style.display = 'block';
+        note.style.marginTop = '.55rem';
+        note.style.fontSize = '.82em';
+        note.style.opacity = '.72';
+        note.textContent = '(Entire journey from airport to village takes around 6 hours, including lunch break)';
+        step.appendChild(note);
+      }
+    });
+
+    updateNavigation();
     replaceHomepageReflections();
   };
 
