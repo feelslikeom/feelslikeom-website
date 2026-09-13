@@ -100,20 +100,23 @@
         }
       }
 
-      const existingReflectionDropdown = Array.from(nav.querySelectorAll('.nav-dropdown')).find((item) => item.querySelector(':scope > summary')?.textContent.trim().toUpperCase() === 'REFLECTIONS');
-      if (!existingReflectionDropdown) {
+      let reflectionsDropdown = Array.from(nav.querySelectorAll('.nav-dropdown')).find((item) => item.querySelector(':scope > summary')?.textContent.trim().toUpperCase() === 'REFLECTIONS');
+      if (!reflectionsDropdown) {
         const reflectionLink = Array.from(nav.children).find((item) => item.tagName === 'A' && item.textContent.trim().toUpperCase() === 'REFLECTIONS');
         if (reflectionLink) {
-          const details = document.createElement('details');
-          details.className = 'nav-dropdown reflections-dropdown';
-          details.innerHTML = `
-            <summary>REFLECTIONS</summary>
-            <div class="submenu">
-              <a href="/reflections">Guest Book</a>
-              <a href="/reflections/google-reviews">Google Reviews</a>
-              <a href="/reflections/life-on-sikkim-time">Life on Sikkim time</a>
-            </div>`;
-          reflectionLink.replaceWith(details);
+          reflectionsDropdown = document.createElement('details');
+          reflectionsDropdown.className = 'nav-dropdown reflections-dropdown';
+          reflectionsDropdown.innerHTML = `<summary>REFLECTIONS</summary><div class="submenu"></div>`;
+          reflectionLink.replaceWith(reflectionsDropdown);
+        }
+      }
+
+      if (reflectionsDropdown) {
+        const submenu = reflectionsDropdown.querySelector('.submenu');
+        if (submenu) {
+          submenu.innerHTML = `
+            <a href="/reflections">Guest Book</a>
+            <a href="/reflections/life-on-sikkim-time">Life on Sikkim time</a>`;
         }
       }
     });
@@ -133,7 +136,17 @@
       const eyebrow = reflectionsIntro.querySelector('.eyebrow');
       const intro = reflectionsIntro.querySelector('.intro');
       if (eyebrow) eyebrow.textContent = 'GUEST BOOK';
-      if (intro) intro.textContent = 'At the end of every journey, we invite participants to share their reflections in our guest book. Each circle holds one person’s reflection, and is a testament to what happens when we approach life with gratitude, reciprocity and enoughness.';
+      if (intro) {
+        intro.textContent = 'At the end of every journey, we invite participants to share their reflections in our guest book. Each circle holds one person’s reflection, and is a testament to what happens when we approach life with gratitude, reciprocity and enoughness.';
+        if (!reflectionsIntro.querySelector('.google-reviews-inline')) {
+          const googleLink = document.createElement('p');
+          googleLink.className = 'google-reviews-inline';
+          googleLink.style.margin = '1rem auto 0';
+          googleLink.style.width = 'min(620px,100%)';
+          googleLink.innerHTML = '<a href="https://maps.app.goo.gl/tQHmVowypBeZXmkc9" target="_blank" rel="noopener noreferrer">Read Google reviews here.</a>';
+          intro.insertAdjacentElement('afterend', googleLink);
+        }
+      }
     }
 
     const routeSteps = document.querySelectorAll('.route-section .route-step p');
