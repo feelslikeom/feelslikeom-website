@@ -145,6 +145,12 @@
       if (label) label.textContent = 'Details';
     }
 
+    document.querySelectorAll('#itinerary .days-grid article').forEach((day) => {
+      const dayNumber = day.querySelector('span')?.textContent.trim().toLowerCase();
+      const heading = day.querySelector('h3');
+      if (dayNumber === 'day 6' && heading?.textContent.trim() === 'Start of trek') heading.textContent = 'Ascend day';
+    });
+
     const itineraryHeading = document.querySelector('#itinerary .itinerary-heading');
     if (itineraryHeading && !document.querySelector('#itinerary .itinerary-living-note')) {
       const note = document.createElement('p');
@@ -234,7 +240,8 @@
         if (submenu) {
           submenu.innerHTML = `
             <a href="/reflections">Guest Book</a>
-            <a href="/reflections/life-on-sikkim-time">Life on Sikkim time</a>`;
+            <a href="/reflections/life-on-sikkim-time">Life on Sikkim time</a>
+            <a href="/reflections/sikkimese-ghost-stories">Sikkimese Ghost Stories</a>`;
         }
       }
     });
@@ -319,7 +326,15 @@
       });
 
       nav.querySelectorAll('.nav-dropdown > summary').forEach((summary) => {
-        summary.addEventListener('click', (event) => event.stopPropagation());
+        summary.addEventListener('click', (event) => {
+          event.stopPropagation();
+          if (!window.matchMedia('(max-width:760px)').matches) return;
+          const current = summary.closest('.nav-dropdown');
+          if (!current || current.hasAttribute('open')) return;
+          nav.querySelectorAll(':scope > .nav-dropdown').forEach((item) => {
+            if (item !== current) item.removeAttribute('open');
+          });
+        });
       });
       nav.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
       document.addEventListener('keydown', (event) => {
