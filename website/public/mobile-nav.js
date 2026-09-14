@@ -27,6 +27,11 @@
     return path === '/about/our-stories';
   };
 
+  const isFlagshipPage = () => {
+    const path = window.location.pathname.replace(/\/+$/, '') || '/';
+    return path === '/journeys/the-flagship';
+  };
+
   const ensureStyles = () => {
     if (!document.querySelector('link[data-mobile-nav-v3]')) {
       const navLink = document.createElement('link');
@@ -62,6 +67,13 @@
       storiesLink.href = '/our-stories-header.css';
       storiesLink.dataset.ourStoriesHeader = 'true';
       document.head.appendChild(storiesLink);
+    }
+    if (isFlagshipPage() && !document.querySelector('link[data-flagship-contribution]')) {
+      const contributionLink = document.createElement('link');
+      contributionLink.rel = 'stylesheet';
+      contributionLink.href = '/flagship-contribution.css';
+      contributionLink.dataset.flagshipContribution = 'true';
+      document.head.appendChild(contributionLink);
     }
     if (isHomepage() && document.querySelector('main .reflections') && !document.querySelector('link[data-home-instagram]')) {
       const instagramLink = document.createElement('link');
@@ -118,6 +130,61 @@
 
     current.replaceWith(section);
     loadInstagramEmbedScript();
+  };
+
+  const updateFlagshipDetails = () => {
+    if (!isFlagshipPage()) return;
+
+    const sideNavLink = Array.from(document.querySelectorAll('.section-nav a')).find((link) => link.querySelector('.section-nav-label')?.textContent.trim() === 'Reflections');
+    if (sideNavLink) {
+      sideNavLink.setAttribute('href', '#details');
+      const label = sideNavLink.querySelector('.section-nav-label');
+      if (label) label.textContent = 'Details';
+    }
+
+    const reflectionsSection = document.querySelector('main #reflections.reflections');
+    if (reflectionsSection && !document.querySelector('#details.flagship-contribution')) {
+      const contributionSection = document.createElement('section');
+      contributionSection.id = 'details';
+      contributionSection.className = 'section flagship-contribution';
+      contributionSection.setAttribute('aria-labelledby', 'flagship-contribution-title');
+      contributionSection.innerHTML = `
+        <div class="flagship-contribution-inner">
+          <h2 id="flagship-contribution-title">Your Contribution</h2>
+          <div class="flagship-contribution-grid">
+            <div class="flagship-contribution-pricing" aria-label="Journey contribution options">
+              <p class="flagship-contribution-price">SGD 2,480 <span>per person · double room</span></p>
+              <p class="flagship-contribution-price">SGD 2,680 <span>per person · private room</span></p>
+            </div>
+            <div class="flagship-contribution-copy">
+              <p>It is our honour to host you, even if it’s just one of you. We keep each group intentionally small, with a maximum of six people. Exceptions may be possible — just speak with us. :-)</p>
+              <p>A <strong>non-refundable 50% deposit</strong> is required to secure your place. The remaining balance can be made one month before the journey begins. Payment can be made via PayNow or Wise transfer.</p>
+              <p>The journey begins and ends at <strong>Bagdogra Airport</strong>. You navigate the flights; once you arrive at Bagdogra, we’ll help coordinate the rest of your journey into Sikkim.</p>
+              <p>Your contribution does not include airfare, travel insurance, alcohol, personal expenses, or airport transfers.</p>
+              <p>Airport transfers to and from Bagdogra are not included in the amount above, but we can arrange them for you. Payment is made directly to your driver.</p>
+            </div>
+          </div>
+          <div class="flagship-contribution-sustain">
+            <h3>What your participation helps sustain</h3>
+            <p>Your contribution makes this journey possible, while also supporting the people, practices and relationships that make it meaningful.</p>
+            <ul class="flagship-contribution-list">
+              <li><strong>Next-generation agripreneurs</strong> who have chosen to stay rather than migrate to cities, and who are working to revitalise ancestral practices and values</li>
+              <li><strong>Village women entrepreneurs</strong>, including the family team who hosts you and takes care of you throughout your stay</li>
+              <li><strong>Traditional organic farming practices</strong> and the knowledge held within them</li>
+              <li><strong>Leave No Trace trekking practices</strong> that care for the mountains we move through</li>
+              <li><strong>Cultural identity and heritage among younger generations</strong>, creating reasons for local knowledge to remain alive and relevant</li>
+            </ul>
+          </div>
+        </div>`;
+
+      reflectionsSection.replaceWith(contributionSection);
+      document.querySelector('#reflection-lightbox')?.remove();
+    }
+
+    document.querySelectorAll('#faq .faq-list details').forEach((item) => {
+      const summary = item.querySelector('summary');
+      if (summary?.textContent.trim().toLowerCase() === 'how big is the group?') item.remove();
+    });
   };
 
   const updateNavigation = () => {
@@ -197,6 +264,7 @@
     });
 
     updateNavigation();
+    updateFlagshipDetails();
     replaceHomepageReflections();
   };
 
