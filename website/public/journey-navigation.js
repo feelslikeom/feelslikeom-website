@@ -15,7 +15,8 @@
       '#accommodation': 'Stay',
       '#food': 'Food',
       '#trek': 'Trek',
-      '#reflections': 'Reflections',
+      '#reflections': 'Details',
+      '#details': 'Details',
       '#faq': 'FAQ',
     };
 
@@ -23,6 +24,7 @@
       const label = link.querySelector('.section-nav-label');
       const href = link.getAttribute('href');
       if (label && href && flagshipLabels[href]) label.textContent = flagshipLabels[href];
+      if (href === '#reflections') link.setAttribute('href', '#details');
     });
 
     const accommodationSection = document.querySelector('.accommodation-section');
