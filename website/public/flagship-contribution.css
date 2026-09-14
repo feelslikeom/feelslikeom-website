@@ -3,8 +3,8 @@
 .flagship-contribution h2{margin:0 0 clamp(2.5rem,5vw,4rem);font-family:var(--font-display);font-weight:400;line-height:1.02}
 .flagship-contribution-grid{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(3rem,8vw,7rem);align-items:start}
 .flagship-contribution-pricing{display:grid;gap:1.2rem;padding-top:.35rem}
-.flagship-contribution-price{margin:0;font-family:var(--font-display);font-size:clamp(2.5rem,4vw,3.75rem);line-height:1.15}
-.flagship-contribution-price span{display:block;margin-top:.3rem;font-family:var(--font-body);font-size:.48em;letter-spacing:.04em;text-transform:uppercase;opacity:.68}
+.flagship-contribution-price{margin:0;font-family:var(--font-display)!important;font-size:clamp(2.5rem,4vw,3.75rem)!important;line-height:1.15!important}
+.flagship-contribution-price span{display:block;margin-top:.3rem;font-family:var(--font-body)!important;font-size:clamp(1rem,1.35vw,1.3rem)!important;letter-spacing:.04em;text-transform:uppercase;opacity:.68}
 .flagship-contribution-copy p{margin:0 0 1.35rem;line-height:1.8}
 .flagship-contribution-copy strong{font-weight:600}
 .flagship-contribution-sustain{margin-top:clamp(3.5rem,7vw,6rem);padding-top:clamp(2.5rem,5vw,4rem);border-top:1px solid rgba(24,48,31,.2)}
@@ -13,4 +13,4 @@
 .flagship-contribution-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 clamp(2rem,6vw,5rem);margin:0;padding:0;list-style:none;border-top:1px solid rgba(24,48,31,.16)}
 .flagship-contribution-list li{padding:1.35rem 0;border-bottom:1px solid rgba(24,48,31,.16);line-height:1.65}
 .flagship-contribution-list strong{font-weight:600}
-@media(max-width:760px){.flagship-contribution{padding:4.5rem 1.25rem 5rem}.flagship-contribution-grid{grid-template-columns:1fr;gap:2.5rem}.flagship-contribution-list{grid-template-columns:1fr}.flagship-contribution-price{font-size:clamp(2.5rem,11.25vw,3.375rem)}}
+@media(max-width:760px){.flagship-contribution{padding:4.5rem 1.25rem 5rem}.flagship-contribution-grid{grid-template-columns:1fr;gap:2.5rem}.flagship-contribution-list{grid-template-columns:1fr}.flagship-contribution-price{font-size:clamp(2.5rem,11vw,3.35rem)!important}.flagship-contribution-price span{font-size:clamp(1rem,4.6vw,1.2rem)!important}}
