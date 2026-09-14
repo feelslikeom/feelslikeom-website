@@ -172,6 +172,28 @@
     appearance:none!important;
   }
 
+  /* Homepage has older mobile-nav rules with :has() that otherwise shrink
+     Journeys, Reflections and Contact whenever About is open. Match that
+     specificity here so every top-level item keeps the canonical size. */
+  .site-header.nav-open .main-nav:has(> .nav-dropdown:first-child[open]) > .nav-dropdown:not(:first-child) > summary,
+  .site-header.nav-open .main-nav:has(> .nav-dropdown:first-child[open]) > a {
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    width:100%!important;
+    margin:0!important;
+    padding:.12em .15em!important;
+    color:#2a2119!important;
+    font-family:var(--font-body)!important;
+    font-size:clamp(2rem,8.5vw,3.4rem)!important;
+    font-weight:400!important;
+    line-height:1.12!important;
+    letter-spacing:-.035em!important;
+    text-transform:uppercase!important;
+    border:0!important;
+    background:transparent!important;
+  }
+
   .site-header.nav-open .main-nav > .nav-dropdown > summary::-webkit-details-marker {
     display:none!important;
   }
