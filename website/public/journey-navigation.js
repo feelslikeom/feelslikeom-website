@@ -6,6 +6,18 @@
   const isFlagship = window.location.pathname.includes('/journeys/the-flagship');
   const isToBeFree = window.location.pathname.includes('/journeys/how-to-embrace-suffering') || window.location.pathname.includes('/journeys/to-be-free');
 
+  const forceFlagshipDetailsLabel = () => {
+    if (!isFlagship) return;
+    sectionNav.querySelectorAll('a').forEach((link) => {
+      const href = link.getAttribute('href');
+      const label = link.querySelector('.section-nav-label');
+      if (href === '#reflections' || href === '#details' || label?.textContent.trim().toLowerCase() === 'reflections') {
+        link.setAttribute('href', '#details');
+        if (label) label.textContent = 'Details';
+      }
+    });
+  };
+
   if (isFlagship) {
     document.body.classList.add('flagship-page');
 
@@ -15,7 +27,6 @@
       '#accommodation': 'Stay',
       '#food': 'Food',
       '#trek': 'Trek',
-      '#reflections': 'Details',
       '#details': 'Details',
       '#faq': 'FAQ',
     };
@@ -24,8 +35,11 @@
       const label = link.querySelector('.section-nav-label');
       const href = link.getAttribute('href');
       if (label && href && flagshipLabels[href]) label.textContent = flagshipLabels[href];
-      if (href === '#reflections') link.setAttribute('href', '#details');
     });
+
+    forceFlagshipDetailsLabel();
+    requestAnimationFrame(forceFlagshipDetailsLabel);
+    window.addEventListener('load', forceFlagshipDetailsLabel, { once: true });
 
     const accommodationSection = document.querySelector('.accommodation-section');
     const accommodationGallerySection = document.querySelector('.accommodation-gallery-section');
