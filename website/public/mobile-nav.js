@@ -135,11 +135,27 @@
   const updateFlagshipDetails = () => {
     if (!isFlagshipPage()) return;
 
-    const sideNavLink = Array.from(document.querySelectorAll('.section-nav a')).find((link) => link.querySelector('.section-nav-label')?.textContent.trim() === 'Reflections');
+    const sideNavLink = Array.from(document.querySelectorAll('.section-nav a')).find((link) => {
+      const labelText = link.querySelector('.section-nav-label')?.textContent.trim();
+      return labelText === 'Reflections' || labelText === 'Details';
+    });
     if (sideNavLink) {
       sideNavLink.setAttribute('href', '#details');
       const label = sideNavLink.querySelector('.section-nav-label');
       if (label) label.textContent = 'Details';
+    }
+
+    const itineraryHeading = document.querySelector('#itinerary .itinerary-heading');
+    if (itineraryHeading && !document.querySelector('#itinerary .itinerary-living-note')) {
+      const note = document.createElement('p');
+      note.className = 'itinerary-living-note';
+      note.style.margin = '-2rem 0 3rem';
+      note.style.maxWidth = '820px';
+      note.style.fontSize = 'clamp(.9rem,1.2vw,1rem)';
+      note.style.lineHeight = '1.7';
+      note.style.opacity = '.82';
+      note.textContent = "This is a living itinerary. Activities may shift with weather, community availability, and what's happening in the village, sometimes it's a wedding. Reflection and collective sense-making will happen throughout the journey.";
+      itineraryHeading.insertAdjacentElement('afterend', note);
     }
 
     const reflectionsSection = document.querySelector('main #reflections.reflections');
@@ -173,6 +189,7 @@
               <li><strong>Traditional organic farming practices</strong> and the knowledge held within them</li>
               <li><strong>Leave No Trace trekking practices</strong> that care for the mountains we move through</li>
               <li><strong>Cultural identity and heritage among younger generations</strong>, empowering them with a sense of ownership and responsibility to continue Indigenous visual literacies</li>
+              <li><strong>Multigenerational third space</strong>, where people can just be, and a container for futures to be imagined and co-created</li>
             </ul>
           </div>
         </div>`;
