@@ -157,11 +157,11 @@
               <p class="flagship-contribution-price">SGD 2,680 <span>per person · private room</span></p>
             </div>
             <div class="flagship-contribution-copy">
-              <p>It is our honour to host you, even if it’s just one of you. We keep each group intentionally small, with a maximum of six people. Exceptions may be possible — just speak with us. :-)</p>
+              <p>It is our honour to host you, even if it’s just one of you. We keep each group intentionally small, with a maximum of six people. Exceptions may be possible, just speak with us :-)</p>
               <p>A <strong>non-refundable 50% deposit</strong> is required to secure your place. The remaining balance can be made one month before the journey begins. Payment can be made via PayNow or Wise transfer.</p>
               <p>The journey begins and ends at <strong>Bagdogra Airport</strong>. You navigate the flights; once you arrive at Bagdogra, we’ll help coordinate the rest of your journey into Sikkim.</p>
               <p>Your contribution does not include airfare, travel insurance, alcohol, personal expenses, or airport transfers.</p>
-              <p>Airport transfers to and from Bagdogra are not included in the amount above, but we can arrange them for you. Payment is made directly to your driver.</p>
+              <p>Airport transfers can be arranged for you. Payment is made directly to your driver.</p>
             </div>
           </div>
           <div class="flagship-contribution-sustain">
@@ -172,7 +172,7 @@
               <li><strong>Village women entrepreneurs</strong>, including the family team who hosts you and takes care of you throughout your stay</li>
               <li><strong>Traditional organic farming practices</strong> and the knowledge held within them</li>
               <li><strong>Leave No Trace trekking practices</strong> that care for the mountains we move through</li>
-              <li><strong>Cultural identity and heritage among younger generations</strong>, creating reasons for local knowledge to remain alive and relevant</li>
+              <li><strong>Cultural identity and heritage among younger generations</strong>, empowering them with a sense of ownership and responsibility to continue Indigenous visual literacies</li>
             </ul>
           </div>
         </div>`;
