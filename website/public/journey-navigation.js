@@ -41,6 +41,17 @@
     requestAnimationFrame(forceFlagshipDetailsLabel);
     window.addEventListener('load', forceFlagshipDetailsLabel, { once: true });
 
+    const flagshipNavObserver = new MutationObserver(() => {
+      forceFlagshipDetailsLabel();
+    });
+    flagshipNavObserver.observe(sectionNav, {
+      subtree: true,
+      childList: true,
+      characterData: true,
+      attributes: true,
+      attributeFilter: ['href']
+    });
+
     const accommodationSection = document.querySelector('.accommodation-section');
     const accommodationGallerySection = document.querySelector('.accommodation-gallery-section');
     const accommodationPortrait = document.querySelector('.accommodation-portrait');
