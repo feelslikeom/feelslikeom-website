@@ -13,4 +13,8 @@
 .flagship-contribution-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 clamp(2rem,6vw,5rem);margin:0;padding:0;list-style:none;border-top:1px solid rgba(24,48,31,.16)}
 .flagship-contribution-list li{padding:1.35rem 0;border-bottom:1px solid rgba(24,48,31,.16);line-height:1.65}
 .flagship-contribution-list strong{font-weight:600}
+.flagship-page .section-nav a[href="#details"] .section-nav-label,
+.flagship-page .section-nav a[href="#reflections"] .section-nav-label{font-size:0!important}
+.flagship-page .section-nav a[href="#details"] .section-nav-label::after,
+.flagship-page .section-nav a[href="#reflections"] .section-nav-label::after{content:"Details";font-size:.78rem!important;font-family:var(--font-body);}
 @media(max-width:760px){.flagship-contribution{padding:4.5rem 1.25rem 5rem}.flagship-contribution-grid{grid-template-columns:1fr;gap:2.5rem}.flagship-contribution-list{grid-template-columns:1fr}.flagship-contribution-price{font-size:clamp(2.25rem,9.9vw,3.015rem)!important}.flagship-contribution-price span{font-size:clamp(.9rem,4.14vw,1.08rem)!important}}
