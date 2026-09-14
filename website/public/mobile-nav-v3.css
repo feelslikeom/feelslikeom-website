@@ -194,6 +194,27 @@
     background:transparent!important;
   }
 
+  /* The homepage's legacy nth/dropdown rule has unusually high specificity
+     and still wins for the second dropdown (Journeys). Force that one heading
+     back to the canonical top-level navigation size. */
+  html body .site-header.site-header.nav-open .main-nav.main-nav > details.nav-dropdown:nth-of-type(2) > summary {
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    width:100%!important;
+    margin:0!important;
+    padding:.12em .15em!important;
+    color:#2a2119!important;
+    font-family:var(--font-body)!important;
+    font-size:clamp(2rem,8.5vw,3.4rem)!important;
+    font-weight:400!important;
+    line-height:1.12!important;
+    letter-spacing:-.035em!important;
+    text-transform:uppercase!important;
+    border:0!important;
+    background:transparent!important;
+  }
+
   .site-header.nav-open .main-nav > .nav-dropdown > summary::-webkit-details-marker {
     display:none!important;
   }
