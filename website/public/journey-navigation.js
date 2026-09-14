@@ -6,7 +6,7 @@
   const isFlagship = window.location.pathname.includes('/journeys/the-flagship');
   const isToBeFree = window.location.pathname.includes('/journeys/how-to-embrace-suffering') || window.location.pathname.includes('/journeys/to-be-free');
 
-  const forceFlagshipDetailsLabel = () => {
+  const setFlagshipDetailsLabel = () => {
     if (!isFlagship) return;
     sectionNav.querySelectorAll('a').forEach((link) => {
       const href = link.getAttribute('href');
@@ -37,20 +37,7 @@
       if (label && href && flagshipLabels[href]) label.textContent = flagshipLabels[href];
     });
 
-    forceFlagshipDetailsLabel();
-    requestAnimationFrame(forceFlagshipDetailsLabel);
-    window.addEventListener('load', forceFlagshipDetailsLabel, { once: true });
-
-    const flagshipNavObserver = new MutationObserver(() => {
-      forceFlagshipDetailsLabel();
-    });
-    flagshipNavObserver.observe(sectionNav, {
-      subtree: true,
-      childList: true,
-      characterData: true,
-      attributes: true,
-      attributeFilter: ['href']
-    });
+    setFlagshipDetailsLabel();
 
     const accommodationSection = document.querySelector('.accommodation-section');
     const accommodationGallerySection = document.querySelector('.accommodation-gallery-section');
