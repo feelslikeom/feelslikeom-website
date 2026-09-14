@@ -8,8 +8,7 @@ const footerMarkup = `
       <p class="site-community-footer-copy">Stay in touch to hear about community updates and future journeys.</p>
 
       <form class="site-community-footer-form" data-community-signup-form>
-        <label class="sr-only" for="community-email">Your email address</label>
-        <input id="community-email" name="email" type="email" autocomplete="email" inputmode="email" placeholder="Your email address" required />
+        <input id="community-email" name="email" type="email" autocomplete="email" inputmode="email" placeholder="Your email address" aria-label="Your email address" required />
         <button type="submit">Stay in the loop <span class="site-community-footer-arrow" aria-hidden="true">→</span></button>
       </form>
       <p class="site-community-footer-note" data-community-signup-note aria-live="polite"></p>
