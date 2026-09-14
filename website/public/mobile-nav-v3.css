@@ -288,4 +288,29 @@
     border:0!important;
     font-weight:400!important;
   }
+
+  /* Final homepage safeguard: when ABOUT is expanded, keep JOURNEYS exactly
+     the same size as the other top-level headings. This deliberately outranks
+     the legacy homepage :has() rule that sets it to .78rem. */
+  html body .site-header.site-header.site-header.nav-open
+  .main-nav.main-nav.main-nav:has(> details.nav-dropdown:first-child[open])
+  > details.nav-dropdown:nth-child(2) > summary {
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    width:100%!important;
+    height:auto!important;
+    margin:0!important;
+    padding:.12em .15em!important;
+    color:#2a2119!important;
+    font-family:var(--font-body)!important;
+    font-size:clamp(2rem,8.5vw,3.4rem)!important;
+    font-weight:400!important;
+    line-height:1.12!important;
+    letter-spacing:-.035em!important;
+    text-transform:uppercase!important;
+    border:0!important;
+    background:transparent!important;
+    transform:none!important;
+  }
 }
