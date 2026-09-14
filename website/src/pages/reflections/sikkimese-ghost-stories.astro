@@ -36,7 +36,10 @@
         </div>
 
         <article class="publication-card">
-          <img class="author-image" src="/cheryl.jpg" alt="Cheryl Lim" />
+          <figure class="author-figure">
+            <img class="author-image" src="/cheryl.jpg" alt="Cheryl Lim" />
+            <figcaption>Taken on the day the stories were shared</figcaption>
+          </figure>
 
           <a class="publication-image-link" href="https://docs.google.com/document/d/1aNsVXa9PIh2LOHfVXUFOe7mMH_bujEQx94qIOYD7cc0/edit?usp=sharing" target="_blank" rel="noopener noreferrer" aria-label="Read the full Sikkimese Ghost Stories publication">
             <img class="publication-image" src="/sikkimese-ghost-stories.jpg" alt="Screenshot of Sikkimese Ghost Stories by Cheryl Lim" />
@@ -76,7 +79,9 @@
   .publication-intro{width:min(860px,100%);margin:0 auto clamp(3rem,6vw,5rem);text-align:center}
   .publication-intro p{margin:0;line-height:1.7;font-size:var(--type-lead)!important}
   .publication-card{width:min(1080px,100%);margin:0 auto;padding:clamp(2rem,5vw,4rem);background:#fffaf1;border:1px solid rgba(24,48,31,.14);box-shadow:0 18px 50px rgba(24,48,31,.08)}
-  .author-image{display:block;width:100%;height:auto;margin:0 auto clamp(3.5rem,7vw,6rem);border:1px solid rgba(24,48,31,.12)}
+  .author-figure{width:100%;margin:0 auto clamp(3.5rem,7vw,6rem);text-align:center}
+  .author-image{display:block;width:100%;height:auto;margin:0 auto;border:1px solid rgba(24,48,31,.12)}
+  .author-figure figcaption{margin-top:.85rem;font-size:var(--type-small)!important;font-style:italic;line-height:1.5;opacity:.72}
   .publication-image-link{display:block;text-decoration:none}
   .publication-image{display:block;width:100%;height:auto;border:1px solid rgba(24,48,31,.12);transition:opacity 180ms ease}
   .publication-image-link:hover .publication-image{opacity:.94}
@@ -91,6 +96,7 @@
     .publication-section{padding-left:1.25rem;padding-right:1.25rem}
     .publication-intro{text-align:left;margin-bottom:2.5rem}
     .publication-card{padding:1.25rem}
-    .author-image{margin-left:auto;margin-right:auto;margin-bottom:3rem}
+    .author-figure{margin-bottom:3rem}
+    .author-figure figcaption{margin-top:.7rem}
   }
 </style>
