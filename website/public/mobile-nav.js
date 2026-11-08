@@ -213,6 +213,14 @@
   const updateNavigation = () => {
     document.querySelectorAll('.main-nav').forEach((nav) => {
       const about = Array.from(nav.querySelectorAll('.nav-dropdown')).find((item) => item.querySelector(':scope > summary')?.textContent.trim().toUpperCase() === 'ABOUT');
+      const journeys = Array.from(nav.querySelectorAll('.nav-dropdown')).find((item) => item.querySelector(':scope > summary')?.textContent.trim().toUpperCase() === 'JOURNEYS');
+      if (journeys) {
+        journeys.querySelectorAll('.submenu a').forEach((link) => {
+          const href = link.getAttribute('href') || '';
+          if (href === '/journeys/how-to-embrace-suffering' || href === '/journeys/to-be-free' || link.textContent.trim() === 'To Be Free') link.remove();
+        });
+      }
+
       if (about) {
         const submenu = about.querySelector('.submenu');
         if (submenu) {
