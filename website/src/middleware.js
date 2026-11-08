@@ -7,7 +7,8 @@ const footerMarkup = `
       <h2>Join the community</h2>
       <p class="site-community-footer-copy">Stay in touch to hear about community updates and future journeys.</p>
 
-      <form class="site-community-footer-form" data-community-signup-form>
+      <form class="site-community-footer-form" name="community-signup" method="POST" data-netlify="true" data-community-signup-form>
+        <input type="hidden" name="form-name" value="community-signup" />
         <input id="community-email" name="email" type="email" autocomplete="email" inputmode="email" placeholder="Your email address" aria-label="Your email address" required />
         <button type="submit">Stay in the loop <span class="site-community-footer-arrow" aria-hidden="true">→</span></button>
       </form>
@@ -27,15 +28,44 @@ const footerMarkup = `
       const form = document.querySelector('[data-community-signup-form]');
       if (!form || form.dataset.ready === 'true') return;
       form.dataset.ready = 'true';
-      form.addEventListener('submit', (event) => {
+      form.addEventListener('submit', async (event) => {
         event.preventDefault();
         const email = form.querySelector('input[type="email"]');
+        const button = form.querySelector('button[type="submit"]');
         const note = document.querySelector('[data-community-signup-note]');
         if (!email?.checkValidity()) {
           email?.reportValidity();
           return;
         }
-        if (note) note.textContent = 'Community sign-up is being connected before launch.';
+
+        const originalButton = button?.innerHTML;
+        if (button) {
+          button.disabled = true;
+          button.textContent = 'Joining...';
+        }
+        if (note) note.textContent = '';
+
+        try {
+          const formData = new FormData(form);
+          const response = await fetch('/__forms.html', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: new URLSearchParams(formData).toString(),
+          });
+
+          if (!response.ok) throw new Error('Signup failed');
+
+          email.value = '';
+          if (note) note.textContent = 'Welcome to the Feels Like Om community. We will be in touch soon.';
+        } catch (error) {
+          console.error(error);
+          if (note) note.textContent = 'We could not save your email just now. Please try again.';
+        } finally {
+          if (button) {
+            button.disabled = false;
+            button.innerHTML = originalButton;
+          }
+        }
       });
     })();
   </script>`;
