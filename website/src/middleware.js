@@ -27,15 +27,46 @@ const footerMarkup = `
       const form = document.querySelector('[data-community-signup-form]');
       if (!form || form.dataset.ready === 'true') return;
       form.dataset.ready = 'true';
-      form.addEventListener('submit', (event) => {
+      form.addEventListener('submit', async (event) => {
         event.preventDefault();
         const email = form.querySelector('input[type="email"]');
+        const button = form.querySelector('button[type="submit"]');
         const note = document.querySelector('[data-community-signup-note]');
         if (!email?.checkValidity()) {
           email?.reportValidity();
           return;
         }
-        if (note) note.textContent = 'Community sign-up is being connected before launch.';
+
+        const originalButton = button?.innerHTML;
+        if (button) {
+          button.disabled = true;
+          button.textContent = 'Joining...';
+        }
+        if (note) note.textContent = '';
+
+        try {
+          const response = await fetch('/.netlify/functions/community-signup', {
+            method: 'POST',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify({
+              email: email.value.trim(),
+              source: window.location.pathname || '/',
+            }),
+          });
+
+          if (!response.ok) throw new Error('Signup failed');
+
+          email.value = '';
+          if (note) note.textContent = 'Welcome to the Feels Like Om community. We will be in touch soon.';
+        } catch (error) {
+          console.error(error);
+          if (note) note.textContent = 'We could not save your email just now. Please try again.';
+        } finally {
+          if (button) {
+            button.disabled = false;
+            button.innerHTML = originalButton;
+          }
+        }
       });
     })();
   </script>`;
