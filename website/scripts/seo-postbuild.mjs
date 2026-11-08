@@ -40,11 +40,6 @@ const pages = {
     description: 'The Flagship — a small-group field immersion in West Sikkim with community learning, reflection and a 4D3N mountain trek.',
     image: '/flagship-hero.jpg',
   },
-  '/journeys/to-be-free': {
-    title: 'To Be Free | Feels Like Om',
-    description: 'A small-group silent meditation retreat in West Sikkim for people seeking stillness, reflection and a deeper relationship with themselves.',
-    image: '/to-be-free-hero.jpg',
-  },
   '/reflections': {
     title: 'Reflections | Feels Like Om',
     description: 'Reflections from past Feels Like Om participants on Sikkim, community, stillness, relationships and what they discovered along the way.',
@@ -84,8 +79,8 @@ function rewriteInternalLinks(html) {
   return html
     .replaceAll('href="/about/our-story"', 'href="/about/our-stories"')
     .replaceAll("href='/about/our-story'", "href='/about/our-stories'")
-    .replaceAll('href="/journeys/how-to-embrace-suffering"', 'href="/journeys/to-be-free"')
-    .replaceAll("href='/journeys/how-to-embrace-suffering'", "href='/journeys/to-be-free'");
+    .replaceAll('href="/journeys/how-to-embrace-suffering"', 'href="/journeys"')
+    .replaceAll("href='/journeys/how-to-embrace-suffering'", "href='/journeys'");
 }
 
 for (const [route, meta] of Object.entries(pages)) {
