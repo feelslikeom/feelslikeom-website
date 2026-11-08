@@ -7,7 +7,8 @@ const footerMarkup = `
       <h2>Join the community</h2>
       <p class="site-community-footer-copy">Stay in touch to hear about community updates and future journeys.</p>
 
-      <form class="site-community-footer-form" data-community-signup-form>
+      <form class="site-community-footer-form" name="community-signup" method="POST" data-netlify="true" data-community-signup-form>
+        <input type="hidden" name="form-name" value="community-signup" />
         <input id="community-email" name="email" type="email" autocomplete="email" inputmode="email" placeholder="Your email address" aria-label="Your email address" required />
         <button type="submit">Stay in the loop <span class="site-community-footer-arrow" aria-hidden="true">→</span></button>
       </form>
@@ -45,13 +46,11 @@ const footerMarkup = `
         if (note) note.textContent = '';
 
         try {
-          const response = await fetch('/.netlify/functions/community-signup', {
+          const formData = new FormData(form);
+          const response = await fetch('/__forms.html', {
             method: 'POST',
-            headers: { 'content-type': 'application/json' },
-            body: JSON.stringify({
-              email: email.value.trim(),
-              source: window.location.pathname || '/',
-            }),
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: new URLSearchParams(formData).toString(),
           });
 
           if (!response.ok) throw new Error('Signup failed');
